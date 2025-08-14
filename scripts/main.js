@@ -2203,47 +2203,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== STATS COUNTER ANIMATION =====
-    const statNumbers = document.querySelectorAll('.stat-number');
-    
-    const animateCounter = (element, target) => {
-        const increment = target / 100;
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(current);
-            }
-        }, 20);
-    };
-
-    // Trigger counter animation when stats come into view
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumber = entry.target;
-                const text = statNumber.textContent;
-                
-                if (text.includes('K+')) {
-                    animateCounter(statNumber, '12K+');
-                } else if (text.includes('%')) {
-                    animateCounter(statNumber, '340%');
-                } else if (text.includes('+')) {
-                    animateCounter(statNumber, '150+');
-                }
-                
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    });
-
-    statNumbers.forEach(stat => {
-        statsObserver.observe(stat);
-    });
+    // Removed legacy stats animation that caused NaN values.
+    // Counters are now handled by `CounterManager` using numeric `data-target` values.
 
     // ===== CTA BUTTON EFFECTS =====
     const ctaButtons = document.querySelectorAll('.cta-btn--primary');
