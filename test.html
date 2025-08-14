@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Test</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .counter {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 10px;
+            display: inline-block;
+            min-width: 200px;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Counter Test Page</h1>
+    
+    <div class="counter">
+        <div class="stat-number" data-target="5742">5,742</div>
+        <div>Members</div>
+    </div>
+    
+    <div class="counter">
+        <div class="stat-number" data-target="340">340%</div>
+        <div>ROI Increase</div>
+    </div>
+    
+    <div class="counter">
+        <div class="stat-number" data-target="150">150+</div>
+        <div>Partners</div>
+    </div>
+    
+    <div class="counter">
+        <div class="stat-number" data-target="4.9">4.9/5</div>
+        <div>Rating</div>
+    </div>
+    
+    <div class="counter">
+        <div class="stat-number" data-target="24">24/7</div>
+        <div>Support</div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🧪 Test page loaded');
+            const counterManager = new CounterManager();
+        });
+    </script>
+</body>
+</html>

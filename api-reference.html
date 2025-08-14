@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - AI Insider</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav__content">
+                <div class="nav__brand">
+                    <span class="brand-text">AI Insider</span>
+                    <span class="brand-tagline">Next-Gen AI Platform</span>
+                </div>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Home</a></li>
+                        <li><a href="courses.html" class="nav__link">Courses</a></li>
+                        <li><a href="community.html" class="nav__link">Community</a></li>
+                        <li><a href="reviews.html" class="nav__link">Reviews</a></li>
+                    </ul>
+                    <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge"><span>🧩 Reference</span></div>
+                <h1 class="hero__title">Automation <br><span class="hero__title-highlight">API Reference</span></h1>
+                <p class="hero__subtitle">HTTP endpoints and payload formats for integrating with our automation services.</p>
+                <div class="hero__cta-group">
+                    <a href="documentation.html" class="cta-btn cta-btn--secondary">Docs</a>
+                    <a href="case-studies.html" class="cta-btn cta-btn--secondary">Case Studies</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🔗 Endpoints</span>
+                <h2 class="section-title">Core Endpoints</h2>
+                <p class="section-subtitle">Minimal reference to get you started quickly.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card feature-primary">
+                    <div class="feature-icon">📨</div>
+                    <h3>POST /api/workflows/run</h3>
+                    <p>Trigger a named workflow with structured input. Returns execution id for tracking.</p>
+                    <div class="feature-benefit"><span>• id: string</span><span>• input: object</span><span>• priority: low|normal|high</span></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>GET /api/workflows/status/:id</h3>
+                    <p>Poll execution state and retrieve structured outputs and logs.</p>
+                    <div class="feature-benefit"><span>• status: running|failed|success</span><span>• output</span><span>• logs</span></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔑</div>
+                    <h3>Auth</h3>
+                    <p>Use Bearer tokens. Rotate keys regularly and scope permissions to workflows.</p>
+                    <div class="feature-benefit"><span>• Authorization: Bearer</span><span>• IP allowlists</span><span>• Audit logs</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="premium-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>AI Insider</h3>
+                    <p>Next-Generation AI Automation Platform</p>
+                    <div class="footer-stats">
+                        <div class="footer-stat"><span class="stat-number" data-target="5742">5,742</span><span class="stat-label">Members</span></div>
+                        <div class="footer-stat"><span class="stat-number" data-target="125">125</span><span class="stat-label">Generated</span></div>
+                        <div class="footer-stat"><span class="stat-number" data-target="287">287</span><span class="stat-label">Companies</span></div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="courses.html">AI Courses</a>
+                        <a href="community.html">Community</a>
+                        <a href="reviews.html">Success Stories</a>
+                        <a href="course.html">Premium Training</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Solutions</h4>
+                        <a href="enterprise-ai.html">Enterprise AI</a>
+                        <a href="automation-tools.html">Automation Tools</a>
+                        <a href="consulting.html">Consulting</a>
+                        <a href="custom-ai.html">Custom AI</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="documentation.html">Documentation</a>
+                        <a href="api-reference.html">API Reference</a>
+                        <a href="case-studies.html">Case Studies</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="social-link"><span class="social-icon">📱</span>Telegram</a>
+                        <a href="#" class="social-link"><span class="social-icon">🐦</span>Twitter</a>
+                        <a href="#" class="social-link"><span class="social-icon">💼</span>LinkedIn</a>
+                        <a href="#" class="social-link"><span class="social-icon">📧</span>Email</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal"><p>&copy; 2024 AI Insider. All rights reserved.</p><div class="legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div></div>
+                <div class="footer-badge"><span>🚀 Powered by Next-Gen AI</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
+
+
