@@ -43,8 +43,32 @@
 
     <section class="section reviews-grid-section">
         <div class="container">
-            <div class="reviews-grid">
-                <div class="review-card">
+            <div class="blog-toolbar">
+                <div class="blog-search">
+                    <input type="search" id="blogSearch" placeholder="Search posts...">
+                </div>
+                <div class="blog-filters">
+                    <button class="category-chip active" data-category="all">All</button>
+                    <button class="category-chip" data-category="Guide">Guide</button>
+                    <button class="category-chip" data-category="Playbook">Playbook</button>
+                    <button class="category-chip" data-category="Case Study">Case Study</button>
+                    <span class="blog-results" id="blogResultsCount"></span>
+                </div>
+                <div class="blog-tags">
+                    <button class="tag-chip" data-tag="n8n">n8n</button>
+                    <button class="tag-chip" data-tag="Agents">Agents</button>
+                    <button class="tag-chip" data-tag="RAG">RAG</button>
+                    <button class="tag-chip" data-tag="Voice">Voice</button>
+                    <button class="tag-chip" data-tag="Prompting">Prompting</button>
+                    <button class="tag-chip" data-tag="CRM">CRM</button>
+                    <button class="tag-chip" data-tag="Eval">Eval</button>
+                </div>
+            </div>
+
+            <div class="blog-layout">
+                <main class="blog-main">
+                    <div class="blog-grid">
+                <div class="review-card blog-post featured" data-post-id="post-n8n" data-category="Guide" data-tags="n8n,Queues,Alerts" data-title="Building Robust n8n Workflows" data-subtitle="Retries, queues and error handling" data-author="AI Insider Team" data-date="Aug 2024">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-developer"><span class="avatar-emoji">🧰</span><span class="avatar-initials">TK</span></div>
@@ -73,7 +97,7 @@
                     </template>
                 </div>
 
-                <div class="review-card blog-post" data-title="Evaluating LLM Systems" data-subtitle="From prompts to business metrics" data-author="AI Insider Team" data-date="Aug 2024">
+                <div class="review-card blog-post" data-post-id="post-evals" data-category="Playbook" data-tags="Eval,Quality,Safety,Cost" data-title="Evaluating LLM Systems" data-subtitle="From prompts to business metrics" data-author="AI Insider Team" data-date="Aug 2024">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-scientist"><span class="avatar-emoji">🧪</span><span class="avatar-initials">EV</span></div>
@@ -104,7 +128,7 @@
                 </div>
 
                 <!-- New posts -->
-                <div class="review-card blog-post" data-title="Shipping AI Agents to Production" data-subtitle="Observability, retries, tool safety" data-author="AI Insider Team" data-date="Sep 2024" tabindex="0">
+                <div class="review-card blog-post" data-post-id="post-agents" data-category="Playbook" data-tags="Agents,Guardrails,Retries,Observability" data-title="Shipping AI Agents to Production" data-subtitle="Observability, retries, tool safety" data-author="AI Insider Team" data-date="Sep 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-business"><span class="avatar-emoji">🤖</span><span class="avatar-initials">AG</span></div>
@@ -127,7 +151,7 @@
                     </template>
                 </div>
 
-                <div class="review-card blog-post" data-title="Prompt Engineering Pitfalls" data-subtitle="Brittleness and hidden state" data-author="AI Insider Team" data-date="Aug 2024" tabindex="0">
+                <div class="review-card blog-post" data-post-id="post-prompts" data-category="Guide" data-tags="Prompting,Schemas,Tests,Context" data-title="Prompt Engineering Pitfalls" data-subtitle="Brittleness and hidden state" data-author="AI Insider Team" data-date="Aug 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-marketing"><span class="avatar-emoji">🧩</span><span class="avatar-initials">PE</span></div>
@@ -149,7 +173,7 @@
                     </template>
                 </div>
 
-                <div class="review-card blog-post" data-title="Lead Qualification with LLMs" data-subtitle="Routing, scoring, CRM sync" data-author="AI Insider Team" data-date="Sep 2024" tabindex="0">
+                <div class="review-card blog-post" data-post-id="post-leads" data-category="Case Study" data-tags="CRM,Scoring,Routing,HubSpot" data-title="Lead Qualification with LLMs" data-subtitle="Routing, scoring, CRM sync" data-author="AI Insider Team" data-date="Sep 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-consultant"><span class="avatar-emoji">🧭</span><span class="avatar-initials">LQ</span></div>
@@ -171,7 +195,7 @@
                     </template>
                 </div>
 
-                <div class="review-card blog-post" data-title="Voice Agents with Vapi" data-subtitle="Latency, barge‑in, grounding" data-author="AI Insider Team" data-date="Aug 2024" tabindex="0">
+                <div class="review-card blog-post" data-post-id="post-voice" data-category="Guide" data-tags="Voice,Vapi,Whisper,Guardrails" data-title="Voice Agents with Vapi" data-subtitle="Latency, barge‑in, grounding" data-author="AI Insider Team" data-date="Aug 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-teacher"><span class="avatar-emoji">🎙️</span><span class="avatar-initials">VA</span></div>
@@ -193,7 +217,7 @@
                     </template>
                 </div>
 
-                <div class="review-card blog-post" data-title="RAG that Actually Works" data-subtitle="Chunking, cache, evals" data-author="AI Insider Team" data-date="Jul 2024" tabindex="0">
+                <div class="review-card blog-post" data-post-id="post-rag" data-category="Playbook" data-tags="RAG,Chunking,Cache,Rerank" data-title="RAG that Actually Works" data-subtitle="Chunking, cache, evals" data-author="AI Insider Team" data-date="Jul 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-developer"><span class="avatar-emoji">📚</span><span class="avatar-initials">RG</span></div>
@@ -214,6 +238,39 @@
                         </article>
                     </template>
                 </div>
+                    </div>
+                </main>
+                <aside class="blog-sidebar">
+                    <div class="sidebar-card">
+                        <h4>Popular</h4>
+                        <ul class="popular-list">
+                            <li><button class="popular-link" data-open-post="post-agents">Shipping AI Agents to Production</button></li>
+                            <li><button class="popular-link" data-open-post="post-rag">RAG that Actually Works</button></li>
+                            <li><button class="popular-link" data-open-post="post-voice">Voice Agents with Vapi</button></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4>Categories</h4>
+                        <div class="category-list">
+                            <button class="category-chip active" data-category="all">All</button>
+                            <button class="category-chip" data-category="Guide">Guide</button>
+                            <button class="category-chip" data-category="Playbook">Playbook</button>
+                            <button class="category-chip" data-category="Case Study">Case Study</button>
+                        </div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4>Tags</h4>
+                        <div class="tags-cloud">
+                            <button class="tag-chip" data-tag="n8n">n8n</button>
+                            <button class="tag-chip" data-tag="Agents">Agents</button>
+                            <button class="tag-chip" data-tag="RAG">RAG</button>
+                            <button class="tag-chip" data-tag="Voice">Voice</button>
+                            <button class="tag-chip" data-tag="Prompting">Prompting</button>
+                            <button class="tag-chip" data-tag="CRM">CRM</button>
+                            <button class="tag-chip" data-tag="Eval">Eval</button>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
     </section>

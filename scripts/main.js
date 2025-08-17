@@ -2263,7 +2263,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Make each blog card fully clickable to open full post (only on blog page)
     if (blogModal) {
-        document.querySelectorAll('.reviews-grid .review-card').forEach(card => {
+        const cards = document.querySelectorAll('.blog-grid .review-card, .reviews-grid .review-card');
+        cards.forEach(card => {
             card.style.cursor = 'pointer';
             card.addEventListener('click', () => {
                 const title = card.querySelector('h4')?.textContent?.trim();
@@ -2283,6 +2284,65 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+
+        // Popular list open actions
+        document.querySelectorAll('[data-open-post]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-open-post');
+                const target = document.querySelector(`.review-card[data-post-id="${id}"]`);
+                if (target) target.click();
+            });
+        });
+
+        // Category filter
+        const resultEl = document.getElementById('blogResultsCount');
+        function updateCount() {
+            const visible = Array.from(document.querySelectorAll('.blog-grid .review-card')).filter(c => c.style.display !== 'none').length;
+            if (resultEl) resultEl.textContent = `${visible} posts`;
+        }
+
+        function applyFilters() {
+            const activeCategory = document.querySelector('.category-chip.active')?.getAttribute('data-category') || 'all';
+            const activeTags = Array.from(document.querySelectorAll('.tag-chip.active')).map(t => t.getAttribute('data-tag'));
+            const query = (document.getElementById('blogSearch')?.value || '').toLowerCase();
+
+            document.querySelectorAll('.blog-grid .review-card').forEach(card => {
+                const title = (card.getAttribute('data-title') || card.querySelector('h4')?.textContent || '').toLowerCase();
+                const subtitle = (card.getAttribute('data-subtitle') || card.querySelector('h4 + p')?.textContent || '').toLowerCase();
+                const category = card.getAttribute('data-category') || '';
+                const tags = (card.getAttribute('data-tags') || '').split(',').map(s => s.trim());
+
+                let ok = true;
+                if (activeCategory !== 'all' && category !== activeCategory) ok = false;
+                if (activeTags.length > 0 && !activeTags.every(t => tags.includes(t))) ok = false;
+                if (query && !(title.includes(query) || subtitle.includes(query))) ok = false;
+
+                card.style.display = ok ? '' : 'none';
+            });
+            updateCount();
+        }
+
+        document.querySelectorAll('.category-chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-chip').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                applyFilters();
+            });
+        });
+
+        document.querySelectorAll('.tag-chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+                applyFilters();
+            });
+        });
+
+        const searchEl = document.getElementById('blogSearch');
+        if (searchEl) {
+            searchEl.addEventListener('input', () => applyFilters());
+        }
+
+        applyFilters();
     }
 
 });

@@ -1353,11 +1353,78 @@ body {
   background: var(--color-bg-primary);
 }
 
-.reviews-grid {
+/* Blog Layout */
+.blog-toolbar {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.blog-search input[type="search"] {
+  width: 100%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-primary);
+}
+
+.blog-filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.blog-results { color: var(--color-text-secondary); margin-left: auto; }
+
+.category-chip, .tag-chip {
+  padding: 6px 10px;
+  border: 1px solid var(--glass-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+.category-chip:hover, .tag-chip:hover { transform: translateY(-2px); }
+.category-chip.active { background: var(--color-ai-blue); color: #fff; border-color: var(--color-ai-blue); }
+
+.blog-tags, .tags-cloud { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-8);
+}
+
+.blog-main { min-width: 0; }
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-6);
 }
+
+.review-card.featured {
+  grid-column: 1 / -1;
+}
+
+.blog-sidebar { position: sticky; top: 90px; height: fit-content; }
+
+.sidebar-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.sidebar-card h4 { margin: 0 0 var(--space-3) 0; }
+
+.popular-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.popular-link { background: transparent; border: none; color: var(--color-text-primary); text-align: left; cursor: pointer; padding: 0; }
+.popular-link:hover { color: var(--color-ai-blue); }
 
 .review-card {
   background: var(--glass-bg);
