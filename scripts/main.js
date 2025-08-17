@@ -2230,6 +2230,61 @@ document.addEventListener('DOMContentLoaded', function() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     `);
 
+    // ===== BLOG MODAL (Full Post Viewer) =====
+    const blogModal = document.getElementById('blogModal');
+    const blogModalOverlay = document.getElementById('blogModalOverlay');
+    const blogModalClose = document.getElementById('blogModalClose');
+    const blogModalTitle = document.getElementById('blogModalTitle');
+    const blogModalBody = document.getElementById('blogModalBody');
+    const blogModalMeta = document.getElementById('blogModalMeta');
+    const blogModalSubtitleEl = document.querySelector('.blog-modal__subtitle');
+
+    function openBlogModal({ title, subtitle, author, date, html }) {
+        if (!blogModal) return;
+        blogModalTitle.textContent = title || '';
+        blogModalSubtitleEl.textContent = subtitle || '';
+        blogModalMeta.textContent = [author, date].filter(Boolean).join(' • ');
+        blogModalBody.innerHTML = html || '';
+        blogModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeBlogModal() {
+        if (!blogModal) return;
+        blogModal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    if (blogModalOverlay) blogModalOverlay.addEventListener('click', closeBlogModal);
+    if (blogModalClose) blogModalClose.addEventListener('click', closeBlogModal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeBlogModal();
+    });
+
+    // Make each blog card fully clickable to open full post (only on blog page)
+    if (blogModal) {
+        document.querySelectorAll('.reviews-grid .review-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h4')?.textContent?.trim();
+                const subtitle = card.querySelector('h4 + p')?.textContent?.trim();
+                const author = card.getAttribute('data-author');
+                const date = card.getAttribute('data-date');
+                const tpl = card.querySelector('template.blog-full-content');
+                const html = tpl ? tpl.innerHTML : `<article><p>${card.querySelector('blockquote')?.textContent || ''}</p></article>`;
+                openBlogModal({ title, subtitle, author, date, html });
+            });
+            // Keyboard accessibility
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+    }
+
 });
 
 // ===== UTILITY FUNCTIONS =====

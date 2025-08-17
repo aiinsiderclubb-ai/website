@@ -58,23 +58,22 @@
                     <div class="review-content">
                         <blockquote>Patterns we use to make orchestrations reliable under load. Includes templates you can copy.</blockquote>
                         <div class="review-metrics"><span>⚙️ Queue workers</span><span>🧯 Dead‑letter</span><span>🔔 Alerts</span></div>
-                        <details class="review-details">
-                            <summary class="read-more-link">Read full</summary>
-                            <div class="review-full">
-                                <p>Production‑grade workflows demand predictability. We cover idempotency keys, exponential backoff, dead‑letter queues and replay strategies. You’ll also see how to isolate side‑effects and keep external APIs resilient with circuit breakers.</p>
-                                <p>What you’ll implement:</p>
-                                <ul>
-                                    <li>Dedicated workers with concurrency limits and per‑queue priorities</li>
-                                    <li>Poison‑message handling and automatic retries with jitter</li>
-                                    <li>Structured logging and alerting to Telegram/Slack</li>
-                                </ul>
-                                <p>Templates included for: lead enrichment, outbound tasks, and nightly batch jobs.</p>
-                            </div>
-                        </details>
                     </div>
+                    <template class="blog-full-content">
+                        <article>
+                            <p>Reliability in n8n starts with idempotent nodes and predictable retries. We separate critical steps into isolated queues with backoff strategies, use dead‑letter queues for poison messages, and add circuit breakers around flaky APIs.</p>
+                            <p>Key tactics:</p>
+                            <ul>
+                                <li>Use <strong>wait/continue</strong> to checkpoint long flows</li>
+                                <li>Persist state externally for replays</li>
+                                <li>Alert on <em>error ratios</em> and <em>latency percentiles</em></li>
+                            </ul>
+                            <p>We include templates for onboarding, lead routing, invoice reconciliation and more.</p>
+                        </article>
+                    </template>
                 </div>
 
-                <div class="review-card">
+                <div class="review-card blog-post" data-title="Evaluating LLM Systems" data-subtitle="From prompts to business metrics" data-author="AI Insider Team" data-date="Aug 2024">
                     <div class="review-header">
                         <div class="reviewer-info">
                             <div class="reviewer-avatar avatar-scientist"><span class="avatar-emoji">🧪</span><span class="avatar-initials">EV</span></div>
@@ -88,143 +87,150 @@
                     <div class="review-content">
                         <blockquote>How we run evaluations to ensure quality, safety and cost control in production.</blockquote>
                         <div class="review-metrics"><span>🧮 Quality metrics</span><span>🛡️ Safety checks</span><span>💵 Cost tracking</span></div>
-                        <details class="review-details">
-                            <summary class="read-more-link">Read full</summary>
-                            <div class="review-full">
-                                <p>We define task‑specific rubrics, sample realistic inputs, and run automated evals on every change. Beyond accuracy, we score latency, refusal rates and cost per successful task.</p>
-                                <ul>
-                                    <li>Golden‑set and synthetic eval generation</li>
-                                    <li>Guardrails and red‑team prompts for safety</li>
-                                    <li>Dashboards that tie model metrics to revenue KPIs</li>
-                                </ul>
-                                <p>Includes an n8n pipeline to schedule evals and push reports to Google Sheets.</p>
-                            </div>
-                        </details>
                     </div>
+                    <template class="blog-full-content">
+                        <article>
+                            <p>Production evals must connect model behavior to business KPIs. We blend automatic metrics (BLEU, rouge‑L, toxicity) with <strong>human‑in‑the‑loop</strong> spot checks on high‑value segments.</p>
+                            <p>Our loop:</p>
+                            <ol>
+                                <li>Define task rubric and pass/fail rules</li>
+                                <li>Generate diverse eval sets with synthetic augmentation</li>
+                                <li>Score with programmatic judges and human audits</li>
+                                <li>Track cost/performance drift weekly</li>
+                            </ol>
+                            <p>This keeps quality stable while you iterate prompts, tools and models.</p>
+                        </article>
+                    </template>
                 </div>
 
-                <div class="review-card">
+                <!-- New posts -->
+                <div class="review-card blog-post" data-title="Shipping AI Agents to Production" data-subtitle="Observability, retries, tool safety" data-author="AI Insider Team" data-date="Sep 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
-                            <div class="reviewer-avatar avatar-voice"><span class="avatar-emoji">🎙️</span><span class="avatar-initials">VA</span></div>
+                            <div class="reviewer-avatar avatar-business"><span class="avatar-emoji">🤖</span><span class="avatar-initials">AG</span></div>
                             <div>
-                                <h4>Deploying AI Voice Agents</h4>
-                                <p>Latency, fallbacks, monitoring</p>
+                                <h4>Shipping AI Agents to Production</h4>
+                                <p>Observability, retries, tool safety</p>
                             </div>
                         </div>
-                        <div class="course-badge">Case Study</div>
+                        <div class="success-badge">Playbook</div>
                     </div>
                     <div class="review-content">
-                        <blockquote>What matters most when calls go live: handoffs, silence detection and real‑time tools.</blockquote>
-                        <div class="review-metrics"><span>⚡ Low latency</span><span>☎️ Handoffs</span><span>📊 Tracing</span></div>
-                        <details class="review-details">
-                            <summary class="read-more-link">Read full</summary>
-                            <div class="review-full">
-                                <p>We compare streaming TTS/ASR stacks, design interruption‑friendly turns, and add business logic via webhooks. You’ll learn how to do warm transfers to humans and record structured outcomes back to the CRM.</p>
-                                <p>Monitoring includes per‑turn traces, abandoned calls, and conversion cohorts with Mixpanel/Sheets.</p>
-                            </div>
-                        </details>
+                        <blockquote>We cover task decomposition, deterministic tools, guardrails and rollback plans.</blockquote>
+                        <div class="review-metrics"><span>🧭 Traces</span><span>🧱 Guardrails</span><span>🔁 Retries</span></div>
                     </div>
+                    <template class="blog-full-content">
+                        <article>
+                            <p>Agents fail in the seams. Instrument every tool call, constrain outputs with JSON schemas, sandbox side‑effects, and implement <em>compensating actions</em> for partial failures.</p>
+                            <p>Adopt <strong>trace‑first debugging</strong>: each run produces a timeline with inputs, outputs and costs. This reduces MTTR dramatically.</p>
+                        </article>
+                    </template>
                 </div>
 
-                <div class="review-card">
+                <div class="review-card blog-post" data-title="Prompt Engineering Pitfalls" data-subtitle="Brittleness and hidden state" data-author="AI Insider Team" data-date="Aug 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
-                            <div class="reviewer-avatar avatar-ops"><span class="avatar-emoji">🧩</span><span class="avatar-initials">AG</span></div>
+                            <div class="reviewer-avatar avatar-marketing"><span class="avatar-emoji">🧩</span><span class="avatar-initials">PE</span></div>
                             <div>
-                                <h4>Agents That Convert</h4>
-                                <p>Planning, objections, CRM updates</p>
-                            </div>
-                        </div>
-                        <div class="community-badge">Playbook</div>
-                    </div>
-                    <div class="review-content">
-                        <blockquote>Turn generic assistants into revenue agents with clear goals and SOP‑style tools.</blockquote>
-                        <div class="review-metrics"><span>🎯 Goals</span><span>🛠️ Tools</span><span>🔁 Loops</span></div>
-                        <details class="review-details">
-                            <summary class="read-more-link">Read full</summary>
-                            <div class="review-full">
-                                <p>We define outcome‑driven loops (qualify → schedule → follow‑up) and give the agent narrow tools: calendar, email, CRM notes. Objection handling is scripted as few‑shot frames, not open‑ended “be smart”.</p>
-                                <p>Includes SOP templates and a tool schema you can copy to your stack.</p>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="reviewer-info">
-                            <div class="reviewer-avatar avatar-data"><span class="avatar-emoji">🧠</span><span class="avatar-initials">RG</span></div>
-                            <div>
-                                <h4>RAG Done Right</h4>
-                                <p>Indexing, reranking, caching</p>
+                                <h4>Prompt Engineering Pitfalls</h4>
+                                <p>Brittleness and hidden state</p>
                             </div>
                         </div>
                         <div class="course-badge">Guide</div>
                     </div>
                     <div class="review-content">
-                        <blockquote>Most RAG issues are data issues. Fix chunking, metadata and retrieval before prompts.</blockquote>
-                        <div class="review-metrics"><span>🧱 Chunking</span><span>🏷️ Metadata</span><span>🧮 Rerank</span></div>
-                        <details class="review-details">
-                            <summary class="read-more-link">Read full</summary>
-                            <div class="review-full">
-                                <p>We show hierarchical chunking, semantic + keyword hybrid search, and reranking for precision. Add a two‑level cache (query → answer) and store feedback for continuous improvement.</p>
-                                <p>Benchmarked on FAQs and product docs; scripts provided for pgvector and Chroma.</p>
-                            </div>
-                        </details>
+                        <blockquote>Simple guardrails to make prompts robust and testable across versions.</blockquote>
+                        <div class="review-metrics"><span>🧪 Tests</span><span>🧱 Schemas</span><span>🧵 Context</span></div>
                     </div>
+                    <template class="blog-full-content">
+                        <article>
+                            <p>Use <strong>schemas</strong> and <strong>self‑check prompts</strong>, limit context windows deterministically, and snapshot few‑shot examples. Track regressions with a small, realistic eval set.</p>
+                        </article>
+                    </template>
                 </div>
 
-                <div class="review-card">
+                <div class="review-card blog-post" data-title="Lead Qualification with LLMs" data-subtitle="Routing, scoring, CRM sync" data-author="AI Insider Team" data-date="Sep 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
-                            <div class="reviewer-avatar avatar-cost"><span class="avatar-emoji">💰</span><span class="avatar-initials">CC</span></div>
+                            <div class="reviewer-avatar avatar-consultant"><span class="avatar-emoji">🧭</span><span class="avatar-initials">LQ</span></div>
                             <div>
-                                <h4>LLM Cost Control</h4>
-                                <p>Budgets, caching, batching</p>
+                                <h4>Lead Qualification with LLMs</h4>
+                                <p>Routing, scoring, CRM sync</p>
                             </div>
                         </div>
-                        <div class="community-badge">Playbook</div>
+                        <div class="success-badge">Case Study</div>
                     </div>
                     <div class="review-content">
-                        <blockquote>Cut spend by 30‑60% with token budgets, request shaping and cache hit‑rates.</blockquote>
-                        <div class="review-metrics"><span>📉 Budgets</span><span>🧊 Cache</span><span>📦 Batch</span></div>
-                        <details class="review-details">
-                            <summary class="read-more-link">Read full</summary>
-                            <div class="review-full">
-                                <p>Introduce per‑feature token caps, switch to structured outputs, and cache high‑frequency prompts. Batch async calls for fan‑out tasks and downshift models when confidence is high.</p>
-                                <p>Includes a cost dashboard template and a caching middleware example.</p>
-                            </div>
-                        </details>
+                        <blockquote>How we cut response time by 73% and doubled demo conversions.</blockquote>
+                        <div class="review-metrics"><span>📊 Scoring</span><span>🔌 HubSpot</span><span>⚡ SLAs</span></div>
                     </div>
+                    <template class="blog-full-content">
+                        <article>
+                            <p>We parse inbound emails/chats into structured intents, score ICP fit, auto‑route to the right rep and schedule with fallback rules. CRM remains the system of record.</p>
+                        </article>
+                    </template>
                 </div>
 
-                <div class="review-card">
+                <div class="review-card blog-post" data-title="Voice Agents with Vapi" data-subtitle="Latency, barge‑in, grounding" data-author="AI Insider Team" data-date="Aug 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
-                            <div class="reviewer-avatar avatar-ops"><span class="avatar-emoji">📬</span><span class="avatar-initials">LQ</span></div>
+                            <div class="reviewer-avatar avatar-teacher"><span class="avatar-emoji">🎙️</span><span class="avatar-initials">VA</span></div>
                             <div>
-                                <h4>Automated Lead Qualification</h4>
-                                <p>GPT‑4o + Sheets + n8n</p>
+                                <h4>Voice Agents with Vapi</h4>
+                                <p>Latency, barge‑in, grounding</p>
                             </div>
                         </div>
-                        <div class="course-badge">Tutorial</div>
+                        <div class="community-badge">Guide</div>
                     </div>
                     <div class="review-content">
-                        <blockquote>Ship a working scoring pipeline in under an hour with enrichment, routing and alerts.</blockquote>
-                        <div class="review-metrics"><span>🧾 Scoring</span><span>🧑‍💼 Routing</span><span>🔔 Alerts</span></div>
-                        <details class="review-details">
-                            <summary class="read-more-link">Read full</summary>
-                            <div class="review-full">
-                                <p>We enrich leads with Clearbit/People Data Labs, score intent with few‑shot prompts and route to the right owner. High‑value leads trigger Telegram alerts and calendar holds.</p>
-                                <p>Template includes node configs and a sample Google Sheet.</p>
-                            </div>
-                        </details>
+                        <blockquote>Design patterns for natural conversations and safe actions.</blockquote>
+                        <div class="review-metrics"><span>⏱️ RTT</span><span>🗣️ Whisper</span><span>🔐 Guardrails</span></div>
                     </div>
+                    <template class="blog-full-content">
+                        <article>
+                            <p>Keep round‑trip time under 600ms, implement barge‑in, and constrain tool calls to idempotent, reversible operations. Ground every claim to a trusted source.</p>
+                        </article>
+                    </template>
+                </div>
+
+                <div class="review-card blog-post" data-title="RAG that Actually Works" data-subtitle="Chunking, cache, evals" data-author="AI Insider Team" data-date="Jul 2024" tabindex="0">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar avatar-developer"><span class="avatar-emoji">📚</span><span class="avatar-initials">RG</span></div>
+                            <div>
+                                <h4>RAG that Actually Works</h4>
+                                <p>Chunking, cache, evals</p>
+                            </div>
+                        </div>
+                        <div class="course-badge">Playbook</div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>How to avoid hallucinations and keep latency low at scale.</blockquote>
+                        <div class="review-metrics"><span>🧩 Chunking</span><span>🧠 Rerank</span><span>🔁 Cache</span></div>
+                    </div>
+                    <template class="blog-full-content">
+                        <article>
+                            <p>Favor semantic + field filters, do <strong>small chunking</strong> with windowed context, apply reranking, and cache both retrievals and final responses with key normalization.</p>
+                        </article>
+                    </template>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="blog-modal" aria-hidden="true">
+        <div class="blog-modal__overlay" id="blogModalOverlay"></div>
+        <div class="blog-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+            <button class="blog-modal__close" id="blogModalClose" aria-label="Close">×</button>
+            <div class="blog-modal__header">
+                <h2 id="blogModalTitle"></h2>
+                <p class="blog-modal__subtitle"></p>
+                <div class="blog-modal__meta" id="blogModalMeta"></div>
+            </div>
+            <div class="blog-modal__body" id="blogModalBody"></div>
+        </div>
+    </div>
 
     <footer class="premium-footer">
         <div class="footer-glow"></div>

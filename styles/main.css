@@ -1392,6 +1392,65 @@ body {
   opacity: 1;
 }
 
+/* Blog Modal */
+.blog-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 1000;
+}
+
+.blog-modal.show { display: block; }
+
+.blog-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+}
+
+.blog-modal__dialog {
+  position: relative;
+  max-width: 800px;
+  margin: 6vh auto;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-2xl);
+  overflow: hidden;
+}
+
+.blog-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.blog-modal__header {
+  padding: var(--space-6) var(--space-8) var(--space-4) var(--space-8);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.blog-modal__header h2 {
+  margin: 0 0 var(--space-2) 0;
+}
+
+.blog-modal__subtitle, .blog-modal__meta { color: var(--color-text-secondary); }
+
+.blog-modal__body {
+  padding: var(--space-6) var(--space-8);
+  line-height: 1.7;
+}
+
+.blog-modal__body p { margin: 0 0 var(--space-4) 0; }
+.blog-modal__body ul { padding-left: 1.2rem; margin: 0 0 var(--space-4) 0; }
+.blog-modal__body li { margin: 0 0 var(--space-2) 0; }
+
 .success-story {
   border: 2px solid #10b981;
   box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
