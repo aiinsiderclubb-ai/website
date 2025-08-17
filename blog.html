@@ -58,6 +58,19 @@
                     <div class="review-content">
                         <blockquote>Patterns we use to make orchestrations reliable under load. Includes templates you can copy.</blockquote>
                         <div class="review-metrics"><span>⚙️ Queue workers</span><span>🧯 Dead‑letter</span><span>🔔 Alerts</span></div>
+                        <details class="review-details">
+                            <summary class="read-more-link">Read full</summary>
+                            <div class="review-full">
+                                <p>Production‑grade workflows demand predictability. We cover idempotency keys, exponential backoff, dead‑letter queues and replay strategies. You’ll also see how to isolate side‑effects and keep external APIs resilient with circuit breakers.</p>
+                                <p>What you’ll implement:</p>
+                                <ul>
+                                    <li>Dedicated workers with concurrency limits and per‑queue priorities</li>
+                                    <li>Poison‑message handling and automatic retries with jitter</li>
+                                    <li>Structured logging and alerting to Telegram/Slack</li>
+                                </ul>
+                                <p>Templates included for: lead enrichment, outbound tasks, and nightly batch jobs.</p>
+                            </div>
+                        </details>
                     </div>
                 </div>
 
@@ -75,6 +88,138 @@
                     <div class="review-content">
                         <blockquote>How we run evaluations to ensure quality, safety and cost control in production.</blockquote>
                         <div class="review-metrics"><span>🧮 Quality metrics</span><span>🛡️ Safety checks</span><span>💵 Cost tracking</span></div>
+                        <details class="review-details">
+                            <summary class="read-more-link">Read full</summary>
+                            <div class="review-full">
+                                <p>We define task‑specific rubrics, sample realistic inputs, and run automated evals on every change. Beyond accuracy, we score latency, refusal rates and cost per successful task.</p>
+                                <ul>
+                                    <li>Golden‑set and synthetic eval generation</li>
+                                    <li>Guardrails and red‑team prompts for safety</li>
+                                    <li>Dashboards that tie model metrics to revenue KPIs</li>
+                                </ul>
+                                <p>Includes an n8n pipeline to schedule evals and push reports to Google Sheets.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar avatar-voice"><span class="avatar-emoji">🎙️</span><span class="avatar-initials">VA</span></div>
+                            <div>
+                                <h4>Deploying AI Voice Agents</h4>
+                                <p>Latency, fallbacks, monitoring</p>
+                            </div>
+                        </div>
+                        <div class="course-badge">Case Study</div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>What matters most when calls go live: handoffs, silence detection and real‑time tools.</blockquote>
+                        <div class="review-metrics"><span>⚡ Low latency</span><span>☎️ Handoffs</span><span>📊 Tracing</span></div>
+                        <details class="review-details">
+                            <summary class="read-more-link">Read full</summary>
+                            <div class="review-full">
+                                <p>We compare streaming TTS/ASR stacks, design interruption‑friendly turns, and add business logic via webhooks. You’ll learn how to do warm transfers to humans and record structured outcomes back to the CRM.</p>
+                                <p>Monitoring includes per‑turn traces, abandoned calls, and conversion cohorts with Mixpanel/Sheets.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar avatar-ops"><span class="avatar-emoji">🧩</span><span class="avatar-initials">AG</span></div>
+                            <div>
+                                <h4>Agents That Convert</h4>
+                                <p>Planning, objections, CRM updates</p>
+                            </div>
+                        </div>
+                        <div class="community-badge">Playbook</div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>Turn generic assistants into revenue agents with clear goals and SOP‑style tools.</blockquote>
+                        <div class="review-metrics"><span>🎯 Goals</span><span>🛠️ Tools</span><span>🔁 Loops</span></div>
+                        <details class="review-details">
+                            <summary class="read-more-link">Read full</summary>
+                            <div class="review-full">
+                                <p>We define outcome‑driven loops (qualify → schedule → follow‑up) and give the agent narrow tools: calendar, email, CRM notes. Objection handling is scripted as few‑shot frames, not open‑ended “be smart”.</p>
+                                <p>Includes SOP templates and a tool schema you can copy to your stack.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar avatar-data"><span class="avatar-emoji">🧠</span><span class="avatar-initials">RG</span></div>
+                            <div>
+                                <h4>RAG Done Right</h4>
+                                <p>Indexing, reranking, caching</p>
+                            </div>
+                        </div>
+                        <div class="course-badge">Guide</div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>Most RAG issues are data issues. Fix chunking, metadata and retrieval before prompts.</blockquote>
+                        <div class="review-metrics"><span>🧱 Chunking</span><span>🏷️ Metadata</span><span>🧮 Rerank</span></div>
+                        <details class="review-details">
+                            <summary class="read-more-link">Read full</summary>
+                            <div class="review-full">
+                                <p>We show hierarchical chunking, semantic + keyword hybrid search, and reranking for precision. Add a two‑level cache (query → answer) and store feedback for continuous improvement.</p>
+                                <p>Benchmarked on FAQs and product docs; scripts provided for pgvector and Chroma.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar avatar-cost"><span class="avatar-emoji">💰</span><span class="avatar-initials">CC</span></div>
+                            <div>
+                                <h4>LLM Cost Control</h4>
+                                <p>Budgets, caching, batching</p>
+                            </div>
+                        </div>
+                        <div class="community-badge">Playbook</div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>Cut spend by 30‑60% with token budgets, request shaping and cache hit‑rates.</blockquote>
+                        <div class="review-metrics"><span>📉 Budgets</span><span>🧊 Cache</span><span>📦 Batch</span></div>
+                        <details class="review-details">
+                            <summary class="read-more-link">Read full</summary>
+                            <div class="review-full">
+                                <p>Introduce per‑feature token caps, switch to structured outputs, and cache high‑frequency prompts. Batch async calls for fan‑out tasks and downshift models when confidence is high.</p>
+                                <p>Includes a cost dashboard template and a caching middleware example.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar avatar-ops"><span class="avatar-emoji">📬</span><span class="avatar-initials">LQ</span></div>
+                            <div>
+                                <h4>Automated Lead Qualification</h4>
+                                <p>GPT‑4o + Sheets + n8n</p>
+                            </div>
+                        </div>
+                        <div class="course-badge">Tutorial</div>
+                    </div>
+                    <div class="review-content">
+                        <blockquote>Ship a working scoring pipeline in under an hour with enrichment, routing and alerts.</blockquote>
+                        <div class="review-metrics"><span>🧾 Scoring</span><span>🧑‍💼 Routing</span><span>🔔 Alerts</span></div>
+                        <details class="review-details">
+                            <summary class="read-more-link">Read full</summary>
+                            <div class="review-full">
+                                <p>We enrich leads with Clearbit/People Data Labs, score intent with few‑shot prompts and route to the right owner. High‑value leads trigger Telegram alerts and calendar holds.</p>
+                                <p>Template includes node configs and a sample Google Sheet.</p>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
