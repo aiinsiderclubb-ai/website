@@ -2254,6 +2254,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (blogModalTags) blogModalTags.innerHTML = (tags || []).map(t => `<span class="tag">${t}</span>`).join('');
         blogModal.classList.add('show');
         document.body.style.overflow = 'hidden';
+        // Reset scroll/progress on open
+        if (blogModalBody) blogModalBody.scrollTop = 0;
         updateModalProgress();
     }
 
