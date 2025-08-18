@@ -1407,6 +1407,8 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 200ms ease;
 }
 
 .blog-modal__dialog {
@@ -1421,7 +1423,13 @@ body {
   display: flex;
   flex-direction: column;
   max-height: 92vh;
+  transform: translateY(12px) scale(0.98);
+  opacity: 0;
+  transition: transform 240ms ease, opacity 240ms ease;
 }
+
+.blog-modal.show .blog-modal__overlay { opacity: 1; }
+.blog-modal.show .blog-modal__dialog { transform: none; opacity: 1; }
 
 .blog-modal__progress {
   position: absolute;
@@ -1486,8 +1494,10 @@ body {
   color: var(--color-text-primary);
   border-radius: var(--radius-lg);
   cursor: pointer;
+  white-space: nowrap;
 }
 .blog-action:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+.blog-action:focus-visible { outline: 2px solid var(--color-ai-blue); outline-offset: 2px; }
 
 .blog-modal__header h2 {
   margin: 0 0 var(--space-2) 0;
@@ -1517,6 +1527,13 @@ body {
 .blog-modal__body p { margin: 0 0 var(--space-4) 0; }
 .blog-modal__body ul { padding-left: 1.2rem; margin: 0 0 var(--space-4) 0; }
 .blog-modal__body li { margin: 0 0 var(--space-2) 0; }
+.blog-modal__body article { max-width: 72ch; margin: 0 auto; }
+.blog-modal__body p, .blog-modal__body li { hyphens: auto; -webkit-hyphens: auto; }
+
+/* Scrollbar aesthetics (webkit) */
+.blog-modal__body::-webkit-scrollbar { width: 10px; }
+.blog-modal__body::-webkit-scrollbar-track { background: transparent; }
+.blog-modal__body::-webkit-scrollbar-thumb { background: linear-gradient(180deg, rgba(99,102,241,0.5), rgba(139,92,246,0.5)); border-radius: 8px; }
 
 /* Responsive modal layout */
 @media (max-width: 960px) {

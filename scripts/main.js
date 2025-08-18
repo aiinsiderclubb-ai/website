@@ -2269,6 +2269,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (blogModalClose) blogModalClose.addEventListener('click', closeBlogModal);
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeBlogModal();
+        if (e.key === 'Tab' && blogModal?.classList.contains('show')) {
+            // Basic focus trap inside modal
+            const focusable = blogModal.querySelectorAll('button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable.length) {
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        }
     });
 
     // Share / Copy actions
@@ -2322,6 +2337,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const tagsAttr = card.getAttribute('data-tags') || '';
                 const tags = tagsAttr ? tagsAttr.split(',').map(s => s.trim()).filter(Boolean) : [];
                 openBlogModal({ title, subtitle, author, date, html, emoji, tags });
+                // Move focus to close button for accessibility
+                setTimeout(() => {
+                    blogModalClose?.focus();
+                }, 10);
             });
             // Keyboard accessibility
             card.setAttribute('tabindex', '0');
