@@ -2243,26 +2243,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const blogModalProgress = document.getElementById('blogModalProgress');
     const blogShareBtn = document.getElementById('blogShareBtn');
     const blogCopyBtn = document.getElementById('blogCopyBtn');
+    let currentPostSlug = null;
 
-    function openBlogModal({ title, subtitle, author, date, html, emoji, tags }) {
+    // Helpers to create a stable link per post
+    function translitCyrToLat(str) {
+        const map = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya','А':'a','Б':'b','В':'v','Г':'g','Д':'d','Е':'e','Ё':'e','Ж':'zh','З':'z','И':'i','Й':'y','К':'k','Л':'l','М':'m','Н':'n','О':'o','П':'p','Р':'r','С':'s','Т':'t','У':'u','Ф':'f','Х':'h','Ц':'ts','Ч':'ch','Ш':'sh','Щ':'sch','Ъ':'','Ы':'y','Ь':'','Э':'e','Ю':'yu','Я':'ya' };
+        return (str || '').split('').map(ch => map[ch] ?? ch).join('');
+    }
+    function slugify(title) {
+        const ascii = translitCyrToLat(title || '').toLowerCase();
+        return ascii.replace(/[^a-z0-9\s\-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 80);
+    }
+    function setUrlForPost(slug) {
+        const url = new URL(window.location.href);
+        url.hash = slug ? `post=${encodeURIComponent(slug)}` : '';
+        history.replaceState(null, '', url.toString());
+    }
+    function getUrlForPost(slug) {
+        const url = new URL(window.location.href);
+        url.hash = slug ? `post=${encodeURIComponent(slug)}` : '';
+        return url.toString();
+    }
+
+    function openBlogModal({ title, subtitle, author, date, html, emoji, tags, slug }) {
         if (!blogModal) return;
         blogModalTitle.textContent = title || '';
         blogModalSubtitleEl.textContent = subtitle || '';
-        blogModalMeta.textContent = [author, date].filter(Boolean).join(' • ');
+        blogModalMeta.textContent = [author, date].filter(Boolean).join(' \u2022 ');
         blogModalBody.innerHTML = html || '';
         if (blogModalEmoji) blogModalEmoji.textContent = emoji || '📝';
         if (blogModalTags) blogModalTags.innerHTML = (tags || []).map(t => `<span class="tag">${t}</span>`).join('');
         blogModal.classList.add('show');
         document.body.style.overflow = 'hidden';
-        // Reset scroll/progress on open
         if (blogModalBody) blogModalBody.scrollTop = 0;
         updateModalProgress();
+        currentPostSlug = slug || null;
+        setUrlForPost(currentPostSlug);
     }
 
     function closeBlogModal() {
         if (!blogModal) return;
         blogModal.classList.remove('show');
         document.body.style.overflow = '';
+        currentPostSlug = null;
+        setUrlForPost(null);
     }
 
     if (blogModalOverlay) blogModalOverlay.addEventListener('click', closeBlogModal);
@@ -2270,7 +2294,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeBlogModal();
         if (e.key === 'Tab' && blogModal?.classList.contains('show')) {
-            // Basic focus trap inside modal
             const focusable = blogModal.querySelectorAll('button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])');
             if (focusable.length) {
                 const first = focusable[0];
@@ -2291,9 +2314,9 @@ document.addEventListener('DOMContentLoaded', function() {
         blogShareBtn.addEventListener('click', async () => {
             try {
                 if (navigator.share) {
-                    await navigator.share({ title: document.title, url: window.location.href });
+                    await navigator.share({ title: document.title, url: getUrlForPost(currentPostSlug) });
                 } else {
-                    await navigator.clipboard.writeText(window.location.href);
+                    await navigator.clipboard.writeText(getUrlForPost(currentPostSlug));
                     if (window.notifications && typeof notifications.success === 'function') {
                         notifications.success('Link copied', 'Post URL copied to clipboard.');
                     }
@@ -2304,7 +2327,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (blogCopyBtn) {
         blogCopyBtn.addEventListener('click', async () => {
             try {
-                await navigator.clipboard.writeText(window.location.href);
+                await navigator.clipboard.writeText(getUrlForPost(currentPostSlug));
                 if (window.notifications && typeof notifications.success === 'function') {
                     notifications.success('Link copied', 'Post URL copied to clipboard.');
                 }
@@ -2312,7 +2335,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Reading progress within modal
     function updateModalProgress() {
         if (!blogModalProgress || !blogModalBody || !blogModal.classList.contains('show')) return;
         const total = blogModalBody.scrollHeight - blogModalBody.clientHeight;
@@ -2324,7 +2346,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Make each blog card fully clickable to open full post (only on blog page)
     if (blogModal) {
-        document.querySelectorAll('.reviews-grid .review-card').forEach(card => {
+        const cards = Array.from(document.querySelectorAll('.reviews-grid .review-card'));
+        const cardBySlug = new Map();
+        cards.forEach(card => {
+            const explicitId = card.getAttribute('data-post-id');
+            const titleText = card.getAttribute('data-title') || card.querySelector('h4')?.textContent || '';
+            const slug = explicitId || slugify(titleText);
+            card.dataset.slug = slug;
+            cardBySlug.set(slug, card);
+        });
+
+        cards.forEach(card => {
             card.style.cursor = 'pointer';
             card.addEventListener('click', () => {
                 const title = card.querySelector('h4')?.textContent?.trim();
@@ -2336,13 +2368,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const emoji = card.querySelector('.avatar-emoji')?.textContent?.trim() || '📝';
                 const tagsAttr = card.getAttribute('data-tags') || '';
                 const tags = tagsAttr ? tagsAttr.split(',').map(s => s.trim()).filter(Boolean) : [];
-                openBlogModal({ title, subtitle, author, date, html, emoji, tags });
-                // Move focus to close button for accessibility
-                setTimeout(() => {
-                    blogModalClose?.focus();
-                }, 10);
+                const slug = card.dataset.slug || slugify(title);
+                openBlogModal({ title, subtitle, author, date, html, emoji, tags, slug });
+                setTimeout(() => { blogModalClose?.focus(); }, 10);
             });
-            // Keyboard accessibility
             card.setAttribute('tabindex', '0');
             card.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -2351,6 +2380,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+
+        // Deep link open (#post=slug)
+        const hashMatch = window.location.hash.match(/^#post=(.+)$/);
+        if (hashMatch && hashMatch[1]) {
+            const slug = decodeURIComponent(hashMatch[1]);
+            const target = cardBySlug.get(slug);
+            if (target) target.click();
+        }
     }
 
 });
