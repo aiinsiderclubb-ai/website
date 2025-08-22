@@ -2053,6 +2053,23 @@ document.addEventListener('DOMContentLoaded', () => {
         buildMessage();
     }
 
+    // B2B roadmap interactivity
+    const roadmap = document.getElementById('b2bRoadmap');
+    if (roadmap) {
+        const steps = roadmap.querySelectorAll('.roadmap-step');
+        const panels = roadmap.querySelectorAll('.roadmap-panel');
+        steps.forEach(step => {
+            step.addEventListener('click', () => {
+                const target = step.getAttribute('data-step');
+                steps.forEach(s => s.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                step.classList.add('active');
+                const panel = roadmap.querySelector(`.roadmap-panel[data-step="${target}"]`);
+                if (panel) panel.classList.add('active');
+            });
+        });
+    }
+
     console.log('🚀 AI Insider Enterprise Platform Fully Loaded!');
 });
 
