@@ -2058,6 +2058,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (roadmap) {
         const steps = roadmap.querySelectorAll('.roadmap-step');
         const panels = roadmap.querySelectorAll('.roadmap-panel');
+        const progress = roadmap.querySelector('.roadmap-progress');
         steps.forEach(step => {
             step.addEventListener('click', () => {
                 const target = step.getAttribute('data-step');
@@ -2066,6 +2067,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 step.classList.add('active');
                 const panel = roadmap.querySelector(`.roadmap-panel[data-step="${target}"]`);
                 if (panel) panel.classList.add('active');
+                if (progress) {
+                    const idx = parseInt(target, 10);
+                    const pct = Math.min(100, Math.max(0, (idx - 1) / (steps.length - 1) * 100));
+                    progress.style.width = `${pct}%`;
+                }
             });
         });
     }
