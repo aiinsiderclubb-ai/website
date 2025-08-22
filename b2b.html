@@ -151,13 +151,26 @@
         </div>
     </section>
 
-    <!-- Contact CTA -->
+    <!-- Contact CTA + Lead Form -->
     <section class="section" id="contact">
         <div class="container">
-            <div class="reviews-cta">
+            <div class="reviews-cta" style="display: grid; gap: 24px;">
                 <h3>Готовы обсудить ваш B2B‑проект?</h3>
-                <p>Опишите задачу — пришлём предложение и таймлайн. Работаем по SLA и с прозрачной коммуникацией.</p>
-                <a href="https://t.me/vladyslavarcher" class="cta-btn cta-btn--primary cta-btn--large">Связаться в Telegram</a>
+                <p>Опишите задачу — пришлём предложение и таймлайн в течение 24 часов.</p>
+
+                <form id="b2bLeadForm" class="b2b-form" style="display: grid; gap: 12px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                        <input type="text" name="company" placeholder="Компания" required>
+                        <input type="text" name="name" placeholder="Контактное лицо" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="tel" name="phone" placeholder="Телефон">
+                    </div>
+                    <textarea name="message" rows="4" placeholder="Кратко опишите задачу (бот, voice‑агент, интеграции, сроки)" required></textarea>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button type="submit" class="cta-btn cta-btn--primary">Отправить заявку</button>
+                        <a class="cta-btn cta-btn--secondary" id="b2bTelegramLink" href="https://t.me/vladyslavarcher" target="_blank">Написать в Telegram</a>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

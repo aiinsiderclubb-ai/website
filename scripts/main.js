@@ -2034,6 +2034,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // B2B form: build Telegram deep link with prefilled message
+    const b2bForm = document.getElementById('b2bLeadForm');
+    const b2bTgLink = document.getElementById('b2bTelegramLink');
+    if (b2bForm && b2bTgLink) {
+        const buildMessage = () => {
+            const formData = new FormData(b2bForm);
+            const company = formData.get('company') || '';
+            const name = formData.get('name') || '';
+            const email = formData.get('email') || '';
+            const phone = formData.get('phone') || '';
+            const msg = formData.get('message') || '';
+            const text = `Привет! Хочу B2B внедрение AI.\nКомпания: ${company}\nКонтакт: ${name}\nEmail: ${email}\nТелефон: ${phone}\nЗадача: ${msg}`;
+            const encoded = encodeURIComponent(text);
+            b2bTgLink.href = `https://t.me/vladyslavarcher?text=${encoded}`;
+        };
+        b2bForm.addEventListener('input', buildMessage);
+        buildMessage();
+    }
+
     console.log('🚀 AI Insider Enterprise Platform Fully Loaded!');
 });
 
