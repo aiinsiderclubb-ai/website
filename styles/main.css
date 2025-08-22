@@ -1543,6 +1543,37 @@ body {
 .blog-modal__body::-webkit-scrollbar-track { background: transparent; }
 .blog-modal__body::-webkit-scrollbar-thumb { background: linear-gradient(180deg, rgba(99,102,241,0.5), rgba(139,92,246,0.5)); border-radius: 8px; }
 
+/* B2B Form Styles */
+.b2b-form input,
+.b2b-form textarea {
+  width: 100%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 14px 16px;
+  color: var(--color-text-primary);
+  font: inherit;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), background 200ms ease;
+}
+.b2b-form input::placeholder,
+.b2b-form textarea::placeholder {
+  color: var(--color-text-secondary);
+}
+.b2b-form input:focus,
+.b2b-form textarea:focus {
+  outline: none;
+  border-color: var(--color-ai-blue);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
+  background: rgba(255,255,255,0.02);
+}
+.b2b-form textarea { resize: vertical; min-height: 120px; }
+
+.b2b-form .cta-btn { min-width: 220px; }
+
+@media (max-width: 640px) {
+  .b2b-form .cta-btn { width: 100%; }
+}
+
 /* Responsive modal layout */
 @media (max-width: 960px) {
   .blog-modal__dialog { max-width: 92vw; margin: 4vh auto; }
