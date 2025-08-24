@@ -2059,11 +2059,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const steps = roadmap.querySelectorAll('.roadmap-step');
         const panels = roadmap.querySelectorAll('.roadmap-panel');
         const progress = roadmap.querySelector('.roadmap-progress');
+        const nodes = roadmap.querySelectorAll('.roadmap-node');
         steps.forEach(step => {
             step.addEventListener('click', () => {
                 const target = step.getAttribute('data-step');
                 steps.forEach(s => s.classList.remove('active'));
                 panels.forEach(p => p.classList.remove('active'));
+                nodes.forEach(n => n.classList.remove('active'));
                 step.classList.add('active');
                 const panel = roadmap.querySelector(`.roadmap-panel[data-step="${target}"]`);
                 if (panel) panel.classList.add('active');
@@ -2072,6 +2074,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const pct = Math.min(100, Math.max(0, (idx - 1) / (steps.length - 1) * 100));
                     progress.style.width = `${pct}%`;
                 }
+                const node = roadmap.querySelector(`.roadmap-node[data-step="${target}"]`);
+                if (node) node.classList.add('active');
             });
         });
     }
