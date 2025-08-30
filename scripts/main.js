@@ -1960,6 +1960,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const daysEl = box.querySelector('[data-dd]');
         const hoursEl = box.querySelector('[data-hh]');
         const minsEl = box.querySelector('[data-mm]');
+        const secsEl = box.querySelector('[data-ss]');
         const tick = () => {
             const now = new Date();
             let diff = Math.max(0, targetDate - now);
@@ -1968,12 +1969,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const hours = Math.floor(diff / (1000*60*60));
             diff -= hours * (1000*60*60);
             const mins = Math.floor(diff / (1000*60));
+            diff -= mins * (1000*60);
+            const secs = Math.floor(diff / 1000);
             if (daysEl) daysEl.textContent = String(days).padStart(2,'0');
             if (hoursEl) hoursEl.textContent = String(hours).padStart(2,'0');
             if (minsEl) minsEl.textContent = String(mins).padStart(2,'0');
+            if (secsEl) secsEl.textContent = String(secs).padStart(2,'0');
         };
         tick();
-        setInterval(tick, 60000);
+        setInterval(tick, 1000);
     });
 
     // Quiz → personalized benefits and Telegram text enrichment
