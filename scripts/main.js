@@ -2869,7 +2869,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (blogModalBody) blogModalBody.addEventListener('scroll', updateModalProgress);
 
     // Make each blog card fully clickable to open full post (only on blog page)
-    if (blogModal) {
+    // If the list page uses anchors (<h4><a href>), we skip modal behavior
+    if (blogModal && !document.querySelector('.reviews-grid .review-card h4 a')) {
         const cards = Array.from(document.querySelectorAll('.reviews-grid .review-card'));
         const cardBySlug = new Map();
         cards.forEach(card => {
