@@ -1473,6 +1473,7 @@ class CoursePageEnhancer {
         this.initSpotsSticky();
         this.initSwipeCarousels();
         this.initSmartModals();
+        this.initOutlineTimeline();
     }
 
     // Animate numbers in What you'll get
@@ -1675,6 +1676,83 @@ class CoursePageEnhancer {
                 body.innerHTML = '';
                 body.appendChild(cloned);
                 m.classList.add('show');
+            });
+        });
+    }
+
+    initOutlineTimeline() {
+        const outlines = document.querySelectorAll('.course-outline .outline-wrap');
+        if (!outlines.length) return;
+        outlines.forEach((wrap) => {
+            // Build timeline UI
+            const timeline = document.createElement('div');
+            timeline.className = 'outline-timeline';
+            timeline.innerHTML = '<div class="outline-timeline__progress"></div><div class="outline-dots"></div>';
+            const dotsWrap = timeline.querySelector('.outline-dots');
+            const progress = timeline.querySelector('.outline-timeline__progress');
+
+            const blocks = wrap.querySelectorAll('.outline-block');
+            blocks.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'outline-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => {
+                    blocks[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                dotsWrap.appendChild(dot);
+            });
+
+            // Insert before first block list container (second column)
+            const column = wrap.children[1];
+            column.insertBefore(timeline, column.firstChild);
+
+            // Update progress on scroll
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const idx = Array.from(blocks).indexOf(entry.target);
+                    if (idx >= 0 && entry.isIntersecting) {
+                        const pct = ((idx + 1) / blocks.length) * 100;
+                        progress.style.width = pct + '%';
+                        const dots = dotsWrap.querySelectorAll('.outline-dot');
+                        dots.forEach(d => d.classList.remove('active'));
+                        dots[idx]?.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.5 });
+            blocks.forEach(b => io.observe(b));
+
+            // Add anchor links per block
+            blocks.forEach((b, i) => {
+                if (!b.id) b.id = `outline-block-${i+1}`;
+                const actions = document.createElement('div');
+                actions.className = 'outline-actions';
+                const link = document.createElement('a');
+                link.href = `#${b.id}`;
+                link.className = 'outline-link';
+                link.textContent = 'Go to this block';
+                actions.appendChild(link);
+                b.appendChild(actions);
+            });
+
+            // Iconize list items
+            wrap.querySelectorAll('.outline-items li').forEach(li => {
+                const text = li.textContent.toLowerCase();
+                let icon = '•';
+                if (text.includes('vapi')) icon = '🔊';
+                else if (text.includes('n8n')) icon = '🧩';
+                else if (text.includes('voice') || text.includes('tts')) icon = '🎙️';
+                else if (text.includes('demo') || text.includes('video')) icon = '🎬';
+                else if (text.includes('client') || text.includes('sell')) icon = '💼';
+                else if (text.includes('integr')) icon = '🔌';
+                else if (text.includes('sheet') || text.includes('crm') || text.includes('email')) icon = '📎';
+                else if (text.includes('environment') || text.includes('setup') || text.includes('register')) icon = '⚙️';
+                else if (text.includes('bot')) icon = '🤖';
+                if (icon !== '•') {
+                    li.classList.add('iconed');
+                    const ico = document.createElement('span');
+                    ico.className = 'ico';
+                    ico.textContent = icon;
+                    li.prepend(ico);
+                }
             });
         });
     }

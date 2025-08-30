@@ -3026,8 +3026,21 @@ body {
 .outline-block + .outline-block { margin-top: var(--space-6); }
 .outline-block h4 { margin: 0 0 10px 0; font-size: 1.25rem; }
 .outline-items { display: grid; gap: 8px; color: var(--color-text-secondary); }
-.outline-items li { list-style: none; display: flex; gap: 10px; }
+.outline-items li { list-style: none; display: flex; gap: 10px; align-items: flex-start; }
 .outline-items li::before { content: '•'; color: var(--color-ai-blue); margin-top: 2px; }
+.outline-items li.iconed::before { content: none; }
+.outline-items .ico { width: 22px; height: 22px; flex: 0 0 22px; display: grid; place-items: center; border-radius: 8px; background: rgba(255,255,255,0.07); border: 1px solid var(--glass-border); font-size: 0.95rem; line-height: 1; margin-top: 1px; }
+.outline-actions { margin-top: 10px; }
+.outline-link { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: var(--color-text-primary); text-decoration: none; font-size: 0.85rem; transition: all 180ms ease; }
+.outline-link:hover { transform: translateY(-1px); box-shadow: var(--shadow-glow); }
+.outline-link::after { content: '↘'; opacity: 0.8; }
+
+/* Outline timeline */
+.outline-timeline { position: relative; height: 8px; background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.12)); border-radius: 999px; margin: 0 0 var(--space-6) 0; overflow: hidden; }
+.outline-timeline__progress { position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: linear-gradient(90deg, #60a5fa, #a78bfa, #60a5fa); background-size: 200% 100%; box-shadow: 0 0 14px rgba(99,102,241,0.55); transition: width 300ms ease; }
+.outline-dots { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(3, 1fr); pointer-events: none; }
+.outline-dot { position: relative; top: -4px; width: 16px; height: 16px; margin: 0 auto; border-radius: 999px; background: rgba(255,255,255,0.6); border: 2px solid var(--glass-border); box-shadow: 0 0 0 0 rgba(99,102,241,0); transition: box-shadow 220ms ease, transform 220ms ease; pointer-events: auto; cursor: pointer; }
+.outline-dot.active { background: #fff; box-shadow: 0 0 14px rgba(99,102,241,0.75); transform: scale(1.05); }
 .outline-note { margin-top: 10px; font-size: 0.9rem; color: var(--color-text-secondary); }
 
 @media (max-width: 960px) {
