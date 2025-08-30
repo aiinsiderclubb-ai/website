@@ -2861,3 +2861,57 @@ body {
 
 /* Course testimonials reuse reviews grid */
 .course-testimonials .reviews-grid { margin-top: var(--space-6); }
+
+/* Countdown strip */
+.course-countdown {
+  margin: var(--space-6) 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+}
+.countdown-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+.countdown-item { text-align: center; }
+.countdown-value { font-size: 1.75rem; font-weight: 900; background: var(--gradient-ai-primary); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: block; line-height: 1; }
+.countdown-label { color: var(--color-text-secondary); font-size: 0.85rem; }
+
+/* Suitability ribbon */
+.suitability { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; margin-top: 10px; }
+.suitability__col { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 10px 12px; }
+.suitability__title { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+.suitability ul { list-style: none; display: grid; gap: 6px; }
+.suitability li { color: var(--color-text-secondary); font-size: 0.9rem; display: flex; gap: 8px; }
+
+/* Course quiz */
+.course-quiz { background: var(--color-bg-secondary); }
+.quiz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: var(--space-4); margin-bottom: var(--space-4); }
+.course-quiz select { width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); color: var(--color-text-primary); padding: 12px 14px; }
+.quiz-benefits { display: flex; flex-wrap: wrap; gap: 8px; }
+.benefit-chip { padding: 6px 10px; border: 1px solid var(--glass-border); border-radius: 999px; background: rgba(255,255,255,0.05); color: var(--color-text-secondary); font-size: 0.85rem; }
+
+/* Mentors */
+.mentors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: var(--space-6); }
+.mentor-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-6); transition: all var(--transition-base); }
+.mentor-card:hover { transform: translateY(-4px); border-color: var(--color-ai-blue); box-shadow: var(--shadow-glow); }
+.mentor-avatar { font-size: 2rem; margin-bottom: 8px; }
+.mentor-name { font-weight: 700; margin-bottom: 4px; }
+.mentor-role { color: var(--color-text-secondary); font-size: 0.9rem; margin-bottom: 6px; }
+.mentor-expertise { display: flex; flex-wrap: wrap; gap: 6px; }
+.mentor-expertise .tag { padding: 4px 8px; border: 1px solid var(--glass-border); border-radius: 999px; color: var(--color-text-secondary); font-size: 0.8rem; }
+
+/* What you get */
+.get-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--space-6); }
+.get-metric { text-align: center; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); padding: var(--space-6); }
+.get-number { font-size: 2rem; font-weight: 900; background: var(--gradient-ai-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+.get-label { color: var(--color-text-secondary); font-size: 0.95rem; }
+
+/* Before/After */
+.ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: var(--space-6); }
+.ba-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-6); }
+.ba-card--before { border-color: rgba(239, 68, 68, 0.4); }
+.ba-card--after { border-color: rgba(16, 185, 129, 0.4); }
+.ba-list { list-style: none; display: grid; gap: 6px; color: var(--color-text-secondary); }
+
+/* Early-bird */
+.early-bird { background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(139,92,246,0.1)); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-6); margin-top: var(--space-6); text-align: center; }
+.early-bird .coupon { font-weight: 800; letter-spacing: 0.06em; }

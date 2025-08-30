@@ -48,7 +48,34 @@
                     </div>
                     <a href="#apply" class="cta-btn cta-btn--primary cta-btn--large">Enroll — €59</a>
                     <a id="tgLinkSep1" href="https://t.me/vladyslavarcher" class="cta-btn cta-btn--secondary" target="_blank">Message Manager</a>
+                    <div class="suitability">
+                        <div class="suitability__col">
+                            <div class="suitability__title">Best for</div>
+                            <ul>
+                                <li>✅ Beginners who want a first bot</li>
+                                <li>✅ Freelancers validating a niche</li>
+                                <li>✅ Founders testing MVP</li>
+                            </ul>
+                        </div>
+                        <div class="suitability__col">
+                            <div class="suitability__title">Not ideal for</div>
+                            <ul>
+                                <li>⚠️ Deep ML research track</li>
+                                <li>⚠️ 100% theory without practice</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-countdown">
+        <div class="container">
+            <div class="countdown-grid" data-countdown-date="2025-09-01T09:00:00" id="countdownSep1">
+                <div class="countdown-item"><span class="countdown-value" data-dd>00</span><span class="countdown-label">days</span></div>
+                <div class="countdown-item"><span class="countdown-value" data-hh>00</span><span class="countdown-label">hours</span></div>
+                <div class="countdown-item"><span class="countdown-value" data-mm>00</span><span class="countdown-label">minutes</span></div>
             </div>
         </div>
     </section>
@@ -148,6 +175,24 @@
     <section class="section" id="apply">
         <div class="container">
             <div class="reviews-cta">
+                <div class="course-quiz" id="courseQuiz">
+                    <h3>Quick quiz (10 sec)</h3>
+                    <div class="quiz-grid">
+                        <select name="experience">
+                            <option value="" disabled selected>Your experience</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                        <select name="goal">
+                            <option value="" disabled selected>Your goal</option>
+                            <option value="freelance">Freelance income</option>
+                            <option value="product">Launch product</option>
+                            <option value="job">Find a job</option>
+                        </select>
+                    </div>
+                    <div class="quiz-benefits"></div>
+                </div>
                 <h3>Secure your spot</h3>
                 <p>Fill the form — we’ll reply within 24 hours. Or message us on Telegram.</p>
                 <form id="courseSep1Form" class="b2b-form" style="display:grid;gap:12px;">
@@ -159,9 +204,45 @@
                     <textarea name="message" rows="4" placeholder="Anything we should know?" required></textarea>
                     <div style="display:flex;gap:12px;flex-wrap:wrap;">
                         <button class="cta-btn cta-btn--primary" type="submit">Apply for Sep 1</button>
-                        <a class="cta-btn cta-btn--secondary" id="tgLinkSep1Inline" href="https://t.me/vladyslavarcher" target="_blank">Message on Telegram</a>
+                        <a class="cta-btn cta-btn--secondary" data-tg-dynamic data-base="Hello! I want to enroll in AI Chat‑Bot (Sep 1)." id="tgLinkSep1Inline" href="https://t.me/vladyslavarcher" target="_blank">Message on Telegram</a>
                     </div>
                 </form>
+                <div class="early-bird">
+                    <p>Early‑bird for Telegram subscribers — <span class="coupon">AIINSIDER10</span> (limited).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Meet the mentors</h2>
+            <div class="mentors-grid">
+                <div class="mentor-card"><div class="mentor-avatar">🧑‍💻</div><div class="mentor-name">Ivan K.</div><div class="mentor-role">Automation Engineer</div><div class="mentor-expertise"><span class="tag">n8n</span><span class="tag">OpenAI</span><span class="tag">CRM</span></div></div>
+                <div class="mentor-card"><div class="mentor-avatar">👩‍🎓</div><div class="mentor-name">Anna P.</div><div class="mentor-role">Conversation Designer</div><div class="mentor-expertise"><span class="tag">Flows</span><span class="tag">UX</span><span class="tag">Testing</span></div></div>
+                <div class="mentor-card"><div class="mentor-avatar">🧑‍💼</div><div class="mentor-name">Mark S.</div><div class="mentor-role">AI Solutions</div><div class="mentor-expertise"><span class="tag">Integrations</span><span class="tag">Sales</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What you’ll get</h2>
+            <div class="get-grid">
+                <div class="get-metric"><span class="get-number">6</span><span class="get-label">live sessions</span></div>
+                <div class="get-metric"><span class="get-number">10+</span><span class="get-label">templates & checklists</span></div>
+                <div class="get-metric"><span class="get-number">20h</span><span class="get-label">mentor support</span></div>
+                <div class="get-metric"><span class="get-number">1</span><span class="get-label">launched bot</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Before / After</h2>
+            <div class="ba-grid">
+                <div class="ba-card ba-card--before"><h4>Before</h4><ul class="ba-list"><li>Manual replies 2–3h/day</li><li>No integrations</li><li>Lost leads</li></ul></div>
+                <div class="ba-card ba-card--after"><h4>After</h4><ul class="ba-list"><li>Automated 70–90% routine</li><li>CRM + payments</li><li>Measured funnel</li></ul></div>
             </div>
         </div>
     </section>

@@ -1953,6 +1953,55 @@ document.addEventListener('DOMContentLoaded', () => {
             if (Math.random() < 0.25 && value > 2) { value -= 1; render(); }
         }, 45000);
     });
+
+    // Course header countdown (data attributes on container)
+    document.querySelectorAll('[data-countdown-date]').forEach(box => {
+        const targetDate = new Date(box.getAttribute('data-countdown-date'));
+        const daysEl = box.querySelector('[data-dd]');
+        const hoursEl = box.querySelector('[data-hh]');
+        const minsEl = box.querySelector('[data-mm]');
+        const tick = () => {
+            const now = new Date();
+            let diff = Math.max(0, targetDate - now);
+            const days = Math.floor(diff / (1000*60*60*24));
+            diff -= days * (1000*60*60*24);
+            const hours = Math.floor(diff / (1000*60*60));
+            diff -= hours * (1000*60*60);
+            const mins = Math.floor(diff / (1000*60));
+            if (daysEl) daysEl.textContent = String(days).padStart(2,'0');
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2,'0');
+            if (minsEl) minsEl.textContent = String(mins).padStart(2,'0');
+        };
+        tick();
+        setInterval(tick, 60000);
+    });
+
+    // Quiz → personalized benefits and Telegram text enrichment
+    const quiz = document.getElementById('courseQuiz');
+    if (quiz) {
+        const selects = quiz.querySelectorAll('select');
+        const chips = quiz.querySelector('.quiz-benefits');
+        const build = () => {
+            const answers = Array.from(selects).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
+            const benefits = [];
+            if (answers.experience === 'beginner') benefits.push('Zero‑to‑one guidance');
+            if (answers.experience === 'intermediate') benefits.push('Templates to ship faster');
+            if (answers.experience === 'advanced') benefits.push('Advanced integrations');
+            if (answers.goal === 'freelance') benefits.push('Sales playbook to find clients');
+            if (answers.goal === 'product') benefits.push('MVP in 2–3 weeks');
+            if (answers.goal === 'job') benefits.push('Portfolio projects + referrals');
+            if (chips) chips.innerHTML = benefits.map(b => `<span class="benefit-chip">${b}</span>`).join('');
+
+            // enrich Telegram links
+            document.querySelectorAll('[data-tg-dynamic]').forEach(a => {
+                const base = a.getAttribute('data-base') || 'Hello! I want to join the course.';
+                const text = `${base} Experience: ${answers.experience||''}; Goal: ${answers.goal||''}`;
+                a.href = `https://t.me/vladyslavarcher?text=${encodeURIComponent(text)}`;
+            });
+        };
+        quiz.addEventListener('input', build);
+        build();
+    }
     
     // Отчет о состоянии системы + детальная диагностика счетчиков
     setTimeout(() => {
