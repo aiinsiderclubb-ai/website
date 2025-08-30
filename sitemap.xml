@@ -101,6 +101,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://insiderai.it.com/blog/one-person-with-ai-mini-startup.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://insiderai.it.com/course-chatbot-sep1.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -154,6 +159,16 @@
     <loc>https://insiderai.it.com/case-studies.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/course.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/test.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.1</priority>
   </url>
 </urlset>
 
