@@ -3160,6 +3160,20 @@ document.addEventListener('DOMContentLoaded', function() {
     new ROICalculator();
     new DemoChat();
     new DiagnosticQuiz();
+
+    // FAQ accordion: allow only one open
+    const faq = document.getElementById('b2bFaq');
+    if (faq) {
+        faq.querySelectorAll('details').forEach(d => {
+            d.addEventListener('toggle', () => {
+                if (d.open) {
+                    faq.querySelectorAll('details').forEach(other => {
+                        if (other !== d) other.removeAttribute('open');
+                    });
+                }
+            });
+        });
+    }
 });
 
 // ===== EXPORT FOR EXTERNAL USE =====
