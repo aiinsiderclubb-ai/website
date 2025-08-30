@@ -154,6 +154,272 @@
         </div>
     </section>
 
+    <!-- Industry Logos -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title" style="text-align: center; margin-bottom: 32px;">Trusted by Industries</h3>
+            </div>
+            <div class="industry-logos">
+                <div class="logo-item"><span class="industry-icon">🏦</span><span>Fintech</span></div>
+                <div class="logo-item"><span class="industry-icon">🛒</span><span>E-commerce</span></div>
+                <div class="logo-item"><span class="industry-icon">🏥</span><span>Healthcare</span></div>
+                <div class="logo-item"><span class="industry-icon">🏢</span><span>SaaS</span></div>
+                <div class="logo-item"><span class="industry-icon">🎓</span><span>EdTech</span></div>
+                <div class="logo-item"><span class="industry-icon">🏗️</span><span>Real Estate</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="section" style="background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">💰 ROI Calculator</span>
+                <h2 class="section-title">Calculate Your Savings</h2>
+                <p class="section-subtitle">See how much you could save with AI automation</p>
+            </div>
+            <div class="roi-calculator">
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label>Support requests per day</label>
+                        <input type="number" id="requests" value="50" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Average handling time (minutes)</label>
+                        <input type="number" id="handlingTime" value="8" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label>Support agent hourly rate ($)</label>
+                        <input type="number" id="hourlyRate" value="25" min="1">
+                    </div>
+                </div>
+                <div class="calculator-results">
+                    <div class="result-card">
+                        <h4>Current Monthly Cost</h4>
+                        <div class="result-value" id="currentCost">$4,333</div>
+                    </div>
+                    <div class="result-card highlight">
+                        <h4>With AI Chatbot (70% automation)</h4>
+                        <div class="result-value" id="withAI">$1,300</div>
+                        <div class="savings" id="savings">Save $3,033/month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Demo -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🎯 Live Demo</span>
+                <h2 class="section-title">Try Our AI Assistant</h2>
+                <p class="section-subtitle">Interactive example of what we build for clients</p>
+            </div>
+            <div class="demo-container">
+                <div class="demo-chat">
+                    <div class="chat-header">
+                        <span class="chat-status">🟢 AI Assistant Online</span>
+                    </div>
+                    <div class="chat-messages" id="demoMessages">
+                        <div class="message bot">
+                            <span class="message-avatar">🤖</span>
+                            <div class="message-content">Hi! I'm an AI assistant. Ask me about pricing, features, or book a demo!</div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="demoInput" placeholder="Type your question..." />
+                        <button id="demoSend">Send</button>
+                    </div>
+                </div>
+                <div class="demo-actions">
+                    <button class="demo-btn" data-question="What's your pricing?">Pricing</button>
+                    <button class="demo-btn" data-question="How long does implementation take?">Timeline</button>
+                    <button class="demo-btn" data-question="Can you integrate with Salesforce?">Integrations</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnostic Quiz -->
+    <section class="section" style="background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📋 Process Audit</span>
+                <h2 class="section-title">Automation Readiness Quiz</h2>
+                <p class="section-subtitle">Find out which processes are ready for AI automation</p>
+            </div>
+            <div class="diagnostic-quiz">
+                <div class="quiz-question active" id="question1">
+                    <h4>How many customer inquiries do you handle daily?</h4>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-score="1" data-next="question2">< 20</button>
+                        <button class="quiz-option" data-score="2" data-next="question2">20-100</button>
+                        <button class="quiz-option" data-score="3" data-next="question2">> 100</button>
+                    </div>
+                </div>
+                <div class="quiz-question" id="question2">
+                    <h4>What percentage are repetitive questions?</h4>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-score="1" data-next="question3">< 30%</button>
+                        <button class="quiz-option" data-score="2" data-next="question3">30-60%</button>
+                        <button class="quiz-option" data-score="3" data-next="question3">> 60%</button>
+                    </div>
+                </div>
+                <div class="quiz-question" id="question3">
+                    <h4>Do you have a knowledge base or FAQ?</h4>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-score="3" data-next="results">Yes, comprehensive</button>
+                        <button class="quiz-option" data-score="2" data-next="results">Basic documentation</button>
+                        <button class="quiz-option" data-score="1" data-next="results">No formal docs</button>
+                    </div>
+                </div>
+                <div class="quiz-results" id="results">
+                    <h4>Your Automation Score: <span id="finalScore">0</span>/9</h4>
+                    <div id="recommendation"></div>
+                    <button class="cta-btn cta-btn--primary" onclick="document.getElementById('contact').scrollIntoView()">Get Custom Proposal</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Cards -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📊 Results</span>
+                <h2 class="section-title">Before vs After</h2>
+                <p class="section-subtitle">Real transformations from our clients</p>
+            </div>
+            <div class="before-after-grid">
+                <div class="before-after-card">
+                    <div class="ba-header">
+                        <h4>Customer Support</h4>
+                    </div>
+                    <div class="ba-comparison">
+                        <div class="ba-before">
+                            <h5>❌ Before</h5>
+                            <ul>
+                                <li>50 tickets/day per agent</li>
+                                <li>8-hour response time</li>
+                                <li>3 full-time support staff</li>
+                                <li>$9,000/month cost</li>
+                            </ul>
+                        </div>
+                        <div class="ba-after">
+                            <h5>✅ After</h5>
+                            <ul>
+                                <li>AI handles 70% automatically</li>
+                                <li>Instant first response</li>
+                                <li>1 agent + AI assistant</li>
+                                <li>$3,200/month cost</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="before-after-card">
+                    <div class="ba-header">
+                        <h4>Lead Qualification</h4>
+                    </div>
+                    <div class="ba-comparison">
+                        <div class="ba-before">
+                            <h5>❌ Before</h5>
+                            <ul>
+                                <li>Manual lead scoring</li>
+                                <li>2-day response delay</li>
+                                <li>15% conversion rate</li>
+                                <li>Lost 40% of hot leads</li>
+                            </ul>
+                        </div>
+                        <div class="ba-after">
+                            <h5>✅ After</h5>
+                            <ul>
+                                <li>AI scores in real-time</li>
+                                <li>Instant routing to sales</li>
+                                <li>32% conversion rate</li>
+                                <li>5% lead leakage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security & Compliance -->
+    <section class="section" style="background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">🔒 Security</span>
+                <h2 class="section-title">Enterprise-Grade Security</h2>
+                <p class="section-subtitle">Your data safety is our priority</p>
+            </div>
+            <div class="security-grid">
+                <div class="compliance-badges">
+                    <div class="badge-item">
+                        <span class="badge-icon">🇪🇺</span>
+                        <span>GDPR Compliant</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-icon">🛡️</span>
+                        <span>SOC 2 Ready</span>
+                    </div>
+                    <div class="badge-item">
+                        <span class="badge-icon">🔐</span>
+                        <span>ISO 27001</span>
+                    </div>
+                </div>
+                <div class="security-features">
+                    <h4>Security Features</h4>
+                    <ul>
+                        <li><strong>End-to-end encryption</strong> for all data transmission</li>
+                        <li><strong>Audit logs</strong> for every AI interaction</li>
+                        <li><strong>Role-based access</strong> control (RBAC)</li>
+                        <li><strong>Rollback plans</strong> and incident response</li>
+                        <li><strong>Regular penetration</strong> testing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">❓ FAQ</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How are our data protected?</h4>
+                    <p>All data is encrypted at rest and in transit using AES-256. We implement zero-trust architecture with role-based access controls and comprehensive audit logging.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can you integrate with our existing CRM?</h4>
+                    <p>Yes, we support all major CRMs: Salesforce, HubSpot, Pipedrive, Zoho. Custom integrations available via REST APIs and webhooks.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What's the typical implementation timeline?</h4>
+                    <p>Simple chatbots: 2-3 weeks. Complex voice agents with CRM integration: 4-6 weeks. We provide weekly progress updates.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you provide ongoing support?</h4>
+                    <p>Yes, we offer 24/7 monitoring, monthly performance reviews, and quarterly optimization sessions. SLA-backed response times.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What if the AI makes mistakes?</h4>
+                    <p>We implement safety guardrails, escalation triggers, and human oversight. All critical actions require confirmation or human approval.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can we customize the AI's personality?</h4>
+                    <p>Absolutely. We train the AI on your brand voice, tone, and specific business rules. Full customization of responses and workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Interactive Roadmap -->
     <section class="section roadmap-section">
         <div class="container">

@@ -2958,6 +2958,186 @@ function debounce(func, wait) {
     };
 }
 
+// ===== B2B PAGE ENHANCEMENTS =====
+
+// ROI Calculator
+class ROICalculator {
+    constructor() {
+        this.requestsInput = document.getElementById('requests');
+        this.handlingTimeInput = document.getElementById('handlingTime');
+        this.hourlyRateInput = document.getElementById('hourlyRate');
+        this.currentCostEl = document.getElementById('currentCost');
+        this.withAIEl = document.getElementById('withAI');
+        this.savingsEl = document.getElementById('savings');
+        
+        if (this.requestsInput) {
+            this.init();
+        }
+    }
+    
+    init() {
+        [this.requestsInput, this.handlingTimeInput, this.hourlyRateInput].forEach(input => {
+            input.addEventListener('input', () => this.calculate());
+        });
+        this.calculate(); // Initial calculation
+    }
+    
+    calculate() {
+        const requests = parseInt(this.requestsInput.value) || 0;
+        const handlingTime = parseInt(this.handlingTimeInput.value) || 0;
+        const hourlyRate = parseInt(this.hourlyRateInput.value) || 0;
+        
+        const dailyHours = (requests * handlingTime) / 60;
+        const monthlyCost = dailyHours * 22 * hourlyRate; // 22 working days
+        const withAICost = monthlyCost * 0.3; // 70% automation
+        const savings = monthlyCost - withAICost;
+        
+        this.currentCostEl.textContent = `$${monthlyCost.toLocaleString()}`;
+        this.withAIEl.textContent = `$${withAICost.toLocaleString()}`;
+        this.savingsEl.textContent = `Save $${savings.toLocaleString()}/month`;
+    }
+}
+
+// Demo Chat
+class DemoChat {
+    constructor() {
+        this.messagesEl = document.getElementById('demoMessages');
+        this.inputEl = document.getElementById('demoInput');
+        this.sendBtn = document.getElementById('demoSend');
+        this.demoBtns = document.querySelectorAll('.demo-btn');
+        
+        if (this.messagesEl) {
+            this.init();
+        }
+    }
+    
+    init() {
+        this.responses = {
+            "What's your pricing?": "Our pricing starts at $500/month for basic chatbots, $1,500/month for voice agents. Enterprise packages available. Would you like a custom quote?",
+            "How long does implementation take?": "Typically 2-4 weeks depending on complexity. Simple chatbots can be live in 1 week, while complex integrations take 4-6 weeks.",
+            "Can you integrate with Salesforce?": "Yes! We support all major CRMs including Salesforce, HubSpot, Pipedrive. Custom integrations via REST APIs available.",
+            "default": "That's a great question! Our team would love to discuss your specific needs. Would you like to book a call?"
+        };
+        
+        this.sendBtn?.addEventListener('click', () => this.sendMessage());
+        this.inputEl?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.sendMessage();
+        });
+        
+        this.demoBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const question = btn.dataset.question;
+                this.addUserMessage(question);
+                setTimeout(() => this.addBotMessage(this.responses[question] || this.responses.default), 1000);
+            });
+        });
+    }
+    
+    sendMessage() {
+        const message = this.inputEl.value.trim();
+        if (!message) return;
+        
+        this.addUserMessage(message);
+        this.inputEl.value = '';
+        
+        setTimeout(() => {
+            const response = this.responses[message] || this.responses.default;
+            this.addBotMessage(response);
+        }, 1000);
+    }
+    
+    addUserMessage(text) {
+        const messageEl = document.createElement('div');
+        messageEl.className = 'message user';
+        messageEl.innerHTML = `
+            <span class="message-avatar">👤</span>
+            <div class="message-content">${text}</div>
+        `;
+        this.messagesEl.appendChild(messageEl);
+        this.scrollToBottom();
+    }
+    
+    addBotMessage(text) {
+        const messageEl = document.createElement('div');
+        messageEl.className = 'message bot';
+        messageEl.innerHTML = `
+            <span class="message-avatar">🤖</span>
+            <div class="message-content">${text}</div>
+        `;
+        this.messagesEl.appendChild(messageEl);
+        this.scrollToBottom();
+    }
+    
+    scrollToBottom() {
+        this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+    }
+}
+
+// Diagnostic Quiz
+class DiagnosticQuiz {
+    constructor() {
+        this.questions = document.querySelectorAll('.quiz-question');
+        this.results = document.getElementById('results');
+        this.scoreEl = document.getElementById('finalScore');
+        this.recommendationEl = document.getElementById('recommendation');
+        
+        if (this.questions.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        this.score = 0;
+        this.currentQuestion = 0;
+        
+        document.querySelectorAll('.quiz-option').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleAnswer(e));
+        });
+    }
+    
+    handleAnswer(e) {
+        const score = parseInt(e.target.dataset.score);
+        const next = e.target.dataset.next;
+        
+        this.score += score;
+        
+        // Hide current question
+        this.questions[this.currentQuestion].classList.remove('active');
+        
+        if (next === 'results') {
+            this.showResults();
+        } else {
+            // Show next question
+            const nextIndex = parseInt(next.replace('question', '')) - 1;
+            this.questions[nextIndex].classList.add('active');
+            this.currentQuestion = nextIndex;
+        }
+    }
+    
+    showResults() {
+        this.scoreEl.textContent = this.score;
+        
+        let recommendation = '';
+        if (this.score >= 7) {
+            recommendation = '🎯 <strong>Perfect fit!</strong> Your processes are ideal for AI automation. Expected ROI: 3-5x within 6 months.';
+        } else if (this.score >= 5) {
+            recommendation = '✅ <strong>Good candidate</strong> for automation. Some preparation needed, but strong potential for 2-3x ROI.';
+        } else {
+            recommendation = '📋 <strong>Foundation needed.</strong> Focus on documenting processes first, then automation will deliver 2x+ ROI.';
+        }
+        
+        this.recommendationEl.innerHTML = recommendation;
+        this.results.style.display = 'block';
+    }
+}
+
+// Initialize B2B features
+document.addEventListener('DOMContentLoaded', function() {
+    new ROICalculator();
+    new DemoChat();
+    new DiagnosticQuiz();
+});
+
 // ===== EXPORT FOR EXTERNAL USE =====
 window.AIInsider = {
     addAnimationClass,
