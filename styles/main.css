@@ -2760,3 +2760,104 @@ body {
   outline: 2px solid var(--color-ai-blue);
   outline-offset: 2px;
 } 
+
+/* ===== COURSE DETAIL ADD-ONS ===== */
+/* Spots left badge */
+.spots-left-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: rgba(239, 68, 68, 0.12);
+  color: #fecaca;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.18);
+  animation: spotsPulse 2.2s ease-in-out infinite;
+}
+.spots-left-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ef4444, #f59e0b);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.8);
+}
+@keyframes spotsPulse {
+  0%, 100% { transform: translateY(0); box-shadow: 0 0 14px rgba(239,68,68,0.25); }
+  50% { transform: translateY(-1px); box-shadow: 0 0 28px rgba(239,68,68,0.45); }
+}
+
+/* Program grid */
+.course-program .section-title { margin-bottom: var(--space-3); }
+.program-subtitle {
+  text-align: center;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+.program-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+.program-card:hover { transform: translateY(-4px); border-color: var(--color-ai-blue); box-shadow: var(--shadow-glow); }
+.program-day {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+}
+.program-card h4 { font-size: 1.1rem; margin: 0 0 var(--space-2) 0; }
+.program-card p { color: var(--color-text-secondary); margin: 0 0 var(--space-3) 0; }
+.program-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+.program-meta .meta {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 2px 8px;
+}
+
+/* FAQ accordion */
+.faq { background: var(--color-bg-secondary); }
+.faq__list { max-width: 900px; margin: 0 auto; display: grid; gap: var(--space-3); }
+.faq__item {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.faq__question {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  padding: 16px 18px;
+  cursor: pointer;
+}
+.faq__answer {
+  padding: 0 18px 18px 18px;
+  color: var(--color-text-secondary);
+  display: none;
+}
+.faq__item.active .faq__answer { display: block; }
+
+/* Course testimonials reuse reviews grid */
+.course-testimonials .reviews-grid { margin-top: var(--space-6); }

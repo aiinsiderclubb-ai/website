@@ -26,6 +26,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://insiderai.it.com/course-chatbot-sep1.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/course-chatbot-sep15.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/course-voice-sep8.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://insiderai.it.com/enterprise-ai.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

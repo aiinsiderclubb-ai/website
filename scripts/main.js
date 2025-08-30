@@ -1933,6 +1933,26 @@ document.addEventListener('DOMContentLoaded', () => {
     leadScoring = safeInit(LeadScoringManager, 'LeadScoringManager');
     
     console.log('🎉 AI Insider initialization complete!');
+
+    // Course pages: dynamic spots left indicator
+    const spotTargets = document.querySelectorAll('[data-spots-left]');
+    spotTargets.forEach(el => {
+        const min = parseInt(el.getAttribute('data-spots-min') || '3', 10);
+        const max = parseInt(el.getAttribute('data-spots-max') || '12', 10);
+        let value = parseInt(el.getAttribute('data-spots-left') || Math.floor(Math.random()*(max-min+1))+min, 10);
+        const render = () => { el.querySelector('.spots-left-number').textContent = value; };
+        if (!el.querySelector('.spots-left-number')) {
+            const num = document.createElement('span');
+            num.className = 'spots-left-number';
+            el.appendChild(num);
+        }
+        render();
+        // Occasionally decrement to create urgency, but not below 2
+        setInterval(() => {
+            if (document.hidden) return;
+            if (Math.random() < 0.25 && value > 2) { value -= 1; render(); }
+        }, 45000);
+    });
     
     // Отчет о состоянии системы + детальная диагностика счетчиков
     setTimeout(() => {
