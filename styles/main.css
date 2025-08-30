@@ -2737,6 +2737,9 @@ body {
   border-left: 0;
   border-right: 0;
   border-radius: 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  position: relative;
 }
 
 .industry-marquee .marquee-track {
@@ -2773,6 +2776,25 @@ body {
 
 .industry-marquee:hover .marquee-track {
   animation-play-state: paused;
+}
+
+/* soft fade on edges for full-bleed marquee */
+.industry-marquee--wide::before,
+.industry-marquee--wide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 64px;
+  pointer-events: none;
+}
+.industry-marquee--wide::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--glass-bg), rgba(0,0,0,0));
+}
+.industry-marquee--wide::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--glass-bg), rgba(0,0,0,0));
 }
 
 .logo-svg {
