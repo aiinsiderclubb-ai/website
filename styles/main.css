@@ -2876,11 +2876,15 @@ body {
 .countdown-label { color: var(--color-text-secondary); font-size: 0.85rem; }
 
 /* Suitability ribbon */
-.suitability { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; margin-top: 10px; }
-.suitability__col { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 10px 12px; }
-.suitability__title { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
-.suitability ul { list-style: none; display: grid; gap: 6px; }
-.suitability li { color: var(--color-text-secondary); font-size: 0.9rem; display: flex; gap: 8px; }
+.suitability { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: var(--space-4); margin-top: 12px; }
+.suitability__col { background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-5); box-shadow: var(--shadow-md); position: relative; overflow: hidden; }
+.suitability__col::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; background: radial-gradient(600px 200px at 20% 0%, rgba(14,165,233,0.06), transparent); }
+.suitability__title { font-size: 1.1rem; font-weight: 800; text-align: center; margin-bottom: var(--space-3); }
+.suitability ul { list-style: none; display: grid; gap: 10px; }
+.suitability li { color: var(--color-text-primary); font-size: 1.05rem; position: relative; padding-left: 40px; line-height: 1.35; }
+.suitability li::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 16px; }
+.suitability__col:nth-child(1) li::before { content: '✓'; background: linear-gradient(135deg, #10b981, #22c55e); box-shadow: 0 0 14px rgba(16,185,129,0.35); }
+.suitability__col:nth-child(2) li::before { content: '!'; background: linear-gradient(135deg, #f59e0b, #fbbf24); box-shadow: 0 0 14px rgba(245,158,11,0.35); color: #111; font-weight: 900; }
 
 /* Course quiz */
 .course-quiz { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-2xl); padding: var(--space-6); margin-bottom: var(--space-4); }
