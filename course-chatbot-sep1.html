@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat‑Bot Development — Cohort Sep 1</title>
+    <meta name="description" content="End‑to‑end chatbot build: conversation design, external API integrations, automations and launch. Templates and step‑by‑step support included.">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav__content">
+                <div class="nav__brand">
+                    <span class="brand-text">AI Insider</span>
+                    <span class="brand-tagline">Next-Gen AI Platform</span>
+                </div>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Home</a></li>
+                        <li><a href="courses.html" class="nav__link">Courses</a></li>
+                        <li><a href="community.html" class="nav__link">Community</a></li>
+                        <li><a href="reviews.html" class="nav__link">Reviews</a></li>
+                        <li><a href="b2b.html" class="nav__link">B2B</a></li>
+                    </ul>
+                    <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge"><span>🤖 AI Course</span></div>
+                <h1 class="hero__title">AI Chat‑Bot Development <br><span class="hero__title-highlight">Cohort September 1</span></h1>
+                <p class="hero__subtitle">Conversation design, API integrations, automations and launch. Templates and step‑by‑step support included.</p>
+                <div class="hero__features">
+                    <div class="feature-item"><span class="feature-icon">📅</span><span>Starts September 1</span></div>
+                    <div class="feature-item"><span class="feature-icon">⏱️</span><span>3 weeks</span></div>
+                    <div class="feature-item"><span class="feature-icon">🔑</span><span>API keys included</span></div>
+                    <div class="feature-item"><span class="feature-icon">€</span><span>€59</span></div>
+                </div>
+                <div class="hero__cta-group">
+                    <a href="#apply" class="cta-btn cta-btn--primary cta-btn--large">Enroll — €59</a>
+                    <a id="tgLinkSep1" href="https://t.me/vladyslavarcher" class="cta-btn cta-btn--secondary" target="_blank">Message Manager</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon">🧭</div><h3>Conversation logic</h3><p>Design robust flows with slots, fallbacks and memory.</p></div>
+                <div class="feature-card"><div class="feature-icon">🔌</div><h3>Integrations</h3><p>External APIs, webhooks, CRM sync and n8n automations.</p></div>
+                <div class="feature-card"><div class="feature-icon">🧰</div><h3>Templates</h3><p>Ready‑to‑use templates and checklists to ship faster.</p></div>
+                <div class="feature-card"><div class="feature-icon">🧪</div><h3>Real cases</h3><p>Hands‑on practice on real business tasks.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="apply">
+        <div class="container">
+            <div class="reviews-cta">
+                <h3>Secure your spot</h3>
+                <p>Fill the form — we’ll reply within 24 hours. Or message us on Telegram.</p>
+                <form id="courseSep1Form" class="b2b-form" style="display:grid;gap:12px;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+                        <input type="text" name="name" placeholder="Your name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="tel" name="phone" placeholder="Phone (optional)">
+                    </div>
+                    <textarea name="message" rows="4" placeholder="Anything we should know?" required></textarea>
+                    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                        <button class="cta-btn cta-btn--primary" type="submit">Apply for Sep 1</button>
+                        <a class="cta-btn cta-btn--secondary" id="tgLinkSep1Inline" href="https://t.me/vladyslavarcher" target="_blank">Message on Telegram</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="premium-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="footer-legal"><p>© 2024 AI Insider. All rights reserved.</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        (function(){
+            const form = document.getElementById('courseSep1Form');
+            const a1 = document.getElementById('tgLinkSep1');
+            const a2 = document.getElementById('tgLinkSep1Inline');
+            function build(){
+                const fd = new FormData(form);
+                const text = `Hello! I want to enroll in AI Chat-Bot Development (Sep 1, €59). Name: ${fd.get('name')||''}; Email: ${fd.get('email')||''}; Phone: ${fd.get('phone')||''}. Message: ${fd.get('message')||''}`;
+                const href = `https://t.me/vladyslavarcher?text=${encodeURIComponent(text)}`;
+                a1.href = href; a2.href = href;
+            }
+            if(form){ form.addEventListener('input', build); build(); }
+        })();
+    </script>
+</body>
+</html>
+

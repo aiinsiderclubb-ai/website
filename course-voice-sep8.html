@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Agent (Vapi.ai & Whisper) — Sep 8</title>
+    <meta name="description" content="Design scenarios, realtime actions and take your agent to production for services, healthcare or sales. API keys for practice included.">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav__content">
+                <div class="nav__brand">
+                    <span class="brand-text">AI Insider</span>
+                    <span class="brand-tagline">Next-Gen AI Platform</span>
+                </div>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li><a href="index.html" class="nav__link">Home</a></li>
+                        <li><a href="courses.html" class="nav__link">Courses</a></li>
+                        <li><a href="community.html" class="nav__link">Community</a></li>
+                        <li><a href="reviews.html" class="nav__link">Reviews</a></li>
+                        <li><a href="b2b.html" class="nav__link">B2B</a></li>
+                    </ul>
+                    <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge"><span>🎙️ Voice Course</span></div>
+                <h1 class="hero__title">AI Voice Agent <br><span class="hero__title-highlight">Cohort September 8</span></h1>
+                <p class="hero__subtitle">Natural conversations, real‑time actions and deployment playbooks. Adapt it to your niche.</p>
+                <div class="hero__features">
+                    <div class="feature-item"><span class="feature-icon">📅</span><span>Starts September 8</span></div>
+                    <div class="feature-item"><span class="feature-icon">⏱️</span><span>2 weeks</span></div>
+                    <div class="feature-item"><span class="feature-icon">🔑</span><span>API keys included</span></div>
+                    <div class="feature-item"><span class="feature-icon">€</span><span>€39</span></div>
+                </div>
+                <div class="hero__cta-group">
+                    <a href="#apply" class="cta-btn cta-btn--primary cta-btn--large">Join — €39</a>
+                    <a id="tgLinkVoiceSep8" href="https://t.me/vladyslavarcher" class="cta-btn cta-btn--secondary" target="_blank">Message Manager</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon">🎛️</div><h3>Realtime</h3><p>Low‑latency barge‑in ready flows.</p></div>
+                <div class="feature-card"><div class="feature-icon">🔐</div><h3>Guardrails</h3><p>Safer tool‑actions and rollbacks.</p></div>
+                <div class="feature-card"><div class="feature-icon">🧪</div><h3>Case studies</h3><p>Proven scenarios and templates.</p></div>
+                <div class="feature-card"><div class="feature-icon">📈</div><h3>To production</h3><p>Deployment playbooks and SLAs.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="apply">
+        <div class="container">
+            <div class="reviews-cta">
+                <h3>Secure your spot</h3>
+                <p>Fill the form — we’ll reply within 24 hours. Or message us on Telegram.</p>
+                <form id="courseVoiceSep8Form" class="b2b-form" style="display:grid;gap:12px;">
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+                        <input type="text" name="name" placeholder="Your name" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="tel" name="phone" placeholder="Phone (optional)">
+                    </div>
+                    <textarea name="message" rows="4" placeholder="Anything we should know?" required></textarea>
+                    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                        <button class="cta-btn cta-btn--primary" type="submit">Apply for Sep 8</button>
+                        <a class="cta-btn cta-btn--secondary" id="tgLinkVoiceSep8Inline" href="https://t.me/vladyslavarcher" target="_blank">Message on Telegram</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="premium-footer"><div class="footer-glow"></div><div class="container"><div class="footer-bottom"><div class="footer-legal"><p>© 2024 AI Insider. All rights reserved.</p></div></div></div></footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        (function(){
+            const form = document.getElementById('courseVoiceSep8Form');
+            const a1 = document.getElementById('tgLinkVoiceSep8');
+            const a2 = document.getElementById('tgLinkVoiceSep8Inline');
+            function build(){
+                const fd = new FormData(form);
+                const text = `Hello! I want to join AI Voice Agent (Sep 8, €39). Name: ${fd.get('name')||''}; Email: ${fd.get('email')||''}; Phone: ${fd.get('phone')||''}. Message: ${fd.get('message')||''}`;
+                const href = `https://t.me/vladyslavarcher?text=${encodeURIComponent(text)}`;
+                a1.href = href; a2.href = href;
+            }
+            if(form){ form.addEventListener('input', build); build(); }
+        })();
+    </script>
+</body>
+</html>
+
