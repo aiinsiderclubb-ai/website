@@ -3028,7 +3028,11 @@ class DemoChat {
             btn.addEventListener('click', () => {
                 const question = btn.dataset.question;
                 this.addUserMessage(question);
-                setTimeout(() => this.addBotMessage(this.responses[question] || this.responses.default), 1000);
+                this.addTypingIndicator();
+                setTimeout(() => {
+                    this.removeTypingIndicator();
+                    this.addBotMessage(this.responses[question] || this.responses.default);
+                }, 800);
             });
         });
     }
@@ -3039,11 +3043,12 @@ class DemoChat {
         
         this.addUserMessage(message);
         this.inputEl.value = '';
-        
+        this.addTypingIndicator();
         setTimeout(() => {
             const response = this.responses[message] || this.responses.default;
+            this.removeTypingIndicator();
             this.addBotMessage(response);
-        }, 1000);
+        }, 900);
     }
     
     addUserMessage(text) {
@@ -3066,6 +3071,25 @@ class DemoChat {
         `;
         this.messagesEl.appendChild(messageEl);
         this.scrollToBottom();
+    }
+
+    addTypingIndicator() {
+        if (this.typingEl) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'message bot';
+        wrap.innerHTML = `
+            <span class="message-avatar">🤖</span>
+            <div class="typing-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        `;
+        this.typingEl = wrap;
+        this.messagesEl.appendChild(wrap);
+        this.scrollToBottom();
+    }
+
+    removeTypingIndicator() {
+        if (!this.typingEl) return;
+        this.typingEl.remove();
+        this.typingEl = null;
     }
     
     scrollToBottom() {
