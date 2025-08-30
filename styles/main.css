@@ -1413,6 +1413,17 @@ body {
   opacity: 1;
 }
 
+/* Make entire blog card clickable */
+.review-card { position: relative; }
+.review-card .card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.review-card h4 a,
+.review-card h4 { color: var(--color-text-primary); text-decoration: none; }
+.review-card h4 a:hover { color: var(--color-text-primary); text-decoration: none; }
+
 /* Blog Modal */
 .modal-lite { position: fixed; inset: 0; display: none; z-index: 1200; }
 .modal-lite.show { display: block; }
