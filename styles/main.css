@@ -2735,15 +2735,33 @@ body {
 
 .industry-marquee .marquee-track {
   display: flex;
-  gap: var(--space-4);
-  padding: var(--space-4);
+  gap: clamp(24px, 5vw, 64px);
+  padding: var(--space-6) var(--space-8);
   width: max-content;
-  animation: marquee-scroll 24s linear infinite;
+  animation: marquee-scroll 28s linear infinite;
 }
 
 @keyframes marquee-scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+.section-overline {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  text-align: center;
+}
+
+.logo-item {
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+.industry-marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 .roi-calculator {
