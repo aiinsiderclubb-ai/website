@@ -2758,10 +2758,19 @@ body {
   color: var(--color-text-secondary);
   font-weight: 700;
   opacity: 0.75;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .industry-marquee:hover .marquee-track {
   animation-play-state: paused;
+}
+
+.logo-svg {
+  height: 24px;
+  width: auto;
+  color: var(--color-text-secondary);
 }
 
 .roi-calculator {
