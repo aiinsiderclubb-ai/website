@@ -1314,7 +1314,27 @@ class FloatingCTAManager {
         this.closeCTA = document.getElementById('closeCTA');
         this.isVisible = false;
         this.isClosed = false;
+        if (!this.floatingCTA) {
+            this.createFloatingCTA();
+            this.floatingCTA = document.getElementById('floatingCTA');
+            this.closeCTA = document.getElementById('closeCTA');
+        }
         this.init();
+    }
+
+    createFloatingCTA() {
+        try {
+            const wrapper = document.createElement('div');
+            wrapper.id = 'floatingCTA';
+            wrapper.className = 'floating-cta';
+            wrapper.innerHTML = `
+                <a href="#apply" class="cta-btn cta-btn--primary">Enroll now</a>
+                <button id="closeCTA" class="cta-btn cta-btn--secondary" aria-label="Close">×</button>
+            `;
+            document.body.appendChild(wrapper);
+        } catch (e) {
+            console.warn('⚠️ Failed to auto-create floating CTA:', e);
+        }
     }
 
     init() {
@@ -1352,6 +1372,311 @@ class FloatingCTAManager {
             this.floatingCTA.classList.remove('visible');
             this.isVisible = false;
         }
+    }
+}
+
+// ===== COURSE PAGE ENHANCEMENTS =====
+class PageProgressManager {
+    constructor() {
+        this.progressBar = null;
+        this.indicators = null;
+        this.sections = [];
+        this.init();
+    }
+
+    init() {
+        // Only run on course pages (presence of .course-program or .course-countdown)
+        if (!document.querySelector('.course-program, .course-countdown')) return;
+
+        this.createProgressBar();
+        this.collectSections();
+        this.createSectionIndicators();
+        this.bindScroll();
+    }
+
+    createProgressBar() {
+        this.progressBar = document.createElement('div');
+        this.progressBar.className = 'page-progress';
+        this.progressBar.innerHTML = '<div class="page-progress__bar"></div>';
+        document.body.appendChild(this.progressBar);
+        this.bar = this.progressBar.querySelector('.page-progress__bar');
+    }
+
+    collectSections() {
+        const nodes = [];
+        const titles = document.querySelectorAll('h2.section-title');
+        titles.forEach((h2) => nodes.push(h2.closest('.section') || h2.parentElement));
+        const apply = document.getElementById('apply');
+        if (apply) nodes.push(apply.closest('.section') || apply);
+        this.sections = nodes.filter(Boolean).map((el, idx) => {
+            if (!el.id) el.id = `section-${idx + 1}`;
+            const label = el.querySelector('h2, h3')?.textContent?.trim() || `Section ${idx + 1}`;
+            return { el, id: el.id, label };
+        });
+    }
+
+    createSectionIndicators() {
+        this.indicators = document.createElement('div');
+        this.indicators.className = 'section-indicators';
+        this.indicators.setAttribute('aria-label', 'Page sections');
+        this.sections.forEach((s, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'section-indicator';
+            dot.setAttribute('aria-label', s.label);
+            dot.addEventListener('click', () => {
+                document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            this.indicators.appendChild(dot);
+        });
+        document.body.appendChild(this.indicators);
+
+        // Observe sections to highlight active
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const index = this.sections.findIndex(sec => sec.el === entry.target);
+                if (index >= 0 && entry.isIntersecting) {
+                    const dots = this.indicators.querySelectorAll('.section-indicator');
+                    dots.forEach(d => d.classList.remove('active'));
+                    dots[index]?.classList.add('active');
+                }
+            });
+        }, { threshold: 0.4 });
+        this.sections.forEach(sec => io.observe(sec.el));
+    }
+
+    bindScroll() {
+        const update = () => {
+            const doc = document.documentElement;
+            const scrollTop = doc.scrollTop || document.body.scrollTop;
+            const scrollHeight = doc.scrollHeight - doc.clientHeight;
+            const pct = scrollHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100)) : 0;
+            if (this.bar) this.bar.style.width = pct + '%';
+        };
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+    }
+}
+
+class CoursePageEnhancer {
+    constructor() {
+        this.previewEl = null;
+        this.init();
+    }
+
+    init() {
+        if (!document.querySelector('.course-program, .course-countdown')) return;
+        this.initGetNumberAnimation();
+        this.initCTAPulse();
+        this.initProgramInteractions();
+        this.initQuizPersistenceAndRecommendations();
+        this.initSpotsSticky();
+        this.initSwipeCarousels();
+        this.initSmartModals();
+    }
+
+    // Animate numbers in What you'll get
+    initGetNumberAnimation() {
+        const items = document.querySelectorAll('.get-number');
+        if (!items.length) return;
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                io.unobserve(el);
+                const original = el.textContent.trim();
+                const match = original.match(/(?<num>[\d]+)(?<suffix>[\+hkm%]*)/i);
+                if (!match || !match.groups) return;
+                const start = 0;
+                const end = parseInt(match.groups.num, 10) || 0;
+                const suffix = match.groups.suffix || '';
+                const duration = 900;
+                const t0 = performance.now();
+                const step = (t) => {
+                    const p = Math.min(1, (t - t0) / duration);
+                    const val = Math.floor(start + (end - start) * p);
+                    el.textContent = `${val}${suffix}`;
+                    if (p < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+            });
+        }, { threshold: 0.35 });
+        items.forEach(el => io.observe(el));
+    }
+
+    // Gently pulse the primary CTA after load to draw attention
+    initCTAPulse() {
+        const btn = document.querySelector('.hero .cta-btn--primary');
+        if (!btn) return;
+        setTimeout(() => {
+            btn.classList.add('cta-pulse');
+            setTimeout(() => btn.classList.remove('cta-pulse'), 5000);
+        }, 1800);
+    }
+
+    initProgramInteractions() {
+        const cards = document.querySelectorAll('.program-card');
+        if (!cards.length) return;
+
+        cards.forEach(card => {
+            // Expand/collapse on click
+            card.addEventListener('click', () => {
+                card.classList.toggle('expanded');
+            });
+
+            // Desktop preview on hover
+            card.addEventListener('mouseenter', () => this.showPreview(card));
+            card.addEventListener('mouseleave', () => this.hidePreview());
+        });
+    }
+
+    showPreview(card) {
+        if (window.innerWidth < 1024) return; // desktop only
+        if (!this.previewEl) {
+            this.previewEl = document.createElement('div');
+            this.previewEl.className = 'program-preview';
+            document.body.appendChild(this.previewEl);
+        }
+        const day = card.querySelector('.program-day')?.textContent?.trim() || '';
+        const title = card.querySelector('h4')?.textContent?.trim() || '';
+        const desc = card.querySelector('p')?.textContent?.trim() || '';
+        const meta = Array.from(card.querySelectorAll('.program-meta .meta')).map(m => m.textContent.trim()).join(' • ');
+        this.previewEl.innerHTML = `
+            <div class="program-preview__content">
+                <div class="program-preview__day">${day}</div>
+                <h4>${title}</h4>
+                <p>${desc}</p>
+                <div class="program-preview__meta">${meta}</div>
+            </div>
+        `;
+        this.previewEl.classList.add('show');
+    }
+
+    hidePreview() {
+        if (this.previewEl) this.previewEl.classList.remove('show');
+    }
+
+    initQuizPersistenceAndRecommendations() {
+        const quiz = document.getElementById('courseQuiz');
+        if (!quiz) return;
+        const selects = quiz.querySelectorAll('select');
+
+        const save = () => {
+            const data = Array.from(selects).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
+            localStorage.setItem('ai_course_quiz', JSON.stringify(data));
+            this.applyRecommendations(data);
+        };
+
+        // Load
+        try {
+            const saved = JSON.parse(localStorage.getItem('ai_course_quiz') || '{}');
+            selects.forEach(s => { if (saved[s.name]) s.value = saved[s.name]; });
+            this.applyRecommendations(saved);
+        } catch {}
+
+        quiz.addEventListener('input', save);
+    }
+
+    applyRecommendations(data) {
+        const cards = document.querySelectorAll('.program-card');
+        cards.forEach(c => c.querySelector('.recommended-badge')?.remove());
+        const pickCard = () => {
+            const goal = (data.goal || '').toLowerCase();
+            const map = [
+                { key: 'freelance', word: 'sales' },
+                { key: 'product', word: 'integrations' },
+                { key: 'job', word: 'testing' }
+            ];
+            const conf = map.find(m => goal.includes(m.key));
+            if (!conf) return null;
+            let target = null;
+            cards.forEach(card => {
+                const text = (card.textContent || '').toLowerCase();
+                if (!target && text.includes(conf.word)) target = card;
+            });
+            return target || cards[0];
+        };
+        const target = pickCard();
+        if (target) {
+            const badge = document.createElement('div');
+            badge.className = 'recommended-badge';
+            badge.textContent = 'Recommended for you';
+            target.appendChild(badge);
+        }
+    }
+
+    initSpotsSticky() {
+        const badge = document.querySelector('.spots-left-badge');
+        if (!badge) return;
+        const onScroll = () => {
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (pct > 35 && window.innerWidth < 768) {
+                badge.classList.add('sticky');
+                badge.addEventListener('click', () => {
+                    document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' });
+                }, { once: true });
+            } else {
+                badge.classList.remove('sticky');
+            }
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+    }
+
+    initSwipeCarousels() {
+        if (window.innerWidth >= 768) return;
+        const containers = document.querySelectorAll('.program-grid, .reviews-grid, .get-grid');
+        containers.forEach((container) => {
+            let isDown = false, startX = 0, scrollLeft = 0;
+            container.addEventListener('pointerdown', (e) => {
+                isDown = true;
+                startX = e.clientX;
+                scrollLeft = container.scrollLeft;
+                container.setPointerCapture(e.pointerId);
+            });
+            container.addEventListener('pointermove', (e) => {
+                if (!isDown) return;
+                const delta = e.clientX - startX;
+                container.scrollLeft = scrollLeft - delta;
+            });
+            ['pointerup', 'pointercancel', 'mouseleave'].forEach(evt => container.addEventListener(evt, () => { isDown = false; }));
+        });
+    }
+
+    initSmartModals() {
+        // Program details: build modal on demand
+        const cards = document.querySelectorAll('.program-card');
+        if (!cards.length) return;
+        let modal = null;
+
+        const ensureModal = () => {
+            if (modal) return modal;
+            modal = document.createElement('div');
+            modal.className = 'modal-lite';
+            modal.innerHTML = `
+                <div class="modal-lite__overlay"></div>
+                <div class="modal-lite__dialog" role="dialog" aria-modal="true">
+                    <button class="modal-lite__close" aria-label="Close">×</button>
+                    <div class="modal-lite__body"></div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.querySelector('.modal-lite__overlay').addEventListener('click', () => modal.classList.remove('show'));
+            modal.querySelector('.modal-lite__close').addEventListener('click', () => modal.classList.remove('show'));
+            return modal;
+        };
+
+        cards.forEach(card => {
+            card.addEventListener('dblclick', () => {
+                const m = ensureModal();
+                const body = m.querySelector('.modal-lite__body');
+                const cloned = card.cloneNode(true);
+                body.innerHTML = '';
+                body.appendChild(cloned);
+                m.classList.add('show');
+            });
+        });
     }
 }
 
@@ -1923,6 +2248,8 @@ document.addEventListener('DOMContentLoaded', () => {
     safeInit(VideoManager, 'VideoManager');
     safeInit(InteractiveROICalculator, 'InteractiveROICalculator');
     safeInit(FloatingCTAManager, 'FloatingCTAManager');
+    safeInit(PageProgressManager, 'PageProgressManager');
+    safeInit(CoursePageEnhancer, 'CoursePageEnhancer');
 
     // Initialize enterprise systems
     analytics = safeInit(EnterpriseAnalytics, 'EnterpriseAnalytics');
