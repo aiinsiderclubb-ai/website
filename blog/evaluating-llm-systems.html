@@ -41,6 +41,29 @@
                     <li>Track cost/performance drift weekly</li>
                 </ol>
                 <p>This keeps quality stable while you iterate prompts, tools and models.</p>
+                
+                <h2>What to evaluate</h2>
+                <ul>
+                    <li><strong>Task success</strong>: pass/fail against rubric with reasons.</li>
+                    <li><strong>Safety</strong>: toxicity, PII, jailbreak resilience.</li>
+                    <li><strong>Cost & latency</strong>: per request and per business event.</li>
+                    <li><strong>Drift</strong>: weekly comparison vs last known good version.</li>
+                </ul>
+
+                <h2>Evaluation architecture</h2>
+                <ol>
+                    <li>Seed a <strong>golden set</strong> from real data; augment synthetically.</li>
+                    <li>Score automatically with programmatic judges; sample for <strong>human audits</strong>.</li>
+                    <li>Create <strong>dashboards</strong> for win/loss reasons and regression diffs.</li>
+                    <li>Gate deploys with <strong>quality thresholds</strong> and canary traffic.</li>
+                </ol>
+
+                <h2>Tips</h2>
+                <ul>
+                    <li>Prefer <strong>model‑agnostic</strong> rubrics; avoid overfitting to phrasing.</li>
+                    <li>Measure <strong>business KPIs</strong> (demos booked, CSAT) not just BLEU.</li>
+                    <li>Keep prompts <strong>versioned</strong> and tracked in traces.</li>
+                </ul>
                 <div class="related-content" style="margin-top:24px;">
                     <h3 class="section-title">Explore courses</h3>
                     <div class="links">
