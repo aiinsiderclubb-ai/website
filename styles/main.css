@@ -2728,9 +2728,11 @@ body {
 .industry-marquee {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-2xl);
-  background: var(--glass-bg);
+  border: 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  border-radius: 0;
+  background: transparent;
 }
 
 .industry-marquee--wide {
@@ -2744,10 +2746,10 @@ body {
 
 .industry-marquee .marquee-track {
   display: flex;
-  gap: clamp(24px, 5vw, 64px);
+  gap: clamp(56px, 7vw, 120px);
   padding: var(--space-6) var(--space-8);
   width: max-content;
-  animation: marquee-scroll 28s linear infinite;
+  animation: marquee-scroll 30s linear infinite;
 }
 
 @keyframes marquee-scroll {
@@ -2765,13 +2767,14 @@ body {
 
 .logo-item {
   color: var(--color-text-secondary);
-  font-weight: 700;
-  opacity: 0.75;
+  font-weight: 600;
+  opacity: 0.8;
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .industry-marquee:hover .marquee-track {
@@ -2790,11 +2793,11 @@ body {
 }
 .industry-marquee--wide::before {
   left: 0;
-  background: linear-gradient(90deg, var(--glass-bg), rgba(0,0,0,0));
+  background: linear-gradient(90deg, var(--color-bg-primary), rgba(0,0,0,0));
 }
 .industry-marquee--wide::after {
   right: 0;
-  background: linear-gradient(270deg, var(--glass-bg), rgba(0,0,0,0));
+  background: linear-gradient(270deg, var(--color-bg-primary), rgba(0,0,0,0));
 }
 
 .logo-svg {
