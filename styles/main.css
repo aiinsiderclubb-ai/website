@@ -2733,6 +2733,12 @@ body {
   background: var(--glass-bg);
 }
 
+.industry-marquee--wide {
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+}
+
 .industry-marquee .marquee-track {
   display: flex;
   gap: clamp(24px, 5vw, 64px);
@@ -2761,6 +2767,8 @@ body {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  letter-spacing: 0.02em;
 }
 
 .industry-marquee:hover .marquee-track {
