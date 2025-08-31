@@ -20,7 +20,7 @@
                 <div class="nav__menu">
                     <ul class="nav__list">
                         <li><a href="index.html" class="nav__link">Home</a></li>
-                        <li><a href="courses.html" class="nav__link active">Courses</a></li>
+                        <li><a href="courses/" class="nav__link active">Courses</a></li>
                         <li><a href="community.html" class="nav__link">Community</a></li>
                         <li><a href="reviews.html" class="nav__link">Reviews</a></li>
                         <li><a href="b2b.html" class="nav__link">B2B</a></li>
@@ -35,37 +35,12 @@
     </header>
 
     <!-- Courses Hero Section -->
-    <section class="hero courses-hero">
+    <section class="hero">
         <div class="container">
             <div class="hero__content">
-                <div class="hero__badge">
-                    <span>🎓 Premium AI Training Programs</span>
-                </div>
-
-                <h1 class="hero__title">
-                    Master AI Automation <br>
-                    <span class="hero__title-highlight">Start Your Journey Today</span>
-                </h1>
-                
-                <p class="hero__subtitle">
-                    From beginner to expert - choose your path to AI mastery. 
-                    All courses include lifetime access, community support, and practical projects.
-                </p>
-                
-                <div class="courses-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="1847">1,847</span>
-                        <span class="stat-label">Students Enrolled</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="98">98%</span>
-                        <span class="stat-label">Success Rate</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="4.9">4.9</span>
-                        <span class="stat-label">Average Rating</span>
-                    </div>
-                </div>
+                <div class="hero__badge"><span>🎓 Courses Hub</span></div>
+                <h1 class="hero__title">AI Courses</h1>
+                <p class="hero__subtitle">Choose Chat‑Bot or Voice Agent — see next start dates and details.</p>
             </div>
         </div>
     </section>
@@ -82,207 +57,44 @@
                 </p>
             </div>
             
-            <!-- Premium Courses Grid -->
+            <!-- Premium Courses Grid (aligned with hub design) -->
             <div class="premium-courses-grid">
-                <!-- ChatBot 1: Aug 18 -->
-                <div class="premium-course-card card-bestseller card-hot">
-                    <div class="course-date-badge hot">Aug 18</div>
-                    <div class="course-header">
-                        <div class="course-icon-wrapper">
-                            <div class="course-icon">🤖</div>
-                            <div class="course-level">Beginner</div>
-                        </div>
-                        <div class="course-pricing">
-                            <span class="course-price">€49</span>
-                            <span class="course-duration">3 weeks</span>
-                        </div>
-                    </div>
+                <a class="premium-course-card" href="courses/chatbot/index.html" style="text-decoration:none;">
+                    <div class="course-header"><div class="course-icon-wrapper"><div class="course-icon">🤖</div><div class="course-level">Beginner</div></div><div class="course-pricing"><span class="course-price">€59</span><span class="course-duration">3 weeks</span></div></div>
                     <div class="course-content">
                         <div class="course-info">
                             <h3>AI Chat‑Bot Development</h3>
-                            <div class="course-meta">
-                                <span class="start-date">📅 Starts August 18</span>
-                                <span class="spots-left">🔥 Last price • API keys included</span>
+                            <div class="course-meta"><span class="start-date">📅 Next cohorts</span><span class="spots-left">🔑 API keys included</span></div>
+                            <div class="spots-left-badge" data-spots-left data-spots-min="4" data-spots-max="12"><span class="spots-left-dot"></span><span><span class="spots-left-number">8</span> spots left</span></div>
+                            <div class="countdown-grid" data-countdown-date="2025-09-01T09:00:00" style="margin-top:10px;">
+                                <div class="countdown-item"><span class="countdown-value" data-dd>00</span><span class="countdown-label">days</span></div>
+                                <div class="countdown-item"><span class="countdown-value" data-hh>00</span><span class="countdown-label">hours</span></div>
+                                <div class="countdown-item"><span class="countdown-value" data-mm>00</span><span class="countdown-label">minutes</span></div>
+                                <div class="countdown-item"><span class="countdown-value" data-ss>00</span><span class="countdown-label">sec</span></div>
                             </div>
-                            <p>Build a production‑ready chatbot from zero. Connect OpenAI, external APIs and automations, tailor it to any niche (services, e‑commerce, healthcare). Templates, hands‑on support and real case studies. Learn how to package and sell your bots.</p>
-                            <div class="course-features">
-                                <span>✓ 3 weeks</span>
-                                <span>✓ API keys for training</span>
-                                <span>✓ Templates & support</span>
-                                <span>✓ Real cases</span>
-                            </div>
+                            <p>Conversation design, integrations, automations and launch.</p>
                         </div>
-                        <div class="course-bottom">
-                            <a href="https://t.me/vladyslavarcher?text=Привет!%20Хочу%20на%20поток%2018%20августа%20(€49)%20по%20AI%20Chat‑Bot" class="premium-course-btn">Enroll — €49</a>
-                        </div>
+                        <div class="course-bottom"><span class="premium-course-btn">Explore Chat‑Bot</span></div>
                     </div>
-                </div>
-
-                <!-- ChatBot 2: Sep 1 -->
-                <div class="premium-course-card">
-                    <div class="course-header">
-                        <div class="course-icon-wrapper">
-                            <div class="course-icon">🤖</div>
-                            <div class="course-level">Beginner</div>
-                        </div>
-                        <div class="course-pricing">
-                            <span class="course-price">€59</span>
-                            <span class="course-duration">3 weeks</span>
-                        </div>
-                    </div>
+                </a>
+                <a class="premium-course-card" href="courses/voice/index.html" style="text-decoration:none;">
+                    <div class="course-header"><div class="course-icon-wrapper"><div class="course-icon">🎙️</div><div class="course-level">Intermediate</div></div><div class="course-pricing"><span class="course-price">€39</span><span class="course-duration">2 weeks</span></div></div>
                     <div class="course-content">
                         <div class="course-info">
-                            <h3>AI Chat‑Bot Development</h3>
-                            <div class="course-meta">
-                                <span class="start-date">📅 Starts September 1</span>
-                                <span class="spots-left">🔑 API keys included</span>
+                            <h3>AI Voice Agent</h3>
+                            <div class="course-meta"><span class="start-date">📅 Next cohorts</span><span class="spots-left">🔑 API keys included</span></div>
+                            <div class="spots-left-badge" data-spots-left data-spots-min="3" data-spots-max="10"><span class="spots-left-dot"></span><span><span class="spots-left-number">7</span> spots left</span></div>
+                            <div class="countdown-grid" data-countdown-date="2025-09-08T09:00:00" style="margin-top:10px;">
+                                <div class="countdown-item"><span class="countdown-value" data-dd>00</span><span class="countdown-label">days</span></div>
+                                <div class="countdown-item"><span class="countdown-value" data-hh>00</span><span class="countdown-label">hours</span></div>
+                                <div class="countdown-item"><span class="countdown-value" data-mm>00</span><span class="countdown-label">minutes</span></div>
+                                <div class="countdown-item"><span class="countdown-value" data-ss>00</span><span class="countdown-label">sec</span></div>
                             </div>
-                            <p>End‑to‑end chatbot build: conversation design, external API integrations, automations and launch. Fits services, e‑commerce and healthcare.</p>
-                            <div class="course-features">
-                                <span>✓ Conversation logic</span>
-                                <span>✓ Integrations & automations</span>
-                                <span>✓ Niche setups</span>
-                                <span>✓ Real cases</span>
-                            </div>
+                            <p>Realtime scenarios, safe actions and production deployment.</p>
                         </div>
-                        <div class="course-bottom">
-                            <a href="https://t.me/vladyslavarcher?text=Привет!%20Хочу%20на%20поток%201%20сентября%20(€59)%20по%20AI%20Chat‑Bot" class="premium-course-btn">Enroll — €59</a>
-                        </div>
+                        <div class="course-bottom"><span class="premium-course-btn">Explore Voice</span></div>
                     </div>
-                </div>
-
-                <!-- ChatBot 3: Sep 15 -->
-                <div class="premium-course-card">
-                    <div class="course-header">
-                        <div class="course-icon-wrapper">
-                            <div class="course-icon">🤖</div>
-                            <div class="course-level">Beginner</div>
-                        </div>
-                        <div class="course-pricing">
-                            <span class="course-price">€59</span>
-                            <span class="course-duration">3 weeks</span>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-info">
-                            <h3>AI Chat‑Bot Development</h3>
-                            <div class="course-meta">
-                                <span class="start-date">📅 Starts September 15</span>
-                                <span class="spots-left">🔑 API keys included</span>
-                            </div>
-                            <p>From zero to a niche‑ready bot for services, e‑commerce or healthcare. Real‑world practice with templates and guidance, plus a quick sales playbook.</p>
-                            <div class="course-features">
-                                <span>✓ Templates</span>
-                                <span>✓ Support</span>
-                                <span>✓ Sales playbook</span>
-                                <span>✓ Real cases</span>
-                            </div>
-                        </div>
-                        <div class="course-bottom">
-                            <a href="https://t.me/vladyslavarcher?text=Привет!%20Хочу%20на%20поток%2015%20сентября%20(€59)%20по%20AI%20Chat‑Bot" class="premium-course-btn">Enroll — €59</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Voice Agent 1: Aug 25 -->
-                <div class="premium-course-card card-trending card-hot">
-                    <div class="course-date-badge hot">Aug 25</div>
-                    <div class="course-header">
-                        <div class="course-icon-wrapper">
-                            <div class="course-icon">🎙️</div>
-                            <div class="course-level">Intermediate</div>
-                        </div>
-                        <div class="course-pricing">
-                            <span class="course-price">€29</span>
-                            <span class="course-duration">2 weeks</span>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-info">
-                            <h3>AI Voice Agent (Vapi.ai & Whisper)</h3>
-                            <div class="course-meta">
-                                <span class="start-date">📅 Starts August 25</span>
-                                <span class="spots-left">🔥 Last price</span>
-                            </div>
-                            <p>Build a voice agent from scratch with Vapi and Whisper. Natural conversations, real‑time actions and deployment playbooks. Adapt it to your niche.</p>
-                            <div class="course-features">
-                                <span>✓ Vapi.ai mastery</span>
-                                <span>✓ Real‑time AI</span>
-                                <span>✓ Templates</span>
-                                <span>✓ Case studies</span>
-                            </div>
-                        </div>
-                        <div class="course-bottom">
-                            <a href="https://t.me/vladyslavarcher?text=Привет!%20Хочу%20на%20Voice%20Agent%2025%20августа%20(€29)" class="premium-course-btn">Join — €29</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Voice Agent 2: Sep 8 -->
-                <div class="premium-course-card">
-                    <div class="course-header">
-                        <div class="course-icon-wrapper">
-                            <div class="course-icon">🎙️</div>
-                            <div class="course-level">Intermediate</div>
-                        </div>
-                        <div class="course-pricing">
-                            <span class="course-price">€39</span>
-                            <span class="course-duration">2 weeks</span>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-info">
-                            <h3>AI Voice Agent (Vapi.ai & Whisper)</h3>
-                            <div class="course-meta">
-                                <span class="start-date">📅 Starts September 8</span>
-                                <span class="spots-left">🔑 API keys included</span>
-                            </div>
-                            <p>Design scenarios, integrate real‑time actions and take your agent to production for services, healthcare or sales.</p>
-                            <div class="course-features">
-                                <span>✓ Voice synthesis</span>
-                                <span>✓ Realtime actions</span>
-                                <span>✓ Templates</span>
-                                <span>✓ Certificate</span>
-                            </div>
-                        </div>
-                        <div class="course-bottom">
-                            <a href="https://t.me/vladyslavarcher?text=Привет!%20Хочу%20на%20Voice%20Agent%208%20сентября%20(€39)" class="premium-course-btn">Join — €39</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personal Mentorship -->
-                <div class="premium-course-card card-vip">
-                    <div class="course-header">
-                        <div class="course-icon-wrapper">
-                            <div class="course-icon">👨‍💼</div>
-                            <div class="course-level">VIP</div>
-                        </div>
-                        <div class="course-pricing">
-                            <span class="course-price">€299</span>
-                            <span class="course-duration">2 weeks</span>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-info">
-                            <h3>Personal ChatBot Mentorship</h3>
-                            <div class="course-meta">
-                                <span class="start-date">🎯 Your First €1000</span>
-                                <span class="spots-left">👑 VIP Access</span>
-                            </div>
-                            <p>1‑on‑1 mentorship to create and monetize your first chatbot. Personal guidance, direct feedback, a revenue playbook and unlimited support.</p>
-                            <div class="course-features">
-                                <span>✓ Personal mentor</span>
-                                <span>✓ Direct communication</span>
-                                <span>✓ Revenue playbook</span>
-                                <span>✓ Unlimited support</span>
-                            </div>
-                        </div>
-                        <div class="course-bottom">
-                            <a href="https://t.me/vladyslavarcher?text=Привет!%20Интересует%20Personal%20ChatBot%20Mentorship%20(€299)" class="premium-course-btn btn-vip">Get VIP Mentorship — €299</a>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
 
             <!-- Course Benefits Section -->
