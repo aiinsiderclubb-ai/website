@@ -66,12 +66,71 @@
                 <p>Один промпт — три ракурса: общий план нападения, низкий угол со спины корабля и динамичный пролёт над волной. На выходе — готовая сцена уровня Netflix, которую можно монтировать без дообработки.</p>
 
                 <h2>Сравнение Aleph vs Veo 3</h2>
-                <table>
-                    <tr><th>Критерий</th><th>Aleph</th><th>Veo 3</th></tr>
-                    <tr><td>Длина клипа</td><td>до ~38 сек</td><td>~8 сек</td></tr>
-                    <tr><td>Камера</td><td>Свободные ракурсы/перелёты</td><td>Ограниченная</td></tr>
-                    <tr><td>Нарратив</td><td>Сцены с развитием</td><td>Короткие куски</td></tr>
-                </table>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <caption>Сравнение Aleph и Veo 3 по ключевым критериям</caption>
+                        <thead>
+                            <tr>
+                                <th>Критерий</th>
+                                <th>Aleph</th>
+                                <th>Veo 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Длина клипа</td>
+                                <td>до ~38 сек</td>
+                                <td>~8 сек</td>
+                            </tr>
+                            <tr>
+                                <td>Камера</td>
+                                <td>Свободные ракурсы, перелёты и панорамы</td>
+                                <td>Ограниченная</td>
+                            </tr>
+                            <tr>
+                                <td>Нарратив</td>
+                                <td>Сцены с развитием (setup → action → resolve)</td>
+                                <td>Короткие куски</td>
+                            </tr>
+                            <tr>
+                                <td>Контроль динамики</td>
+                                <td>Согласованные движения объектов и света</td>
+                                <td>Меньше согласованности</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>Как писать промпты для Aleph</h2>
+                <ul>
+                    <li>Опишите <strong>сцену и действие</strong> в одном предложении, затем добавьте 2–3 детали окружения.</li>
+                    <li>Добавьте фразы про <strong>камеру</strong>: “low‑angle”, “overhead dolly”, “long take”, “slow pan left”.</li>
+                    <li>Задайте <strong>настроение/жанр</strong>: “moody cyberpunk rain”, “sunset commercial look”.</li>
+                    <li>Если нужен монтаж — генерируйте 2–3 версии и склейте их в редакторе.</li>
+                </ul>
+
+                <h3>Рабочие примеры промптов</h3>
+                <pre><code>Wide shot of a stormy sea, a kraken rises and wraps a ship mast; 
+camera: aerial long take, slow pan right, low clouds drifting; 
+cinematic lighting, volumetric fog, high detail.</code></pre>
+                <pre><code>Scandinavian living room makeover timelapse; 
+camera: static tripod, subtle dolly‑in; 
+soft morning light, warm film grain, cozy minimalism.</code></pre>
+
+                <h2>Ограничения и риски</h2>
+                <ul>
+                    <li><strong>Точность объектов</strong>: в быстрых сценах возможен морфинг мелких деталей.</li>
+                    <li><strong>Текст/лого</strong>: лучше добавлять на пост‑продакшене.</li>
+                    <li><strong>Стоимость</strong>: длинные клипы — планируйте бюджет на итерации.</li>
+                </ul>
+
+                <h2>FAQ</h2>
+                <h4>Можно ли управлять длительностью?</h4>
+                <p>Да, Aleph генерирует более длинные клипы; фактическая длительность зависит от нагрузки и настроек проекта.</p>
+                <h4>Как добиться стабильной камеры?</h4>
+                <p>Явно указывайте движение камеры и избегайте взаимоисключающих указаний в одном промпте.</p>
+                <h4>Подходит ли для рекламы?</h4>
+                <p>Да — 15–30 секундные сцены с чётким сетапом и продуманным светом отлично работают для тизеров и pre‑viz.</p>
 
                 <h2>Где это применить уже сегодня</h2>
                 <ul>
