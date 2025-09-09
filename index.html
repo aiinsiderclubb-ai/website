@@ -23,6 +23,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
     
     <!-- Icons -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
@@ -32,6 +34,61 @@
     
     <!-- Configuration -->
     <script src="config.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AI Insider",
+      "url": "https://insiderai.it.com/",
+      "logo": "https://insiderai.it.com/favicon.ico",
+      "sameAs": [
+        "https://t.me/+qjwWJz7aLR1hMDQ0"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SiteNavigationElement",
+      "name": ["Home", "Courses", "Community", "Reviews", "B2B", "Blog"],
+      "url": [
+        "https://insiderai.it.com/index.html",
+        "https://insiderai.it.com/courses.html",
+        "https://insiderai.it.com/community.html",
+        "https://insiderai.it.com/reviews.html",
+        "https://insiderai.it.com/b2b.html",
+        "https://insiderai.it.com/blog.html"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Как быстро можно запуститься?",
+          "acceptedAnswer": {"@type": "Answer", "text": "За 3 шага: подключение, настройка, запуск. Обычно 1–3 дня."}
+        },
+        {
+          "@type": "Question",
+          "name": "Интегрируется ли с нашей CRM/таблицами?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Да: n8n, Vapi, Google Sheets, HubSpot и др. через готовые коннекторы."}
+        },
+        {
+          "@type": "Question",
+          "name": "Какие есть гарантии и безопасность?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Шифрование, контроль доступа, аудит, откат. Соответствие best‑practices GDPR/SOC2."}
+        },
+        {
+          "@type": "Question",
+          "name": "Где посмотреть кейсы и курсы?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Кейсы — на странице Case Studies, обучение — в разделе Courses, материалы — в Blog."}
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -128,6 +185,75 @@
                         Join Free Community
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick FAQ Section (for SEO and UX) -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="hiw-header">
+                <span class="section-badge">❓ FAQ</span>
+                <h2 class="section-title">Answers to common questions</h2>
+                <p class="section-subtitle">Short and practical. Full details in Courses, Case Studies and Blog.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Как быстро можно запуститься?</h4>
+                    <p>Обычно 1–3 дня: подключение → настройка → запуск. Для enterprise — по плану внедрения.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Как насчёт интеграций?</h4>
+                    <p>Поддерживаем n8n, Vapi, Google Sheets, HubSpot и др. через готовые коннекторы.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Безопасность и соответствие</h4>
+                    <p>Шифрование, контроль доступа, аудит‑логи, откат. Следуем best‑practices GDPR/SOC2.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Где посмотреть обучение и кейсы?</h4>
+                    <p><a class="manager-link" href="courses.html">Курсы</a>, <a class="manager-link" href="case-studies.html">кейсы</a> и <a class="manager-link" href="blog.html">блог</a> — всё на сайте.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How it works Section -->
+    <section class="section how-it-works">
+        <div class="container">
+            <div class="hiw-header">
+                <span class="section-badge">🛠️ How it works</span>
+                <h2 class="section-title">Launch AI automation in 3 steps</h2>
+                <p class="section-subtitle">From idea to production with n8n, Vapi, Google Sheets and your CRM.</p>
+            </div>
+            <div class="hiw-progress">
+                <div class="hiw-track">
+                    <div class="hiw-node is-active"><span>1</span></div>
+                    <div class="hiw-node"><span>2</span></div>
+                    <div class="hiw-node"><span>3</span></div>
+                </div>
+            </div>
+            <div class="hiw-grid">
+                <div class="hiw-card">
+                    <div class="hiw-icon">🧭</div>
+                    <h3>Connect</h3>
+                    <p>Plug into <strong>n8n</strong>, <strong>Vapi</strong>, <strong>GSheets</strong> and your <strong>CRM</strong>. Ready‑made connectors, secure access.</p>
+                </div>
+                <div class="hiw-card">
+                    <div class="hiw-icon">⚙️</div>
+                    <h3>Compose</h3>
+                    <p>Design flows, prompts and tools. Test with evals, add guardrails and retries for stability.</p>
+                </div>
+                <div class="hiw-card">
+                    <div class="hiw-icon">🚀</div>
+                    <h3>Launch</h3>
+                    <p>Ship to production with monitoring, alerts and rollback. Measure ROI and iterate weekly.</p>
+                </div>
+            </div>
+            <div class="hiw-icons">
+                <span class="chip">n8n</span>
+                <span class="chip">Vapi.ai</span>
+                <span class="chip">Google Sheets</span>
+                <span class="chip">HubSpot</span>
             </div>
         </div>
     </section>
@@ -329,7 +455,7 @@
                 <div class="elite-card card-featured">
                     <div class="elite-header">
                         <div class="elite-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Michael Chen">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Michael Chen" loading="lazy" decoding="async" width="80" height="80">
                             <div class="status-indicator online"></div>
                         </div>
                         <div class="elite-info">
@@ -359,7 +485,7 @@
                 <div class="elite-card">
                     <div class="elite-header">
                         <div class="elite-avatar">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rodriguez">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Alex Rodriguez" loading="lazy" decoding="async" width="80" height="80">
                             <div class="status-indicator online"></div>
                         </div>
                         <div class="elite-info">
@@ -389,7 +515,7 @@
                 <div class="elite-card">
                     <div class="elite-header">
                         <div class="elite-avatar">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Emma Williams">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Emma Williams" loading="lazy" decoding="async" width="80" height="80">
                             <div class="status-indicator online"></div>
                         </div>
                         <div class="elite-info">
