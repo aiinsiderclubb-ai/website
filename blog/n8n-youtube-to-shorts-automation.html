@@ -69,6 +69,34 @@
                     <li><strong>Предпринимателям</strong> — качать трафик <em>шортсами</em> без найма продакшна.</li>
                 </ul>
 
+                <h2>Что понадобится для запуска</h2>
+                <ul>
+                    <li><strong>n8n</strong> (self‑hosted или n8n Cloud) — оркестрация workflow и ретраи.</li>
+                    <li><strong>Telegram Bot API</strong> — приём ссылок и отправка отчётов.</li>
+                    <li><strong>Klap</strong> — AI‑вырезка хайлайтов, субтитры и формат 9:16 для вертикального видео.</li>
+                    <li><strong>Blotato</strong> — <em>автопостинг</em> в <strong>TikTok</strong>, <strong>Instagram Reels</strong> и <strong>YouTube Shorts</strong>.</li>
+                    <li>Аккаунты соцсетей и при необходимости ключи/токены доступа.</li>
+                </ul>
+
+                <h2>Схема интеграций (в 1 абзац)</h2>
+                <p><strong>Telegram → n8n → Klap → n8n → Blotato → соцсети → Telegram</strong>. Триггер по сообщению с URL YouTube запускает обработку: Klap делает шортсы с <em>captions</em>, затем Blotato выполняет <strong>auto‑post</strong> по расписанию в TikTok/IG/Shorts, после чего n8n отправляет <strong>итоговый отчёт</strong> со ссылками и статусами.</p>
+
+                <h2>Практические советы по вовлечению</h2>
+                <ul>
+                    <li><strong>Субтитры</strong>: просите Klap генерировать <em>burn‑in</em> captions, повышают удержание.</li>
+                    <li><strong>Хештеги</strong>: формируйте список автоматически в n8n по теме ролика.</li>
+                    <li><strong>CTA</strong>: добавляйте короткий призыв в описании (подписка/переход на лонг‑ролик).</li>
+                    <li><strong>Календарь</strong>: A/B по времени публикации; храните расписание в таблице.</li>
+                </ul>
+
+                <h2>FAQ</h2>
+                <h4>Можно ли постить только в один канал?</h4>
+                <p>Да. В Blotato можно включать/отключать TikTok, Instagram или YouTube Shorts отдельно.</p>
+                <h4>Поддерживаются длинные видео?</h4>
+                <p>Workflow берёт лонг‑ролик с YouTube и нарезает несколько клипов (15–60 сек) под Shorts/Reels/TikTok.</p>
+                <h4>Как добавить водяные знаки/брендинг?</h4>
+                <p>Добавьте шаг пост‑обработки до выгрузки в Blotato или используйте пресеты Klap.</p>
+
                 <h2>Готовый workflow</h2>
                 <p>Официальный рецепт на n8n Hub: <a href="https://n8n.io/workflows/5608-convert-youtube-videos-to-shorts-with-klap-and-auto-post-to-multiple-social-platforms/" target="_blank" rel="noopener">Convert YouTube videos to Shorts with Klap and auto‑post</a>.</p>
 
@@ -83,7 +111,7 @@
             <div class="article-back"><a class="manager-link" href="../blog.html">← Вернуться в блог</a></div>
     </div></section>
 
-    <footer class="premium-footer"><div class="footer-glow"></div><div class="container"><div class="footer-main"><div class="footer-brand"><h3>AI Insider</h3><p>Next-Generation AI Automation Platform</p><div class="footer-stats"><div class="footer-stat"><span class="stat-number" data-target="6079">6,079</span><span class="stat-label">Members</span></div><div class="footer-stat"><span class="stat-number" data-target="125">125</span><span class="stat-label">Generated</span></div><div class="footer-stat"><span class="stat-number" data-target="287">287</span><span class="stat-label">Companies</span></div></div></div><div class="footer-links"><div class="footer-column"><h4>Platform</h4><a href="../courses/">AI Courses</a><a href="../community.html">Community</a><a href="../reviews.html">Success Stories</a><a href="../blog.html">Blog</a></div><div class="footer-column"><h4>Solutions</h4><a href="../enterprise-ai.html">Enterprise AI</a><a href="../automation-tools.html">Automation Tools</a><a href="../consulting.html">Consulting</a><a href="../custom-ai.html">Custom AI</a></div><div class="footer-column"><h4>Resources</h4><a href="../documentation.html">Documentation</a><a href="../api-reference.html">API Reference</a><a href="../case-studies.html">Case Studies</a><a href="../blog.html">Blog</a></div><div class="footer-column"><h4>Connect</h4><a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="social-link"><span class="social-icon">📱</span>Telegram</a><a href="#" class="social-link"><span class="social-icon">🐦</span>Twitter</a><a href="#" class="social-link"><span class="social-icon">💼</span>LinkedIn</a><a href="#" class="social-link"><span class="social-icon">📧</span>Email</a></div></div></div><div class="footer-bottom"><div class="footer-legal"><p>© 2024 AI Insider. All rights reserved.</p><div class="legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div></div><div class="footer-badge"><span>🚀 Powered by Next-Gen AI</span></div></div></div></footer>
+    <footer class="premium-footer"><div class="footer-glow"></div><div class="container"><div class="footer-main"><div class="footer-brand"><h3>AI Insider</h3><p>Next-Generation AI Automation Platform</p><div class="footer-stats"><div class="footer-stat"><span class="stat-number" data-target="6079">6,079</span><span class="stat-label">Members</span></div><div class="footer-stat"><span class="stat-number" data-target="125">125</span><span class="stat-label">Generated</span></div><div class="footer-stat"><span class="stat-number" data-target="287">287</span><span class="stat-label">Companies</span></div></div></div><div class="footer-links"><div class="footer-column"><h4>Platform</h4><a href="../courses.html">AI Courses</a><a href="../community.html">Community</a><a href="../reviews.html">Success Stories</a><a href="../blog.html">Blog</a></div><div class="footer-column"><h4>Solutions</h4><a href="../enterprise-ai.html">Enterprise AI</a><a href="../automation-tools.html">Automation Tools</a><a href="../consulting.html">Consulting</a><a href="../custom-ai.html">Custom AI</a></div><div class="footer-column"><h4>Resources</h4><a href="../documentation.html">Documentation</a><a href="../api-reference.html">API Reference</a><a href="../case-studies.html">Case Studies</a><a href="../blog.html">Blog</a></div><div class="footer-column"><h4>Connect</h4><a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="social-link"><span class="social-icon">📱</span>Telegram</a><a href="#" class="social-link"><span class="social-icon">🐦</span>Twitter</a><a href="#" class="social-link"><span class="social-icon">💼</span>LinkedIn</a><a href="#" class="social-link"><span class="social-icon">📧</span>Email</a></div></div></div><div class="footer-bottom"><div class="footer-legal"><p>© 2024 AI Insider. All rights reserved.</p><div class="legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div></div><div class="footer-badge"><span>🚀 Powered by Next-Gen AI</span></div></div></div></footer>
     <script src="../scripts/main.js"></script>
 </body>
 </html>
