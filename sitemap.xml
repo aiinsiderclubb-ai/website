@@ -210,5 +210,37 @@
     <changefreq>monthly</changefreq>
     <priority>0.1</priority>
   </url>
+  
+  <!-- Russian Version URLs -->
+  <url>
+    <loc>https://insiderai.it.com/ru/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/ru/courses.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/ru/community.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/ru/reviews.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/ru/blog.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://insiderai.it.com/ru/b2b.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
 
