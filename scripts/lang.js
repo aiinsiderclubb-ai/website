@@ -1,37 +1,63 @@
+// Language switcher function
+function switchLanguage(lang) {
+  var currentPath = location.pathname;
+  var newPath;
+  
+  if (lang === 'ru') {
+    // Switch to Russian
+    if (currentPath.startsWith('/ru/')) {
+      return; // Already on Russian version
+    }
+    newPath = '/ru' + currentPath;
+  } else {
+    // Switch to English 
+    if (!currentPath.startsWith('/ru/')) {
+      return; // Already on English version
+    }
+    newPath = currentPath.replace(/^\/ru/, '');
+  }
+  
+  location.href = newPath;
+}
+
+// Auto-add language switcher to navigation
 (function() {
   try {
     var navMenu = document.querySelector('.nav__menu');
     if (!navMenu) return;
 
     var isRu = location.pathname.startsWith('/ru/');
-    var path = location.pathname;
-    var ruPath = isRu ? path : '/ru' + path;
-    var enPath = isRu ? path.replace(/^\/ru/, '') : path;
+    
+    // Only add if not already present in HTML
+    if (!document.querySelector('.lang-switcher')) {
+      var wrap = document.createElement('div');
+      wrap.className = 'lang-switcher';
+      wrap.style.display = 'inline-flex';
+      wrap.style.alignItems = 'center';
+      wrap.style.gap = '8px';
+      wrap.style.marginLeft = '16px';
 
-    var wrap = document.createElement('div');
-    wrap.className = 'lang-switch';
-    wrap.style.display = 'inline-flex';
-    wrap.style.alignItems = 'center';
-    wrap.style.gap = '8px';
+      var enBtn = document.createElement('button');
+      enBtn.className = 'lang-btn' + (!isRu ? ' active' : '');
+      enBtn.textContent = 'EN';
+      enBtn.onclick = function() { switchLanguage('en'); };
 
-    var ru = document.createElement('a');
-    ru.href = ruPath;
-    ru.className = 'nav__link';
-    ru.textContent = 'RU';
-    if (isRu) ru.style.color = 'var(--color-ai-blue)';
+      var ruBtn = document.createElement('button');
+      ruBtn.className = 'lang-btn' + (isRu ? ' active' : '');
+      ruBtn.textContent = 'RU';
+      ruBtn.onclick = function() { switchLanguage('ru'); };
 
-    var sep = document.createElement('span');
-    sep.textContent = '|';
-    sep.style.opacity = '0.6';
-
-    var en = document.createElement('a');
-    en.href = enPath;
-    en.className = 'nav__link';
-    en.textContent = 'EN';
-    if (!isRu) en.style.color = 'var(--color-ai-blue)';
-
-    wrap.appendChild(ru); wrap.appendChild(sep); wrap.appendChild(en);
-    navMenu.appendChild(wrap);
+      wrap.appendChild(enBtn);
+      wrap.appendChild(ruBtn);
+      
+      // Insert before CTA button
+      var ctaBtn = navMenu.querySelector('.nav__cta-btn');
+      if (ctaBtn) {
+        navMenu.insertBefore(wrap, ctaBtn);
+      } else {
+        navMenu.appendChild(wrap);
+      }
+    }
   } catch (e) {
     console && console.warn && console.warn('Lang switch init failed', e);
   }

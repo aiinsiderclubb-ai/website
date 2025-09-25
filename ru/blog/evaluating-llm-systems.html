@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценка LLM Систем — AI Insider</title>
+    <meta name="description" content="Как мы проводим оценки для обеспечения качества, безопасности и контроля затрат в продакшене. Рубрики, синтетические сеты, judges и аудиты.">
+    <link rel="canonical" href="https://insiderai.it.com/ru/blog/evaluating-llm-systems.html">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Оценка LLM Систем">
+    <meta property="og:description" content="Рубрики, синтетические сеты, judges и human‑in‑the‑loop аудиты для продакшена.">
+    <meta property="og:url" content="https://insiderai.it.com/ru/blog/evaluating-llm-systems.html">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav__content">
+                <div class="nav__brand">
+                    <span class="brand-text">AI Insider</span>
+                    <span class="brand-tagline">Платформа ИИ Нового Поколения</span>
+                </div>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li><a href="../../index.html" class="nav__link">Главная</a></li>
+                        <li><a href="../../courses.html" class="nav__link">Курсы</a></li>
+                        <li><a href="../../community.html" class="nav__link">Сообщество</a></li>
+                        <li><a href="../../reviews.html" class="nav__link">Отзывы</a></li>
+                        <li><a href="../../b2b.html" class="nav__link">B2B</a></li>
+                    </ul>
+                    <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Присоединиться</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="article-hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge"><span>🧪 Оценки</span></div>
+                <h1 class="article-title-xl">Оценка LLM Систем</h1>
+                <p class="article-subtitle">От промптов до бизнес-метрик</p>
+                <div class="article-meta-row">
+                    <div class="article-meta">AI Insider Team • 2025</div>
+                    <div class="article-tags">
+                        <span class="tag">LLM</span>
+                        <span class="tag">Eval</span>
+                        <span class="tag">Качество</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <article class="article-content">
+                <p class="lead">Продакшн-оценки должны связывать поведение модели с бизнес-KPI. Мы смешиваем автоматические метрики (BLEU, rouge‑L, токсичность) с <strong>human‑in‑the‑loop</strong> точечными проверками на высокоценных сегментах.</p>
+                
+                <h2>Наш цикл оценки</h2>
+                <ol>
+                    <li>Определить рубрику задач и правила прохождения/провала</li>
+                    <li>Генерировать разнообразные eval-сеты с синтетическим дополнением</li>
+                    <li>Оценивать с программными судьями и человеческими аудитами</li>
+                    <li>Отслеживать дрейф затрат/производительности еженедельно</li>
+                </ol>
+                <p>Это поддерживает стабильность качества, пока вы итерируете промпты, инструменты и модели.</p>
+                
+                <h2>Что оценивать</h2>
+                <ul>
+                    <li><strong>Успех задач</strong>: прохождение/провал по рубрике с причинами</li>
+                    <li><strong>Безопасность</strong>: токсичность, PII, устойчивость к jailbreak</li>
+                    <li><strong>Затраты и задержка</strong>: на запрос и на бизнес-событие</li>
+                    <li><strong>Дрейф</strong>: еженедельное сравнение с последней известной хорошей версией</li>
+                </ul>
+
+                <h2>Практические советы</h2>
+                <ul>
+                    <li>Начните с малого eval-сета и расширяйте постепенно</li>
+                    <li>Автоматизируйте рутинные проверки, людей оставьте для сложных кейсов</li>
+                    <li>Ведите лог всех изменений промптов и моделей</li>
+                    <li>Настройте алерты на резкие изменения метрик</li>
+                </ul>
+
+                <div class="related-content">
+                    <h3>Читайте далее</h3>
+                    <ul>
+                        <li><a href="building-robust-n8n-workflows.html">Создание Надёжных n8n Флоу</a></li>
+                        <li><a href="shipping-ai-agents-to-production.html">Внедрение ИИ Агентов в Продакшн</a></li>
+                    </ul>
+                </div>
+                
+                <div class="article-back">
+                    <a class="manager-link" href="../blog.html">← Вернуться в блог</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="premium-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>AI Insider</h3>
+                    <p>Платформа ИИ Автоматизации Нового Поколения</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2024 AI Insider. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../../scripts/main.js"></script>
+</body>
+</html>

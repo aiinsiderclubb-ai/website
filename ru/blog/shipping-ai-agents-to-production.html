@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Внедрение ИИ Агентов в Продакшн — AI Insider</title>
+    <meta name="description" content="Декомпозиция задач, детерминированные инструменты, гарант-рельсы и планы отката. Trace‑first отладка для сокращения MTTR.">
+    <link rel="canonical" href="https://insiderai.it.com/ru/blog/shipping-ai-agents-to-production.html">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Внедрение ИИ Агентов в Продакшн">
+    <meta property="og:description" content="Наблюдаемость, повторы, гарант-рельсы, откаты и trace‑first отладка.">
+    <meta property="og:url" content="https://insiderai.it.com/ru/blog/shipping-ai-agents-to-production.html">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav__content">
+                <div class="nav__brand">
+                    <span class="brand-text">AI Insider</span>
+                    <span class="brand-tagline">Платформа ИИ Нового Поколения</span>
+                </div>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li><a href="../../index.html" class="nav__link">Главная</a></li>
+                        <li><a href="../../courses.html" class="nav__link">Курсы</a></li>
+                        <li><a href="../../community.html" class="nav__link">Сообщество</a></li>
+                        <li><a href="../../reviews.html" class="nav__link">Отзывы</a></li>
+                        <li><a href="../../b2b.html" class="nav__link">B2B</a></li>
+                    </ul>
+                    <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Присоединиться</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="article-hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge"><span>🤖 Агенты</span></div>
+                <h1 class="article-title-xl">Внедрение ИИ Агентов в Продакшн</h1>
+                <p class="article-subtitle">Наблюдаемость, повторы, безопасность инструментов</p>
+                <div class="article-meta-row">
+                    <div class="article-meta">AI Insider Team • 2025</div>
+                    <div class="article-tags">
+                        <span class="tag">Агенты</span>
+                        <span class="tag">Трейсы</span>
+                        <span class="tag">Guardrails</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <article class="article-content">
+                <p class="lead">Агенты ломаются в стыках. Инструментируйте каждый вызов инструмента, ограничивайте выходы JSON-схемами, изолируйте побочные эффекты и реализуйте <em>компенсирующие действия</em> для частичных сбоев.</p>
+                <p>Принимайте <strong>trace‑first отладку</strong>: каждый запуск создаёт временную шкалу с входами, выходами и затратами. Это кардинально сокращает MTTR.</p>
+
+                <h2>Чек-лист продакшена</h2>
+                <ul>
+                    <li><strong>Детерминированные инструменты</strong>: типизированные входы/выходы, идемпотентные действия, таймауты</li>
+                    <li><strong>Guardrails</strong>: валидация JSON-схем, список разрешённых инструментов, безопасные fallback</li>
+                    <li><strong>Повторы</strong>: классификация временных vs фатальных ошибок; экспоненциальный откат; DLQ</li>
+                    <li><strong>Наблюдаемость</strong>: трейсы со спанами на инструмент, версии промптов, затраты</li>
+                    <li><strong>Откаты</strong>: компенсирующие действия и saga-подобная оркестрация</li>
+                </ul>
+
+                <h2>Плейбук отладки</h2>
+                <ol>
+                    <li>Захватить падающий запуск с полной <strong>временной шкалой</strong> и окружением</li>
+                    <li>Воспроизвести с фиксированным seed и <strong>замороженными инструментами</strong></li>
+                    <li>Добавить правило или тест для предотвращения регрессии; отправить canary; наблюдать</li>
+                </ol>
+
+                <h2>Соображения безопасности</h2>
+                <ul>
+                    <li>Ограничить секреты до scoped токенов; никогда не раскрывать env в трейсах</li>
+                    <li>Rate‑лимитировать инструменты и принуждать к <strong>allowlist</strong> для назначений</li>
+                    <li>Запускать недоверенный код в песочницах; логировать все побочные эффекты</li>
+                </ul>
+
+                <h2>Мониторинг агентов</h2>
+                <p>Настройте метрики для отслеживания:</p>
+                <ul>
+                    <li><strong>Успешность вызовов инструментов</strong> - процент успешных выполнений</li>
+                    <li><strong>Время выполнения агента</strong> - от начала до завершения задачи</li>
+                    <li><strong>Количество итераций</strong> - сколько циклов потребовалось для решения</li>
+                    <li><strong>Затраты на токены</strong> - отслеживание расходов по задачам</li>
+                </ul>
+
+                <div class="related-content">
+                    <h3>Читайте далее</h3>
+                    <ul>
+                        <li><a href="evaluating-llm-systems.html">Оценка LLM Систем</a></li>
+                        <li><a href="building-robust-n8n-workflows.html">Создание Надёжных n8n Флоу</a></li>
+                    </ul>
+                </div>
+                
+                <div class="article-back">
+                    <a class="manager-link" href="../blog.html">← Вернуться в блог</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="premium-footer">
+        <div class="footer-glow"></div>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3>AI Insider</h3>
+                    <p>Платформа ИИ Автоматизации Нового Поколения</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2024 AI Insider. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="../../scripts/main.js"></script>
+</body>
+</html>
