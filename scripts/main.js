@@ -3182,4 +3182,197 @@ window.AIInsider = {
     removeWithAnimation,
     addGlowEffect,
     debounce
-}; 
+};
+
+// ===== FLIP CARD SPOTLIGHT EFFECT =====
+class CardSpotlight {
+    constructor() {
+        this.cards = document.querySelectorAll('.flip-card');
+        if (this.cards.length === 0) return;
+        this.init();
+    }
+
+    init() {
+        this.cards.forEach(card => {
+            const frontSpotlight = card.querySelector('.flip-card__front .card-spotlight');
+            const backSpotlight = card.querySelector('.flip-card__back .card-spotlight');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+                if (frontSpotlight) {
+                    frontSpotlight.style.setProperty('--mouse-x', `${x}%`);
+                    frontSpotlight.style.setProperty('--mouse-y', `${y}%`);
+                }
+                if (backSpotlight) {
+                    backSpotlight.style.setProperty('--mouse-x', `${x}%`);
+                    backSpotlight.style.setProperty('--mouse-y', `${y}%`);
+                }
+            });
+
+            // Touch device tap to flip
+            if ('ontouchstart' in window) {
+                card.addEventListener('click', (e) => {
+                    // Don't flip if clicking a link
+                    if (e.target.tagName === 'A' || e.target.closest('a')) return;
+                    card.classList.toggle('is-flipped');
+                });
+            }
+        });
+    }
+}
+
+// ===== LIVE COUNTDOWN TIMER =====
+class CourseCountdown {
+    constructor() {
+        this.countdowns = document.querySelectorAll('.course-countdown-mini');
+        if (this.countdowns.length === 0) return;
+        this.init();
+    }
+
+    init() {
+        this.countdowns.forEach(countdown => {
+            const targetDate = new Date(countdown.dataset.target).getTime();
+            
+            // Update immediately
+            this.updateCountdown(countdown, targetDate);
+            
+            // Then update every second
+            setInterval(() => {
+                this.updateCountdown(countdown, targetDate);
+            }, 1000);
+        });
+    }
+
+    updateCountdown(element, targetDate) {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            // Course has started
+            element.innerHTML = '<span class="countdown-label" style="color: #10b981;">🚀 Course Started!</span>';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const daysEl = element.querySelector('[data-days]');
+        const hoursEl = element.querySelector('[data-hours]');
+        const minutesEl = element.querySelector('[data-minutes]');
+        const secondsEl = element.querySelector('[data-seconds]');
+
+        if (daysEl) this.animateNumber(daysEl, days);
+        if (hoursEl) this.animateNumber(hoursEl, hours);
+        if (minutesEl) this.animateNumber(minutesEl, minutes);
+        if (secondsEl) this.animateNumber(secondsEl, seconds);
+
+        // Add urgency styling if less than 3 days
+        if (days < 3) {
+            element.style.background = 'rgba(239, 68, 68, 0.15)';
+            element.style.borderColor = 'rgba(239, 68, 68, 0.3)';
+            element.querySelector('.countdown-label').style.color = '#fca5a5';
+        }
+    }
+
+    animateNumber(element, value) {
+        const currentValue = element.textContent;
+        const newValue = value.toString().padStart(2, '0');
+        
+        if (currentValue !== newValue) {
+            element.style.transform = 'translateY(-2px)';
+            element.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                element.textContent = newValue;
+                element.style.transform = 'translateY(0)';
+                element.style.opacity = '1';
+            }, 100);
+        }
+    }
+}
+
+// ===== STAGGERED BADGE ANIMATION =====
+class BadgeAnimations {
+    constructor() {
+        this.badges = document.querySelectorAll('.floating-badge');
+        if (this.badges.length === 0) return;
+        this.init();
+    }
+
+    init() {
+        // Add intersection observer for on-scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        this.badges.forEach(badge => {
+            badge.style.opacity = '0';
+            badge.style.transform = 'translateY(-20px)';
+            badge.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            observer.observe(badge);
+        });
+    }
+}
+
+// ===== COMPARISON TABLE HIGHLIGHT =====
+class ComparisonTableHighlight {
+    constructor() {
+        this.table = document.querySelector('.comparison-table-plans');
+        if (!this.table) return;
+        this.init();
+    }
+
+    init() {
+        const rows = this.table.querySelectorAll('tbody tr');
+        
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                const cells = row.querySelectorAll('td');
+                cells.forEach((cell, index) => {
+                    if (index > 0) {
+                        cell.style.transform = 'scale(1.05)';
+                        cell.style.transition = 'transform 0.2s ease';
+                    }
+                });
+            });
+
+            row.addEventListener('mouseleave', () => {
+                const cells = row.querySelectorAll('td');
+                cells.forEach(cell => {
+                    cell.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // VIP column pulse effect
+        const vipHeader = this.table.querySelector('.plan-vip');
+        if (vipHeader) {
+            setInterval(() => {
+                vipHeader.style.boxShadow = '0 0 30px rgba(239, 68, 68, 0.3)';
+                setTimeout(() => {
+                    vipHeader.style.boxShadow = 'none';
+                }, 1000);
+            }, 3000);
+        }
+    }
+}
+
+// ===== INITIALIZE PREMIUM COURSE FEATURES =====
+document.addEventListener('DOMContentLoaded', function() {
+    new CardSpotlight();
+    new CourseCountdown();
+    new BadgeAnimations();
+    new ComparisonTableHighlight();
+}); 
