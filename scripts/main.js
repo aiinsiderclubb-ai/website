@@ -1458,101 +1458,6 @@ class PageProgressManager {
     }
 }
 
-// ===== HOME COURSES ENHANCEMENTS =====
-class HomeCoursesEnhancer {
-    constructor() {
-        this.initSpotlight();
-        this.initPricingCompare();
-    }
-
-    initSpotlight() {
-        const cards = document.querySelectorAll('.premium-courses-section .premium-course-card');
-        if (!cards.length) return;
-
-        const handleMove = (event) => {
-            const card = event.currentTarget;
-            const rect = card.getBoundingClientRect();
-            const x = ((event.clientX - rect.left) / rect.width) * 100;
-            const y = ((event.clientY - rect.top) / rect.height) * 100;
-            card.style.setProperty('--spotlight-x', `${x}%`);
-            card.style.setProperty('--spotlight-y', `${y}%`);
-            card.classList.add('has-spotlight');
-        };
-
-        const handleLeave = (event) => {
-            const card = event.currentTarget;
-            card.classList.remove('has-spotlight');
-            card.style.removeProperty('--spotlight-x');
-            card.style.removeProperty('--spotlight-y');
-        };
-
-        cards.forEach(card => {
-            card.addEventListener('pointermove', handleMove);
-            card.addEventListener('pointerleave', handleLeave);
-        });
-    }
-
-    initPricingCompare() {
-        const wrapper = document.getElementById('pricingCompare');
-        if (!wrapper) return;
-
-        const toggle = wrapper.querySelector('.pricing-compare__toggle');
-        const buttons = toggle ? toggle.querySelectorAll('.pricing-toggle') : null;
-        const panels = wrapper.querySelectorAll('.pricing-compare__panel');
-        if (!toggle || !buttons?.length || !panels.length) return;
-
-        // Create slider thumb
-        const thumb = document.createElement('div');
-        thumb.className = 'pricing-toggle__thumb';
-        toggle.appendChild(thumb);
-
-        const activatePlan = (plan) => {
-            buttons.forEach(btn => {
-                const isActive = btn.getAttribute('data-plan') === plan;
-                btn.classList.toggle('is-active', isActive);
-                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-            });
-
-            panels.forEach(panel => {
-                const isActive = panel.getAttribute('data-plan-panel') === plan;
-                panel.classList.toggle('is-active', isActive);
-                if (isActive) {
-                    panel.removeAttribute('hidden');
-                } else {
-                    panel.setAttribute('hidden', 'hidden');
-                }
-            });
-
-            // Move thumb under active button
-            const activeBtn = Array.from(buttons).find(btn => btn.classList.contains('is-active'));
-            if (!activeBtn) return;
-            const btnRect = activeBtn.getBoundingClientRect();
-            const toggleRect = toggle.getBoundingClientRect();
-            const width = btnRect.width;
-            const offsetX = btnRect.left - toggleRect.left;
-            thumb.style.width = `${width}px`;
-            thumb.style.transform = `translateX(${offsetX}px)`;
-        };
-
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const plan = btn.getAttribute('data-plan');
-                if (plan) activatePlan(plan);
-            });
-        });
-
-        // Initial layout
-        window.addEventListener('load', () => {
-            const initial = wrapper.querySelector('.pricing-toggle.is-active')?.getAttribute('data-plan') || 'chatbot';
-            activatePlan(initial);
-        });
-        window.addEventListener('resize', () => {
-            const current = wrapper.querySelector('.pricing-toggle.is-active')?.getAttribute('data-plan');
-            if (current) activatePlan(current);
-        });
-    }
-}
-
 class CoursePageEnhancer {
     constructor() {
         this.previewEl = null;
@@ -2480,6 +2385,81 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(tick, 1000);
     });
 
+    // Spotlight effect on cards
+    const spotlightCards = document.querySelectorAll('[data-spotlight]');
+    spotlightCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--spot-x', `${x}%`);
+            card.style.setProperty('--spot-y', `${y}%`);
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.removeProperty('--spot-x');
+            card.style.removeProperty('--spot-y');
+        });
+    });
+
+    // Inline course countdowns
+    const inlineCountdowns = document.querySelectorAll('.course-countdown[data-countdown-target]');
+    inlineCountdowns.forEach(box => {
+        const targetAttr = box.getAttribute('data-countdown-target');
+        const targetDate = targetAttr ? new Date(targetAttr) : null;
+        if (!targetDate || Number.isNaN(targetDate.getTime())) return;
+        const daysEl = box.querySelector('[data-unit="days"]');
+        const hoursEl = box.querySelector('[data-unit="hours"]');
+        const minsEl = box.querySelector('[data-unit="mins"]');
+        const render = () => {
+            const now = new Date();
+            let diff = Math.max(0, targetDate - now);
+            const days = Math.floor(diff / (1000*60*60*24));
+            diff -= days * (1000*60*60*24);
+            const hours = Math.floor(diff / (1000*60*60));
+            diff -= hours * (1000*60*60);
+            const mins = Math.floor(diff / (1000*60));
+            if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+            if (minsEl) minsEl.textContent = String(mins).padStart(2, '0');
+        };
+        render();
+        setInterval(render, 1000 * 30);
+    });
+
+    // Pricing comparison slider
+    const pricingSlider = document.getElementById('pricingSlider');
+    const pricingPlans = Array.from(document.querySelectorAll('.pricing-plan'));
+    const billingModes = [
+        { label: 'Monthly', factor: 1, note: '' },
+        { label: 'Quarterly', factor: 0.9, note: 'Save 10%' },
+        { label: 'Annual', factor: 0.8, note: 'Save 20%' },
+    ];
+    const updatePricingPlans = () => {
+        if (!pricingSlider) return;
+        const modeIndex = Math.min(billingModes.length - 1, Math.max(0, parseInt(pricingSlider.value || '0', 10)));
+        const mode = billingModes[modeIndex];
+        pricingPlans.forEach(plan => {
+            const basePrice = parseFloat(plan.getAttribute('data-base-price') || '0');
+            const priceEl = plan.querySelector('.plan-price');
+            const metaEl = plan.querySelector('.plan-meta');
+            if (!metaEl.dataset.baseMeta) {
+                metaEl.dataset.baseMeta = metaEl.textContent.trim();
+            }
+            if (priceEl && basePrice > 0) {
+                const newPrice = Math.round(basePrice * mode.factor);
+                priceEl.textContent = `€${newPrice}`;
+            }
+            if (metaEl) {
+                const note = mode.note ? ` • ${mode.note}` : '';
+                metaEl.textContent = `${metaEl.dataset.baseMeta}${note}`;
+            }
+        });
+    };
+    if (pricingSlider) {
+        updatePricingPlans();
+        pricingSlider.addEventListener('input', updatePricingPlans);
+    }
+
     // Quiz → personalized benefits and Telegram text enrichment
     const quiz = document.getElementById('courseQuiz');
     if (quiz) {
@@ -2654,8 +2634,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log('🚀 AI Insider Enterprise Platform Fully Loaded!');
-    // Home page: enhance courses section (flip, spotlight, pricing slider)
-    safeInit(HomeCoursesEnhancer, 'HomeCoursesEnhancer');
 });
 
 // ===== ERROR HANDLING =====

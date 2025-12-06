@@ -274,15 +274,41 @@
                 </p>
             </div>
             
+            <!-- Pricing Comparison Slider -->
+            <div class="pricing-slider">
+                <div class="pricing-slider__header">
+                    <span class="pricing-label">Monthly</span>
+                    <input type="range" min="0" max="2" step="1" value="0" class="pricing-slider__control" id="pricingSlider">
+                    <span class="pricing-label">Annual</span>
+                </div>
+                <div class="pricing-slider__plans">
+                    <div class="pricing-plan" data-plan-index="0" data-base-price="39">
+                        <div class="plan-title">Starter</div>
+                        <div class="plan-price">€39</div>
+                        <div class="plan-meta">Best for first bots</div>
+                    </div>
+                    <div class="pricing-plan" data-plan-index="1" data-base-price="59">
+                        <div class="plan-title">Growth</div>
+                        <div class="plan-price">€59</div>
+                        <div class="plan-meta">Most popular cohort</div>
+                    </div>
+                    <div class="pricing-plan" data-plan-index="2" data-base-price="299">
+                        <div class="plan-title">Elite</div>
+                        <div class="plan-price">€299</div>
+                        <div class="plan-meta">1‑on‑1 mentorship</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Premium Courses Grid -->
             <div class="premium-courses-grid">
 
                 <!-- ChatBot Cohort Sep 15 -->
-                <div class="course-flip">
-                    <div class="course-flip__inner">
-                        <!-- Front side -->
-                        <div class="premium-course-card course-flip__face course-flip__face--front">
-                            <div class="course-badge-floating course-badge-floating--bestseller">Bestseller</div>
+                <div class="premium-course-card card-flip" data-spotlight>
+                    <div class="course-badge badge-hot">Hot</div>
+                    <div class="course-float-badge">Bestseller</div>
+                    <div class="card-inner">
+                        <div class="card-face card-face--front">
                             <div class="course-header">
                                 <div class="course-icon-wrapper">
                                     <div class="course-icon">🤖</div>
@@ -297,7 +323,7 @@
                                 <div class="course-info">
                                     <h3>AI Chat‑Bot Development <br>(ChatGPT & n8n)</h3>
                                     <div class="course-meta">
-                                        <span class="start-date">📅 Starts September 15</span>
+                                        <span class="start-date" data-countdown-target="2025-09-15T00:00:00Z">📅 Starts September 15</span>
                                         <span class="spots-left">🔑 API keys included</span>
                                     </div>
                                     <p>From zero to a niche‑ready bot for services, e‑commerce or healthcare. Practice on real tasks with templates and guidance. Includes a quick sales playbook.</p>
@@ -308,48 +334,40 @@
                                         <span>✓ Real cases</span>
                                     </div>
                                 </div>
+                                <div class="course-countdown" data-countdown-target="2025-09-15T00:00:00Z">
+                                    <div class="cd-item"><span class="cd-value" data-unit="days">00</span><span class="cd-label">Days</span></div>
+                                    <div class="cd-item"><span class="cd-value" data-unit="hours">00</span><span class="cd-label">Hours</span></div>
+                                    <div class="cd-item"><span class="cd-value" data-unit="mins">00</span><span class="cd-label">Mins</span></div>
+                                </div>
                                 <div class="course-bottom">
                                     <a href="courses/chatbot/sep-15.html" class="premium-course-btn">Enroll — €59</a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Back side -->
-                        <div class="premium-course-card course-flip__face course-flip__face--back">
-                            <div class="course-header">
-                                <div class="course-icon-wrapper">
-                                    <div class="course-icon">🧱</div>
-                                    <div class="course-level">Program</div>
-                                </div>
-                                <div class="course-pricing">
-                                    <span class="course-duration">3-week roadmap</span>
-                                </div>
+                        <div class="card-face card-face--back">
+                            <div class="back-header">
+                                <span class="back-label">Program Outline</span>
+                                <span class="back-duration">3 weeks • 6 live sessions</span>
                             </div>
-                            <div class="course-content course-content--back">
-                                <div class="course-info">
-                                    <h3>What you'll build</h3>
-                                    <div class="course-features course-features--stacked">
-                                        <span>• Week 1 — Tools, ChatGPT & prompt patterns</span>
-                                        <span>• Week 2 — n8n workflows & integrations</span>
-                                        <span>• Week 3 — Launch, analytics & sales scripts</span>
-                                        <span>• Ready‑to‑ship chatbot for your niche</span>
-                                    </div>
-                                    <p class="course-description">Perfect if you want a concrete portfolio project and a repeatable blueprint for future bots.</p>
-                                </div>
-                                <div class="course-bottom course-bottom--back">
-                                    <a href="courses/chatbot/sep-15.html" class="premium-course-btn">View full syllabus</a>
-                                </div>
+                            <ul class="program-list">
+                                <li>Day 1: n8n fundamentals + triggers</li>
+                                <li>Day 3: Prompt design & evals for bots</li>
+                                <li>Day 5: Integrations: Sheets, HubSpot, Webhooks</li>
+                                <li>Day 7: Deploy + monitor + rollback</li>
+                            </ul>
+                            <div class="back-cta">
+                                <a href="courses/chatbot/sep-15.html" class="premium-course-btn">View Syllabus</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Voice Agent Cohort 2 -->
-                <div class="course-flip">
-                    <div class="course-flip__inner">
-                        <!-- Front side -->
-                        <div class="premium-course-card course-flip__face course-flip__face--front">
-                            <div class="course-badge-floating course-badge-floating--new">New</div>
+                <div class="premium-course-card card-flip" data-spotlight>
+                    <div class="course-badge badge-new">New</div>
+                    <div class="course-float-badge badge-pulse">Hot seat</div>
+                    <div class="card-inner">
+                        <div class="card-face card-face--front">
                             <div class="course-header">
                                 <div class="course-icon-wrapper">
                                     <div class="course-icon">🎙️</div>
@@ -364,7 +382,7 @@
                                 <div class="course-info">
                                     <h3>AI Voice Agent <br>(Vapi.ai & Whisper)</h3>
                                     <div class="course-meta">
-                                        <span class="start-date">📅 Starts September 8</span>
+                                        <span class="start-date" data-countdown-target="2025-09-08T00:00:00Z">📅 Starts September 8</span>
                                         <span class="spots-left">🔑 API keys included</span>
                                     </div>
                                     <p>Design scenarios, wire real‑time actions and take your agent to production for services, healthcare or sales. API keys for practice included.</p>
@@ -375,48 +393,40 @@
                                         <span>✓ Certificate</span>
                                     </div>
                                 </div>
+                                <div class="course-countdown" data-countdown-target="2025-09-08T00:00:00Z">
+                                    <div class="cd-item"><span class="cd-value" data-unit="days">00</span><span class="cd-label">Days</span></div>
+                                    <div class="cd-item"><span class="cd-value" data-unit="hours">00</span><span class="cd-label">Hours</span></div>
+                                    <div class="cd-item"><span class="cd-value" data-unit="mins">00</span><span class="cd-label">Mins</span></div>
+                                </div>
                                 <div class="course-bottom">
                                     <a href="courses/voice/sep-8.html" class="premium-course-btn">Join — €39</a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Back side -->
-                        <div class="premium-course-card course-flip__face course-flip__face--back">
-                            <div class="course-header">
-                                <div class="course-icon-wrapper">
-                                    <div class="course-icon">📞</div>
-                                    <div class="course-level">Scenarios</div>
-                                </div>
-                                <div class="course-pricing">
-                                    <span class="course-duration">2-week intensive</span>
-                                </div>
+                        <div class="card-face card-face--back">
+                            <div class="back-header">
+                                <span class="back-label">Program Outline</span>
+                                <span class="back-duration">2 weeks • 4 live sessions</span>
                             </div>
-                            <div class="course-content course-content--back">
-                                <div class="course-info">
-                                    <h3>Inside the cohort</h3>
-                                    <div class="course-features course-features--stacked">
-                                        <span>• Service & support voice agents</span>
-                                        <span>• Healthcare & booking use‑cases</span>
-                                        <span>• Realtime tools, actions & handoff</span>
-                                        <span>• Production‑ready Vapi setup</span>
-                                    </div>
-                                    <p class="course-description">Best for those who already shipped chatbots and now want to add voice automation to their stack.</p>
-                                </div>
-                                <div class="course-bottom course-bottom--back">
-                                    <a href="courses/voice/sep-8.html" class="premium-course-btn">See use‑cases</a>
-                                </div>
+                            <ul class="program-list">
+                                <li>Day 1: Vapi realtime + call flows</li>
+                                <li>Day 3: Whisper + speech synthesis tuning</li>
+                                <li>Day 5: Actions, CRM write-backs</li>
+                                <li>Day 7: QA, monitoring, playbooks</li>
+                            </ul>
+                            <div class="back-cta">
+                                <a href="courses/voice/sep-8.html" class="premium-course-btn">View Syllabus</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Personal Mentorship -->
-                <div class="course-flip">
-                    <div class="course-flip__inner">
-                        <!-- Front side -->
-                        <div class="premium-course-card card-vip course-flip__face course-flip__face--front">
-                            <div class="course-badge-floating course-badge-floating--vip">VIP</div>
+                <div class="premium-course-card card-vip card-flip" data-spotlight>
+                    <div class="course-badge badge-elite">VIP</div>
+                    <div class="course-float-badge">1:1 Mentorship</div>
+                    <div class="card-inner">
+                        <div class="card-face card-face--front">
                             <div class="course-header">
                                 <div class="course-icon-wrapper">
                                     <div class="course-icon">👨‍💼</div>
@@ -431,7 +441,7 @@
                                 <div class="course-info">
                                     <h3>Personal ChatBot Mentorship</h3>
                                     <div class="course-meta">
-                                        <span class="start-date">🎯 Your First €1000</span>
+                                        <span class="start-date" data-countdown-target="2025-09-01T00:00:00Z">🎯 Your First €1000</span>
                                         <span class="spots-left">👑 VIP Access</span>
                                     </div>
                                     <p>1‑on‑1 mentorship to create and monetize your first chatbot. Personal guidance, direct feedback, a revenue playbook and unlimited support.</p>
@@ -442,168 +452,29 @@
                                         <span>✓ Unlimited support</span>
                                     </div>
                                 </div>
+                                <div class="course-countdown" data-countdown-target="2025-09-01T00:00:00Z">
+                                    <div class="cd-item"><span class="cd-value" data-unit="days">00</span><span class="cd-label">Days</span></div>
+                                    <div class="cd-item"><span class="cd-value" data-unit="hours">00</span><span class="cd-label">Hours</span></div>
+                                    <div class="cd-item"><span class="cd-value" data-unit="mins">00</span><span class="cd-label">Mins</span></div>
+                                </div>
                                 <div class="course-bottom">
                                     <a href="https://t.me/vladyslavarcher?text=Привет!%20Интересует%20Personal%20ChatBot%20Mentorship%20(€299)" class="premium-course-btn btn-vip">Get VIP Mentorship — €299</a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Back side -->
-                        <div class="premium-course-card card-vip course-flip__face course-flip__face--back">
-                            <div class="course-header">
-                                <div class="course-icon-wrapper">
-                                    <div class="course-icon">💼</div>
-                                    <div class="course-level">Monetization</div>
-                                </div>
-                                <div class="course-pricing">
-                                    <span class="course-duration">2 weeks 1‑on‑1</span>
-                                </div>
+                        <div class="card-face card-face--back">
+                            <div class="back-header">
+                                <span class="back-label">Program Outline</span>
+                                <span class="back-duration">2 weeks • Custom plan</span>
                             </div>
-                            <div class="course-content course-content--back">
-                                <div class="course-info">
-                                    <h3>Who it's for</h3>
-                                    <div class="course-features course-features--stacked">
-                                        <span>• You want to close your first €1000 with AI skills</span>
-                                        <span>• Need direct feedback on offers & positioning</span>
-                                        <span>• Want a ready outbound & inbound playbook</span>
-                                        <span>• Prefer 1‑on‑1 format over group calls</span>
-                                    </div>
-                                    <p class="course-description">Includes personal chat with Vlad, deal review and a concrete roadmap to your first paying clients.</p>
-                                </div>
-                                <div class="course-bottom course-bottom--back">
-                                    <a href="https://t.me/vladyslavarcher?text=Привет!%20Интересует%20Personal%20ChatBot%20Mentorship%20(€299)" class="premium-course-btn btn-vip">Chat with Vlad</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pricing comparison slider -->
-            <div class="pricing-compare" id="pricingCompare">
-                <div class="pricing-compare__header">
-                    <h3 class="pricing-compare__title">Compare learning paths</h3>
-                    <p class="pricing-compare__subtitle">See which format fits your level, time and goals best.</p>
-                </div>
-                <div class="pricing-compare__toggle" role="tablist" aria-label="Compare course plans">
-                    <button class="pricing-toggle is-active" data-plan="chatbot" role="tab" aria-selected="true">Chat‑Bot</button>
-                    <button class="pricing-toggle" data-plan="voice" role="tab" aria-selected="false">Voice Agent</button>
-                    <button class="pricing-toggle" data-plan="vip" role="tab" aria-selected="false">VIP Mentorship</button>
-                </div>
-                <div class="pricing-compare__panels">
-                    <div class="pricing-compare__panel is-active" data-plan-panel="chatbot" role="tabpanel">
-                        <div class="pricing-compare__grid">
-                            <div class="pricing-compare__row">
-                                <span>Level</span>
-                                <span>Beginner → first bot</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Focus</span>
-                                <span>Chatbots, prompts, n8n flows</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Time</span>
-                                <span>3 weeks, 4–6h/week</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Outcome</span>
-                                <span>Deployed chatbot + sales playbook</span>
-                            </div>
-                            <div class="pricing-compare__row pricing-compare__row--highlight">
-                                <span>Investment</span>
-                                <span>€59 one‑time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pricing-compare__panel" data-plan-panel="voice" role="tabpanel" hidden>
-                        <div class="pricing-compare__grid">
-                            <div class="pricing-compare__row">
-                                <span>Level</span>
-                                <span>Intermediate → voice agents</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Focus</span>
-                                <span>Vapi, realtime tools, call flows</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Time</span>
-                                <span>2 weeks, 4–5h/week</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Outcome</span>
-                                <span>Production voice agent for your niche</span>
-                            </div>
-                            <div class="pricing-compare__row pricing-compare__row--highlight">
-                                <span>Investment</span>
-                                <span>€39 one‑time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pricing-compare__panel" data-plan-panel="vip" role="tabpanel" hidden>
-                        <div class="pricing-compare__grid">
-                            <div class="pricing-compare__row">
-                                <span>Level</span>
-                                <span>Any → income focused</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Focus</span>
-                                <span>Positioning, offers, sales, ops</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Time</span>
-                                <span>2 weeks of 1‑on‑1 work</span>
-                            </div>
-                            <div class="pricing-compare__row">
-                                <span>Outcome</span>
-                                <span>Your first €1000+ with AI services</span>
-                            </div>
-                            <div class="pricing-compare__row pricing-compare__row--highlight">
-                                <span>Investment</span>
-                                <span>€299 VIP</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Live countdown for next cohorts -->
-            <div class="home-countdown">
-                <div class="home-countdown__header">
-                    <h3 class="home-countdown__title">Next cohorts are filling fast</h3>
-                    <p class="home-countdown__subtitle">Join before the countdown hits zero to secure your spot.</p>
-                </div>
-                <div class="home-countdown__grid">
-                    <div class="home-countdown__course">
-                        <div class="home-countdown__label">Chat‑Bot Cohort</div>
-                        <div class="countdown-grid" data-countdown-date="2025-09-15T09:00:00">
-                            <div class="countdown-item">
-                                <span class="countdown-value" data-dd>00</span>
-                                <span class="countdown-label">days</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-value" data-hh>00</span>
-                                <span class="countdown-label">hours</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-value" data-mm>00</span>
-                                <span class="countdown-label">minutes</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="home-countdown__course">
-                        <div class="home-countdown__label">Voice Agent Cohort</div>
-                        <div class="countdown-grid" data-countdown-date="2025-09-08T09:00:00">
-                            <div class="countdown-item">
-                                <span class="countdown-value" data-dd>00</span>
-                                <span class="countdown-label">days</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-value" data-hh>00</span>
-                                <span class="countdown-label">hours</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-value" data-mm>00</span>
-                                <span class="countdown-label">minutes</span>
+                            <ul class="program-list">
+                                <li>Audit: niche, ICP, offer</li>
+                                <li>Build: bot, flows, evals, safeguards</li>
+                                <li>Monetize: sales playbook, outreach scripts</li>
+                                <li>Scale: monitoring, pricing, next steps</li>
+                            </ul>
+                            <div class="back-cta">
+                                <a href="https://t.me/vladyslavarcher?text=Привет!%20Интересует%20Personal%20ChatBot%20Mentorship%20(€299)" class="premium-course-btn btn-vip">Book Intro Call</a>
                             </div>
                         </div>
                     </div>
