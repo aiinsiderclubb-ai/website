@@ -4032,7 +4032,8 @@ body {
 
 /* ===== PREMIUM FLIP CARDS ===== */
 .flip-card {
-  perspective: 1200px;
+  position: relative;
+  perspective: 1000px;
   height: 520px;
   cursor: pointer;
 }
@@ -4041,8 +4042,9 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s ease-in-out;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .flip-card:hover .flip-card__inner {
@@ -4056,35 +4058,30 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  /* Solid background - critical for hiding content behind */
-  background-color: #0f0f0f;
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  /* Critical for hiding backface */
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden;
-  /* Force GPU acceleration */
-  -webkit-transform: translateZ(1px);
-  transform: translateZ(1px);
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
 .flip-card__front {
   display: flex;
   flex-direction: column;
-  padding: var(--space-5);
-  background: linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
+  transform: rotateY(0deg);
+  opacity: 1;
+  visibility: visible;
 }
 
 .flip-card__back {
-  /* Rotate and move slightly back on Z axis */
-  -webkit-transform: rotateY(180deg) translateZ(1px);
-  transform: rotateY(180deg) translateZ(1px);
+  transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #1a1a2e 0%, #0f0f0f 100%);
+  background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, var(--glass-bg) 100%);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .flip-card--vip .flip-card__front,
@@ -4093,61 +4090,8 @@ body {
   box-shadow: 0 0 30px rgba(239, 68, 68, 0.15);
 }
 
-.flip-card--vip .flip-card__front {
-  background: linear-gradient(180deg, #1a1010 0%, #0a0a0a 100%);
-}
-
 .flip-card__back--vip {
-  background: linear-gradient(135deg, #2a1a1a 0%, #0f0f0f 100%);
-}
-
-/* Front card layout */
-.flip-card__front .course-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--space-4);
-}
-
-.flip-card__front .course-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.flip-card__front .course-info {
-  flex: 1;
-}
-
-.flip-card__front .course-info h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: var(--space-3);
-  color: var(--color-text-primary);
-}
-
-.flip-card__front .course-info p {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: var(--space-3);
-}
-
-.flip-card__front .course-features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-bottom: var(--space-4);
-}
-
-.flip-card__front .course-features span {
-  font-size: 0.8rem;
-  color: var(--color-text-secondary);
-}
-
-.flip-card__front .course-bottom {
-  margin-top: auto;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, var(--glass-bg) 100%);
 }
 
 /* VIP Glow Effect */
@@ -4157,10 +4101,9 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 50%);
   animation: vipGlowPulse 4s ease-in-out infinite;
   pointer-events: none;
-  z-index: 0;
 }
 
 @keyframes vipGlowPulse {
@@ -4178,10 +4121,10 @@ body {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 0;
+  z-index: 1;
   background: radial-gradient(
-    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(99, 102, 241, 0.12),
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.15),
     transparent 40%
   );
 }
@@ -4192,27 +4135,31 @@ body {
 
 .flip-card--vip .card-spotlight {
   background: radial-gradient(
-    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(239, 68, 68, 0.12),
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(239, 68, 68, 0.15),
     transparent 40%
   );
 }
 
-/* Ensure all content is above spotlight */
-.flip-card__front > *:not(.card-spotlight):not(.vip-glow),
-.flip-card__back > *:not(.card-spotlight):not(.vip-glow) {
-  position: relative;
-  z-index: 1;
+/* Show only one side at a time */
+.flip-card:hover .flip-card__front {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.flip-card:hover .flip-card__back {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ===== FLOATING BADGES ===== */
 .floating-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 5px 12px;
+  top: -8px;
+  right: 16px;
+  padding: 6px 14px;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   z-index: 10;
@@ -4270,16 +4217,15 @@ body {
 /* ===== BACK CARD CONTENT ===== */
 .back-header {
   padding: var(--space-4) var(--space-5);
-  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15));
+  background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
   border-bottom: 1px solid var(--glass-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
 }
 
 .flip-card--vip .back-header {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(236, 72, 153, 0.15));
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(236, 72, 153, 0.2));
 }
 
 .back-title {
@@ -4289,7 +4235,7 @@ body {
 }
 
 .back-duration {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--color-text-secondary);
 }
 
@@ -4297,8 +4243,6 @@ body {
   flex: 1;
   padding: var(--space-4) var(--space-5);
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
 }
 
 .program-list {
@@ -4307,38 +4251,37 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .program-list li {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  font-size: 0.85rem;
+  gap: 10px;
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
   line-height: 1.4;
 }
 
 .week-badge {
   flex-shrink: 0;
-  padding: 2px 6px;
+  padding: 2px 8px;
   background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
   border: 1px solid rgba(99,102,241,0.3);
-  border-radius: 4px;
-  font-size: 0.65rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--color-ai-blue);
 }
 
 .program-list--vip .vip-icon {
   flex-shrink: 0;
-  width: 20px;
+  width: 24px;
   text-align: center;
-  font-size: 0.9rem;
 }
 
 .back-bonus {
-  margin-top: auto;
+  margin-top: var(--space-4);
   padding: var(--space-3);
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
@@ -4346,7 +4289,7 @@ body {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--color-text-secondary);
 }
 
@@ -4356,11 +4299,10 @@ body {
 }
 
 .bonus-badge {
-  flex-shrink: 0;
   padding: 2px 8px;
   background: linear-gradient(135deg, #10b981, #06b6d4);
   border-radius: 6px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: white;
 }
@@ -4372,49 +4314,48 @@ body {
 .back-footer {
   padding: var(--space-4) var(--space-5);
   border-top: 1px solid var(--glass-border);
-  flex-shrink: 0;
 }
 
 /* ===== MINI COUNTDOWN ===== */
 .course-countdown-mini {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 6px 10px;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
   background: rgba(99, 102, 241, 0.1);
   border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   margin-bottom: var(--space-3);
 }
 
 .countdown-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--color-text-secondary);
   font-weight: 600;
 }
 
 .countdown-units {
   display: flex;
-  gap: 4px;
+  gap: 6px;
 }
 
 .countdown-unit {
   display: flex;
   align-items: baseline;
-  gap: 1px;
+  gap: 2px;
 }
 
 .countdown-value {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   color: var(--color-ai-blue);
-  min-width: 18px;
+  min-width: 24px;
   text-align: center;
 }
 
 .countdown-text {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: var(--color-text-muted);
   font-weight: 600;
 }
@@ -4422,15 +4363,15 @@ body {
 /* VIP Guarantee Badge */
 .vip-guarantee {
   display: inline-flex;
-  padding: 6px 10px;
+  padding: var(--space-2) var(--space-3);
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(236, 72, 153, 0.15));
   border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   margin-bottom: var(--space-3);
 }
 
 .vip-guarantee span {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #fca5a5;
 }
@@ -4532,22 +4473,14 @@ body {
 /* ===== RESPONSIVE FLIP CARDS ===== */
 @media (max-width: 1024px) {
   .flip-card {
-    height: 500px;
-  }
-  
-  .flip-card__front {
-    padding: var(--space-4);
-  }
-  
-  .flip-card__front .course-info h3 {
-    font-size: 1.1rem;
+    height: 540px;
   }
 }
 
 @media (max-width: 768px) {
   .flip-card {
     height: auto;
-    min-height: 420px;
+    min-height: 480px;
   }
   
   /* Disable flip on mobile - show front only */
@@ -4557,7 +4490,6 @@ body {
   
   .flip-card__front {
     position: relative;
-    padding: var(--space-4);
   }
   
   .flip-card__back {
@@ -4569,18 +4501,10 @@ body {
   }
   
   .floating-badge {
-    top: 10px;
-    right: 10px;
+    top: -6px;
+    right: 12px;
     padding: 4px 10px;
-    font-size: 0.7rem;
-  }
-  
-  .flip-card__front .course-info h3 {
-    font-size: 1rem;
-  }
-  
-  .flip-card__front .course-info p {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
   
   .pricing-comparison {
@@ -4589,7 +4513,7 @@ body {
   }
   
   .comparison-table-plans {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
   
   .comparison-table-plans thead th,
