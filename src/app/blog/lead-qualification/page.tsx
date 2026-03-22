@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "AI Lead Qualification — 3× Conversion with Automated AI Agents | AI Insider",
+  description:
+    "How to automate lead qualification with AI agents and n8n. Covers scoring models, conversation flows, CRM integration and real case study with 3× conversion improvement.",
+  keywords: ["AI lead qualification", "lead qualification automation", "AI sales agent", "n8n lead scoring", "automate sales AI"],
+  alternates: { canonical: "https://insiderai.it.com/blog/lead-qualification" },
+  openGraph: { title: "AI Lead Qualification — 3× Conversion | AI Insider", type: "article" },
+};
 
 export default function LeadQualificationPost() {
   return (

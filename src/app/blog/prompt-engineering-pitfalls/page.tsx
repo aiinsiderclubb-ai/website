@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "Prompt Engineering Pitfalls — Common Mistakes and How to Fix Them | AI Insider",
+  description:
+    "Avoid the most common prompt engineering mistakes. Covers schema validation, self-consistency checks, eval sets and structured output techniques for reliable LLM responses.",
+  keywords: ["prompt engineering", "prompt engineering mistakes", "LLM prompts", "ChatGPT prompting", "structured output LLM"],
+  alternates: { canonical: "https://insiderai.it.com/blog/prompt-engineering-pitfalls" },
+  openGraph: { title: "Prompt Engineering Pitfalls | AI Insider", type: "article" },
+};
 
 export default function PromptEngineeringPitfallsPost() {
   return (

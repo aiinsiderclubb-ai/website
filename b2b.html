@@ -12,11 +12,10 @@
     <meta property="og:url" content="https://insiderai.it.com/b2b.html">
     <meta property="og:image" content="https://insiderai.it.com/assets/og-b2b-1200x630.png">
     <meta name="twitter:card" content="summary_large_image">
-    <script src="scripts/lang.js" defer></script>
-    <link rel="canonical" href="https://insiderai.it.com/b2b.html">
     <meta name="twitter:title" content="AI Insider — B2B AI Services">
     <meta name="twitter:description" content="Chatbots, voice agents, RAG assistants and CRM automations. Fast, secure and ROI‑driven.">
     <meta name="twitter:image" content="https://insiderai.it.com/assets/og-b2b-1200x630.png">
+    <link rel="canonical" href="https://insiderai.it.com/b2b.html">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,7 +26,11 @@
       ]
     }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/lang.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -36,26 +39,48 @@
             <div class="nav__content">
                 <div class="nav__brand">
                     <span class="brand-text">AI Insider</span>
-                    <span class="brand-tagline">Next-Gen AI Platform</span>
+                    <span class="brand-tagline">Education Platform</span>
                 </div>
+
                 <div class="nav__menu">
                     <ul class="nav__list">
                         <li><a href="index.html" class="nav__link">Home</a></li>
                         <li><a href="courses.html" class="nav__link">Courses</a></li>
                         <li><a href="community.html" class="nav__link">Community</a></li>
                         <li><a href="reviews.html" class="nav__link">Reviews</a></li>
+                        <li><a href="b2b.html" class="nav__link active">B2B</a></li>
+                        <li><a href="blog.html" class="nav__link">Blog</a></li>
                     </ul>
-                    <a href="https://t.me/vladyslavarcher" class="nav__cta-btn">Book B2B Call</a>
+                    <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
                 </div>
+
+                <button class="hamburger" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Overlay -->
+    <div class="nav__mobile-overlay" id="mobileOverlay">
+        <ul class="nav__list">
+            <li><a href="index.html" class="nav__link">Home</a></li>
+            <li><a href="courses.html" class="nav__link">Courses</a></li>
+            <li><a href="community.html" class="nav__link">Community</a></li>
+            <li><a href="reviews.html" class="nav__link">Reviews</a></li>
+            <li><a href="b2b.html" class="nav__link active">B2B</a></li>
+            <li><a href="blog.html" class="nav__link">Blog</a></li>
+        </ul>
+        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero__content">
-                <div class="hero__badge"><span>🤝 B2B Services</span></div>
+                <div class="hero__badge"><span>B2B Services</span></div>
                 <h1 class="hero__title">
                     AI That Drives <br>
                     <span class="hero__title-highlight">Revenue & Efficiency</span>
@@ -82,7 +107,7 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">🧩 Services</span>
+                <span class="section-badge">Services</span>
                 <h2 class="section-title">What We Deliver</h2>
                 <p class="section-subtitle">Pre‑built modules and custom solutions tailored to your workflows.</p>
             </div>
@@ -191,7 +216,7 @@
     <section class="section" style="background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">💰 ROI Calculator</span>
+                <span class="section-badge">ROI Calculator</span>
                 <h2 class="section-title">Calculate Your Savings</h2>
                 <p class="section-subtitle">See how much you could save with AI automation</p>
             </div>
@@ -229,7 +254,7 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">🎯 Live Demo</span>
+                <span class="section-badge">Live Demo</span>
                 <h2 class="section-title">Try Our AI Assistant</h2>
                 <p class="section-subtitle">Interactive example of what we build for clients</p>
             </div>
@@ -258,13 +283,11 @@
         </div>
     </section>
 
-    
-
     <!-- Security & Compliance -->
     <section class="section" style="background: var(--glass-bg); border-top: 1px solid var(--glass-border);">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">🔒 Security</span>
+                <span class="section-badge">Security</span>
                 <h2 class="section-title">Enterprise-Grade Security</h2>
                 <p class="section-subtitle">Your data safety is our priority</p>
             </div>
@@ -301,13 +324,12 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">❓ FAQ</span>
+                <span class="section-badge">FAQ</span>
                 <h2 class="section-title">Frequently Asked Questions</h2>
             </div>
             <div class="faq-accordion" id="b2bFaq">
                 <details class="faq-qa" open>
                     <summary>
-                        <span class="faq-dot">🔐</span>
                         <span class="faq-question">How are our data protected?</span>
                         <span class="chevron">⌄</span>
                     </summary>
@@ -315,7 +337,6 @@
                 </details>
                 <details class="faq-qa">
                     <summary>
-                        <span class="faq-dot">🤝</span>
                         <span class="faq-question">Can you integrate with our existing CRM?</span>
                         <span class="chevron">⌄</span>
                     </summary>
@@ -323,7 +344,6 @@
                 </details>
                 <details class="faq-qa">
                     <summary>
-                        <span class="faq-dot">⏱️</span>
                         <span class="faq-question">What's the typical implementation timeline?</span>
                         <span class="chevron">⌄</span>
                     </summary>
@@ -331,7 +351,6 @@
                 </details>
                 <details class="faq-qa">
                     <summary>
-                        <span class="faq-dot">🛟</span>
                         <span class="faq-question">Do you provide ongoing support?</span>
                         <span class="chevron">⌄</span>
                     </summary>
@@ -339,7 +358,6 @@
                 </details>
                 <details class="faq-qa">
                     <summary>
-                        <span class="faq-dot">⚠️</span>
                         <span class="faq-question">What if the AI makes mistakes?</span>
                         <span class="chevron">⌄</span>
                     </summary>
@@ -347,7 +365,6 @@
                 </details>
                 <details class="faq-qa">
                     <summary>
-                        <span class="faq-dot">✨</span>
                         <span class="faq-question">Can we customize the AI's personality?</span>
                         <span class="chevron">⌄</span>
                     </summary>
@@ -361,7 +378,7 @@
     <section class="section roadmap-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">🗺️ Roadmap</span>
+                <span class="section-badge">Roadmap</span>
                 <h2 class="section-title">From Discovery to Scale</h2>
                 <p class="section-subtitle">A transparent delivery pipeline aligned to business outcomes.</p>
             </div>
@@ -414,7 +431,7 @@
         <div class="container">
             <div class="reviews-cta" style="display: grid; gap: 24px;">
                 <h3>Ready to discuss your B2B project?</h3>
-                <p>Tell us about your use‑case — we’ll send a proposal and timeline within 24 hours.</p>
+                <p>Tell us about your use‑case — we'll send a proposal and timeline within 24 hours.</p>
 
                 <form id="b2bLeadForm" class="b2b-form" style="display: grid; gap: 12px;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
@@ -435,30 +452,24 @@
 
     <!-- Footer -->
     <footer class="premium-footer">
-        <div class="footer-glow"></div>
         <div class="container">
             <div class="footer-main">
                 <div class="footer-brand">
                     <h3>AI Insider</h3>
-                    <p>Next-Generation AI Automation Platform</p>
-                    <div class="footer-stats">
-                        <div class="footer-stat"><span class="stat-number" data-target="5742">5,742</span><span class="stat-label">Members</span></div>
-                        <div class="footer-stat"><span class="stat-number" data-target="125">125</span><span class="stat-label">Generated</span></div>
-                        <div class="footer-stat"><span class="stat-number" data-target="287">287</span><span class="stat-label">Companies</span></div>
-                    </div>
+                    <p>Education Platform</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Platform</h4>
-                        <a href="courses/">AI Courses</a>
+                        <a href="courses.html">AI Courses</a>
                         <a href="community.html">Community</a>
                         <a href="reviews.html">Success Stories</a>
-                        <a href="course.html">Premium Training</a>
+                        <a href="blog.html">Blog</a>
                     </div>
                     <div class="footer-column">
                         <h4>Solutions</h4>
-                        <a href="enterprise-ai.html">Enterprise AI</a>
                         <a href="b2b.html">B2B Services</a>
+                        <a href="enterprise-ai.html">Enterprise AI</a>
                         <a href="automation-tools.html">Automation Tools</a>
                         <a href="custom-ai.html">Custom AI</a>
                     </div>
@@ -467,20 +478,22 @@
                         <a href="documentation.html">Documentation</a>
                         <a href="api-reference.html">API Reference</a>
                         <a href="case-studies.html">Case Studies</a>
-                        <a href="blog.html">Blog</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
-                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="social-link"><span class="social-icon">📱</span>Telegram</a>
-                        <a href="#" class="social-link"><span class="social-icon">🐦</span>Twitter</a>
-                        <a href="#" class="social-link"><span class="social-icon">💼</span>LinkedIn</a>
-                        <a href="#" class="social-link"><span class="social-icon">📧</span>Email</a>
+                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0">Telegram</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-legal"><p>&copy; 2024 AI Insider. All rights reserved.</p><div class="legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div></div>
-                <div class="footer-badge"><span>🚀 Powered by Next-Gen AI</span></div>
+                <div class="footer-legal">
+                    <p>&copy; 2024 AI Insider. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Security</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -488,4 +501,3 @@
     <script src="scripts/main.js"></script>
 </body>
 </html>
-

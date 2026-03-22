@@ -16,17 +16,22 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Insider Blog — AI‑автоматизация, агенты и кейсы">
     <meta name="twitter:description" content="Практика внедрения AI: инструкции, чек‑листы и реальные кейсы.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <script src="scripts/lang.js" defer></script>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="nav__content">
                 <div class="nav__brand">
                     <span class="brand-text">AI Insider</span>
-                    <span class="brand-tagline">Next-Gen AI Platform</span>
+                    <span class="brand-tagline">Education Platform</span>
                 </div>
+
                 <div class="nav__menu">
                     <ul class="nav__list">
                         <li><a href="index.html" class="nav__link">Home</a></li>
@@ -34,17 +39,38 @@
                         <li><a href="community.html" class="nav__link">Community</a></li>
                         <li><a href="reviews.html" class="nav__link">Reviews</a></li>
                         <li><a href="b2b.html" class="nav__link">B2B</a></li>
+                        <li><a href="blog.html" class="nav__link active">Blog</a></li>
                     </ul>
                     <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
                 </div>
+
+                <button class="hamburger" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Overlay -->
+    <div class="nav__mobile-overlay" id="mobileOverlay">
+        <ul class="nav__list">
+            <li><a href="index.html" class="nav__link">Home</a></li>
+            <li><a href="courses.html" class="nav__link">Courses</a></li>
+            <li><a href="community.html" class="nav__link">Community</a></li>
+            <li><a href="reviews.html" class="nav__link">Reviews</a></li>
+            <li><a href="b2b.html" class="nav__link">B2B</a></li>
+            <li><a href="blog.html" class="nav__link active">Blog</a></li>
+        </ul>
+        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
+    </div>
+
+    <!-- Hero -->
     <section class="hero">
         <div class="container">
             <div class="hero__content">
-                <div class="hero__badge"><span>📰 Insights</span></div>
+                <div class="hero__badge"><span>Insights</span></div>
                 <h1 class="hero__title">AI Insider <br><span class="hero__title-highlight">Blog</span></h1>
                 <p class="hero__subtitle">Practical guides, tool deep‑dives and case studies from real automation work.</p>
                 <div class="hero__cta-group">
@@ -55,6 +81,7 @@
         </div>
     </section>
 
+    <!-- Blog Grid -->
     <section class="section reviews-grid-section">
         <div class="container">
             <div class="reviews-grid">
@@ -119,7 +146,6 @@
                     <a class="card-link" href="blog/evaluating-llm-systems.html" aria-label="Open post: Evaluating LLM Systems"></a>
                 </div>
 
-                <!-- New posts -->
                 <div class="review-card blog-post" data-title="Shipping AI Agents to Production" data-subtitle="Observability, retries, tool safety" data-author="AI Insider Team" data-date="Sep 2024" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -236,7 +262,6 @@
                     <a class="card-link" href="blog/rag-that-actually-works.html" aria-label="Open post: RAG that Actually Works"></a>
                 </div>
 
-                <!-- New: GPT-5 website generator article -->
                 <div class="review-card blog-post" data-title="Сайт за 5 минут без программиста" data-subtitle="GPT‑5 генерирует готовые сайты по промпту" data-author="AI Insider Team" data-date="Oct 2025" data-tags="GPT-5,NoCode,Website,Prompting" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -279,7 +304,6 @@
                     <a class="card-link" href="blog/gpt5-website-in-5-minutes.html" aria-label="Открыть пост: Сайт за 5 минут без программиста"></a>
                 </div>
 
-                <!-- New: VEED AI Playground article -->
                 <div class="review-card blog-post" data-title="Один сайт — вся сила AI‑видео" data-subtitle="VEED AI Playground: видео из текста, субтитры, голос/лицо" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Video,AI,VEED,Veo3,Minimax,Kling" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -327,7 +351,6 @@
                     <a class="card-link" href="blog/veed-ai-playground.html" aria-label="Открыть пост: Один сайт — вся сила AI‑видео"></a>
                 </div>
 
-                <!-- New: One person with AI article -->
                 <div class="review-card blog-post" data-title="Один человек с AI — мини‑стартап" data-subtitle="Как в 2025 запускать продукт без команды" data-author="AI Insider Team" data-date="Oct 2025" data-tags="AI,Solo,Automation" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -346,7 +369,6 @@
                     <a class="card-link" href="blog/one-person-with-ai-mini-startup.html" aria-label="Открыть пост: Один человек с AI — мини‑стартап"></a>
                 </div>
 
-                <!-- New: Google Vids article -->
                 <div class="review-card blog-post" data-title="Google Vids: AI‑видеоредактор" data-subtitle="Gemini пишет сценарий и монтирует бесплатно" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Google,Vids,Gemini,Video" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -364,7 +386,7 @@
                     </div>
                     <a class="card-link" href="blog/google-vids-gemini-editor.html" aria-label="Открыть пост: Google Vids"></a>
                 </div>
-                <!-- New: ElevenLabs AI SFX v2 article -->
+
                 <div class="review-card blog-post" data-title="ElevenLabs AI SFX v2" data-subtitle="Генерация студийных звуковых эффектов 48 кГц" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Audio,AI,ElevenLabs,SFX" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -382,7 +404,7 @@
                     </div>
                     <a class="card-link" href="blog/elevenlabs-ai-sfx-v2.html" aria-label="Открыть пост: ElevenLabs AI SFX v2"></a>
                 </div>
-                <!-- New: Runway Aleph vs Veo3 article -->
+
                 <div class="review-card blog-post" data-title="Aleph против Veo 3" data-subtitle="38 секунд кино и свобода камеры" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Runway,Aleph,Veo3,Video" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -400,7 +422,7 @@
                     </div>
                     <a class="card-link" href="blog/runway-aleph-vs-veo3.html" aria-label="Открыть пост: Aleph против Veo 3"></a>
                 </div>
-                <!-- New: PDFtoVideo.ai article -->
+
                 <div class="review-card blog-post" data-title="PDF превратился в видео" data-subtitle="PDFtoVideo.ai: объясняющий ролик из PDF за минуты" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Video,AI,Explainer" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -418,7 +440,7 @@
                     </div>
                     <a class="card-link" href="blog/pdftovideo-ai.html" aria-label="Открыть пост: PDFtoVideo.ai"></a>
                 </div>
-                <!-- New: SmythOS article -->
+
                 <div class="review-card blog-post" data-title="SmythOS — no‑code платформа для AI‑агентов" data-subtitle="Визуальные пайплайны, автосборка, интеграции, фри‑план" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Agents,No‑Code,Automation" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -436,7 +458,7 @@
                     </div>
                     <a class="card-link" href="blog/smythos-ai-agent-platform.html" aria-label="Открыть пост: SmythOS"></a>
                 </div>
-                <!-- New: 10Web AI Website Builder article -->
+
                 <div class="review-card blog-post" data-title="10Web — сайт без программиста" data-subtitle="AI Website Builder: дизайн, тексты, адаптив, PageSpeed 90+" data-author="AI Insider Team" data-date="Oct 2025" data-tags="NoCode,AI,WordPress" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -454,7 +476,7 @@
                     </div>
                     <a class="card-link" href="blog/10web-ai-website-builder.html" aria-label="Открыть пост: 10Web — сайт без программиста"></a>
                 </div>
-                <!-- New: n8n YouTube->Shorts automation article -->
+
                 <div class="review-card blog-post" data-title="YouTube → Shorts на автопилоте" data-subtitle="Klap хайлайты + Blotato автопост + Telegram" data-author="AI Insider Team" data-date="Oct 2025" data-tags="n8n,YouTube,Shorts,TikTok,Instagram" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -472,7 +494,7 @@
                     </div>
                     <a class="card-link" href="blog/n8n-youtube-to-shorts-automation.html" aria-label="Открыть пост: YouTube→Shorts на автопилоте"></a>
                 </div>
-                <!-- New: Scira AI Search article -->
+
                 <div class="review-card blog-post" data-title="Scira — AI‑поисковик нового поколения" data-subtitle="Глубокие ответы, Reddit/YouTube/наука, локальный режим" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Search,AI,Research" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -491,7 +513,6 @@
                     <a class="card-link" href="blog/scira-ai-search.html" aria-label="Открыть пост: Scira — AI‑поисковик"></a>
                 </div>
 
-                <!-- New: Rocket one-prompt app article -->
                 <div class="review-card blog-post" data-title="Rocket — приложение за один промпт" data-subtitle="MVP, SaaS и деплой за часы" data-author="AI Insider Team" data-date="Oct 2025" data-tags="NoCode,AI,MVP,SaaS" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -510,7 +531,6 @@
                     <a class="card-link" href="blog/rocket-one-prompt-app.html" aria-label="Открыть пост: Rocket — приложение за один промпт"></a>
                 </div>
 
-                <!-- New: What is Voice Agent article (EN) -->
                 <div class="review-card blog-post" data-title="What is a Voice Agent" data-subtitle="24/7 calls, intake and sales without operators" data-author="AI Insider Team" data-date="Oct 2025" data-tags="Voice,AI,Automation,Sales" tabindex="0">
                     <div class="review-header">
                         <div class="reviewer-info">
@@ -532,20 +552,13 @@
         </div>
     </section>
 
-    
-
+    <!-- Footer -->
     <footer class="premium-footer">
-        <div class="footer-glow"></div>
         <div class="container">
             <div class="footer-main">
                 <div class="footer-brand">
                     <h3>AI Insider</h3>
-                    <p>Next-Generation AI Automation Platform</p>
-                    <div class="footer-stats">
-                        <div class="footer-stat"><span class="stat-number" data-target="5742">5,742</span><span class="stat-label">Members</span></div>
-                        <div class="footer-stat"><span class="stat-number" data-target="125">125</span><span class="stat-label">Generated</span></div>
-                        <div class="footer-stat"><span class="stat-number" data-target="287">287</span><span class="stat-label">Companies</span></div>
-                    </div>
+                    <p>Education Platform</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
@@ -553,13 +566,13 @@
                         <a href="courses.html">AI Courses</a>
                         <a href="community.html">Community</a>
                         <a href="reviews.html">Success Stories</a>
-                        <a href="course.html">Premium Training</a>
+                        <a href="blog.html">Blog</a>
                     </div>
                     <div class="footer-column">
                         <h4>Solutions</h4>
+                        <a href="b2b.html">B2B Services</a>
                         <a href="enterprise-ai.html">Enterprise AI</a>
                         <a href="automation-tools.html">Automation Tools</a>
-                        <a href="consulting.html">Consulting</a>
                         <a href="custom-ai.html">Custom AI</a>
                     </div>
                     <div class="footer-column">
@@ -567,20 +580,22 @@
                         <a href="documentation.html">Documentation</a>
                         <a href="api-reference.html">API Reference</a>
                         <a href="case-studies.html">Case Studies</a>
-                        <a href="blog.html">Blog</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
-                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="social-link"><span class="social-icon">📱</span>Telegram</a>
-                        <a href="#" class="social-link"><span class="social-icon">🐦</span>Twitter</a>
-                        <a href="#" class="social-link"><span class="social-icon">💼</span>LinkedIn</a>
-                        <a href="#" class="social-link"><span class="social-icon">📧</span>Email</a>
+                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0">Telegram</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-legal"><p>&copy; 2024 AI Insider. All rights reserved.</p><div class="legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div></div>
-                <div class="footer-badge"><span>🚀 Powered by Next-Gen AI</span></div>
+                <div class="footer-legal">
+                    <p>&copy; 2024 AI Insider. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Security</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
@@ -588,5 +603,3 @@
     <script src="scripts/main.js"></script>
 </body>
 </html>
-
-

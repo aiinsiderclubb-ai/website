@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "Shipping AI Agents to Production — Observability, Guardrails & Retries | AI Insider",
+  description:
+    "Practical guide to deploying AI agents in production. Covers tracing, guardrails, retry logic, cost control and monitoring patterns for LLM-powered systems.",
+  keywords: ["AI agents production", "deploy AI agent", "LLM observability", "AI agent guardrails", "production AI system"],
+  alternates: { canonical: "https://insiderai.it.com/blog/ai-agents-production" },
+  openGraph: { title: "Shipping AI Agents to Production | AI Insider", type: "article" },
+};
 
 export default function AiAgentsProductionPost() {
   return (

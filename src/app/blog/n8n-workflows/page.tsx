@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "Building Robust n8n Workflows — Error Handling & Reliability Patterns | AI Insider",
+  description:
+    "Learn production-grade n8n workflow patterns: retries, dead-letter queues, idempotent nodes, alerting and circuit breakers for reliable AI automation at scale.",
+  keywords: ["n8n workflows", "n8n error handling", "n8n reliability", "n8n retry", "n8n production"],
+  alternates: { canonical: "https://insiderai.it.com/blog/n8n-workflows" },
+  openGraph: { title: "Building Robust n8n Workflows | AI Insider", type: "article" },
+};
 
 export default function N8nWorkflowsPost() {
   return (

@@ -7,54 +7,81 @@
     <title>AI Community - AI Insider</title>
     <meta property="og:site_name" content="AI Insider">
     <link rel="canonical" href="https://insiderai.it.com/community.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles/main.css">
     <script src="scripts/lang.js" defer></script>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container">
-            <div class="nav__content">
-                <div class="nav__brand">
-                    <span class="brand-text">AI Insider</span>
-                    <span class="brand-tagline">Next-Gen AI Platform</span>
-                </div>
-                
-                <div class="nav__menu">
-                    <ul class="nav__list">
-                        <li><a href="index.html" class="nav__link">Home</a></li>
-                        <li><a href="courses.html" class="nav__link">Courses</a></li>
-                        <li><a href="community.html" class="nav__link active">Community</a></li>
-                        <li><a href="reviews.html" class="nav__link">Reviews</a></li>
-                        <li><a href="b2b.html" class="nav__link">B2B</a></li>
-                    </ul>
-                    
-                    <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">
-                        Join Community
-                    </a>
+        <nav class="nav">
+            <div class="container">
+                <div class="nav__content">
+                    <div class="nav__brand">
+                        <span class="brand-text">AI Insider</span>
+                        <span class="brand-tagline">Education Platform</span>
+                    </div>
+
+                    <div class="nav__menu">
+                        <ul class="nav__list">
+                            <li><a href="index.html" class="nav__link">Home</a></li>
+                            <li><a href="courses.html" class="nav__link">Courses</a></li>
+                            <li><a href="community.html" class="nav__link active">Community</a></li>
+                            <li><a href="reviews.html" class="nav__link">Reviews</a></li>
+                            <li><a href="b2b.html" class="nav__link">B2B</a></li>
+                            <li><a href="blog.html" class="nav__link">Blog</a></li>
+                        </ul>
+
+                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">
+                            Join Community
+                        </a>
+                    </div>
+
+                    <button class="nav__toggle" id="navToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
-        </div>
+        </nav>
     </header>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <ul class="mobile-nav__list">
+            <li><a href="index.html" class="mobile-nav__link">Home</a></li>
+            <li><a href="courses.html" class="mobile-nav__link">Courses</a></li>
+            <li><a href="community.html" class="mobile-nav__link active">Community</a></li>
+            <li><a href="reviews.html" class="mobile-nav__link">Reviews</a></li>
+            <li><a href="b2b.html" class="mobile-nav__link">B2B</a></li>
+            <li><a href="blog.html" class="mobile-nav__link">Blog</a></li>
+        </ul>
+        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="nav__cta-btn">Join Community</a>
+    </div>
 
     <!-- Community Hero Section -->
     <section class="hero community-hero">
         <div class="container">
             <div class="hero__content">
                 <div class="hero__badge">
-                    <span>📱 #1 AI Automation Community</span>
+                    <span>Community</span>
                 </div>
 
                 <h1 class="hero__title">
                     Join 5,742+ AI Automation <br>
                     <span class="hero__title-highlight">Experts on Telegram</span>
                 </h1>
-                
+
                 <p class="hero__subtitle">
-                    Connect with like-minded entrepreneurs, get instant help from experts, 
+                    Connect with like-minded entrepreneurs, get instant help from experts,
                     and access exclusive content that's only shared in our private community.
                 </p>
-                
+
                 <div class="community-stats">
                     <div class="stat-item">
                         <span class="stat-number" data-target="5742">5,742</span>
@@ -72,10 +99,10 @@
 
                 <div class="hero__cta-group">
                     <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="cta-btn cta-btn--primary cta-btn--large">
-                        📱 Join Telegram Channel
+                        Join Telegram Channel
                     </a>
                     <div class="cta-note">
-                        <span>🆓 Free to join • ⚡ Instant access • 🔒 Private community</span>
+                        <span>Free to join · Instant access · Private community</span>
                     </div>
                 </div>
             </div>
@@ -86,7 +113,7 @@
     <section class="section community-features">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">💎 Exclusive Benefits</span>
+                <span class="section-badge">Benefits</span>
                 <h2 class="section-title">Why 5,742+ Professionals Choose Our Community</h2>
                 <p class="section-subtitle">
                     More than just a chat group - it's your gateway to AI automation mastery and business success.
@@ -95,7 +122,7 @@
 
             <div class="features-grid">
                 <div class="feature-card feature-primary">
-                    <div class="feature-icon">🚀</div>
+                    <div class="feature-icon">Instant Expert Help</div>
                     <h3>Instant Expert Help</h3>
                     <p>Get answers to your AI questions within minutes from experienced practitioners who've solved similar challenges.</p>
                     <div class="feature-benefit">
@@ -106,7 +133,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon">Exclusive Content</div>
                     <h3>Exclusive Content & Resources</h3>
                     <p>Daily tips, weekly case studies, and monthly deep-dives into cutting-edge AI tools and strategies.</p>
                     <div class="feature-benefit">
@@ -117,7 +144,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">💼</div>
+                    <div class="feature-icon">Business Opportunities</div>
                     <h3>Business Opportunities</h3>
                     <p>Connect with potential clients, partners, and collaborators. Many members found their dream jobs here.</p>
                     <div class="feature-benefit">
@@ -128,7 +155,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🛠️</div>
+                    <div class="feature-icon">Tool Recommendations</div>
                     <h3>Tool Recommendations</h3>
                     <p>Stay ahead with insider knowledge of the latest AI tools, often before they become mainstream.</p>
                     <div class="feature-benefit">
@@ -139,7 +166,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">📈</div>
+                    <div class="feature-icon">Success Stories</div>
                     <h3>Success Stories & Case Studies</h3>
                     <p>Learn from real automation projects that generated significant ROI for businesses of all sizes.</p>
                     <div class="feature-benefit">
@@ -150,7 +177,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
+                    <div class="feature-icon">Free Mini-Courses</div>
                     <h3>Free Mini-Courses</h3>
                     <p>Regular bite-sized training sessions on specific AI topics, delivered right in the community.</p>
                     <div class="feature-benefit">
@@ -167,32 +194,32 @@
     <section class="section community-proof">
         <div class="container">
             <h2 class="section-title">Active & Growing Community</h2>
-            
-                            <div class="proof-grid">
-                    <div class="proof-stat">
-                        <div class="proof-number" data-target="5742">5,742</div>
-                        <div class="proof-label">Total Members</div>
-                        <div class="proof-growth">+247 this week</div>
-                    </div>
-                    
-                    <div class="proof-stat">
-                        <div class="proof-number" data-target="356">356</div>
-                        <div class="proof-label">Messages Today</div>
-                        <div class="proof-growth">↗ 23% vs yesterday</div>
-                    </div>
-                    
-                    <div class="proof-stat">
-                        <div class="proof-number" data-target="89">89%</div>
-                        <div class="proof-label">Active Weekly</div>
-                        <div class="proof-growth">Industry leading</div>
-                    </div>
-                    
-                    <div class="proof-stat">
-                        <div class="proof-number" data-target="4.9">4.9/5</div>
-                        <div class="proof-label">Satisfaction</div>
-                        <div class="proof-growth">Based on 2,000+ reviews</div>
-                    </div>
+
+            <div class="proof-grid">
+                <div class="proof-stat">
+                    <div class="proof-number" data-target="5742">5,742</div>
+                    <div class="proof-label">Total Members</div>
+                    <div class="proof-growth">+247 this week</div>
                 </div>
+
+                <div class="proof-stat">
+                    <div class="proof-number" data-target="356">356</div>
+                    <div class="proof-label">Messages Today</div>
+                    <div class="proof-growth">+23% vs yesterday</div>
+                </div>
+
+                <div class="proof-stat">
+                    <div class="proof-number" data-target="89">89%</div>
+                    <div class="proof-label">Active Weekly</div>
+                    <div class="proof-growth">Industry leading</div>
+                </div>
+
+                <div class="proof-stat">
+                    <div class="proof-number" data-target="4.9">4.9/5</div>
+                    <div class="proof-label">Satisfaction</div>
+                    <div class="proof-growth">Based on 2,000+ reviews</div>
+                </div>
+            </div>
 
             <div class="community-testimonials">
                 <div class="testimonial-item">
@@ -203,7 +230,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-item">
                     <div class="testimonial-content">
                         <p>"The daily tips alone are worth thousands. Implemented 3 automations that saved us 20 hours/week."</p>
@@ -212,7 +239,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-item">
                     <div class="testimonial-content">
                         <p>"Best AI community on Telegram. Real experts, real advice, real results. Highly recommend!"</p>
@@ -231,26 +258,23 @@
             <div class="cta-content-large">
                 <h2>Ready to Join 5,742+ AI Automation Experts?</h2>
                 <p>Get instant access to the most active AI automation community on Telegram. Free forever, no spam, real value.</p>
-                
+
                 <div class="join-benefits">
                     <div class="join-benefit">
-                        <span class="benefit-icon">💡</span>
                         <div>
                             <h4>Learn Daily</h4>
                             <p>New AI tools, tips, and strategies shared every day</p>
                         </div>
                     </div>
-                    
+
                     <div class="join-benefit">
-                        <span class="benefit-icon">🤝</span>
                         <div>
                             <h4>Network</h4>
                             <p>Connect with entrepreneurs, developers, and business owners</p>
                         </div>
                     </div>
-                    
+
                     <div class="join-benefit">
-                        <span class="benefit-icon">💰</span>
                         <div>
                             <h4>Earn More</h4>
                             <p>Members report average 40% income increase within 6 months</p>
@@ -259,72 +283,61 @@
                 </div>
 
                 <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="mega-cta-btn cta-pulse">
-                    🚀 Join AI Insider Community Now
+                    Join AI Insider Community Now
                 </a>
-                
+
                 <div class="cta-guarantee">
-                    <span>✅ Free forever</span>
-                    <span>⚡ Instant access</span>
-                    <span>🔒 Private & secure</span>
-                    <span>📱 Mobile friendly</span>
+                    <span>Free forever</span>
+                    <span>Instant access</span>
+                    <span>Private & secure</span>
+                    <span>Mobile friendly</span>
                 </div>
             </div>
         </div>
     </section>
- 
-    <!-- Premium Footer -->
+
+    <!-- Footer -->
     <footer class="premium-footer">
-        <div class="footer-glow"></div>
         <div class="container">
             <div class="footer-main">
                 <div class="footer-brand">
                     <h3>AI Insider</h3>
-                    <p>Next-Generation AI Automation Platform</p>
-                    <div class="footer-stats">
-                        <div class="footer-stat"><span class="stat-number" data-target="5742">5,742</span><span class="stat-label">Members</span></div>
-                        <div class="footer-stat"><span class="stat-number" data-target="125">125</span><span class="stat-label">Generated</span></div>
-                        <div class="footer-stat"><span class="stat-number" data-target="287">287</span><span class="stat-label">Companies</span></div>
-                    </div>
+                    <p>Education Platform</p>
                 </div>
-                
+
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Platform</h4>
                         <a href="courses.html">AI Courses</a>
                         <a href="community.html">Community</a>
                         <a href="reviews.html">Success Stories</a>
-                        <a href="course.html">Premium Training</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Solutions</h4>
-                        <a href="enterprise-ai.html">Enterprise AI</a>
-                        <a href="automation-tools.html">Automation Tools</a>
-                        <a href="consulting.html">Consulting</a>
-                        <a href="custom-ai.html">Custom AI</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="documentation.html">Documentation</a>
-                        <a href="api-reference.html">API Reference</a>
-                        <a href="case-studies.html">Case Studies</a>
                         <a href="blog.html">Blog</a>
                     </div>
-                    
+
+                    <div class="footer-column">
+                        <h4>Solutions</h4>
+                        <a href="b2b.html">B2B Services</a>
+                        <a href="enterprise-ai.html">Enterprise AI</a>
+                        <a href="consulting.html">Consulting</a>
+                    </div>
+
                     <div class="footer-column">
                         <h4>Connect</h4>
-                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="social-link"><span class="social-icon">📱</span>Telegram</a>
-                        <a href="#" class="social-link"><span class="social-icon">🐦</span>Twitter</a>
-                        <a href="#" class="social-link"><span class="social-icon">💼</span>LinkedIn</a>
-                        <a href="#" class="social-link"><span class="social-icon">📧</span>Email</a>
+                        <a href="https://t.me/+qjwWJz7aLR1hMDQ0" class="social-link">Telegram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <div class="footer-legal"><p>&copy; 2024 AI Insider. All rights reserved.</p><div class="legal-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div></div>
-                <div class="footer-badge"><span>🚀 Powered by Next-Gen AI</span></div>
+                <div class="footer-legal">
+                    <p>&copy; 2024 AI Insider. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

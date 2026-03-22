@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "Voice Agents with Vapi.ai — Latency, Barge-In & Grounding | AI Insider",
+  description:
+    "Deep dive into building production voice agents with Vapi.ai. Covers STT/TTS latency optimization, barge-in handling, grounding with RAG, and real deployment patterns.",
+  keywords: ["Vapi.ai tutorial", "voice agent latency", "AI voice agent", "build voice agent Vapi", "barge-in voice AI"],
+  alternates: { canonical: "https://insiderai.it.com/blog/voice-agents-vapi" },
+  openGraph: { title: "Voice Agents with Vapi.ai | AI Insider", type: "article" },
+};
 
 export default function VoiceAgentsVapiPost() {
   return (

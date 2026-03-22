@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "RAG That Actually Works — Build a Reliable AI Knowledge Base | AI Insider",
+  description:
+    "Learn how to build a Retrieval-Augmented Generation (RAG) pipeline that actually works. Covers chunking, embeddings, vector search, reranking and evaluation strategies.",
+  keywords: ["RAG tutorial", "retrieval augmented generation", "RAG chatbot", "build knowledge base AI", "Pinecone RAG"],
+  alternates: { canonical: "https://insiderai.it.com/blog/rag-that-actually-works" },
+  openGraph: { title: "RAG That Actually Works | AI Insider", type: "article" },
+};
 
 export default function RagActuallyWorksPost() {
   return (
