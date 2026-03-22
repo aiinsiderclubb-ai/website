@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/data/content";
 import { useI18n } from "@/context/i18n-context";
 import { useTheme } from "@/context/theme-context";
+import { useLocalePath } from "@/hooks/useLocalePath";
 import { Lang } from "@/i18n/translations";
 
 const LANGS: { code: Lang; label: string; flag: string }[] = [
@@ -43,15 +44,16 @@ export default function Header() {
   const { lang, setLang, t } = useI18n();
   const { theme, toggleTheme } = useTheme();
   const langRef = useRef<HTMLDivElement>(null);
+  const localPath = useLocalePath();
 
   const navLinks = [
-    { label: t.nav.home, href: "/" },
-    { label: t.nav.courses, href: "/courses" },
-    { label: t.nav.community, href: "/community" },
-    { label: t.nav.reviews, href: "/reviews" },
-    { label: t.nav.b2b, href: "/b2b" },
-    { label: t.nav.blog, href: "/blog" },
-    { label: "AI Studio", href: "/ai-studio" },
+    { label: t.nav.home, href: localPath("/"), basePath: "" },
+    { label: t.nav.courses, href: localPath("/courses"), basePath: "/courses" },
+    { label: t.nav.community, href: localPath("/community"), basePath: "/community" },
+    { label: t.nav.reviews, href: localPath("/reviews"), basePath: "/reviews" },
+    { label: t.nav.b2b, href: localPath("/b2b"), basePath: "/b2b" },
+    { label: t.nav.blog, href: localPath("/blog"), basePath: "/blog" },
+    { label: "AI Studio", href: localPath("/ai-studio"), basePath: "/ai-studio" },
   ];
 
   useEffect(() => {
@@ -74,6 +76,14 @@ export default function Header() {
   }, []);
 
   const currentLang = LANGS.find(l => l.code === lang)!;
+
+  const isActive = (basePath: string) => {
+    if (basePath === "") {
+      // Home: match exactly /{lang} or /{lang}/
+      return pathname === `/${lang}` || pathname === `/${lang}/`;
+    }
+    return pathname.startsWith(`/${lang}${basePath}`);
+  };
 
   return (
     <>
@@ -99,7 +109,7 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 lg:h-[68px]">
 
             {/* ── Logo ── */}
-            <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <Link href={localPath("/")} className="flex items-center gap-3 group shrink-0">
               <div className="relative w-9 h-9 rounded-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0ea5e9] via-[#06b6d4] to-[#7c3aed] group-hover:scale-110 transition-transform duration-300" />
                 <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm tracking-tight">AI</div>
@@ -117,18 +127,18 @@ export default function Header() {
             {/* ── Desktop Nav ── */}
             <div className="hidden lg:flex items-center gap-0.5">
               {navLinks.map((link) => {
-                const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+                const active = isActive(link.basePath);
                 return (
                   <Link
-                    key={link.href}
+                    key={link.basePath}
                     href={link.href}
                     className={`relative px-3.5 py-2 text-sm font-medium transition-all duration-200 rounded-lg group ${
-                      isActive
+                      active
                         ? "text-[var(--color-accent)]"
                         : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                     }`}
                   >
-                    {isActive && (
+                    {active && (
                       <motion.div
                         layoutId="nav-pill"
                         className="absolute inset-0 rounded-lg bg-[var(--color-accent-glow)] border border-[var(--color-accent-border)]"
@@ -265,10 +275,10 @@ export default function Header() {
               {/* Nav links */}
               <div className="space-y-1 mb-8">
                 {navLinks.map((link, i) => {
-                  const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+                  const active = isActive(link.basePath);
                   return (
                     <motion.div
-                      key={link.href}
+                      key={link.basePath}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 + 0.1 }}
@@ -277,13 +287,13 @@ export default function Header() {
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
                         className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-lg font-medium transition-all ${
-                          isActive
+                          active
                             ? "text-[var(--color-accent)] bg-[var(--color-accent-glow)] border border-[var(--color-accent-border)]"
                             : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-glass-bg)]"
                         }`}
                       >
                         {link.label}
-                        {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />}
+                        {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />}
                       </Link>
                     </motion.div>
                   );
@@ -302,7 +312,7 @@ export default function Header() {
                   {LANGS.map((l) => (
                     <button
                       key={l.code}
-                      onClick={() => setLang(l.code)}
+                      onClick={() => { setLang(l.code); setMobileOpen(false); }}
                       className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-medium border transition-all ${
                         lang === l.code
                           ? "border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-accent-glow)]"

@@ -1,7 +1,7 @@
 "use client";
-
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { Lang, translations, T } from "@/i18n/translations";
+import { createContext, useContext, useState, ReactNode } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { Lang, translations } from "@/i18n/translations";
 
 interface I18nContextType {
   lang: Lang;
@@ -15,21 +15,30 @@ const I18nContext = createContext<I18nContextType>({
   t: translations.en,
 });
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("lang") as Lang | null;
-    if (saved && translations[saved]) setLangState(saved);
-  }, []);
+export function I18nProvider({
+  children,
+  initialLocale,
+}: {
+  children: ReactNode;
+  initialLocale: Lang;
+}) {
+  const [lang, setLangState] = useState<Lang>(initialLocale);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const setLang = (l: Lang) => {
+    // Save to cookie for middleware detection
+    document.cookie = `lang=${l}; path=/; max-age=31536000; SameSite=Lax`;
     setLangState(l);
-    localStorage.setItem("lang", l);
+    // Navigate to same path with new locale prefix
+    const pathWithoutLocale = pathname.replace(/^\/(en|ru|uk)/, "") || "/";
+    router.push(`/${l}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`);
   };
 
   return (
-    <I18nContext.Provider value={{ lang, setLang, t: translations[lang] as typeof translations.en }}>
+    <I18nContext.Provider
+      value={{ lang, setLang, t: translations[lang] as typeof translations.en }}
+    >
       {children}
     </I18nContext.Provider>
   );
