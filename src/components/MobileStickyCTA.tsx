@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/content";
+import { useI18n } from "@/context/i18n-context";
 
 export default function MobileStickyCTA() {
+  const { t } = useI18n();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function MobileStickyCTA() {
               className="flex-1 text-center py-3 rounded-xl text-sm font-semibold text-white transition-all active:scale-95"
               style={{ background: "linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%)" }}
             >
-              Get Started — from €39
+              {t.mobileStickyCta.getStarted}
             </a>
             <a
               href={siteConfig.telegram}
@@ -48,7 +50,7 @@ export default function MobileStickyCTA() {
               rel="noopener noreferrer"
               className="py-3 px-4 rounded-xl text-sm font-medium text-[var(--color-text-secondary)] border border-[var(--color-glass-border)] hover:text-[var(--color-text-primary)] transition-colors active:scale-95"
             >
-              Community
+              {t.mobileStickyCta.community}
             </a>
           </div>
           {/* Safe area spacer for iOS */}

@@ -3,73 +3,63 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import PageLayout from "@/components/shared/PageLayout";
-
-const features = [
-  {
-    title: "Instant Expert Help",
-    desc: "Get answers to your AI questions within minutes from experienced practitioners who've solved similar challenges.",
-    points: ["5min average response time", "50+ verified experts online", "Real solutions, not theory"],
-    primary: true,
-  },
-  {
-    title: "Exclusive Content & Resources",
-    desc: "Daily tips, weekly case studies, and monthly deep-dives into cutting-edge AI tools and strategies.",
-    points: ["Daily AI tool discoveries", "Weekly automation workflows", "Monthly expert sessions"],
-  },
-  {
-    title: "Business Opportunities",
-    desc: "Connect with potential clients, partners, and collaborators. Many members found their dream jobs here.",
-    points: ["Job board updates", "Partnership opportunities", "Client referrals"],
-  },
-  {
-    title: "Tool Recommendations",
-    desc: "Stay ahead with insider knowledge of the latest AI tools, often before they become mainstream.",
-    points: ["Early access to tools", "Honest reviews & comparisons", "Setup tutorials & guides"],
-  },
-  {
-    title: "Success Stories & Case Studies",
-    desc: "Learn from real automation projects that generated significant ROI for businesses of all sizes.",
-    points: ["Real revenue numbers", "Step-by-step breakdowns", "Replicable strategies"],
-  },
-  {
-    title: "Free Mini-Courses",
-    desc: "Regular bite-sized training sessions on specific AI topics, delivered right in the community.",
-    points: ["Weekly mini-lessons", "Interactive Q&A sessions", "Downloadable resources"],
-  },
-];
-
-const stats = [
-  { number: "5,742", label: "Total Members", growth: "+247 this week" },
-  { number: "356", label: "Messages Today", growth: "+23% vs yesterday" },
-  { number: "89%", label: "Active Weekly", growth: "Industry leading" },
-  { number: "4.9/5", label: "Satisfaction", growth: "Based on 2,000+ reviews" },
-];
-
-const testimonials = [
-  {
-    quote: "This community changed my career. Got my first AI automation client within 2 weeks of joining!",
-    author: "Sarah M.",
-    role: "Freelance AI Consultant",
-  },
-  {
-    quote: "The daily tips alone are worth thousands. Implemented 3 automations that saved us 20 hours/week.",
-    author: "Mike Chen",
-    role: "Startup Founder",
-  },
-  {
-    quote: "Best AI community on Telegram. Real experts, real advice, real results. Highly recommend!",
-    author: "Elena Rodriguez",
-    role: "Tech Director",
-  },
-];
+import { useI18n } from "@/context/i18n-context";
 
 export default function CommunityPage() {
+  const { t } = useI18n();
+
+  const features = [
+    {
+      title: t.communityFeatures.f1Title,
+      desc: t.communityFeatures.f1Desc,
+      points: [t.communityFeatures.f1P1, t.communityFeatures.f1P2, t.communityFeatures.f1P3],
+      primary: true,
+    },
+    {
+      title: t.communityFeatures.f2Title,
+      desc: t.communityFeatures.f2Desc,
+      points: [t.communityFeatures.f2P1, t.communityFeatures.f2P2, t.communityFeatures.f2P3],
+    },
+    {
+      title: t.communityFeatures.f3Title,
+      desc: t.communityFeatures.f3Desc,
+      points: [t.communityFeatures.f3P1, t.communityFeatures.f3P2, t.communityFeatures.f3P3],
+    },
+    {
+      title: t.communityFeatures.f4Title,
+      desc: t.communityFeatures.f4Desc,
+      points: [t.communityFeatures.f4P1, t.communityFeatures.f4P2, t.communityFeatures.f4P3],
+    },
+    {
+      title: t.communityFeatures.f5Title,
+      desc: t.communityFeatures.f5Desc,
+      points: [t.communityFeatures.f5P1, t.communityFeatures.f5P2, t.communityFeatures.f5P3],
+    },
+    {
+      title: t.communityFeatures.f6Title,
+      desc: t.communityFeatures.f6Desc,
+      points: [t.communityFeatures.f6P1, t.communityFeatures.f6P2, t.communityFeatures.f6P3],
+    },
+  ];
+
+  const stats = [
+    { number: "5,742", label: t.communityStats.s1Label, growth: t.communityStats.s1Growth },
+    { number: "356", label: t.communityStats.s2Label, growth: t.communityStats.s2Growth },
+    { number: "89%", label: t.communityStats.s3Label, growth: t.communityStats.s3Growth },
+    { number: "4.9/5", label: t.communityStats.s4Label, growth: t.communityStats.s4Growth },
+  ];
+
+  const testimonials = [
+    { quote: t.communityTestimonials.t1Quote, author: t.communityTestimonials.t1Author, role: t.communityTestimonials.t1Role },
+    { quote: t.communityTestimonials.t2Quote, author: t.communityTestimonials.t2Author, role: t.communityTestimonials.t2Role },
+    { quote: t.communityTestimonials.t3Quote, author: t.communityTestimonials.t3Author, role: t.communityTestimonials.t3Role },
+  ];
   return (
     <PageLayout
-      badge="Community"
-      title="Join 5,742+ AI Automation"
-      titleHighlight="Experts on Telegram"
-      subtitle="Connect with like-minded entrepreneurs, get instant help from experts, and access exclusive content that's only shared in our private community."
+      badge={t.communityPage.badge}
+      title={t.communityPage.title}
+      titleHighlight={t.communityPage.titleHighlight}
+      subtitle={t.communityPage.subtitle}
     >
       {/* Stats row */}
       <section className="py-10">
@@ -81,9 +71,9 @@ export default function CommunityPage() {
             viewport={{ once: true }}
           >
             {[
-              { n: "5,742", l: "Active Members" },
-              { n: "350+", l: "Daily Messages" },
-              { n: "24/7", l: "Support Available" },
+              { n: "5,742", l: t.communityPage.activeMembersLabel },
+              { n: "350+", l: t.communityPage.dailyMessagesLabel },
+              { n: "24/7", l: t.communityPage.supportLabel },
             ].map((s) => (
               <div key={s.l} className="text-center">
                 <div className="text-2xl sm:text-4xl font-display font-bold gradient-text">{s.n}</div>
@@ -105,10 +95,10 @@ export default function CommunityPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Join Telegram Channel →
+              {t.communityPage.joinBtn}
             </a>
           </motion.div>
-          <p className="text-center text-sm text-[var(--color-text-muted)] mt-3">Free to join · Instant access · Private community</p>
+          <p className="text-center text-sm text-[var(--color-text-muted)] mt-3">{t.communityPage.freeJoin}</p>
         </div>
       </section>
 
@@ -117,13 +107,13 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.span variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">
-              Benefits
+              {t.communityPage.benefitsBadge}
             </motion.span>
             <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">
-              Why 5,742+ Professionals Choose Our Community
+              {t.communityPage.benefitsTitle}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-              More than just a chat group — it&apos;s your gateway to AI automation mastery and business success.
+              {t.communityPage.benefitsSubtitle}
             </motion.p>
           </motion.div>
 
@@ -166,7 +156,7 @@ export default function CommunityPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Active & Growing Community
+            {t.communityPage.statsTitle}
           </motion.h2>
 
           <motion.div
@@ -215,16 +205,16 @@ export default function CommunityPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
-              Ready to Join 5,742+ AI Automation Experts?
+              {t.communityPage.ctaTitle}
             </h2>
             <p className="text-[var(--color-text-secondary)] mb-6">
-              Get instant access to the most active AI automation community on Telegram. Free forever, no spam, real value.
+              {t.communityPage.ctaSubtitle}
             </p>
             <div className="grid grid-cols-3 gap-4 mb-8">
               {[
-                { title: "Learn Daily", desc: "New AI tools, tips, and strategies shared every day" },
-                { title: "Network", desc: "Connect with entrepreneurs, developers, and business owners" },
-                { title: "Earn More", desc: "Members report average 40% income increase within 6 months" },
+                { title: t.communityPage.ctaLearnTitle, desc: t.communityPage.ctaLearnDesc },
+                { title: t.communityPage.ctaNetworkTitle, desc: t.communityPage.ctaNetworkDesc },
+                { title: t.communityPage.ctaEarnTitle, desc: t.communityPage.ctaEarnDesc },
               ].map((b) => (
                 <div key={b.title} className="text-center">
                   <h4 className="text-white font-semibold text-sm mb-1">{b.title}</h4>
@@ -238,13 +228,13 @@ export default function CommunityPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Join AI Insider Community Now →
+              {t.communityPage.ctaJoinBtn}
             </a>
             <div className="flex justify-center gap-6 mt-4 text-xs text-[var(--color-text-muted)]">
-              <span>Free forever</span>
-              <span>Instant access</span>
-              <span>Private & secure</span>
-              <span>Mobile friendly</span>
+              <span>{t.communityPage.ctaFreeForever}</span>
+              <span>{t.communityPage.ctaInstantAccess}</span>
+              <span>{t.communityPage.ctaPrivateSecure}</span>
+              <span>{t.communityPage.ctaMobileFriendly}</span>
             </div>
           </motion.div>
         </div>

@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { siteConfig } from "@/data/content";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { useI18n } from "@/context/i18n-context";
 
 export default function CommunityCTA() {
+  const { t } = useI18n();
+
   return (
     <section id="community" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
@@ -24,7 +27,7 @@ export default function CommunityCTA() {
             custom={0}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6"
           >
-            Community
+            {t.communityCta.badge}
           </motion.span>
 
           <motion.h2
@@ -32,8 +35,8 @@ export default function CommunityCTA() {
             custom={1}
             className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--color-text-primary)] mb-6"
           >
-            Join Our Growing{" "}
-            <span className="gradient-text">Community</span>
+            {t.communityCta.title}{" "}
+            <span className="gradient-text">{t.communityCta.titleHighlight}</span>
           </motion.h2>
 
           <motion.p
@@ -41,8 +44,7 @@ export default function CommunityCTA() {
             custom={2}
             className="text-[var(--color-text-secondary)] text-lg mb-10 max-w-xl mx-auto"
           >
-            Connect with 6,000+ professionals learning and building with AI automation.
-            Get access to resources, discussions, and support.
+            {t.communityCta.subtitle}
           </motion.p>
 
           <motion.div variants={fadeInUp} custom={3}>
@@ -50,7 +52,7 @@ export default function CommunityCTA() {
               href={siteConfig.telegram}
               className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#0ea5e9] to-[#06b6d4] text-white font-medium rounded-full hover:shadow-[0_0_30px_rgba(14,165,233,0.35)] transition-all duration-300 text-sm"
             >
-              Join AI Insider Community
+              {t.communityCta.joinBtn}
               <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -62,7 +64,7 @@ export default function CommunityCTA() {
             custom={4}
             className="flex flex-wrap justify-center gap-6 mt-8"
           >
-            {["Free to join", "Expert content", "Active community", "No spam"].map(
+            {[t.communityCta.label1, t.communityCta.label2, t.communityCta.label3, t.communityCta.label4].map(
               (label) => (
                 <span
                   key={label}

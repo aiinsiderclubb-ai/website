@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { faqItems } from "@/data/content";
+import { getFaqItems } from "@/data/content";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { useI18n } from "@/context/i18n-context";
 
 function FAQItem({ item, isOpen, toggle }: {
-  item: typeof faqItems[0];
+  item: { question: string; answer: string };
   isOpen: boolean;
   toggle: () => void;
 }) {
@@ -52,6 +53,8 @@ function FAQItem({ item, isOpen, toggle }: {
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const { t, lang } = useI18n();
+  const faqItems = getFaqItems(lang);
 
   return (
     <section id="faq" className="section-padding relative overflow-hidden">
@@ -70,22 +73,22 @@ export default function FAQ() {
             custom={0}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6"
           >
-            FAQ
+            {t.faq.badge}
           </motion.span>
           <motion.h2
             variants={fadeInUp}
             custom={1}
             className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-primary)] mb-4"
           >
-            Frequently Asked{" "}
-            <span className="gradient-text">Questions</span>
+            {t.faq.title}{" "}
+            <span className="gradient-text">{t.faq.titleHighlight}</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             custom={2}
             className="text-[var(--color-text-secondary)] text-base"
           >
-            Everything you need to know to get started.
+            {t.faq.subtitle}
           </motion.p>
         </motion.div>
 

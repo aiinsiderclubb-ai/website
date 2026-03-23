@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import Link from "next/link";
 import PageLayout from "@/components/shared/PageLayout";
+import { useI18n } from "@/context/i18n-context";
 
 const posts = [
   {
@@ -163,6 +164,7 @@ const badgeColors: Record<string, string> = {
 };
 
 export default function BlogPage() {
+  const { t } = useI18n();
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [search, setSearch] = useState("");
 
@@ -175,10 +177,10 @@ export default function BlogPage() {
 
   return (
     <PageLayout
-      badge="Insights"
-      title="AI Insider"
-      titleHighlight="Blog"
-      subtitle="Practical guides, tool deep-dives and case studies from real automation work."
+      badge={t.blogPage.badge}
+      title={t.blogPage.title}
+      titleHighlight={t.blogPage.titleHighlight}
+      subtitle={t.blogPage.subtitle}
     >
       {/* CTA row */}
       <div className="flex justify-center gap-4 pb-12 flex-wrap px-4">
@@ -188,7 +190,7 @@ export default function BlogPage() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Subscribe on Telegram →
+          {t.blogPage.subscribeTelegram}
         </a>
       </div>
 
@@ -204,7 +206,7 @@ export default function BlogPage() {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search posts…"
+              placeholder={t.blogPage.searchPlaceholder}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm bg-[var(--color-glass-bg)] border border-[var(--color-glass-border)] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-accent)] transition-colors"
             />
           </div>
@@ -220,7 +222,7 @@ export default function BlogPage() {
                     : "glass border border-white/10 text-[var(--color-text-secondary)] hover:border-white/20"
                 }`}
               >
-                {c === "all" ? "All Posts" : c.charAt(0).toUpperCase() + c.slice(1)}
+                {c === "all" ? t.blogPage.allPosts : c.charAt(0).toUpperCase() + c.slice(1)}
               </button>
             ))}
           </div>
@@ -240,9 +242,9 @@ export default function BlogPage() {
                 className="text-center py-20"
               >
                 <div className="text-4xl mb-4">🔍</div>
-                <p className="text-[var(--color-text-secondary)]">No posts found for &ldquo;{search}&rdquo;</p>
+                <p className="text-[var(--color-text-secondary)]">{t.blogPage.noResults} &ldquo;{search}&rdquo;</p>
                 <button onClick={() => { setSearch(""); setActiveCategory("all"); }} className="mt-4 text-[var(--color-accent)] text-sm hover:underline">
-                  Clear filters
+                  {t.blogPage.clearFilters}
                 </button>
               </motion.div>
             ) : (
@@ -311,10 +313,10 @@ export default function BlogPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
-              Get New Posts in Telegram
+              {t.blogPage.newsletter}
             </h2>
             <p className="text-[var(--color-text-secondary)] mb-8">
-              Join 5,742+ AI professionals getting daily tips, guides and tool discoveries in our community channel.
+              {t.blogPage.newsletterSubtitle}
             </p>
             <a
               href="https://t.me/+qjwWJz7aLR1hMDQ0"
@@ -322,7 +324,7 @@ export default function BlogPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Join AI Insider Telegram →
+              {t.blogPage.joinTelegram}
             </a>
           </motion.div>
         </div>

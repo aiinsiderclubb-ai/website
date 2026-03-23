@@ -121,7 +121,7 @@ export default function ChatbotContent() {
 
               {/* Meta pills */}
               <div className="flex flex-wrap gap-3 mb-8">
-                {[["📅","Starts September 15"],["⏱️","3 weeks"],["🔑","API keys included"],["💶","€59"]].map(([icon,label]) => (
+                {[["📅", `${t.common.startDate} Sep 15`],["⏱️","3 weeks"],["🔑", t.common.apiKeys],["💶","€59"]].map(([icon,label]) => (
                   <div key={label} className="glass border border-[var(--color-glass-border)] rounded-full px-4 py-2 flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
                     <span>{icon}</span><span>{label}</span>
                   </div>
@@ -139,7 +139,7 @@ export default function ChatbotContent() {
                   className="px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all hover:opacity-90 hover:shadow-[0_0_24px_rgba(14,165,233,0.4)]"
                   style={{ background: "linear-gradient(135deg,#0ea5e9,#7c3aed)" }}
                 >
-                  Enroll — €59
+                  {t.courses.enroll} — €59
                 </a>
                 <a
                   href="https://t.me/vladyslavarcher?text=Hello! I want to enroll in AI Chat-Bot (Sep 15, €59)."
@@ -243,7 +243,7 @@ export default function ChatbotContent() {
               ))}
             </motion.div>
             <p className="text-sm text-[var(--color-text-muted)] mt-6 p-4 glass border border-[var(--color-glass-border)] rounded-xl">
-              ⚠️ Active manager support continues for 3 days after the course. We recommend not postponing — lessons are short but dense.
+              ⚠️ {t.coursePage.supportNote}
             </p>
           </div>
         </section>
@@ -367,7 +367,7 @@ export default function ChatbotContent() {
                   <blockquote className="text-[var(--color-text-secondary)] text-sm italic mb-4">
                     &ldquo;{t2.quote}&rdquo;
                   </blockquote>
-                  <div className="text-xs text-[var(--color-text-muted)]">{t2.author}</div>
+                  <div className="text-xs text-[var(--color-text-muted)]">{t.coursePage.courseParticipant}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -425,13 +425,13 @@ export default function ChatbotContent() {
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="text-5xl mb-4">🎉</div>
-                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2">Application Sent!</h3>
-                  <p className="text-[var(--color-text-secondary)]">We&apos;ll reply within 24 hours to confirm your spot.</p>
+                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2">{t.common.applicationSent}</h3>
+                  <p className="text-[var(--color-text-secondary)]">{t.common.applicationReply}</p>
                 </div>
               ) : (
                 <>
                   <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2 text-center">{t.coursePage.secureSpot}</h3>
-                  <p className="text-[var(--color-text-secondary)] text-center mb-8 text-sm">Fill the form — we&apos;ll reply within 24 hours. Or message us on Telegram.</p>
+                  <p className="text-[var(--color-text-secondary)] text-center mb-8 text-sm">{t.common.fillFormReply}</p>
 
                   {/* Early bird */}
                   <div className="flex items-center gap-2 mb-6 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20">
@@ -442,9 +442,9 @@ export default function ChatbotContent() {
                   <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
-                        { name: "name", placeholder: "Your name", type: "text" },
+                        { name: "name", placeholder: t.common.yourName, type: "text" },
                         { name: "email", placeholder: "Email", type: "email" },
-                        { name: "phone", placeholder: "Phone (optional)", type: "tel", optional: true },
+                        { name: "phone", placeholder: t.common.phoneOptional, type: "tel", optional: true },
                       ].map((f) => (
                         <input
                           key={f.name}
@@ -459,7 +459,7 @@ export default function ChatbotContent() {
                     </div>
                     <textarea
                       rows={3}
-                      placeholder="Anything we should know?"
+                      placeholder={t.common.anythingToKnow}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="w-full glass border border-[var(--color-glass-border)] rounded-xl px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-accent-border)] bg-transparent text-sm resize-none"

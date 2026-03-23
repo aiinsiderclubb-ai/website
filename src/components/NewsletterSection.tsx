@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { useI18n } from "@/context/i18n-context";
 
 type State = "idle" | "loading" | "success" | "error";
 
 export default function NewsletterSection() {
+  const { t } = useI18n();
   const [email, setEmail] = useState("");
   const [state, setState] = useState<State>("idle");
 
@@ -46,7 +48,7 @@ export default function NewsletterSection() {
             custom={0}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6"
           >
-            📬 Weekly Newsletter
+            📬 {t.newsletter.badge}
           </motion.span>
 
           <motion.h2
@@ -54,8 +56,8 @@ export default function NewsletterSection() {
             custom={1}
             className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-primary)] mb-4"
           >
-            AI Tools & Automation Tips{" "}
-            <span className="gradient-text">Every Week</span>
+            {t.newsletter.title}{" "}
+            <span className="gradient-text">{t.newsletter.titleHighlight}</span>
           </motion.h2>
 
           <motion.p
@@ -63,7 +65,7 @@ export default function NewsletterSection() {
             custom={2}
             className="text-[var(--color-text-secondary)] text-lg mb-10 max-w-xl mx-auto"
           >
-            500+ professionals get practical AI tips, n8n workflows, tool reviews and automation case studies — straight to their inbox. No fluff.
+            {t.newsletter.subtitle}
           </motion.p>
 
           <motion.div variants={fadeInUp} custom={3}>
@@ -80,9 +82,9 @@ export default function NewsletterSection() {
                     ✅
                   </div>
                   <div>
-                    <p className="text-[var(--color-text-primary)] font-semibold text-lg">You&apos;re in!</p>
+                    <p className="text-[var(--color-text-primary)] font-semibold text-lg">{t.newsletter.successTitle}</p>
                     <p className="text-[var(--color-text-secondary)] text-sm mt-1">
-                      Check your inbox — first email coming soon.
+                      {t.newsletter.successSubtitle}
                     </p>
                   </div>
                 </motion.div>
@@ -116,20 +118,20 @@ export default function NewsletterSection() {
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                           </svg>
-                          Subscribing…
+                          {t.newsletter.subscribing}
                         </span>
-                      ) : "Subscribe Free →"}
+                      ) : t.newsletter.subscribeFree}
                     </button>
                   </div>
 
                   {state === "error" && (
                     <p className="text-red-400 text-xs mt-3 text-center">
-                      Something went wrong — try again or join us on Telegram.
+                      {t.newsletter.errorMsg}
                     </p>
                   )}
 
                   <div className="flex flex-wrap justify-center gap-4 mt-5">
-                    {["No spam, ever", "Unsubscribe anytime", "500+ readers"].map((label) => (
+                    {[t.newsletter.noSpam, t.newsletter.unsubscribe, t.newsletter.readers].map((label) => (
                       <span key={label} className="flex items-center gap-1.5 text-xs text-[var(--color-text-muted)]">
                         <svg className="w-3.5 h-3.5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

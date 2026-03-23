@@ -4,67 +4,66 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import PageLayout from "@/components/shared/PageLayout";
-
-const courses = [
-  {
-    level: "Beginner",
-    price: "€59",
-    duration: "3 weeks",
-    title: "AI Chat-Bot Development",
-    startDate: "Rolling enrollment",
-    badge: "API keys included",
-    description:
-      "From zero to a niche-ready bot for services, e-commerce or healthcare. Practice on real tasks with templates and guidance. Includes a quick sales playbook.",
-    features: ["Templates", "Support", "Sales playbook", "Real cases"],
-    cta: "Enroll — €59",
-    href: "/courses/chatbot",
-    vip: false,
-  },
-  {
-    level: "Intermediate",
-    price: "€39",
-    duration: "2 weeks",
-    title: "AI Voice Agent (Vapi.ai & Whisper)",
-    startDate: "Rolling enrollment",
-    badge: "API keys included",
-    description:
-      "Design scenarios, wire real-time actions and take your agent to production for services, healthcare or sales.",
-    features: ["Voice synthesis", "Realtime actions", "Templates", "Certificate"],
-    cta: "Join — €39",
-    href: "/courses/voice",
-    vip: false,
-  },
-  {
-    level: "VIP",
-    price: "€299",
-    duration: "2 weeks",
-    title: "Personal ChatBot Mentorship",
-    startDate: "Your First €1000",
-    badge: "VIP Access",
-    description:
-      "1-on-1 mentorship to create and monetize your first chatbot. Personal guidance, direct feedback, a revenue playbook and unlimited support.",
-    features: ["Personal mentor", "Direct communication", "Revenue playbook", "Unlimited support"],
-    cta: "Get VIP Mentorship — €299",
-    href: "/courses/mentorship",
-    vip: true,
-  },
-];
-
-const benefits = [
-  { title: "Expert Instruction", desc: "Learn from industry professionals with years of AI experience" },
-  { title: "Lifetime Access", desc: "Once enrolled, access course content forever including updates" },
-  { title: "Community Support", desc: "Join exclusive Telegram with 5,700+ AI enthusiasts and experts" },
-  { title: "Certificates", desc: "Industry-recognized certificates to boost your professional profile" },
-  { title: "Real Projects", desc: "Build portfolio-worthy projects that impress employers" },
-  { title: "Money-Back Guarantee", desc: "Not satisfied? Get 100% refund within first 30 days" },
-];
+import { useI18n } from "@/context/i18n-context";
 
 export default function CoursesPage() {
+  const { t } = useI18n();
+
+  const courses = [
+    {
+      level: t.coursesListPage.c1Level,
+      price: "€59",
+      duration: t.coursesListPage.c1Duration,
+      title: t.coursesListPage.c1Title,
+      startDate: t.coursesListPage.c1StartDate,
+      badge: t.coursesListPage.c1Badge,
+      description: t.coursesListPage.c1Desc,
+      features: [t.coursesListPage.c1F1, t.coursesListPage.c1F2, t.coursesListPage.c1F3, t.coursesListPage.c1F4],
+      cta: t.coursesListPage.c1Cta,
+      href: "/courses/chatbot",
+      vip: false,
+    },
+    {
+      level: t.coursesListPage.c2Level,
+      price: "€39",
+      duration: t.coursesListPage.c2Duration,
+      title: t.coursesListPage.c2Title,
+      startDate: t.coursesListPage.c2StartDate,
+      badge: t.coursesListPage.c2Badge,
+      description: t.coursesListPage.c2Desc,
+      features: [t.coursesListPage.c2F1, t.coursesListPage.c2F2, t.coursesListPage.c2F3, t.coursesListPage.c2F4],
+      cta: t.coursesListPage.c2Cta,
+      href: "/courses/voice",
+      vip: false,
+    },
+    {
+      level: t.coursesListPage.c3Level,
+      price: "€299",
+      duration: t.coursesListPage.c3Duration,
+      title: t.coursesListPage.c3Title,
+      startDate: t.coursesListPage.c3StartDate,
+      badge: t.coursesListPage.c3Badge,
+      description: t.coursesListPage.c3Desc,
+      features: [t.coursesListPage.c3F1, t.coursesListPage.c3F2, t.coursesListPage.c3F3, t.coursesListPage.c3F4],
+      cta: t.coursesListPage.c3Cta,
+      href: "/courses/mentorship",
+      vip: true,
+    },
+  ];
+
+  const benefits = [
+    { title: t.coursesBenefits.b1Title, desc: t.coursesBenefits.b1Desc },
+    { title: t.coursesBenefits.b2Title, desc: t.coursesBenefits.b2Desc },
+    { title: t.coursesBenefits.b3Title, desc: t.coursesBenefits.b3Desc },
+    { title: t.coursesBenefits.b4Title, desc: t.coursesBenefits.b4Desc },
+    { title: t.coursesBenefits.b5Title, desc: t.coursesBenefits.b5Desc },
+    { title: t.coursesBenefits.b6Title, desc: t.coursesBenefits.b6Desc },
+  ];
   return (
     <PageLayout
-      badge="Courses Hub"
-      title="AI Courses"
-      subtitle="Choose your path — Chat-Bot or Voice Agent. See next start dates and details."
+      badge={t.coursesPage.badge}
+      title={t.coursesPage.title}
+      subtitle={t.coursesPage.subtitle}
     >
       {/* Courses Grid */}
       <section className="py-20">
@@ -77,14 +76,13 @@ export default function CoursesPage() {
             viewport={{ once: true }}
           >
             <motion.span variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">
-              Premium Training
+              {t.coursesPage.premiumBadge}
             </motion.span>
             <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">
-              Choose Your AI Mastery Path
+              {t.coursesPage.chooseTitle}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-              Exclusive courses designed by industry experts. From beginner to enterprise level.
-              Limited enrollment — secure your spot today.
+              {t.coursesPage.chooseSubtitle}
             </motion.p>
           </motion.div>
 
@@ -107,7 +105,7 @@ export default function CoursesPage() {
               >
                 {course.vip && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#7c3aed] to-[#0ea5e9] rounded-full text-white text-xs font-bold tracking-wider uppercase">
-                    Most Popular
+                    {t.coursesPage.mostPopular}
                   </div>
                 )}
                 <div className="flex justify-between items-start mb-4">
@@ -166,7 +164,7 @@ export default function CoursesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            What You&apos;ll Get With Every Course
+            {t.coursesPage.benefitsTitle}
           </motion.h3>
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -195,10 +193,10 @@ export default function CoursesPage() {
             viewport={{ once: true }}
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">
-              Why AI Insider?
+              {t.coursesPage.whyBadge}
             </span>
             <h3 className="text-2xl sm:text-3xl font-display font-bold text-[var(--color-text-primary)]">
-              AI Insider vs Other Options
+              {t.coursesPage.comparisonTitle}
             </h3>
           </motion.div>
           <motion.div
@@ -210,24 +208,24 @@ export default function CoursesPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr>
-                  <th className="text-left py-4 px-4 text-[var(--color-text-muted)] font-medium w-1/3">Feature</th>
+                  <th className="text-left py-4 px-4 text-[var(--color-text-muted)] font-medium w-1/3">{t.coursesPage.tableFeature}</th>
                   <th className="py-4 px-4 text-center rounded-t-xl" style={{ background: "linear-gradient(135deg, rgba(14,165,233,0.15) 0%, rgba(124,58,237,0.15) 100%)", border: "1px solid rgba(14,165,233,0.25)", borderBottom: "none" }}>
                     <span className="gradient-text font-bold">AI Insider</span>
                   </th>
-                  <th className="py-4 px-4 text-center text-[var(--color-text-muted)] font-medium">YouTube / Free</th>
-                  <th className="py-4 px-4 text-center text-[var(--color-text-muted)] font-medium">Freelancer / Agency</th>
+                  <th className="py-4 px-4 text-center text-[var(--color-text-muted)] font-medium">{t.coursesPage.tableYoutube}</th>
+                  <th className="py-4 px-4 text-center text-[var(--color-text-muted)] font-medium">{t.coursesPage.tableAgency}</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Structured curriculum", "✅", "❌", "N/A"],
-                  ["Hands-on projects", "✅", "🔶 Sometimes", "✅"],
-                  ["1-on-1 support", "✅ Mentorship", "❌", "✅ Expensive"],
-                  ["Community (6,000+)", "✅", "❌", "❌"],
-                  ["Always up-to-date", "✅", "🔶 Varies", "✅"],
-                  ["Certificate", "✅", "❌", "❌"],
-                  ["Cost", "€39–€299", "Free", "€500–€5,000+"],
-                  ["Time to first result", "1–3 weeks", "Months", "Depends"],
+                  [t.coursesComparison.row1Feature, "✅", "❌", "N/A"],
+                  [t.coursesComparison.row2Feature, "✅", t.coursesComparison.sometimes, "✅"],
+                  [t.coursesComparison.row3Feature, t.coursesComparison.row3Ai, "❌", t.coursesComparison.expensiveSupport],
+                  [t.coursesComparison.row4Feature, "✅", "❌", "❌"],
+                  [t.coursesComparison.row5Feature, "✅", t.coursesComparison.varies, "✅"],
+                  [t.coursesComparison.row6Feature, "✅", "❌", "❌"],
+                  [t.coursesComparison.row7Feature, t.coursesComparison.row7Ai, t.coursesComparison.row7Yt, t.coursesComparison.row7Agency],
+                  [t.coursesComparison.row8Feature, t.coursesComparison.row8Ai, t.coursesComparison.row8Yt, t.coursesComparison.row8Agency],
                 ].map(([feature, ai, yt, agency], i) => (
                   <tr
                     key={feature}
@@ -255,21 +253,21 @@ export default function CoursesPage() {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
-              Ready to Transform Your Career?
+              {t.coursesPage.ctaTitle}
             </h3>
             <p className="text-[var(--color-text-secondary)] mb-8">
-              Join thousands of successful AI professionals. Start your journey today and unlock unlimited earning potential.
+              {t.coursesPage.ctaSubtitle}
             </p>
             <a
               href="https://t.me/vladyslavarcher?text=Здравствуйте!%20Хочу%20узнать%20больше%20о%20ваших%20курсах%20по%20AI%20автоматизации."
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#0ea5e9] to-[#7c3aed] text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
             >
-              Get Course Consultation →
+              {t.coursesPage.getConsultation}
             </a>
             <p className="mt-4 text-sm text-[var(--color-text-muted)]">
-              Have questions?{" "}
+              {t.coursesPage.haveQuestions}{" "}
               <a href="https://t.me/vladyslavarcher" className="text-[#0ea5e9] hover:underline" target="_blank" rel="noopener noreferrer">
-                Contact Course Manager @vladyslavarcher
+                {t.coursesPage.contactManager}
               </a>
             </p>
           </motion.div>

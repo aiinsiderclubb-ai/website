@@ -64,7 +64,7 @@ export default function MentorshipContent() {
               </p>
 
               <div className="flex flex-wrap gap-3 mb-8">
-                {[["👑","VIP Access"],["⏱️","2 weeks"],["♾️","Unlimited support"],["💶","€299"]].map(([icon,label]) => (
+                {[["👑", t.mentorshipPage.vipAccess],["⏱️","2 weeks"],["♾️", t.mentorshipPage.unlimitedSupport],["💶","€299"]].map(([icon,label]) => (
                   <div key={label} className="glass border border-amber-500/20 rounded-full px-4 py-2 flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
                     <span>{icon}</span><span>{label}</span>
                   </div>
@@ -79,11 +79,11 @@ export default function MentorshipContent() {
                   className="px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all hover:opacity-90 hover:shadow-[0_0_24px_rgba(245,158,11,0.4)]"
                   style={{ background: "linear-gradient(135deg,#f59e0b,#ef4444)" }}
                 >
-                  Get VIP Mentorship — €299
+                  {t.mentorshipPage.getVip}
                 </a>
                 <a href="#apply"
                   className="px-6 py-3.5 rounded-xl border border-[var(--color-glass-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-amber-500/30 text-sm font-medium transition-all">
-                  Apply via Form
+                  {t.mentorshipPage.applyVip}
                 </a>
               </div>
             </motion.div>
@@ -95,10 +95,10 @@ export default function MentorshipContent() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               {[
-                { n: "€1,000", l: "target first month" },
-                { n: "1-on-1", l: "personal sessions" },
-                { n: "7/7", l: "chat support days" },
-                { n: "∞", l: "bot reviews included" },
+                { n: "€1,000", l: t.mentorshipPage.targetFirstMonth },
+                { n: "1-on-1", l: t.mentorshipPage.personalSessions },
+                { n: "7/7", l: t.mentorshipPage.supportDays },
+                { n: "∞", l: t.mentorshipPage.botReviews },
               ].map((s) => (
                 <motion.div key={s.l} variants={fadeInUp} className="glass border border-amber-500/20 rounded-2xl p-6 text-center">
                   <div className="text-3xl font-display font-bold" style={{ background: "linear-gradient(135deg,#f59e0b,#ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{s.n}</div>
@@ -114,7 +114,7 @@ export default function MentorshipContent() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h2 className="text-2xl sm:text-3xl font-display font-bold text-[var(--color-text-primary)] text-center mb-12"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              Your Journey to First €1,000
+              {t.mentorshipPage.journeyTitle}
             </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {steps.map((step, i) => (
@@ -138,7 +138,7 @@ export default function MentorshipContent() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.h2 className="text-2xl sm:text-3xl font-display font-bold text-[var(--color-text-primary)] text-center mb-10"
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              What&apos;s Included
+              {t.mentorshipPage.whatsIncluded}
             </motion.h2>
             <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               {includes.map((inc) => (
@@ -175,19 +175,19 @@ export default function MentorshipContent() {
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="text-5xl mb-4">👑</div>
-                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2">Application Received!</h3>
-                  <p className="text-[var(--color-text-secondary)]">Your mentor will reach out within 24 hours.</p>
+                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2">{t.mentorshipPage.applicationReceived}</h3>
+                  <p className="text-[var(--color-text-secondary)]">{t.mentorshipPage.mentorReach}</p>
                 </div>
               ) : (
                 <>
-                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2 text-center">Apply for VIP Mentorship</h3>
-                  <p className="text-[var(--color-text-secondary)] text-center mb-8 text-sm">Tell us about your goals — we&apos;ll match you with the right mentor.</p>
+                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2 text-center">{t.mentorshipPage.applyTitle}</h3>
+                  <p className="text-[var(--color-text-secondary)] text-center mb-8 text-sm">{t.mentorshipPage.applySubtitle}</p>
                   <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
-                        { name: "name", placeholder: "Your name", type: "text" },
+                        { name: "name", placeholder: t.common.yourName, type: "text" },
                         { name: "email", placeholder: "Email", type: "email" },
-                        { name: "phone", placeholder: "Phone (optional)", type: "tel", optional: true },
+                        { name: "phone", placeholder: t.common.phoneOptional, type: "tel", optional: true },
                       ].map((f) => (
                         <input key={f.name} type={f.type} placeholder={f.placeholder} required={!f.optional}
                           value={form[f.name as keyof typeof form]}
@@ -196,14 +196,14 @@ export default function MentorshipContent() {
                         />
                       ))}
                     </div>
-                    <textarea rows={3} placeholder="Tell us about your experience and goals..."
+                    <textarea rows={3} placeholder={t.mentorshipPage.tellGoals}
                       value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="w-full glass border border-[var(--color-glass-border)] rounded-xl px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-amber-500/40 bg-transparent text-sm resize-none"
                     />
                     <div className="flex gap-3 flex-wrap">
                       <button type="submit" className="px-8 py-3 rounded-xl text-white font-semibold text-sm transition-all hover:opacity-90"
                         style={{ background: "linear-gradient(135deg,#f59e0b,#ef4444)" }}>
-                        Apply — €299
+                        {t.mentorshipPage.applyBtn}
                       </button>
                       <a href="https://t.me/vladyslavarcher?text=Привет!%20Интересует%20Personal%20ChatBot%20Mentorship%20(€299)"
                         target="_blank" rel="noopener noreferrer"

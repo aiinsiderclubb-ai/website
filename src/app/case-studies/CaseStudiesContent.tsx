@@ -5,118 +5,108 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import PageLayout from "@/components/shared/PageLayout";
 import Link from "next/link";
-
-const cases = [
-  {
-    id: "ecommerce-support",
-    tag: "E-commerce",
-    tagColor: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20",
-    emoji: "🛍️",
-    title: "AI Support Bot Cut Costs by 40%",
-    client: "Online Fashion Retailer",
-    timeline: "3 weeks to deploy",
-    stack: ["n8n", "ChatGPT API", "Telegram Bot", "Google Sheets"],
-    challenge:
-      "The client's support team was drowning in 500+ repetitive tickets per day — order status, returns, sizing questions. Response time averaged 18 hours. They couldn't scale hiring fast enough.",
-    solution:
-      "We built an AI support bot on Telegram integrated with their Shopify store via n8n. The bot handles order lookups, returns initiation, and FAQ in 3 languages. Complex issues escalate to a human with full conversation context.",
-    results: [
-      { metric: "40%", label: "Support cost reduction" },
-      { metric: "2 min", label: "Avg response time (was 18h)" },
-      { metric: "78%", label: "Tickets resolved automatically" },
-      { metric: "4.8★", label: "Customer satisfaction" },
-    ],
-    quote:
-      "We went from drowning in tickets to handling double the volume with the same team. The bot pays for itself every month.",
-    author: "Head of Operations",
-  },
-  {
-    id: "lead-qualification",
-    tag: "SaaS / Sales",
-    tagColor: "bg-blue-500/15 text-blue-400 border-blue-500/20",
-    emoji: "🎯",
-    title: "3× Lead Conversion with AI Qualification",
-    client: "B2B SaaS Startup",
-    timeline: "2 weeks to deploy",
-    stack: ["n8n", "OpenAI GPT-4", "HubSpot", "Slack"],
-    challenge:
-      "Sales reps were spending 60% of their time on leads that never converted. Inbound volume was high but quality was inconsistent. Manual qualification took 2–3 days per lead.",
-    solution:
-      "Automated lead scoring pipeline: when a lead fills the form, an AI agent enriches the data (LinkedIn, company info), scores fit on 12 criteria, and routes hot leads to sales within minutes. Cold leads get a nurture sequence.",
-    results: [
-      { metric: "3×", label: "Lead-to-demo conversion" },
-      { metric: "68%", label: "Less time on cold leads" },
-      { metric: "4 min", label: "Avg qualification time (was 2–3 days)" },
-      { metric: "+$180k", label: "Additional ARR in 6 months" },
-    ],
-    quote:
-      "Our reps now only talk to people who actually want to buy. Pipeline quality went through the roof.",
-    author: "VP of Sales",
-  },
-  {
-    id: "voice-appointments",
-    tag: "Healthcare",
-    tagColor: "bg-purple-500/15 text-purple-400 border-purple-500/20",
-    emoji: "🎙️",
-    title: "Voice Agent Automates 80% of Bookings",
-    client: "Private Medical Clinic (12 locations)",
-    timeline: "4 weeks to deploy",
-    stack: ["Vapi.ai", "Whisper", "n8n", "Google Calendar", "Twilio"],
-    challenge:
-      "Receptionists were handling 300+ booking calls per day. 35% of calls came after hours. No-show rate was 22% due to lack of automated reminders. Staff burnout was high.",
-    solution:
-      "A 24/7 AI voice agent handles inbound booking calls, answers FAQs, reschedules and cancels appointments. Integrated with Google Calendar across all 12 locations. Sends SMS reminders at 48h and 2h before appointment.",
-    results: [
-      { metric: "80%", label: "Bookings handled automatically" },
-      { metric: "24/7", label: "Availability (was 9am–6pm)" },
-      { metric: "−14%", label: "No-show rate reduction" },
-      { metric: "€8,400", label: "Monthly labor cost saved" },
-    ],
-    quote:
-      "Patients love that they can book at midnight. Our staff now focus on the patients in front of them, not the phone.",
-    author: "Clinic Director",
-  },
-  {
-    id: "content-pipeline",
-    tag: "Marketing Agency",
-    tagColor: "bg-orange-500/15 text-orange-400 border-orange-500/20",
-    emoji: "✍️",
-    title: "500+ Content Pieces/Month — 1 Person",
-    client: "Digital Marketing Agency",
-    timeline: "1 week to deploy",
-    stack: ["n8n", "GPT-4o", "Make.com", "Notion", "Buffer"],
-    challenge:
-      "The agency was managing content for 15 clients. Creating, adapting, scheduling and reporting on 300+ posts per month required 4 full-time content managers. Margins were thin.",
-    solution:
-      "An AI content pipeline: client briefs go into Notion → n8n triggers GPT-4o to draft posts in the correct tone/language → human reviews in 2 minutes → auto-scheduled in Buffer → performance reports generated weekly automatically.",
-    results: [
-      { metric: "500+", label: "Pieces produced monthly" },
-      { metric: "1", label: "Person managing the pipeline" },
-      { metric: "82%", label: "Time saved on content creation" },
-      { metric: "3×", label: "Client capacity increase" },
-    ],
-    quote:
-      "We went from struggling with 15 clients to comfortably handling 45 with better output quality. AI Insider's training was the catalyst.",
-    author: "Agency Founder",
-  },
-];
-
-const stats = [
-  { number: "40%+", label: "Average cost reduction" },
-  { number: "3×", label: "Average ROI improvement" },
-  { number: "2–4 wk", label: "Typical deployment time" },
-  { number: "150+", label: "Implementations delivered" },
-];
+import { useI18n } from "@/context/i18n-context";
 
 export default function CaseStudiesContent() {
+  const { t } = useI18n();
+
+  const cases = [
+    {
+      id: "ecommerce-support",
+      tag: t.caseStudiesCases.c1Tag,
+      tagColor: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20",
+      emoji: "🛍️",
+      title: t.caseStudiesCases.c1Title,
+      client: t.caseStudiesCases.c1Client,
+      timeline: t.caseStudiesCases.c1Timeline,
+      stack: ["n8n", "ChatGPT API", "Telegram Bot", "Google Sheets"],
+      challenge: t.caseStudiesCases.c1Challenge,
+      solution: t.caseStudiesCases.c1Solution,
+      results: [
+        { metric: "40%", label: t.caseStudiesCases.c1R1Label },
+        { metric: "2 min", label: t.caseStudiesCases.c1R2Label },
+        { metric: "78%", label: t.caseStudiesCases.c1R3Label },
+        { metric: "4.8★", label: t.caseStudiesCases.c1R4Label },
+      ],
+      quote: t.caseStudiesCases.c1Quote,
+      author: t.caseStudiesCases.c1Author,
+    },
+    {
+      id: "lead-qualification",
+      tag: t.caseStudiesCases.c2Tag,
+      tagColor: "bg-blue-500/15 text-blue-400 border-blue-500/20",
+      emoji: "🎯",
+      title: t.caseStudiesCases.c2Title,
+      client: t.caseStudiesCases.c2Client,
+      timeline: t.caseStudiesCases.c2Timeline,
+      stack: ["n8n", "OpenAI GPT-4", "HubSpot", "Slack"],
+      challenge: t.caseStudiesCases.c2Challenge,
+      solution: t.caseStudiesCases.c2Solution,
+      results: [
+        { metric: "3×", label: t.caseStudiesCases.c2R1Label },
+        { metric: "68%", label: t.caseStudiesCases.c2R2Label },
+        { metric: "4 min", label: t.caseStudiesCases.c2R3Label },
+        { metric: "+$180k", label: t.caseStudiesCases.c2R4Label },
+      ],
+      quote: t.caseStudiesCases.c2Quote,
+      author: t.caseStudiesCases.c2Author,
+    },
+    {
+      id: "voice-appointments",
+      tag: t.caseStudiesCases.c3Tag,
+      tagColor: "bg-purple-500/15 text-purple-400 border-purple-500/20",
+      emoji: "🎙️",
+      title: t.caseStudiesCases.c3Title,
+      client: t.caseStudiesCases.c3Client,
+      timeline: t.caseStudiesCases.c3Timeline,
+      stack: ["Vapi.ai", "Whisper", "n8n", "Google Calendar", "Twilio"],
+      challenge: t.caseStudiesCases.c3Challenge,
+      solution: t.caseStudiesCases.c3Solution,
+      results: [
+        { metric: "80%", label: t.caseStudiesCases.c3R1Label },
+        { metric: "24/7", label: t.caseStudiesCases.c3R2Label },
+        { metric: "−14%", label: t.caseStudiesCases.c3R3Label },
+        { metric: "€8,400", label: t.caseStudiesCases.c3R4Label },
+      ],
+      quote: t.caseStudiesCases.c3Quote,
+      author: t.caseStudiesCases.c3Author,
+    },
+    {
+      id: "content-pipeline",
+      tag: t.caseStudiesCases.c4Tag,
+      tagColor: "bg-orange-500/15 text-orange-400 border-orange-500/20",
+      emoji: "✍️",
+      title: t.caseStudiesCases.c4Title,
+      client: t.caseStudiesCases.c4Client,
+      timeline: t.caseStudiesCases.c4Timeline,
+      stack: ["n8n", "GPT-4o", "Make.com", "Notion", "Buffer"],
+      challenge: t.caseStudiesCases.c4Challenge,
+      solution: t.caseStudiesCases.c4Solution,
+      results: [
+        { metric: "500+", label: t.caseStudiesCases.c4R1Label },
+        { metric: "1", label: t.caseStudiesCases.c4R2Label },
+        { metric: "82%", label: t.caseStudiesCases.c4R3Label },
+        { metric: "3×", label: t.caseStudiesCases.c4R4Label },
+      ],
+      quote: t.caseStudiesCases.c4Quote,
+      author: t.caseStudiesCases.c4Author,
+    },
+  ];
+
+  const stats = [
+    { number: "40%+", label: t.caseStudiesStats.s1Label },
+    { number: "3×", label: t.caseStudiesStats.s2Label },
+    { number: "2–4 wk", label: t.caseStudiesStats.s3Label },
+    { number: "150+", label: t.caseStudiesStats.s4Label },
+  ];
   const [activeCase, setActiveCase] = useState<string | null>(null);
 
   return (
     <PageLayout
-      badge="Case Studies"
-      title="Real Results from"
-      titleHighlight="Real Projects"
-      subtitle="Every case study is a real implementation — real client, real stack, real numbers. No demos, no mock data."
+      badge={t.caseStudiesPage.badge}
+      title={t.caseStudiesPage.title}
+      titleHighlight={t.caseStudiesPage.titleHighlight}
+      subtitle={t.caseStudiesPage.subtitle}
     >
       {/* Stats strip */}
       <motion.div
@@ -204,7 +194,7 @@ export default function CaseStudiesContent() {
                 onClick={() => setActiveCase(activeCase === c.id ? null : c.id)}
                 className="flex items-center gap-2 text-sm text-[var(--color-accent)] font-medium hover:opacity-80 transition-opacity"
               >
-                {activeCase === c.id ? "Show less" : "Read full case study"}
+                {activeCase === c.id ? t.caseStudiesPage.showLess : t.caseStudiesPage.readFull}
                 <svg
                   className={`w-4 h-4 transition-transform duration-200 ${activeCase === c.id ? "rotate-180" : ""}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -226,7 +216,7 @@ export default function CaseStudiesContent() {
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <h3 className="text-sm font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">
-                      The Challenge
+                      {t.caseStudiesPage.challenge}
                     </h3>
                     <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
                       {c.challenge}
@@ -234,7 +224,7 @@ export default function CaseStudiesContent() {
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-3">
-                      The Solution
+                      {t.caseStudiesPage.solution}
                     </h3>
                     <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
                       {c.solution}
@@ -265,27 +255,27 @@ export default function CaseStudiesContent() {
       >
         <div className="glass-card rounded-3xl p-10 sm:p-14">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6">
-            Want similar results?
+            {t.caseStudiesPage.wantResults}
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mb-4">
-            Let&apos;s Build Your{" "}
-            <span className="gradient-text">Automation Story</span>
+            {t.caseStudiesPage.buildTitle}{" "}
+            <span className="gradient-text">{t.caseStudiesPage.buildTitleHighlight}</span>
           </h2>
           <p className="text-[var(--color-text-secondary)] mb-8 max-w-xl mx-auto">
-            Learn the exact skills used in these case studies — or let us build it for your business.
+            {t.caseStudiesPage.buildSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/courses"
               className="inline-flex items-center justify-center px-7 py-3.5 bg-gradient-to-r from-[#0ea5e9] to-[#7c3aed] text-white font-medium rounded-full hover:shadow-[0_0_30px_rgba(14,165,233,0.35)] transition-all duration-300 text-sm"
             >
-              Learn the Skills →
+              {t.caseStudiesPage.learnSkills}
             </Link>
             <Link
               href="/b2b"
               className="inline-flex items-center justify-center px-7 py-3.5 border border-[var(--color-glass-border)] text-[var(--color-text-primary)] font-medium rounded-full hover:bg-[var(--color-glass-bg)] transition-all duration-300 text-sm"
             >
-              Done-for-You Service
+              {t.caseStudiesPage.doneForYou}
             </Link>
           </div>
         </div>

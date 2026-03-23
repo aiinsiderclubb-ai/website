@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import PageLayout from "@/components/shared/PageLayout";
+import { useI18n } from "@/context/i18n-context";
 
 const allReviews = [
   {
@@ -121,13 +122,6 @@ const allReviews = [
 const filters = ["all", "courses", "community", "mentorship", "success"] as const;
 type Filter = typeof filters[number];
 
-const ratingBars = [
-  { stars: "5 stars", pct: 89 },
-  { stars: "4 stars", pct: 8 },
-  { stars: "3 stars", pct: 2 },
-  { stars: "2 stars", pct: 1 },
-  { stars: "1 star", pct: 0 },
-];
 
 const badgeColors: Record<string, string> = {
   success: "bg-emerald-500/20 text-emerald-400",
@@ -137,16 +131,33 @@ const badgeColors: Record<string, string> = {
 };
 
 export default function ReviewsPage() {
+  const { t } = useI18n();
   const [activeFilter, setActiveFilter] = useState<Filter>("all");
+
+  const ratingBars = [
+    { stars: t.reviewsRatingBars.fiveStars, pct: 89 },
+    { stars: t.reviewsRatingBars.fourStars, pct: 8 },
+    { stars: t.reviewsRatingBars.threeStars, pct: 2 },
+    { stars: t.reviewsRatingBars.twoStars, pct: 1 },
+    { stars: t.reviewsRatingBars.oneStar, pct: 0 },
+  ];
 
   const filtered = activeFilter === "all" ? allReviews : allReviews.filter((r) => r.category === activeFilter);
 
+  const filterLabels: Record<Filter, string> = {
+    all: t.reviewsPage.allReviews,
+    courses: t.reviewsPage.filterCourses,
+    community: t.reviewsPage.filterCommunity,
+    mentorship: t.reviewsPage.filterMentorship,
+    success: t.reviewsPage.filterSuccess,
+  };
+
   return (
     <PageLayout
-      badge="Reviews"
-      title="Real Stories from"
-      titleHighlight="Real AI Professionals"
-      subtitle="Don't just take our word for it. See how thousands of students and professionals transformed their careers with AI Insider training and community."
+      badge={t.reviewsPage.badge}
+      title={t.reviewsPage.title}
+      titleHighlight={t.reviewsPage.titleHighlight}
+      subtitle={t.reviewsPage.subtitle}
     >
       {/* Stats bar */}
       <section className="py-10">
@@ -158,9 +169,9 @@ export default function ReviewsPage() {
             viewport={{ once: true }}
           >
             {[
-              { n: "1,847", l: "Happy Students" },
-              { n: "4.9/5", l: "Average Rating" },
-              { n: "98%", l: "Would Recommend" },
+              { n: "1,847", l: t.reviewsPage.happyStudents },
+              { n: "4.9/5", l: t.reviewsPage.avgRating },
+              { n: "98%", l: t.reviewsPage.wouldRecommend },
             ].map((s) => (
               <div key={s.l} className="text-center">
                 <div className="text-2xl sm:text-4xl font-display font-bold gradient-text">{s.n}</div>
@@ -185,7 +196,7 @@ export default function ReviewsPage() {
                     : "glass border border-white/10 text-[var(--color-text-secondary)] hover:border-white/20"
                 }`}
               >
-                {f === "all" ? "All Reviews" : f.charAt(0).toUpperCase() + f.slice(1)}
+                {filterLabels[f]}
               </button>
             ))}
           </div>
@@ -243,7 +254,7 @@ export default function ReviewsPage() {
           </AnimatePresence>
 
           <p className="text-center text-[var(--color-text-muted)] text-sm mt-8">
-            Showing {filtered.length} of 1,847 reviews
+            {t.reviewsPage.showing} {filtered.length} {t.reviewsPage.of} 1,847 {t.reviewsPage.reviews}
           </p>
         </div>
       </section>
@@ -259,10 +270,10 @@ export default function ReviewsPage() {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center mb-10">
               <div className="text-center sm:text-left">
-                <h2 className="text-2xl font-display font-bold text-white mb-4">Overall Rating</h2>
+                <h2 className="text-2xl font-display font-bold text-white mb-4">{t.reviewsPage.overallRating}</h2>
                 <div className="text-6xl font-display font-bold gradient-text">4.9</div>
                 <div className="text-2xl text-yellow-400 mt-1">★★★★★</div>
-                <p className="text-[var(--color-text-muted)] text-sm mt-1">Based on 1,847 reviews</p>
+                <p className="text-[var(--color-text-muted)] text-sm mt-1">{t.reviewsPage.basedOn}</p>
               </div>
               <div className="space-y-3">
                 {ratingBars.map((rb) => (
@@ -281,15 +292,15 @@ export default function ReviewsPage() {
             </div>
 
             <div className="text-center">
-              <h3 className="text-xl font-display font-bold text-white mb-2">Ready to Write Your Own Success Story?</h3>
-              <p className="text-[var(--color-text-secondary)] mb-6">Join thousands of professionals who transformed their careers with AI automation</p>
+              <h3 className="text-xl font-display font-bold text-white mb-2">{t.reviewsPage.ratingTitle}</h3>
+              <p className="text-[var(--color-text-secondary)] mb-6">{t.reviewsPage.ratingSubtitle}</p>
               <a
                 href="https://t.me/+qjwWJz7aLR1hMDQ0"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#0ea5e9] to-[#7c3aed] text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Start Your AI Journey →
+                {t.reviewsPage.startJourney}
               </a>
             </div>
           </motion.div>

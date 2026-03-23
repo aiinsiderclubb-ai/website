@@ -41,14 +41,14 @@ export default function Footer() {
       { label: t.nav.blog, href: "/blog" },
     ],
     [t.footer.resources]: [
-      { label: "About", href: "/about", external: false },
-      { label: "AI Studio", href: "/ai-studio", external: false },
-      { label: "Case Studies", href: "/case-studies", external: false },
-      { label: "AI Insider Studio", href: siteConfig.studioUrl, external: true },
+      { label: t.footer.about, href: "/about", external: false },
+      { label: t.footer.aiStudio, href: "/ai-studio", external: false },
+      { label: t.footer.caseStudies, href: "/case-studies", external: false },
+      { label: t.footer.aiInsiderStudio, href: siteConfig.studioUrl, external: true },
       { label: t.common.contactManager, href: "https://t.me/vladyslavarcher", external: true },
     ],
     [t.footer.connect]: [
-      { label: "Telegram Community", href: siteConfig.telegram, external: true },
+      { label: t.footer.telegramCommunity, href: siteConfig.telegram, external: true },
     ],
   };
 
@@ -111,7 +111,7 @@ export default function Footer() {
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
-            <span className="text-xs font-medium tracking-wider uppercase">Join 12,000+ AI Builders</span>
+            <span className="text-xs font-medium tracking-wider uppercase">{t.footer.ctaBadge}</span>
           </motion.div>
 
           {/* Headline */}
@@ -123,9 +123,9 @@ export default function Footer() {
             className="font-display font-bold text-white leading-[1.0] tracking-tight mb-6"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
-            Ready to Build
+            {t.footer.ctaTitle}
             <br />
-            <span className="gradient-text">the Future?</span>
+            <span className="gradient-text">{t.footer.ctaTitleHighlight}</span>
           </motion.h2>
 
           <motion.p
@@ -136,7 +136,7 @@ export default function Footer() {
             className="text-lg max-w-xl mx-auto mb-10"
             style={{ color: "rgba(255,255,255,0.45)" }}
           >
-            Join our community of AI automation experts. Get courses, tools, and support to accelerate your business.
+            {t.footer.ctaSubtitle}
           </motion.p>
 
           {/* CTAs */}
@@ -189,7 +189,7 @@ export default function Footer() {
                 (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
               }}
             >
-              Browse Courses
+              {t.footer.browseCourses}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -265,7 +265,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-xs text-white font-medium">+12,000</div>
-                <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>active members</div>
+                <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{t.footer.activeMembers}</div>
               </div>
             </div>
 
@@ -278,7 +278,7 @@ export default function Footer() {
                   </svg>
                 ))}
               </div>
-              <span className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>4.9 / 5 from 340+ reviews</span>
+              <span className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{t.footerRating}</span>
             </div>
           </div>
 
@@ -356,7 +356,7 @@ export default function Footer() {
           <div className="flex items-center gap-3 text-xs" style={{ color: "rgba(255,255,255,0.22)" }}>
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              All systems operational
+              {t.footer.systemsOperational}
             </span>
             <span style={{ color: "rgba(255,255,255,0.1)" }}>·</span>
             <span>{t.footer.madeWith}</span>

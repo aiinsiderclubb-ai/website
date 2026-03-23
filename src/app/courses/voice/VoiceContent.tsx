@@ -132,7 +132,7 @@ export default function VoiceContent() {
               </p>
 
               <div className="flex flex-wrap gap-3 mb-8">
-                {[["📅","Starts September 8"],["⏱️","2 weeks"],["🔑","API keys included"],["💶","€39"]].map(([icon,label]) => (
+                {[["📅", `${t.common.startDate} Sep 8`],["⏱️","2 weeks"],["🔑", t.common.apiKeys],["💶","€39"]].map(([icon,label]) => (
                   <div key={label} className="glass border border-[var(--color-glass-border)] rounded-full px-4 py-2 flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
                     <span>{icon}</span><span>{label}</span>
                   </div>
@@ -149,7 +149,7 @@ export default function VoiceContent() {
                   className="px-8 py-3.5 rounded-xl text-white font-semibold text-sm transition-all hover:opacity-90"
                   style={{ background: "linear-gradient(135deg,#7c3aed,#0ea5e9)" }}
                 >
-                  Join — €39
+                  {t.courses.join} — €39
                 </a>
                 <a
                   href="https://t.me/vladyslavarcher?text=Hello! I want to join AI Voice Agent (Sep 8, €39)."
@@ -226,7 +226,7 @@ export default function VoiceContent() {
               ))}
             </motion.div>
             <p className="text-sm text-[var(--color-text-muted)] mt-6 p-4 glass border border-[var(--color-glass-border)] rounded-xl">
-              ⚠️ Active manager support continues for 3 days after the course. Lessons are short but dense — better not delay.
+              ⚠️ {t.coursePage.supportNote}
             </p>
           </div>
         </section>
@@ -314,7 +314,7 @@ export default function VoiceContent() {
                 <motion.div key={i} variants={fadeInUp} className="glass border border-[var(--color-glass-border)] rounded-2xl p-6">
                   <div className="text-yellow-400 mb-3 text-sm">★★★★★</div>
                   <blockquote className="text-[var(--color-text-secondary)] text-sm italic mb-4">&ldquo;{t2.quote}&rdquo;</blockquote>
-                  <div className="text-xs text-[var(--color-text-muted)]">{t2.author}</div>
+                  <div className="text-xs text-[var(--color-text-muted)]">{t.coursePage.courseParticipant}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -357,13 +357,13 @@ export default function VoiceContent() {
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="text-5xl mb-4">🎉</div>
-                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2">Application Sent!</h3>
-                  <p className="text-[var(--color-text-secondary)]">We&apos;ll reply within 24 hours to confirm your spot.</p>
+                  <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2">{t.common.applicationSent}</h3>
+                  <p className="text-[var(--color-text-secondary)]">{t.common.applicationReply}</p>
                 </div>
               ) : (
                 <>
                   <h3 className="text-2xl font-display font-bold text-[var(--color-text-primary)] mb-2 text-center">{t.coursePage.secureSpot}</h3>
-                  <p className="text-[var(--color-text-secondary)] text-center mb-8 text-sm">Fill the form — we&apos;ll reply within 24 hours. Or message us on Telegram.</p>
+                  <p className="text-[var(--color-text-secondary)] text-center mb-8 text-sm">{t.common.fillFormReply}</p>
                   <div className="flex items-center gap-2 mb-6 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20">
                     <span className="text-amber-400 text-sm">🎫</span>
                     <p className="text-sm text-amber-300">{t.coursePage.earlyBird} — <span className="font-mono font-bold">AIINSIDER10</span></p>
@@ -371,9 +371,9 @@ export default function VoiceContent() {
                   <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
-                        { name: "name", placeholder: "Your name", type: "text" },
+                        { name: "name", placeholder: t.common.yourName, type: "text" },
                         { name: "email", placeholder: "Email", type: "email" },
-                        { name: "phone", placeholder: "Phone (optional)", type: "tel", optional: true },
+                        { name: "phone", placeholder: t.common.phoneOptional, type: "tel", optional: true },
                       ].map((f) => (
                         <input key={f.name} type={f.type} placeholder={f.placeholder} required={!f.optional}
                           value={form[f.name as keyof typeof form]}
@@ -382,7 +382,7 @@ export default function VoiceContent() {
                         />
                       ))}
                     </div>
-                    <textarea rows={3} placeholder="Anything we should know?" value={form.message}
+                    <textarea rows={3} placeholder={t.common.anythingToKnow} value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="w-full glass border border-[var(--color-glass-border)] rounded-xl px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-accent-border)] bg-transparent text-sm resize-none"
                     />

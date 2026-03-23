@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { partners } from "@/data/content";
 import { fadeInUp } from "@/lib/motion";
+import { useI18n } from "@/context/i18n-context";
 
 export default function TechStack() {
+  const { t } = useI18n();
   const doubled = [...partners, ...partners, ...partners];
 
   return (
@@ -20,7 +22,7 @@ export default function TechStack() {
           className="text-center"
         >
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase">
-            ⚙️ Technology Stack We Use
+            ⚙️ {t.partners.badge}
           </span>
         </motion.div>
       </div>

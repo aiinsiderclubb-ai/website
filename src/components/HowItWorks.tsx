@@ -1,10 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { howItWorks, howItWorksChips } from "@/data/content";
+import { howItWorksChips } from "@/data/content";
+import { getHowItWorks } from "@/data/content";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { useI18n } from "@/context/i18n-context";
 
 export default function HowItWorks() {
+  const { t, lang } = useI18n();
+  const howItWorks = getHowItWorks(lang);
+
   return (
     <section id="how-it-works" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 bg-[var(--color-bg-secondary)]" />
@@ -22,22 +27,22 @@ export default function HowItWorks() {
             custom={0}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6"
           >
-            How it works
+            {t.howItWorks.badge}
           </motion.span>
           <motion.h2
             variants={fadeInUp}
             custom={1}
             className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--color-text-primary)] mb-4"
           >
-            Launch AI automation in{" "}
-            <span className="gradient-text">3 steps</span>
+            {t.howItWorks.title}{" "}
+            <span className="gradient-text">{t.howItWorks.titleHighlight}</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             custom={2}
             className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto"
           >
-            From idea to production with n8n, Vapi, Google Sheets and your CRM.
+            {t.howItWorks.subtitle}
           </motion.p>
         </motion.div>
 

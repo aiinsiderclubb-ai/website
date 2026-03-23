@@ -2,10 +2,20 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { courses } from "@/data/content";
+import { getCourses } from "@/data/content";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
+import { useI18n } from "@/context/i18n-context";
 
 export default function Courses() {
+  const { t, lang } = useI18n();
+  const courses = getCourses(lang);
+
+  const levelLabels: Record<string, string> = {
+    beginner: t.courses.beginner,
+    intermediate: t.courses.intermediate,
+    vip: t.courses.vip,
+  };
+
   return (
     <section id="courses" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
@@ -23,22 +33,22 @@ export default function Courses() {
             custom={0}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6"
           >
-            Courses
+            {t.courses.badge}
           </motion.span>
           <motion.h2
             variants={fadeInUp}
             custom={1}
             className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--color-text-primary)] mb-4"
           >
-            Build Real{" "}
-            <span className="gradient-text">AI Skills</span>
+            {t.courses.title}{" "}
+            <span className="gradient-text">{t.courses.titleHighlight}</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             custom={2}
             className="text-[var(--color-text-secondary)] text-lg max-w-2xl mx-auto"
           >
-            Practical courses designed by industry practitioners. From fundamentals to advanced implementation.
+            {t.courses.subtitle}
           </motion.p>
         </motion.div>
 
@@ -70,13 +80,13 @@ export default function Courses() {
               <div className="p-6 sm:p-8 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-6">
                   <span className={`px-3 py-1 rounded-full text-[10px] font-medium uppercase tracking-wider ${
-                    course.level === "Beginner"
+                    course.levelKey === "beginner"
                       ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                      : course.level === "Intermediate"
+                      : course.levelKey === "intermediate"
                       ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
                       : "bg-purple-500/10 text-purple-400 border border-purple-500/20"
                   }`}>
-                    {course.level}
+                    {levelLabels[course.levelKey]}
                   </span>
                   <span className="text-xs text-[var(--color-text-muted)]">{course.duration}</span>
                 </div>

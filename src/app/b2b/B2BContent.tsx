@@ -4,67 +4,83 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import PageLayout from "@/components/shared/PageLayout";
-
-const services = [
-  {
-    icon: "🤖",
-    title: "Chatbots for Sales & Support",
-    desc: "Scripts, integrations and analytics. Capture leads, answer 24/7, reduce support load.",
-    points: ["WhatsApp/Telegram/Web", "CRM sync & webhooks", "FAQ/RAG knowledge base"],
-    primary: true,
-  },
-  {
-    icon: "🎙️",
-    title: "Voice Agents",
-    desc: "Calls, barge-in, scenarios, call recording. Great for call centers and inbound requests.",
-    points: ["Vapi.ai, Whisper", "SLAs & monitoring", "Safe tool-actions"],
-  },
-  {
-    icon: "📚",
-    title: "RAG Assistants",
-    desc: "Assistants on your data: docs, knowledge base, wiki. Access control and audit.",
-    points: ["Vector DBs + rerank", "RBAC & logs", "Evals & quality"],
-  },
-  {
-    icon: "🎯",
-    title: "Lead Qualification",
-    desc: "ICP scoring, auto-routing, demo booking, CRM sync and funnel reporting.",
-    points: ["HubSpot/Salesforce", "Rules & fallbacks", "Conversion metrics"],
-  },
-  {
-    icon: "🔧",
-    title: "Process Automation",
-    desc: "n8n/Make/Airflow. Approvals, syncs, reports. Remove manual steps.",
-    points: ["Reliable orchestrations", "DLQ, retries, alerts", "Observability"],
-  },
-  {
-    icon: "📊",
-    title: "Evals & Analytics",
-    desc: "Quality, cost and safety metrics. Clear reports for business and security.",
-    points: ["Test sets, red-teaming", "Cost/perf dashboards", "Stakeholder reports"],
-  },
-];
+import { useI18n } from "@/context/i18n-context";
 
 const industries = ["Fintech", "E-commerce", "Healthcare", "SaaS / Cloud", "EdTech", "Real Estate", "Gaming", "Media"];
 
-const roadmap = [
-  { step: 1, title: "Discovery (1–2 weeks)", desc: "Goals, KPIs, data sources, risks, constraints. Quick audit and value map." },
-  { step: 2, title: "Design (1–2 weeks)", desc: "Architecture, guardrails, integrations, rollout plan and success metrics." },
-  { step: 3, title: "Pilot (2–4 weeks)", desc: "Ship MVP to real users with telemetry and evaluations. Iterate fast." },
-  { step: 4, title: "Production (ongoing)", desc: "SLAs, monitoring, incident response, security reviews and compliance." },
-  { step: 5, title: "Scale (quarterly)", desc: "New use-cases, A/B tests, enablement, cost and quality optimization." },
-];
-
-const faqs = [
-  { q: "How are our data protected?", a: "All data is encrypted at rest and in transit using AES-256. We implement zero-trust architecture with role-based access controls and comprehensive audit logging." },
-  { q: "Can you integrate with our existing CRM?", a: "Yes, we support all major CRMs: Salesforce, HubSpot, Pipedrive, Zoho. Custom integrations available via REST APIs and webhooks." },
-  { q: "What's the typical implementation timeline?", a: "Simple chatbots: 2-3 weeks. Complex voice agents with CRM integration: 4-6 weeks. We provide weekly progress updates." },
-  { q: "Do you provide ongoing support?", a: "Yes, we offer 24/7 monitoring, monthly performance reviews, and quarterly optimization sessions. SLA-backed response times." },
-  { q: "What if the AI makes mistakes?", a: "We implement safety guardrails, escalation triggers, and human oversight. All critical actions require confirmation or human approval." },
-  { q: "Can we customize the AI's personality?", a: "Absolutely. We train the AI on your brand voice, tone, and specific business rules. Full customization of responses and workflows." },
-];
-
 export default function B2BPage() {
+  const { t } = useI18n();
+
+  const services = [
+    {
+      icon: "🤖",
+      title: t.b2bServices.s1Title,
+      desc: t.b2bServices.s1Desc,
+      points: [t.b2bServices.s1P1, t.b2bServices.s1P2, t.b2bServices.s1P3],
+      primary: true,
+    },
+    {
+      icon: "🎙️",
+      title: t.b2bServices.s2Title,
+      desc: t.b2bServices.s2Desc,
+      points: [t.b2bServices.s2P1, t.b2bServices.s2P2, t.b2bServices.s2P3],
+    },
+    {
+      icon: "📚",
+      title: t.b2bServices.s3Title,
+      desc: t.b2bServices.s3Desc,
+      points: [t.b2bServices.s3P1, t.b2bServices.s3P2, t.b2bServices.s3P3],
+    },
+    {
+      icon: "🎯",
+      title: t.b2bServices.s4Title,
+      desc: t.b2bServices.s4Desc,
+      points: [t.b2bServices.s4P1, t.b2bServices.s4P2, t.b2bServices.s4P3],
+    },
+    {
+      icon: "🔧",
+      title: t.b2bServices.s5Title,
+      desc: t.b2bServices.s5Desc,
+      points: [t.b2bServices.s5P1, t.b2bServices.s5P2, t.b2bServices.s5P3],
+    },
+    {
+      icon: "📊",
+      title: t.b2bServices.s6Title,
+      desc: t.b2bServices.s6Desc,
+      points: [t.b2bServices.s6P1, t.b2bServices.s6P2, t.b2bServices.s6P3],
+    },
+  ];
+
+  const roadmap = [
+    { step: 1, title: t.b2bRoadmap.r1Title, desc: t.b2bRoadmap.r1Desc },
+    { step: 2, title: t.b2bRoadmap.r2Title, desc: t.b2bRoadmap.r2Desc },
+    { step: 3, title: t.b2bRoadmap.r3Title, desc: t.b2bRoadmap.r3Desc },
+    { step: 4, title: t.b2bRoadmap.r4Title, desc: t.b2bRoadmap.r4Desc },
+    { step: 5, title: t.b2bRoadmap.r5Title, desc: t.b2bRoadmap.r5Desc },
+  ];
+
+  const faqs = [
+    { q: t.b2bFaqs.q1, a: t.b2bFaqs.a1 },
+    { q: t.b2bFaqs.q2, a: t.b2bFaqs.a2 },
+    { q: t.b2bFaqs.q3, a: t.b2bFaqs.a3 },
+    { q: t.b2bFaqs.q4, a: t.b2bFaqs.a4 },
+    { q: t.b2bFaqs.q5, a: t.b2bFaqs.a5 },
+    { q: t.b2bFaqs.q6, a: t.b2bFaqs.a6 },
+  ];
+
+  const securityBadges: [string, string][] = [
+    ["🇪🇺", t.b2bSecurity.label1],
+    ["🛡️", t.b2bSecurity.label2],
+    ["🔐", t.b2bSecurity.label3],
+  ];
+
+  const securityItems: [string, string][] = [
+    [t.b2bSecurity.item1Bold, t.b2bSecurity.item1Rest],
+    [t.b2bSecurity.item2Bold, t.b2bSecurity.item2Rest],
+    [t.b2bSecurity.item3Bold, t.b2bSecurity.item3Rest],
+    [t.b2bSecurity.item4Bold, t.b2bSecurity.item4Rest],
+    [t.b2bSecurity.item5Bold, t.b2bSecurity.item5Rest],
+  ];
   const [activeStep, setActiveStep] = useState(1);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [form, setForm] = useState({ company: "", name: "", email: "", phone: "", message: "" });
@@ -77,10 +93,10 @@ export default function B2BPage() {
 
   return (
     <PageLayout
-      badge="B2B Services"
-      title="AI That Drives"
-      titleHighlight="Revenue & Efficiency"
-      subtitle="We design and ship business-ready AI: chatbots, voice agents, RAG assistants, lead qualification, CRM automations and integrations. Fast, secure and ROI-driven."
+      badge={t.b2bPage.badge}
+      title={t.b2bPage.title}
+      titleHighlight={t.b2bPage.titleHighlight}
+      subtitle={t.b2bPage.subtitle}
     >
       {/* CTA buttons */}
       <div className="flex justify-center gap-4 pb-10 flex-wrap">
@@ -90,16 +106,16 @@ export default function B2BPage() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Book B2B Call →
+          {t.b2bPage.bookCall}
         </a>
         <a href="#contact" className="px-8 py-4 glass border border-white/20 text-white font-semibold rounded-xl hover:border-white/40 transition-colors">
-          Get Proposal
+          {t.b2bPage.getProposal}
         </a>
       </div>
 
       {/* Feature pills */}
       <div className="flex flex-wrap justify-center gap-3 pb-16 px-4">
-        {[["⚡️", "Rapid delivery"], ["🔗", "CRM/ERP integrations"], ["🛡️", "Guardrails & reporting"], ["📈", "Outcome-focused"]].map(([icon, label]) => (
+        {[["⚡️", t.b2bPage.pill1], ["🔗", t.b2bPage.pill2], ["🛡️", t.b2bPage.pill3], ["📈", t.b2bPage.pill4]].map(([icon, label]) => (
           <div key={label} className="flex items-center gap-2 glass rounded-full px-4 py-2 border border-white/10 text-sm text-[var(--color-text-secondary)]">
             <span>{icon}</span><span>{label}</span>
           </div>
@@ -111,10 +127,10 @@ export default function B2BPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.span variants={fadeInUp} className="inline-flex px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">
-              Services
+              {t.b2bPage.servicesBadge}
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">What We Deliver</motion.h2>
-            <motion.p variants={fadeInUp} className="text-[var(--color-text-secondary)] max-w-xl mx-auto">Pre-built modules and custom solutions tailored to your workflows.</motion.p>
+            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">{t.b2bPage.servicesTitle}</motion.h2>
+            <motion.p variants={fadeInUp} className="text-[var(--color-text-secondary)] max-w-xl mx-auto">{t.b2bPage.servicesSubtitle}</motion.p>
           </motion.div>
 
           <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -145,7 +161,7 @@ export default function B2BPage() {
       {/* Industries marquee */}
       <section className="py-10 border-t border-white/5 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 text-center mb-6">
-          <span className="text-[var(--color-text-muted)] text-sm uppercase tracking-wider">Trusted by Industry Leaders</span>
+          <span className="text-[var(--color-text-muted)] text-sm uppercase tracking-wider">{t.b2bPage.trustedBy}</span>
         </div>
         <div className="flex gap-4 overflow-hidden">
           <div className="flex gap-4 animate-[scroll-x_20s_linear_infinite] min-w-max">
@@ -163,10 +179,10 @@ export default function B2BPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-flex px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">
-              Roadmap
+              {t.b2bPage.roadmapBadge}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">From Discovery to Scale</h2>
-            <p className="text-[var(--color-text-secondary)]">A transparent delivery pipeline aligned to business outcomes.</p>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">{t.b2bPage.roadmapTitle}</h2>
+            <p className="text-[var(--color-text-secondary)]">{t.b2bPage.roadmapSubtitle}</p>
           </motion.div>
 
           <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
@@ -204,15 +220,15 @@ export default function B2BPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-10" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-flex px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">
-              Security
+              {t.b2bPage.securityBadge}
             </span>
-            <h2 className="text-3xl font-display font-bold text-white mb-4">Enterprise-Grade Security</h2>
-            <p className="text-[var(--color-text-secondary)]">Your data safety is our priority</p>
+            <h2 className="text-3xl font-display font-bold text-white mb-4">{t.b2bPage.securityTitle}</h2>
+            <p className="text-[var(--color-text-secondary)]">{t.b2bPage.securitySubtitle}</p>
           </motion.div>
 
           <div className="glass rounded-2xl p-8 border border-white/10">
             <div className="flex flex-wrap gap-4 justify-center mb-8">
-              {[["🇪🇺", "GDPR Compliant"], ["🛡️", "SOC 2 Ready"], ["🔐", "ISO 27001"]].map(([icon, label]) => (
+              {securityBadges.map(([icon, label]) => (
                 <div key={label} className="flex items-center gap-2 bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 rounded-xl px-5 py-3">
                   <span className="text-xl">{icon}</span>
                   <span className="text-white font-semibold text-sm">{label}</span>
@@ -220,13 +236,7 @@ export default function B2BPage() {
               ))}
             </div>
             <ul className="space-y-3">
-              {[
-                ["End-to-end encryption", "for all data transmission"],
-                ["Audit logs", "for every AI interaction"],
-                ["Role-based access", "control (RBAC)"],
-                ["Rollback plans", "and incident response"],
-                ["Regular penetration", "testing"],
-              ].map(([bold, rest]) => (
+              {securityItems.map(([bold, rest]) => (
                 <li key={bold} className="flex items-center gap-2 text-[var(--color-text-secondary)] text-sm">
                   <span className="text-green-400">✓</span>
                   <strong className="text-white">{bold}</strong> {rest}
@@ -241,8 +251,8 @@ export default function B2BPage() {
       <section className="py-20 border-t border-white/5">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-10" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="inline-flex px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">FAQ</span>
-            <h2 className="text-3xl font-display font-bold text-white">Frequently Asked Questions</h2>
+            <span className="inline-flex px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium uppercase tracking-wider mb-4">{t.b2bPage.faqBadge}</span>
+            <h2 className="text-3xl font-display font-bold text-white">{t.b2bPage.faqTitle}</h2>
           </motion.div>
           <div className="space-y-3">
             {faqs.map((f, i) => (
@@ -289,20 +299,20 @@ export default function B2BPage() {
             {submitted ? (
               <div className="text-center py-8">
                 <div className="text-5xl mb-4">✅</div>
-                <h3 className="text-2xl font-display font-bold text-white mb-2">Request Sent!</h3>
-                <p className="text-[var(--color-text-secondary)]">We&apos;ll send a proposal and timeline within 24 hours.</p>
+                <h3 className="text-2xl font-display font-bold text-white mb-2">{t.b2bPage.requestSent}</h3>
+                <p className="text-[var(--color-text-secondary)]">{t.b2bPage.requestSentSubtitle}</p>
               </div>
             ) : (
               <>
-                <h3 className="text-2xl font-display font-bold text-white mb-2 text-center">Ready to discuss your B2B project?</h3>
-                <p className="text-[var(--color-text-secondary)] text-center mb-8">Tell us about your use-case — we&apos;ll send a proposal within 24 hours.</p>
+                <h3 className="text-2xl font-display font-bold text-white mb-2 text-center">{t.b2bPage.contactTitle}</h3>
+                <p className="text-[var(--color-text-secondary)] text-center mb-8">{t.b2bPage.contactSubtitle}</p>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
-                      { name: "company", placeholder: "Company", type: "text" },
-                      { name: "name", placeholder: "Contact name", type: "text" },
-                      { name: "email", placeholder: "Email", type: "email" },
-                      { name: "phone", placeholder: "Phone (optional)", type: "tel", required: false },
+                      { name: "company", placeholder: t.b2bPage.companyPlaceholder, type: "text" },
+                      { name: "name", placeholder: t.b2bPage.contactNamePlaceholder, type: "text" },
+                      { name: "email", placeholder: t.b2bPage.emailPlaceholder, type: "email" },
+                      { name: "phone", placeholder: t.b2bPage.phonePlaceholder, type: "tel", required: false },
                     ].map((f) => (
                       <input
                         key={f.name}
@@ -317,7 +327,7 @@ export default function B2BPage() {
                   </div>
                   <textarea
                     rows={4}
-                    placeholder="Briefly describe your use-case (bot, voice agent, integrations, timeline)"
+                    placeholder={t.b2bPage.messagePlaceholder}
                     required
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -328,7 +338,7 @@ export default function B2BPage() {
                       type="submit"
                       className="px-8 py-3 bg-gradient-to-r from-[#0ea5e9] to-[#7c3aed] text-white font-semibold rounded-xl hover:opacity-90 transition-opacity"
                     >
-                      Send Request
+                      {t.b2bPage.sendRequest}
                     </button>
                     <a
                       href="https://t.me/vladyslavarcher"
@@ -336,7 +346,7 @@ export default function B2BPage() {
                       rel="noopener noreferrer"
                       className="px-8 py-3 glass border border-white/20 text-white font-semibold rounded-xl hover:border-white/40 transition-colors"
                     >
-                      Message on Telegram
+                      {t.common.messageTelegram}
                     </a>
                   </div>
                 </form>

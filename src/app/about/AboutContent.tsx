@@ -6,46 +6,33 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/data/content";
-
-const values = [
-  {
-    emoji: "🛠️",
-    title: "Practice over theory",
-    desc: "Every lesson is built around a real task you can deploy. We don't teach concepts — we teach you to ship.",
-  },
-  {
-    emoji: "🤝",
-    title: "Community-first",
-    desc: "The best way to learn AI is with 6,000+ people asking the same questions, sharing the same wins.",
-  },
-  {
-    emoji: "⚡",
-    title: "Speed matters",
-    desc: "AI moves fast. Our curriculum is updated constantly — what was cutting-edge last month may be outdated today.",
-  },
-  {
-    emoji: "🎯",
-    title: "ROI-obsessed",
-    desc: "Every course, every lesson is designed to generate a measurable return for your time and money.",
-  },
-];
-
-const milestones = [
-  { year: "2023", title: "Founded", desc: "Started as a Telegram channel sharing n8n automation tips." },
-  { year: "2024 Q1", title: "First Course", desc: "Launched AI Chat-Bot Development course. 200 enrolled in week 1." },
-  { year: "2024 Q3", title: "Voice Agents", desc: "Added Vapi.ai course. Community grew to 3,000+ members." },
-  { year: "2025", title: "6,000+ Trained", desc: "Expanded to mentorship, B2B consulting and the AI Studio." },
-  { year: "2026", title: "AI Studio", desc: "Launched the AI Content Studio service for marketing teams." },
-];
-
-const teamStats = [
-  { value: "6,000+", label: "Professionals trained" },
-  { value: "340%", label: "Average client ROI" },
-  { value: "150+", label: "Business partners" },
-  { value: "4.9★", label: "Course rating" },
-];
+import { useI18n } from "@/context/i18n-context";
 
 export default function AboutContent() {
+  const { t } = useI18n();
+
+  const milestones = [
+    { year: "2023", title: t.aboutMilestones.m1Title, desc: t.aboutMilestones.m1Desc },
+    { year: "2024 Q1", title: t.aboutMilestones.m2Title, desc: t.aboutMilestones.m2Desc },
+    { year: "2024 Q3", title: t.aboutMilestones.m3Title, desc: t.aboutMilestones.m3Desc },
+    { year: "2025", title: t.aboutMilestones.m4Title, desc: t.aboutMilestones.m4Desc },
+    { year: "2026", title: t.aboutMilestones.m5Title, desc: t.aboutMilestones.m5Desc },
+  ];
+
+  const values = [
+    { emoji: "🛠️", title: t.aboutValues.v1Title, desc: t.aboutValues.v1Desc },
+    { emoji: "🤝", title: t.aboutValues.v2Title, desc: t.aboutValues.v2Desc },
+    { emoji: "⚡", title: t.aboutValues.v3Title, desc: t.aboutValues.v3Desc },
+    { emoji: "🎯", title: t.aboutValues.v4Title, desc: t.aboutValues.v4Desc },
+  ];
+
+  const teamStats = [
+    { value: "6,000+", label: t.aboutPage.professionalsTrained },
+    { value: "340%", label: t.aboutPage.avgClientRoi },
+    { value: "150+", label: t.aboutPage.businessPartners },
+    { value: "4.9★", label: t.aboutPage.courseRating },
+  ];
+
   return (
     <>
       <Header />
@@ -67,22 +54,22 @@ export default function AboutContent() {
                 custom={0}
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0ea5e9]/10 border border-[#0ea5e9]/20 text-[#0ea5e9] text-xs font-medium tracking-wider uppercase mb-6"
               >
-                About AI Insider
+                {t.aboutPage.badge}
               </motion.span>
               <motion.h1
                 variants={fadeInUp}
                 custom={1}
                 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-[var(--color-text-primary)] mb-6 leading-tight"
               >
-                Built by Practitioners,{" "}
-                <span className="gradient-text">for Practitioners</span>
+                {t.aboutPage.title}{" "}
+                <span className="gradient-text">{t.aboutPage.titleHighlight}</span>
               </motion.h1>
               <motion.p
                 variants={fadeInUp}
                 custom={2}
                 className="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto"
               >
-                AI Insider started with a simple belief: the best way to learn AI automation is to build something real — not watch another YouTube video.
+                {t.aboutPage.subtitle}
               </motion.p>
             </motion.div>
           </div>
@@ -122,22 +109,16 @@ export default function AboutContent() {
             >
               <motion.div variants={fadeInUp} custom={0}>
                 <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6">
-                  The Story
+                  {t.aboutPage.storyBadge}
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-primary)] mb-6">
-                  From a Telegram channel to{" "}
-                  <span className="gradient-text">6,000+ trained</span>
+                  {t.aboutPage.storyTitle}{" "}
+                  <span className="gradient-text">{t.aboutPage.storyTitleHighlight}</span>
                 </h2>
                 <div className="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
-                  <p>
-                    AI Insider was founded in 2023 when it became clear that most &ldquo;AI education&rdquo; online was either too academic, too shallow, or a year behind the actual tools people needed.
-                  </p>
-                  <p>
-                    We started sharing practical n8n automation tips on Telegram — real workflows, real results, no gatekeeping. The community grew faster than expected, which told us one thing: people were hungry for <em>practical</em> knowledge.
-                  </p>
-                  <p>
-                    Today AI Insider is a full education platform with courses, mentorship, B2B consulting and an AI Content Studio. Every piece of curriculum comes from real client work — if we haven&apos;t shipped it in production, we don&apos;t teach it.
-                  </p>
+                  <p>{t.aboutPage.storyP1}</p>
+                  <p>{t.aboutPage.storyP2}</p>
+                  <p>{t.aboutPage.storyP3}</p>
                 </div>
               </motion.div>
 
@@ -178,10 +159,10 @@ export default function AboutContent() {
               className="text-center mb-14"
             >
               <motion.span variants={fadeInUp} custom={0} className="inline-flex items-center gap-2 px-3 py-1 rounded-full section-badge text-[var(--color-text-muted)] text-xs tracking-wider uppercase mb-6">
-                What We Believe
+                {t.aboutPage.valuesBadge}
               </motion.span>
               <motion.h2 variants={fadeInUp} custom={1} className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-primary)]">
-                Our <span className="gradient-text">Core Values</span>
+                {t.aboutPage.valuesTitle} <span className="gradient-text">{t.aboutPage.valuesTitleHighlight}</span>
               </motion.h2>
             </motion.div>
 
@@ -222,9 +203,9 @@ export default function AboutContent() {
                   V
                 </div>
                 <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-1">Vladyslav</h2>
-                <p className="text-[var(--color-accent)] text-sm font-medium mb-6">Founder, AI Insider</p>
+                <p className="text-[var(--color-accent)] text-sm font-medium mb-6">{t.aboutPage.founderRole}</p>
                 <blockquote className="text-[var(--color-text-secondary)] text-lg leading-relaxed max-w-2xl mx-auto italic mb-8">
-                  &ldquo;I built AI Insider because I kept seeing talented people stuck on theory. The gap between &lsquo;I understand AI&rsquo; and &lsquo;I can build with AI&rsquo; is enormous — and it&rsquo;s the gap we close.&rdquo;
+                  &ldquo;{t.aboutPage.founderQuote}&rdquo;
                 </blockquote>
                 <div className="flex flex-wrap justify-center gap-3">
                   <a
@@ -234,7 +215,7 @@ export default function AboutContent() {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-all hover:opacity-90"
                     style={{ background: "linear-gradient(135deg, #0ea5e9 0%, #7c3aed 100%)" }}
                   >
-                    Join the Community
+                    {t.aboutPage.joinCommunity}
                   </a>
                   <a
                     href="https://t.me/vladyslavarcher"
@@ -242,7 +223,7 @@ export default function AboutContent() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-[var(--color-text-secondary)] border border-[var(--color-glass-border)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-accent-border)] transition-all"
                   >
-                    DM on Telegram
+                    {t.aboutPage.dmTelegram}
                   </a>
                 </div>
               </motion.div>
@@ -260,21 +241,21 @@ export default function AboutContent() {
               viewport={{ once: true }}
             >
               <motion.h2 variants={fadeInUp} custom={0} className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-primary)] mb-6">
-                Ready to join{" "}
-                <span className="gradient-text">6,000+ practitioners?</span>
+                {t.aboutPage.ctaTitle}{" "}
+                <span className="gradient-text">{t.aboutPage.ctaTitleHighlight}</span>
               </motion.h2>
               <motion.div variants={fadeInUp} custom={1} className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/courses"
                   className="inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-[#0ea5e9] to-[#7c3aed] text-white font-medium rounded-full hover:shadow-[0_0_30px_rgba(14,165,233,0.35)] transition-all duration-300 text-sm"
                 >
-                  View Courses →
+                  {t.aboutPage.viewCourses}
                 </Link>
                 <Link
                   href="/case-studies"
                   className="inline-flex items-center justify-center px-8 py-3.5 border border-[var(--color-glass-border)] text-[var(--color-text-primary)] font-medium rounded-full hover:bg-[var(--color-glass-bg)] transition-all duration-300 text-sm"
                 >
-                  See Case Studies
+                  {t.aboutPage.seeCaseStudies}
                 </Link>
               </motion.div>
             </motion.div>
