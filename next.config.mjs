@@ -14,6 +14,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/uk',
+        permanent: true,
+      },
+    ];
+  },
   // HTTP headers for performance + security
   async headers() {
     return [
