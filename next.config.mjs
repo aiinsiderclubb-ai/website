@@ -14,6 +14,16 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: '/', destination: '/uk', permanent: true },
+      { source: '/about', destination: '/uk/about', permanent: true },
+      { source: '/cases', destination: '/uk/cases', permanent: true },
+      { source: '/cases/:slug*', destination: '/uk/cases/:slug*', permanent: true },
+      { source: '/projects', destination: '/uk/projects', permanent: true },
+      { source: '/projects/:slug*', destination: '/uk/projects/:slug*', permanent: true },
+    ];
+  },
   // HTTP headers for performance + security
   async headers() {
     return [
