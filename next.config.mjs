@@ -1,6 +1,22 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    // ESLint hangs on this repo during `next build`; run `npm run lint` locally instead
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  webpack: (config) => {
+    config.resolve.alias['@landing'] = path.join(__dirname, 'src');
+    return config;
+  },
   // Compress responses (gzip/brotli)
   compress: true,
   images: {
@@ -12,17 +28,12 @@ const nextConfig = {
         hostname: 'cdn.simpleicons.org',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
     ],
-  },
-  async redirects() {
-    return [
-      { source: '/', destination: '/uk', permanent: true },
-      { source: '/about', destination: '/uk/about', permanent: true },
-      { source: '/cases', destination: '/uk/cases', permanent: true },
-      { source: '/cases/:slug*', destination: '/uk/cases/:slug*', permanent: true },
-      { source: '/projects', destination: '/uk/projects', permanent: true },
-      { source: '/projects/:slug*', destination: '/uk/projects/:slug*', permanent: true },
-    ];
   },
   // HTTP headers for performance + security
   async headers() {
