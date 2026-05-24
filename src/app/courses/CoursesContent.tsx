@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import SectionBridge from "@landing/components/SectionBridge";
 
 const courses = [
   {
@@ -127,8 +126,12 @@ export default function CoursesContent() {
       badge="Courses Hub"
       title="AI Courses"
       subtitle="Choose your path — Chat-Bot or Voice Agent. See next start dates and details."
+      flowWaypoints={[
+        { y: 18, label: "Programs", color: "#c084fc" },
+        { y: 46, label: "What You Get", color: "#fb923c" },
+        { y: 78, label: "Enroll", color: "#fbbf24" },
+      ]}
     >
-      <SectionBridge variant="violet-orange" curve="right" label="Programs" />
       {/* Courses Grid */}
       <section className="py-20 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +226,6 @@ export default function CoursesContent() {
         </div>
       </section>
 
-      <SectionBridge variant="orange-violet" curve="left" label="What You Get" />
       {/* Benefits */}
       <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         {/* Decorative gradient bar */}
@@ -300,7 +302,6 @@ export default function CoursesContent() {
         </div>
       </section>
 
-      <SectionBridge variant="violet-orange" curve="right" label="Enroll" />
       {/* CTA */}
       <section className="py-20 hud-grid">
         <div className="max-w-3xl mx-auto px-4 text-center">

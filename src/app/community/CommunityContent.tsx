@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import SectionBridge from "@landing/components/SectionBridge";
 
 type ColorScheme = {
   gradient: string;
@@ -141,6 +140,11 @@ export default function CommunityContent() {
       title="Join 5,742+ AI Automation"
       titleHighlight="Experts on Telegram"
       subtitle="Connect with like-minded entrepreneurs, get instant help from experts, and access exclusive content that's only shared in our private community."
+      flowWaypoints={[
+        { y: 18, label: "Benefits", color: "#c084fc" },
+        { y: 50, label: "Live Pulse", color: "#67e8f9" },
+        { y: 84, label: "Join", color: "#fbbf24" },
+      ]}
     >
       {/* Top stats row */}
       <section className="py-10">
@@ -185,7 +189,6 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <SectionBridge variant="violet-orange" curve="right" label="Benefits" />
       {/* Features Grid */}
       <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
@@ -285,7 +288,6 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <SectionBridge variant="orange-violet" curve="left" label="Live Pulse" />
       {/* Stats + Testimonials */}
       <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div
@@ -379,7 +381,6 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <SectionBridge variant="violet-orange" curve="right" label="Join" />
       {/* Final CTA */}
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">

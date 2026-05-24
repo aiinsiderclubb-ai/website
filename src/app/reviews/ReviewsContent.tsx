@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import SectionBridge from "@landing/components/SectionBridge";
 
 const allReviews = [
   {
@@ -148,6 +147,11 @@ export default function ReviewsContent() {
       title="Real Stories from"
       titleHighlight="Real AI Professionals"
       subtitle="Don't just take our word for it. See how thousands of students and professionals transformed their careers with AI Insider training and community."
+      flowWaypoints={[
+        { y: 16, label: "Filters", color: "#c084fc" },
+        { y: 50, label: "Reviews", color: "#fb923c" },
+        { y: 84, label: "Score", color: "#fbbf24" },
+      ]}
     >
       {/* Stats bar */}
       <section className="py-10 hud-grid">
@@ -172,7 +176,6 @@ export default function ReviewsContent() {
         </div>
       </section>
 
-      <SectionBridge variant="violet" curve="right" label="Filters" />
       {/* Filter buttons */}
       <section className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -194,7 +197,6 @@ export default function ReviewsContent() {
         </div>
       </section>
 
-      <SectionBridge variant="violet-orange" curve="left" label="Reviews" />
       {/* Reviews Grid */}
       <section className="py-10 pb-20 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -251,7 +253,6 @@ export default function ReviewsContent() {
         </div>
       </section>
 
-      <SectionBridge variant="orange-violet" curve="right" label="Score" />
       {/* Overall rating */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -3,6 +3,14 @@
 import { motion } from "framer-motion";
 import Header from "@landing/components/Header";
 import Footer from "@landing/components/Footer";
+import FlowThread from "@landing/components/FlowThread";
+
+interface FlowWaypoint {
+  y: number;
+  label: string;
+  color?: string;
+  x?: number;
+}
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -11,13 +19,23 @@ interface PageLayoutProps {
   titleHighlight?: string;
   subtitle?: string;
   activePage?: string;
+  /** Optional HUD chips placed along the FlowThread. */
+  flowWaypoints?: FlowWaypoint[];
 }
 
-export default function PageLayout({ children, badge, title, titleHighlight, subtitle }: PageLayoutProps) {
+const DEFAULT_FLOW: FlowWaypoint[] = [
+  { y: 22, label: "Intro", color: "#c084fc" },
+  { y: 46, label: "Inside", color: "#fb923c" },
+  { y: 70, label: "Proof", color: "#67e8f9" },
+  { y: 90, label: "Join", color: "#fbbf24" },
+];
+
+export default function PageLayout({ children, badge, title, titleHighlight, subtitle, flowWaypoints }: PageLayoutProps) {
   return (
     <>
       <Header />
-      <main>
+      <main className="relative">
+        <FlowThread waypoints={flowWaypoints ?? DEFAULT_FLOW} />
         {/* Page Hero */}
         <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 overflow-hidden">
           <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import SectionBridge from "@landing/components/SectionBridge";
 
 const services = [
   {
@@ -82,6 +81,12 @@ export default function B2BContent() {
       title="AI That Drives"
       titleHighlight="Revenue & Efficiency"
       subtitle="We design and ship business-ready AI: chatbots, voice agents, RAG assistants, lead qualification, CRM automations and integrations. Fast, secure and ROI-driven."
+      flowWaypoints={[
+        { y: 18, label: "Services", color: "#c084fc" },
+        { y: 40, label: "Roadmap", color: "#fb923c" },
+        { y: 62, label: "Security", color: "#67e8f9" },
+        { y: 84, label: "Talk to Us", color: "#fbbf24" },
+      ]}
     >
       {/* CTA buttons */}
       <div className="flex justify-center gap-4 pb-10 flex-wrap">
@@ -107,7 +112,6 @@ export default function B2BContent() {
         ))}
       </div>
 
-      <SectionBridge variant="violet-orange" curve="right" label="Services" />
       {/* Services */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,7 +167,6 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <SectionBridge variant="orange-violet" curve="left" label="Roadmap" />
       {/* Roadmap */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,7 +208,6 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <SectionBridge variant="violet-cyan" curve="right" label="Security" />
       {/* Security */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -244,7 +246,6 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <SectionBridge variant="cyan-violet" curve="left" label="FAQ" />
       {/* FAQ */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -285,7 +286,6 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <SectionBridge variant="violet-orange" curve="right" label="Talk to Us" />
       {/* Contact Form */}
       <section className="py-20 border-t border-white/5 hud-grid" id="contact">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
