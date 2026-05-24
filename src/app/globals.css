@@ -411,6 +411,42 @@ body {
   transform: translateY(220%);
 }
 
+/* Unified typography for internal HUD pages */
+.hud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  background: rgba(168, 85, 247, 0.10);
+  color: #c084fc;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.hud-title {
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.hud-subtitle {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Unified card depth + glow */
+.hud-panel {
+  border: 1px solid var(--color-glass-border);
+  background: var(--color-glass-bg);
+  box-shadow: 0 8px 28px rgba(6, 10, 24, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+.hud-panel:hover {
+  box-shadow: 0 12px 34px rgba(6, 10, 24, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.18), 0 0 24px var(--card-glow, rgba(168, 85, 247, 0.25));
+}
+
 /* Scroll performance: skip off-screen layout work */
 .section-padding,
 main > section {

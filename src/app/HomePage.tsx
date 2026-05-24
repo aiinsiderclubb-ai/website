@@ -8,19 +8,26 @@ import TechStack from "@landing/components/TechStack";
 import Testimonials from "@landing/components/Testimonials";
 import FAQ from "@landing/components/FAQ";
 import CommunityCTA from "@landing/components/CommunityCTA";
+import HomeSectionBridge from "@landing/components/HomeSectionBridge";
 import Footer from "@landing/components/Footer";
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="relative">
         <Hero />
+        <HomeSectionBridge />
         <HowItWorks />
+        <HomeSectionBridge />
         <Courses />
+        <HomeSectionBridge />
         <TechStack />
+        <HomeSectionBridge />
         <Testimonials />
+        <HomeSectionBridge />
         <FAQ />
+        <HomeSectionBridge />
         <CommunityCTA />
       </main>
       <Footer />

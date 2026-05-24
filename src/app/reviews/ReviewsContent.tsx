@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import HomeSectionBridge from "@landing/components/HomeSectionBridge";
 
 const allReviews = [
   {
@@ -152,7 +153,7 @@ export default function ReviewsContent() {
       <section className="py-10 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="grid grid-cols-3 gap-4 glass hud-frame rounded-2xl p-6 sm:p-10 border border-white/10"
+            className="grid grid-cols-3 gap-4 hud-panel hud-frame rounded-2xl p-6 sm:p-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -171,6 +172,8 @@ export default function ReviewsContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Filter buttons */}
       <section className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -182,7 +185,7 @@ export default function ReviewsContent() {
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all capitalize ${
                   activeFilter === f
                     ? "bg-[#a855f7] text-white"
-                    : "glass border border-white/10 text-[var(--color-text-secondary)] hover:border-white/20"
+                    : "hud-panel text-[var(--color-text-secondary)] hover:border-white/20"
                 }`}
               >
                 {f === "all" ? "All Reviews" : f.charAt(0).toUpperCase() + f.slice(1)}
@@ -191,6 +194,8 @@ export default function ReviewsContent() {
           </div>
         </div>
       </section>
+
+      <HomeSectionBridge />
 
       {/* Reviews Grid */}
       <section className="py-10 pb-20 hud-grid">
@@ -208,7 +213,7 @@ export default function ReviewsContent() {
                 <motion.div
                   key={r.name}
                   variants={fadeInUp}
-                  className="glass hud-frame hud-scan rounded-2xl p-6 border border-white/10 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+                  className="hud-panel hud-frame hud-scan rounded-2xl p-6 flex flex-col hover:-translate-y-1 transition-transform duration-300"
                 >
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex items-center gap-3">
@@ -248,11 +253,13 @@ export default function ReviewsContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Overall rating */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="glass hud-frame hud-scan rounded-2xl p-8 sm:p-12 border border-white/10"
+            className="hud-panel hud-frame hud-scan rounded-2xl p-8 sm:p-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import HomeSectionBridge from "@landing/components/HomeSectionBridge";
 
 const services = [
   {
@@ -106,15 +107,17 @@ export default function B2BContent() {
         ))}
       </div>
 
+      <HomeSectionBridge />
+
       {/* Services */}
-      <section className="py-20 border-t border-white/5">
+      <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.span variants={fadeInUp} className="inline-flex px-4 py-1.5 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/25 text-[#c084fc] text-xs font-medium uppercase tracking-wider mb-4">
+            <motion.span variants={fadeInUp} className="hud-badge mb-4">
               Services
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">What We Deliver</motion.h2>
-            <motion.p variants={fadeInUp} className="text-[var(--color-text-secondary)] max-w-xl mx-auto">Pre-built modules and custom solutions tailored to your workflows.</motion.p>
+            <motion.h2 variants={fadeInUp} className="hud-title text-3xl sm:text-4xl mb-4">What We Deliver</motion.h2>
+            <motion.p variants={fadeInUp} className="hud-subtitle max-w-xl mx-auto">Pre-built modules and custom solutions tailored to your workflows.</motion.p>
           </motion.div>
 
           <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -122,11 +125,14 @@ export default function B2BContent() {
               <motion.div
                 key={s.title}
                 variants={fadeInUp}
-                className={`rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1 ${
+                className={`hud-frame hud-scan hud-panel rounded-2xl p-6 glow-hover-card transition-all duration-300 hover:-translate-y-1 ${
                   s.primary
                     ? "bg-gradient-to-br from-[#a855f7]/20 to-[#f97316]/10 border-[#a855f7]/35"
                     : "glass border-white/10 hover:border-white/20"
                 }`}
+                style={{
+                  "--card-glow": s.primary ? "rgba(168,85,247,0.35)" : "rgba(34,211,238,0.25)",
+                } as React.CSSProperties}
               >
                 <div className="text-3xl mb-3">{s.icon}</div>
                 <h3 className="text-lg font-display font-bold text-white mb-2">{s.title}</h3>
@@ -142,8 +148,10 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Industries marquee */}
-      <section className="py-10 border-t border-white/5 overflow-hidden">
+      <section className="py-10 border-t border-white/5 overflow-hidden hud-grid">
         <div className="max-w-7xl mx-auto px-4 text-center mb-6">
           <span className="text-[var(--color-text-muted)] text-sm uppercase tracking-wider">Trusted by Industry Leaders</span>
         </div>
@@ -158,15 +166,17 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Roadmap */}
-      <section className="py-20 border-t border-white/5">
+      <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="inline-flex px-4 py-1.5 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/25 text-[#c084fc] text-xs font-medium uppercase tracking-wider mb-4">
+            <span className="hud-badge mb-4">
               Roadmap
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">From Discovery to Scale</h2>
-            <p className="text-[var(--color-text-secondary)]">A transparent delivery pipeline aligned to business outcomes.</p>
+            <h2 className="hud-title text-3xl sm:text-4xl mb-4">From Discovery to Scale</h2>
+            <p className="hud-subtitle">A transparent delivery pipeline aligned to business outcomes.</p>
           </motion.div>
 
           <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
@@ -188,7 +198,7 @@ export default function B2BContent() {
 
           <motion.div
             key={activeStep}
-            className="glass rounded-2xl p-8 border border-white/10"
+            className="hud-panel hud-frame hud-scan rounded-2xl p-8"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -199,18 +209,20 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Security */}
-      <section className="py-20 border-t border-white/5">
+      <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-10" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="inline-flex px-4 py-1.5 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/25 text-[#c084fc] text-xs font-medium uppercase tracking-wider mb-4">
+            <span className="hud-badge mb-4">
               Security
             </span>
-            <h2 className="text-3xl font-display font-bold text-white mb-4">Enterprise-Grade Security</h2>
-            <p className="text-[var(--color-text-secondary)]">Your data safety is our priority</p>
+            <h2 className="hud-title text-3xl mb-4">Enterprise-Grade Security</h2>
+            <p className="hud-subtitle">Your data safety is our priority</p>
           </motion.div>
 
-          <div className="glass rounded-2xl p-8 border border-white/10">
+          <div className="hud-panel hud-frame hud-scan rounded-2xl p-8">
             <div className="flex flex-wrap gap-4 justify-center mb-8">
               {[["🇪🇺", "GDPR Compliant"], ["🛡️", "SOC 2 Ready"], ["🔐", "ISO 27001"]].map(([icon, label]) => (
                 <div key={label} className="flex items-center gap-2 bg-[#a855f7]/10 border border-[#a855f7]/25 rounded-xl px-5 py-3">
@@ -237,18 +249,20 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* FAQ */}
-      <section className="py-20 border-t border-white/5">
+      <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-10" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="inline-flex px-4 py-1.5 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/25 text-[#c084fc] text-xs font-medium uppercase tracking-wider mb-4">FAQ</span>
-            <h2 className="text-3xl font-display font-bold text-white">Frequently Asked Questions</h2>
+            <span className="hud-badge mb-4">FAQ</span>
+            <h2 className="hud-title text-3xl">Frequently Asked Questions</h2>
           </motion.div>
           <div className="space-y-3">
             {faqs.map((f, i) => (
               <motion.div
                 key={f.q}
-                className="glass rounded-xl border border-white/10 overflow-hidden"
+                className="hud-panel hud-frame hud-scan rounded-xl overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
@@ -277,11 +291,13 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Contact Form */}
-      <section className="py-20 border-t border-white/5" id="contact">
+      <section className="py-20 border-t border-white/5 hud-grid" id="contact">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="glass rounded-2xl p-8 sm:p-12 border border-white/10"
+            className="hud-panel hud-frame hud-scan rounded-2xl p-8 sm:p-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

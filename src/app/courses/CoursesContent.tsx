@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import HomeSectionBridge from "@landing/components/HomeSectionBridge";
 
 const courses = [
   {
@@ -128,7 +129,7 @@ export default function CoursesContent() {
       subtitle="Choose your path — Chat-Bot or Voice Agent. See next start dates and details."
     >
       {/* Courses Grid */}
-      <section className="py-20">
+      <section className="py-20 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
@@ -137,13 +138,13 @@ export default function CoursesContent() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.span variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#a855f7]/10 border border-[#a855f7]/25 text-[#c084fc] text-xs font-medium uppercase tracking-wider mb-4">
+            <motion.span variants={fadeInUp} className="hud-badge mb-4">
               Premium Training
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-display font-bold text-white mb-4">
+            <motion.h2 variants={fadeInUp} className="hud-title text-3xl sm:text-4xl mb-4">
               Choose Your AI Mastery Path
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="hud-subtitle max-w-2xl mx-auto">
               Exclusive courses designed by industry experts. From beginner to enterprise level.
               Limited enrollment — secure your spot today.
             </motion.p>
@@ -160,11 +161,14 @@ export default function CoursesContent() {
               <motion.div
                 key={course.title}
                 variants={fadeInUp}
-                className={`relative rounded-2xl border p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#a855f7]/20 ${
+                className={`relative hud-frame hud-scan hud-panel rounded-2xl p-6 flex flex-col glow-hover-card transition-all duration-300 hover:-translate-y-1 ${
                   course.vip
                     ? "bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/15 border-[#7c3aed]/40"
                     : "glass border-white/10"
                 }`}
+                style={{
+                  "--card-glow": course.vip ? "rgba(249,115,22,0.35)" : "rgba(168,85,247,0.32)",
+                } as React.CSSProperties}
               >
                 {course.vip && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#f97316] to-[#a855f7] rounded-full text-white text-xs font-bold tracking-wider uppercase">
@@ -207,7 +211,7 @@ export default function CoursesContent() {
                   className={`block text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 ${
                     course.vip
                       ? "bg-gradient-to-r from-[#f97316] to-[#a855f7] text-white hover:opacity-90"
-                      : "bg-[#a855f7] hover:bg-[#0284c7] text-white"
+                      : "bg-[#a855f7] hover:bg-[#9333ea] text-white"
                   }`}
                 >
                   {course.cta}
@@ -218,13 +222,14 @@ export default function CoursesContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Benefits */}
-      <section className="relative py-24 border-t border-white/5 overflow-hidden">
+      <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         {/* Decorative gradient bar */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
-        {/* Soft glows */}
-        <div className="absolute top-1/2 left-1/4 w-[420px] h-[420px] rounded-full bg-[#a855f7]/10 pointer-events-none -translate-y-1/2 hidden md:block" />
-        <div className="absolute bottom-0 right-1/4 w-[360px] h-[360px] rounded-full bg-[#f97316]/10 pointer-events-none hidden md:block" />
+        <div className="absolute top-[18%] left-[8%] h-16 w-16 border border-[#a855f7]/25 rotate-45 hidden md:block" />
+        <div className="absolute bottom-[18%] right-[10%] h-20 w-20 border border-[#f97316]/25 rotate-45 hidden md:block" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -234,24 +239,15 @@ export default function CoursesContent() {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            <motion.span
-              variants={fadeInUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full section-badge text-[#c084fc] text-[11px] font-medium uppercase tracking-[0.2em] mb-5"
-            >
+            <motion.span variants={fadeInUp} className="hud-badge mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#a855f7] shadow-[0_0_8px_#a855f7] animate-pulse-glow" />
               Every Enrollment
             </motion.span>
-            <motion.h3
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--color-text-primary)] mb-4 tracking-tight"
-            >
+            <motion.h3 variants={fadeInUp} className="hud-title text-3xl sm:text-4xl lg:text-5xl mb-4">
               What You&apos;ll Get With{" "}
               <span className="gradient-text">Every Course</span>
             </motion.h3>
-            <motion.p
-              variants={fadeInUp}
-              className="text-[var(--color-text-secondary)] max-w-2xl mx-auto"
-            >
+            <motion.p variants={fadeInUp} className="hud-subtitle max-w-2xl mx-auto">
               Six benefits included with every course — designed to take you from theory to production-ready skills.
             </motion.p>
           </motion.div>
@@ -267,15 +263,15 @@ export default function CoursesContent() {
               <motion.article
                 key={b.title}
                 variants={fadeInUp}
-                className="group relative rounded-2xl p-6 sm:p-7 overflow-hidden glass border border-[var(--color-glass-border)] glow-hover-card transition-all duration-300 hover:-translate-y-1"
+                className="group hud-frame hud-scan hud-panel relative rounded-2xl p-6 sm:p-7 overflow-hidden glow-hover-card transition-all duration-300 hover:-translate-y-1"
                 style={{ "--card-glow": b.glow } as React.CSSProperties}
               >
                 {/* Top gradient hairline */}
                 <div className={`absolute top-0 left-6 right-6 h-px bg-gradient-to-r ${b.gradient} opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
-                {/* Animated corner glow */}
+                {/* Animated AI accent line */}
                 <div
-                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: b.glow }}
+                  className="absolute top-3 right-4 h-px w-0 group-hover:w-20 transition-all duration-500 pointer-events-none"
+                  style={{ background: `linear-gradient(90deg, transparent, ${b.glow})` }}
                 />
 
                 <div className="flex items-start gap-4 mb-4">
@@ -304,19 +300,21 @@ export default function CoursesContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* CTA */}
-      <section className="py-20">
+      <section className="py-20 hud-grid">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div
-            className="glass rounded-2xl p-10 border border-white/10"
+            className="hud-panel hud-frame hud-scan rounded-2xl p-10"
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
+            <h3 className="hud-title text-2xl sm:text-3xl mb-4">
               Ready to Transform Your Career?
             </h3>
-            <p className="text-[var(--color-text-secondary)] mb-8">
+            <p className="hud-subtitle mb-8">
               Join thousands of successful AI professionals. Start your journey today and unlock unlimited earning potential.
             </p>
             <a

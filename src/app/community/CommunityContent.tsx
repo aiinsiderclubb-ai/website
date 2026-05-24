@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import HomeSectionBridge from "@landing/components/HomeSectionBridge";
 
 type ColorScheme = {
   gradient: string;
@@ -184,6 +185,8 @@ export default function CommunityContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Features Grid */}
       <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
@@ -200,18 +203,15 @@ export default function CommunityContent() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-14" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
-            <motion.span
-              variants={fadeInUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full section-badge text-[#c084fc] text-[11px] font-medium uppercase tracking-[0.2em] mb-5"
-            >
+            <motion.span variants={fadeInUp} className="hud-badge mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#a855f7] shadow-[0_0_8px_#a855f7] animate-pulse-glow" />
               Benefits
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--color-text-primary)] mb-4 tracking-tight">
+            <motion.h2 variants={fadeInUp} className="hud-title text-3xl sm:text-4xl lg:text-5xl mb-4">
               Why 5,742+ Professionals Choose{" "}
               <span className="gradient-text">Our Community</span>
             </motion.h2>
-            <motion.p variants={fadeInUp} className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+            <motion.p variants={fadeInUp} className="hud-subtitle max-w-2xl mx-auto">
               More than just a chat group — it&apos;s your gateway to AI automation mastery and business success.
             </motion.p>
           </motion.div>
@@ -227,7 +227,7 @@ export default function CommunityContent() {
               <motion.article
                 key={f.title}
                 variants={fadeInUp}
-                className={`group hud-frame hud-scan relative rounded-2xl p-6 sm:p-7 overflow-hidden border transition-all duration-300 hover:-translate-y-1 ${
+                className={`group hud-frame hud-scan hud-panel relative rounded-2xl p-6 sm:p-7 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
                   f.primary
                     ? "border-[var(--color-accent-border)] glow-hover-card"
                     : "glass border-[var(--color-glass-border)] glow-hover-card"
@@ -286,6 +286,8 @@ export default function CommunityContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Stats + Testimonials */}
       <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div
@@ -299,14 +301,11 @@ export default function CommunityContent() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.span
-              variants={fadeInUp}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full section-badge text-[#22d3ee] text-[11px] font-medium uppercase tracking-[0.2em] mb-5"
-            >
+            <motion.span variants={fadeInUp} className="hud-badge mb-5 border-cyan-400/30 bg-cyan-400/10 text-cyan-300">
               <span className="w-1.5 h-1.5 rounded-full bg-[#22d3ee] shadow-[0_0_8px_#22d3ee] animate-pulse-glow" />
               Live Pulse
             </motion.span>
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--color-text-primary)] tracking-tight">
+            <motion.h2 variants={fadeInUp} className="hud-title text-3xl sm:text-4xl lg:text-5xl">
               Active &amp; <span className="gradient-text">Growing</span> Community
             </motion.h2>
           </motion.div>
@@ -322,7 +321,7 @@ export default function CommunityContent() {
               <motion.div
                 key={s.label}
                 variants={fadeInUp}
-                className="group hud-frame hud-scan relative overflow-hidden rounded-2xl p-6 glass border border-[var(--color-glass-border)] text-center transition-transform duration-300 hover:-translate-y-1"
+                className="group hud-frame hud-scan hud-panel relative overflow-hidden rounded-2xl p-6 text-center transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className={`absolute top-0 left-6 right-6 h-px bg-gradient-to-r ${s.color.gradient} opacity-60 group-hover:opacity-100 transition-opacity`} />
                 <div
@@ -351,7 +350,7 @@ export default function CommunityContent() {
               <motion.figure
                 key={tm.author}
                 variants={fadeInUp}
-                className="group hud-frame hud-scan relative rounded-2xl p-6 sm:p-7 glass border border-[var(--color-glass-border)] glow-hover-card overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                className="group hud-frame hud-scan hud-panel relative rounded-2xl p-6 sm:p-7 glow-hover-card overflow-hidden transition-all duration-300 hover:-translate-y-1"
                 style={{ "--card-glow": tm.color.glow } as React.CSSProperties}
               >
                 {/* Quote icon */}
@@ -382,11 +381,13 @@ export default function CommunityContent() {
         </div>
       </section>
 
+      <HomeSectionBridge />
+
       {/* Final CTA */}
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div
-            className="relative hud-frame hud-scan glass rounded-2xl p-10 border border-[var(--color-glass-border)] overflow-hidden"
+            className="relative hud-frame hud-scan hud-panel rounded-2xl p-10 overflow-hidden"
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
