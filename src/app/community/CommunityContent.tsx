@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import HomeSectionBridge from "@landing/components/HomeSectionBridge";
+import SectionBridge from "@landing/components/SectionBridge";
 
 type ColorScheme = {
   gradient: string;
@@ -185,8 +185,7 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="violet-orange" curve="right" label="Benefits" />
       {/* Features Grid */}
       <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
@@ -286,8 +285,7 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="orange-violet" curve="left" label="Live Pulse" />
       {/* Stats + Testimonials */}
       <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div
@@ -381,8 +379,7 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="violet-orange" curve="right" label="Join" />
       {/* Final CTA */}
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">

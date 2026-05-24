@@ -8,26 +8,26 @@ import TechStack from "@landing/components/TechStack";
 import Testimonials from "@landing/components/Testimonials";
 import FAQ from "@landing/components/FAQ";
 import CommunityCTA from "@landing/components/CommunityCTA";
-import HomeSectionBridge from "@landing/components/HomeSectionBridge";
 import Footer from "@landing/components/Footer";
+import SectionBridge from "@landing/components/SectionBridge";
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="relative">
+      <main>
         <Hero />
-        <HomeSectionBridge />
+        <SectionBridge variant="violet-orange" curve="right" label="Pipeline" />
         <HowItWorks />
-        <HomeSectionBridge />
+        <SectionBridge variant="orange-violet" curve="left" label="Curriculum" />
         <Courses />
-        <HomeSectionBridge />
+        <SectionBridge variant="violet-cyan" curve="right" label="Stack" />
         <TechStack />
-        <HomeSectionBridge />
+        <SectionBridge variant="cyan-violet" curve="left" label="Voices" />
         <Testimonials />
-        <HomeSectionBridge />
+        <SectionBridge variant="violet" curve="straight" label="FAQ" />
         <FAQ />
-        <HomeSectionBridge />
+        <SectionBridge variant="violet-orange" curve="right" label="Join" />
         <CommunityCTA />
       </main>
       <Footer />

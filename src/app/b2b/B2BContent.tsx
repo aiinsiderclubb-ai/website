@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import HomeSectionBridge from "@landing/components/HomeSectionBridge";
+import SectionBridge from "@landing/components/SectionBridge";
 
 const services = [
   {
@@ -107,8 +107,7 @@ export default function B2BContent() {
         ))}
       </div>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="violet-orange" curve="right" label="Services" />
       {/* Services */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -148,8 +147,6 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
       {/* Industries marquee */}
       <section className="py-10 border-t border-white/5 overflow-hidden hud-grid">
         <div className="max-w-7xl mx-auto px-4 text-center mb-6">
@@ -166,8 +163,7 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="orange-violet" curve="left" label="Roadmap" />
       {/* Roadmap */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -209,8 +205,7 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="violet-cyan" curve="right" label="Security" />
       {/* Security */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -249,8 +244,7 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="cyan-violet" curve="left" label="FAQ" />
       {/* FAQ */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -291,8 +285,7 @@ export default function B2BContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="violet-orange" curve="right" label="Talk to Us" />
       {/* Contact Form */}
       <section className="py-20 border-t border-white/5 hud-grid" id="contact">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">

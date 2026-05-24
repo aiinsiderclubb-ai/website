@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import HomeSectionBridge from "@landing/components/HomeSectionBridge";
+import SectionBridge from "@landing/components/SectionBridge";
 
 const allReviews = [
   {
@@ -172,8 +172,7 @@ export default function ReviewsContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="violet" curve="right" label="Filters" />
       {/* Filter buttons */}
       <section className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -195,8 +194,7 @@ export default function ReviewsContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="violet-orange" curve="left" label="Reviews" />
       {/* Reviews Grid */}
       <section className="py-10 pb-20 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -253,8 +251,7 @@ export default function ReviewsContent() {
         </div>
       </section>
 
-      <HomeSectionBridge />
-
+      <SectionBridge variant="orange-violet" curve="right" label="Score" />
       {/* Overall rating */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
