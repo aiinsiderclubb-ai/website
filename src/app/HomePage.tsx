@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="relative">
+      <main className="relative isolate">
         <FlowThread
           waypoints={[
             { y: 14, label: "Pipeline", color: "#c084fc" },
@@ -26,13 +26,15 @@ export default function HomePage() {
           ]}
         />
 
-        <Hero />
-        <HowItWorks />
-        <Courses />
-        <TechStack />
-        <Testimonials />
-        <FAQ />
-        <CommunityCTA />
+        <div className="relative z-10">
+          <Hero />
+          <HowItWorks />
+          <Courses />
+          <TechStack />
+          <Testimonials />
+          <FAQ />
+          <CommunityCTA />
+        </div>
       </main>
       <Footer />
     </>

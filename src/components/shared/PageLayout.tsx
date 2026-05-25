@@ -34,8 +34,9 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
   return (
     <>
       <Header />
-      <main className="relative">
+      <main className="relative isolate">
         <FlowThread waypoints={flowWaypoints ?? DEFAULT_FLOW} />
+        <div className="relative z-10">
         {/* Page Hero */}
         <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 overflow-hidden">
           <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
@@ -70,6 +71,7 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
         </section>
 
         {children}
+        </div>
       </main>
       <Footer />
     </>
