@@ -89,12 +89,19 @@ export default function TechStack() {
   };
 
   const categories: TechCategory[] = ["ai", "automation", "integration", "infra"];
+  const categoryCopy: Record<TechCategory, string> = {
+    ai: "Models, voice, retrieval and evaluation layers.",
+    automation: "Workflow engines that connect prompts to actions.",
+    integration: "CRM, messaging, payments and business systems.",
+    infra: "Data, deployment and operating layer for production.",
+  };
+  const floatingTools = ["OpenAI", "n8n", "Vapi.ai", "HubSpot", "Supabase"];
 
   return (
-    <section className="py-20 relative overflow-hidden border-t border-[var(--color-glass-border)]">
+    <section className="py-24 relative overflow-hidden border-t border-[var(--color-glass-border)]">
       <div className="absolute inset-0 bg-[var(--color-bg-secondary)]" aria-hidden />
       <div
-        className="absolute inset-0 opacity-[0.35] pointer-events-none"
+        className="absolute inset-0 opacity-[0.28] pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(rgba(168,85,247,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.06) 1px, transparent 1px)",
@@ -102,6 +109,7 @@ export default function TechStack() {
         }}
         aria-hidden
       />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#f97316]/50 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -109,120 +117,80 @@ export default function TechStack() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="text-center mb-12"
+          className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center"
         >
-          <motion.span
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full section-badge text-[#c084fc] text-[11px] font-medium uppercase tracking-[0.2em] mb-5"
-          >
-            <CategoryIcon type="workflow" className="w-3.5 h-3.5 text-[#a855f7]" />
-            {t.partners.badge}
-          </motion.span>
-          <motion.h2
-            variants={fadeInUp}
-            className="text-2xl sm:text-3xl font-display font-bold text-[var(--color-text-primary)] mb-3"
-          >
-            {t.partners.title}
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-[var(--color-text-secondary)] text-sm sm:text-base max-w-xl mx-auto"
-          >
-            {t.partners.subtitle}
-          </motion.p>
-        </motion.div>
+          <div>
+            <motion.span variants={fadeInUp} className="hud-badge mb-5">
+              <CategoryIcon type="workflow" className="w-3.5 h-3.5 text-[#a855f7]" />
+              {t.partners.badge}
+            </motion.span>
 
-        <div className="space-y-10">
-          {categories.map((cat) => {
-            const items = techStackItems.filter((item) => item.category === cat);
-            const meta = CATEGORY_META[cat];
-            return (
-              <motion.div
-                key={cat}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-30px" }}
-              >
-                <motion.div className="flex items-center gap-3 mb-4">
-                  <span
-                    className={`flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${meta.gradient} text-white`}
-                    style={{ boxShadow: `0 4px 12px ${meta.glow}` }}
+            <motion.h2 variants={fadeInUp} className="hud-title text-3xl sm:text-4xl lg:text-5xl mb-4">
+              {t.partners.title}
+            </motion.h2>
+
+            <motion.p variants={fadeInUp} className="hud-subtitle max-w-xl mb-8">
+              {t.partners.subtitle}
+            </motion.p>
+
+            <motion.div className="grid sm:grid-cols-2 gap-3" variants={staggerContainer}>
+              {categories.map((cat) => {
+                const meta = CATEGORY_META[cat];
+                const items = techStackItems.filter((item) => item.category === cat).slice(0, 3);
+                return (
+                  <motion.div
+                    key={cat}
+                    variants={fadeInUp}
+                    className="hud-panel hud-frame rounded-2xl p-4"
+                    style={{ "--card-glow": meta.glow } as React.CSSProperties}
                   >
-                    <CategoryIcon type={meta.icon} className="w-4 h-4" />
-                  </span>
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-[var(--color-text-primary)]">
-                    {categoryLabels[cat]}
-                  </h3>
-                  <span className="flex-1 h-px bg-gradient-to-r from-[var(--color-glass-border)] to-transparent" />
-                </motion.div>
-
-                <motion.div
-                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3"
-                  variants={staggerContainer}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                >
-                  {items.map((item) => (
-                    <motion.div
-                      key={item.name}
-                      variants={fadeInUp}
-                      title={item.name}
-                      className="group flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-[var(--color-glass-border)] bg-[var(--color-bg-card)]/70 glow-hover-card transition-all duration-300 hover:-translate-y-0.5 cursor-default"
-                      style={{ "--card-glow": meta.glow } as React.CSSProperties}
-                    >
+                    <div className="flex items-center gap-3 mb-3">
                       <span
-                        className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-xs font-bold text-white border border-white/10"
-                        style={{
-                          background: `linear-gradient(135deg, ${item.color}33, ${item.color}66)`,
-                          color: item.color === "#ffffff" || item.color === "#e8e8e8" ? "#1a103d" : "#fff",
-                        }}
+                        className={`flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${meta.gradient} text-white`}
+                        style={{ boxShadow: `0 6px 16px ${meta.glow}` }}
                       >
-                        {item.abbr}
+                        <CategoryIcon type={meta.icon} className="w-4 h-4" />
                       </span>
-                      <span className="text-sm font-medium text-[var(--color-text-primary)] leading-tight group-hover:text-[#c084fc] transition-colors truncate">
-                        {item.name}
-                      </span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Compact marquee for extra motion — recognizable logos by abbr */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-12 pt-8 border-t border-[var(--color-glass-border)]"
-        >
-          <div className="relative overflow-hidden py-2">
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[var(--color-bg-secondary)] to-transparent z-10 pointer-events-none" />
-            <motion.div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[var(--color-bg-secondary)] to-transparent z-10 pointer-events-none" />
-            <div className="flex animate-scroll-x will-change-transform gap-3" style={{ width: "max-content" }}>
-              {[...techStackItems, ...techStackItems].map((item, i) => (
-                <span
-                  key={`${item.name}-${i}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-glass-border)] bg-[var(--color-bg-tertiary)]/50 text-sm font-medium text-[var(--color-text-secondary)] shrink-0"
-                >
-                  <span
-                    className="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold"
-                    style={{
-                      background: `${item.color}22`,
-                      color: item.color === "#ffffff" ? "#c084fc" : item.color,
-                    }}
-                  >
-                    {item.abbr}
-                  </span>
-                  {item.name}
-                </span>
-              ))}
-            </div>
+                      <div>
+                        <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--color-text-primary)]">
+                          {categoryLabels[cat]}
+                        </h3>
+                        <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{items.map((i) => i.name).join(" / ")}</p>
+                      </div>
+                    </div>
+                    <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">{categoryCopy[cat]}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
+
+          <motion.div variants={fadeInUp} className="relative min-h-[440px] lg:min-h-[560px]">
+            <div className="absolute inset-0 rounded-[2rem] border border-[var(--color-glass-border)] bg-[var(--color-bg-card)]/20 hud-grid opacity-70" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(249,115,22,0.18),transparent_58%)]" />
+            <div className="tech-knot-art" aria-hidden />
+
+            {floatingTools.map((tool, i) => (
+              <motion.span
+                key={tool}
+                variants={fadeInUp}
+                className={`absolute hidden sm:inline-flex rounded-xl border border-white/10 bg-black/35 px-3 py-2 text-xs font-medium text-white/90 backdrop-blur-md ${
+                  i === 0
+                    ? "left-8 top-16"
+                    : i === 1
+                    ? "right-10 top-24"
+                    : i === 2
+                    ? "left-4 bottom-32"
+                    : i === 3
+                    ? "right-8 bottom-24"
+                    : "left-1/2 top-1/2 -translate-x-1/2"
+                }`}
+              >
+                <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#f97316] shadow-[0_0_10px_#f97316]" />
+                {tool}
+              </motion.span>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

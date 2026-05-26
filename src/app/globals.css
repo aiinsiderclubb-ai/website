@@ -488,6 +488,26 @@ body {
   background: radial-gradient(circle, rgba(249, 115, 22, 0.26) 0%, rgba(168, 85, 247, 0.14) 38%, transparent 70%);
   pointer-events: none;
 }
+.tech-knot-art {
+  position: absolute;
+  inset: 4% -2%;
+  background-image: url("/images/flow/ribbon-knot.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(620px, 92vw) auto;
+  mix-blend-mode: screen;
+  opacity: 0.94;
+  filter: saturate(1.08) contrast(1.04);
+  transform: translateZ(0);
+  mask-image:
+    radial-gradient(ellipse 70% 72% at 50% 52%, black 42%, transparent 78%),
+    linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    radial-gradient(ellipse 70% 72% at 50% 52%, black 42%, transparent 78%),
+    linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
 @media (max-width: 768px) {
   .hero-ribbon-art {
     right: -220px;
@@ -496,6 +516,11 @@ body {
     height: 560px;
     opacity: 0.42;
     transform: rotate(-18deg);
+  }
+  .tech-knot-art {
+    inset: 12% -14%;
+    opacity: 0.7;
+    background-size: 520px auto;
   }
 }
 @media (prefers-reduced-motion: reduce) {
