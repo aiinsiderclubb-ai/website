@@ -512,26 +512,31 @@ body {
   position: absolute;
   z-index: 1;
   left: 50%;
-  top: 50%;
-  width: min(1320px, 132vw);
-  height: min(420px, 52vw);
+  top: 48%;
+  width: 150vw;
+  height: min(560px, 62vw);
   pointer-events: none;
   background-image: url("/images/flow/ribbon-stream.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 100% auto;
   mix-blend-mode: screen;
-  opacity: 0.42;
-  transform: translate(-50%, -50%) rotate(-8deg);
+  opacity: 0.52;
+  transform: translate(-50%, -50%) rotate(-13deg);
   filter: saturate(1.08) contrast(1.03);
   mask-image:
-    linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, black 16%, black 84%, transparent 100%);
+    linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%);
   mask-composite: intersect;
   -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, black 16%, black 84%, transparent 100%);
+    linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%);
   -webkit-mask-composite: source-in;
+}
+.community-cta-card {
+  background: rgba(12, 10, 24, 0.72);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
 }
 @media (max-width: 768px) {
   .hero-ribbon-art {
@@ -548,10 +553,10 @@ body {
     background-size: 520px auto;
   }
   .community-ribbon-stream {
-    width: 820px;
-    height: 300px;
-    opacity: 0.28;
-    transform: translate(-52%, -48%) rotate(-10deg);
+    width: 980px;
+    height: 360px;
+    opacity: 0.32;
+    transform: translate(-52%, -48%) rotate(-14deg);
   }
 }
 @media (prefers-reduced-motion: reduce) {

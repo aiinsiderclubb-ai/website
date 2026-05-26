@@ -20,7 +20,7 @@ export default function CommunityCTA() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center hud-frame hud-scan hud-panel rounded-3xl px-6 py-10 sm:px-10"
+          className="text-center hud-frame hud-scan hud-panel community-cta-card rounded-3xl px-6 py-10 sm:px-10"
         >
           <motion.span
             variants={fadeInUp}
