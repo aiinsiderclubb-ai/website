@@ -455,71 +455,51 @@ body {
   box-shadow: 0 12px 34px rgba(6, 10, 24, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.18), 0 0 24px var(--card-glow, rgba(168, 85, 247, 0.25));
 }
 
-/* Home section-to-section liquid connectors */
-.home-flow-connector {
-  mix-blend-mode: screen;
-  opacity: 0.9;
-}
-.flow-asset {
+/* Hero ribbon art */
+.hero-ribbon-art {
   position: absolute;
-  inset: -18% -8%;
+  z-index: 4;
+  right: max(-180px, -8vw);
+  top: 6%;
+  width: min(52vw, 720px);
+  height: min(72vh, 780px);
+  pointer-events: none;
+  background-image: url("/images/flow/ribbon-wave.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: min(980px, 92vw) auto;
-  opacity: 0.34;
+  background-size: contain;
   mix-blend-mode: screen;
-  transform: translateZ(0);
+  opacity: 0.88;
+  transform: rotate(-14deg) translate3d(0, 0, 0);
+  filter: saturate(1.08) contrast(1.04);
   mask-image:
-    linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, black 24%, black 76%, transparent 100%);
+    linear-gradient(90deg, transparent 0%, black 14%, black 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 10%, black 88%, transparent 100%);
   mask-composite: intersect;
   -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, black 24%, black 76%, transparent 100%);
+    linear-gradient(90deg, transparent 0%, black 14%, black 84%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 10%, black 88%, transparent 100%);
   -webkit-mask-composite: source-in;
 }
-.flow-asset-arc {
-  background-size: min(720px, 70vw) auto;
-  background-position: 72% 54%;
-  opacity: 0.24;
-}
-.flow-asset-wave {
-  background-size: min(820px, 78vw) auto;
-  background-position: 62% 50%;
-  opacity: 0.28;
-}
-.flow-asset-stream {
-  background-size: min(980px, 94vw) auto;
-  background-position: 52% 54%;
-  opacity: 0.30;
-}
-.flow-ribbon {
-  vector-effect: non-scaling-stroke;
-}
-.flow-ribbon-thread {
-  stroke-dasharray: 18 28;
-  animation: flow-dash 18s linear infinite;
-}
-.flow-ribbon-thread-alt {
-  animation-duration: 24s;
-  animation-direction: reverse;
+.hero-ribbon-art::after {
+  content: "";
+  position: absolute;
+  inset: 18% 12%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.26) 0%, rgba(168, 85, 247, 0.14) 38%, transparent 70%);
+  pointer-events: none;
 }
 @media (max-width: 768px) {
-  .home-flow-connector {
-    opacity: 0.55;
-  }
-  .flow-asset {
-    opacity: 0.18;
-    background-size: 720px auto;
-  }
-  .flow-ribbon-main {
-    stroke-width: 18;
+  .hero-ribbon-art {
+    right: -220px;
+    top: 12%;
+    width: 520px;
+    height: 560px;
+    opacity: 0.42;
+    transform: rotate(-18deg);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .flow-ribbon-thread {
-    animation: none;
-  }
+  .hero-ribbon-art { transform: rotate(-14deg); }
 }
 
 /* Scroll performance: skip off-screen layout work */

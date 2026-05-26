@@ -76,6 +76,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <div className="hero-ribbon-art" aria-hidden />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 lg:py-32">
         <motion.div
           variants={staggerContainer}
