@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import FlowBridge from "@landing/components/FlowBridge";
 
 const services = [
   {
@@ -145,8 +146,10 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <FlowBridge variant="courses-tech" />
+
       {/* Industries marquee */}
-      <section className="py-10 border-t border-white/5 overflow-hidden hud-grid">
+      <section className="py-10 overflow-hidden hud-grid">
         <div className="max-w-7xl mx-auto px-4 text-center mb-6">
           <span className="text-[var(--color-text-muted)] text-sm uppercase tracking-wider">Trusted by Industry Leaders</span>
         </div>
@@ -161,8 +164,10 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <FlowBridge variant="tech-reviews" />
+
       {/* Roadmap */}
-      <section className="py-20 border-t border-white/5 hud-grid">
+      <section className="py-20 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="hud-badge mb-4">
@@ -202,8 +207,10 @@ export default function B2BContent() {
         </div>
       </section>
 
+      <FlowBridge variant="reviews-faq" />
+
       {/* Security */}
-      <section className="py-20 border-t border-white/5 hud-grid">
+      <section className="py-20 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-10" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="hud-badge mb-4">

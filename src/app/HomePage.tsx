@@ -9,7 +9,7 @@ import Testimonials from "@landing/components/Testimonials";
 import FAQ from "@landing/components/FAQ";
 import CommunityCTA from "@landing/components/CommunityCTA";
 import Footer from "@landing/components/Footer";
-import SectionFlowBridge from "@landing/components/SectionFlowBridge";
+import FlowBridge from "@landing/components/FlowBridge";
 
 export default function HomePage() {
   return (
@@ -17,17 +17,17 @@ export default function HomePage() {
       <Header />
       <main className="relative">
         <Hero />
-        <SectionFlowBridge variant="arc" align="right" />
+        <FlowBridge variant="hero-how" />
         <HowItWorks />
-        <SectionFlowBridge variant="wave" align="left" flip />
+        <FlowBridge variant="how-courses" />
         <Courses />
-        <SectionFlowBridge variant="stream" align="center" />
+        <FlowBridge variant="courses-tech" />
         <TechStack />
-        <SectionFlowBridge variant="knot" align="right" flip />
+        <FlowBridge variant="tech-reviews" />
         <Testimonials />
-        <SectionFlowBridge variant="wave" align="left" />
+        <FlowBridge variant="reviews-faq" />
         <FAQ />
-        <SectionFlowBridge variant="arc" align="center" flip overlap="top" />
+        <FlowBridge variant="faq-community" />
         <CommunityCTA />
       </main>
       <Footer />

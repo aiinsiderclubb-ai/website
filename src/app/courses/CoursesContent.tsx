@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import FlowBridge from "@landing/components/FlowBridge";
 
 const courses = [
   {
@@ -221,8 +222,10 @@ export default function CoursesContent() {
         </div>
       </section>
 
+      <FlowBridge variant="how-courses" />
+
       {/* Benefits */}
-      <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
+      <section className="relative py-24 overflow-hidden hud-grid">
         {/* Decorative gradient bar */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
         <div className="absolute top-[18%] left-[8%] h-16 w-16 border border-[#a855f7]/25 rotate-45 hidden md:block" />
@@ -296,6 +299,8 @@ export default function CoursesContent() {
           </motion.div>
         </div>
       </section>
+
+      <FlowBridge variant="faq-community" />
 
       {/* CTA */}
       <section className="py-20 hud-grid">

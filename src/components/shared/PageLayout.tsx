@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Header from "@landing/components/Header";
 import Footer from "@landing/components/Footer";
+import FlowBridge from "@landing/components/FlowBridge";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -21,7 +22,13 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
         {/* Page Hero */}
         <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 overflow-hidden">
           <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#a855f7]/[0.06] rounded-full pointer-events-none" />
+          <div
+            className="absolute inset-0 pointer-events-none opacity-50"
+            style={{
+              background:
+                "radial-gradient(ellipse 70% 55% at 50% 0%, rgba(168,85,247,0.12) 0%, transparent 65%)",
+            }}
+          />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.06)_0%,transparent_70%)]" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -51,6 +58,7 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
           </div>
         </section>
 
+        <FlowBridge variant="section-down" className="-mt-6" />
         {children}
       </main>
       <Footer />
