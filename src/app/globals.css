@@ -511,18 +511,19 @@ body {
 .community-ribbon-stream {
   position: absolute;
   z-index: 1;
-  right: -10vw;
-  top: 12%;
-  width: min(780px, 68vw);
-  height: min(360px, 40vw);
+  right: -22vw;
+  top: -4%;
+  width: min(980px, 86vw);
+  height: min(420px, 48vw);
   pointer-events: none;
   background-image: url("/images/flow/ribbon-stream.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center right;
   background-size: 100% auto;
   mix-blend-mode: screen;
-  opacity: 0.46;
-  transform: rotate(-22deg);
+  opacity: 0.5;
+  transform: rotate(-38deg);
+  transform-origin: 78% 42%;
   filter: saturate(1.08) contrast(1.03);
   mask-image:
     linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%),
@@ -553,12 +554,12 @@ body {
     background-size: 520px auto;
   }
   .community-ribbon-stream {
-    right: -390px;
-    top: 18%;
-    width: 680px;
-    height: 280px;
+    right: -440px;
+    top: 2%;
+    width: 760px;
+    height: 300px;
     opacity: 0.24;
-    transform: rotate(-22deg);
+    transform: rotate(-36deg);
   }
 }
 @media (prefers-reduced-motion: reduce) {
