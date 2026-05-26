@@ -117,16 +117,9 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="section-padding relative overflow-hidden">
       <motion.div className="absolute inset-0 bg-[var(--color-bg-secondary)]" aria-hidden />
-      <div
-        className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 65%)" }}
-        aria-hidden
-      />
-      <div
-        className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 65%)" }}
-        aria-hidden
-      />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#f97316]/45 to-transparent" aria-hidden />
+      <div className="absolute left-[8%] top-24 h-20 w-20 rotate-45 border border-[#a855f7]/20 hidden md:block" aria-hidden />
+      <div className="absolute right-[10%] bottom-24 h-16 w-16 rotate-45 border border-[#f97316]/20 hidden md:block" aria-hidden />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

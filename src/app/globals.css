@@ -137,6 +137,14 @@ body {
   50%  { background-position: 100% 50%; }
   100% { background-position: 0%   50%; }
 }
+@keyframes flow-dash {
+  0%   { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -180; }
+}
+@keyframes flow-node-pulse {
+  0%, 100% { opacity: 0.28; transform: scale(1) rotate(45deg); }
+  50%      { opacity: 0.68; transform: scale(1.08) rotate(45deg); }
+}
 @keyframes orb-drift {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   33%      { transform: translate3d(40px, -30px, 0) scale(1.05); }
@@ -447,40 +455,69 @@ body {
   box-shadow: 0 12px 34px rgba(6, 10, 24, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.18), 0 0 24px var(--card-glow, rgba(168, 85, 247, 0.25));
 }
 
-/* ─── Flow bridge between sections ─── */
-@keyframes flow-dash {
-  0% { stroke-dashoffset: 1200; opacity: 0.35; }
-  50% { opacity: 1; }
-  100% { stroke-dashoffset: 0; opacity: 0.35; }
-}
-@keyframes flow-ribbon-drift {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.72; }
-  50% { transform: translateY(-6px) scale(1.01); opacity: 0.92; }
-}
-@keyframes flow-node-pulse {
-  0%, 100% { opacity: 0.25; transform: scale(0.85); }
-  50% { opacity: 0.9; transform: scale(1.15); }
-}
-
-.flow-bridge-path {
-  stroke-dasharray: 1200;
-  animation: flow-dash 8s ease-in-out infinite;
-}
-.flow-bridge-path-delay {
-  animation-delay: 1.4s;
-}
-.flow-bridge-ribbon {
-  animation: flow-ribbon-drift 8s ease-in-out infinite;
-}
-/* Removes solid black from ribbon PNGs on dark backgrounds */
-.flow-bridge-ribbon-blend {
+/* Home section-to-section liquid connectors */
+.home-flow-connector {
   mix-blend-mode: screen;
-  opacity: 0.82;
+  opacity: 0.9;
 }
-
+.flow-asset {
+  position: absolute;
+  inset: -18% -8%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(980px, 92vw) auto;
+  opacity: 0.34;
+  mix-blend-mode: screen;
+  transform: translateZ(0);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 24%, black 76%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, black 18%, black 82%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 24%, black 76%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+.flow-asset-arc {
+  background-size: min(720px, 70vw) auto;
+  background-position: 72% 54%;
+  opacity: 0.24;
+}
+.flow-asset-wave {
+  background-size: min(820px, 78vw) auto;
+  background-position: 62% 50%;
+  opacity: 0.28;
+}
+.flow-asset-stream {
+  background-size: min(980px, 94vw) auto;
+  background-position: 52% 54%;
+  opacity: 0.30;
+}
+.flow-ribbon {
+  vector-effect: non-scaling-stroke;
+}
+.flow-ribbon-thread {
+  stroke-dasharray: 18 28;
+  animation: flow-dash 18s linear infinite;
+}
+.flow-ribbon-thread-alt {
+  animation-duration: 24s;
+  animation-direction: reverse;
+}
+@media (max-width: 768px) {
+  .home-flow-connector {
+    opacity: 0.55;
+  }
+  .flow-asset {
+    opacity: 0.18;
+    background-size: 720px auto;
+  }
+  .flow-ribbon-main {
+    stroke-width: 18;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .flow-bridge-path,
-  .flow-bridge-ribbon {
+  .flow-ribbon-thread {
     animation: none;
   }
 }

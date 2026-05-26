@@ -9,21 +9,25 @@ import Testimonials from "@landing/components/Testimonials";
 import FAQ from "@landing/components/FAQ";
 import CommunityCTA from "@landing/components/CommunityCTA";
 import Footer from "@landing/components/Footer";
-import FlowBridge from "@landing/components/FlowBridge";
+import HomeFlowBridge from "@landing/components/HomeFlowBridge";
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="relative">
+      <main className="relative overflow-hidden">
         <Hero />
-        <FlowBridge variant="hero-how" ribbon />
+        <HomeFlowBridge intensity="strong" asset="stream" />
         <HowItWorks />
+        <HomeFlowBridge flip asset="arc" />
         <Courses />
+        <HomeFlowBridge intensity="strong" asset="wave" />
         <TechStack />
+        <HomeFlowBridge flip asset="stream" />
         <Testimonials />
+        <HomeFlowBridge asset="arc" />
         <FAQ />
-        <FlowBridge variant="faq-community" ribbon />
+        <HomeFlowBridge flip intensity="strong" asset="wave" />
         <CommunityCTA />
       </main>
       <Footer />

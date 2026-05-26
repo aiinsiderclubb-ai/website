@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import FlowBridge from "@landing/components/FlowBridge";
 
 type ColorScheme = {
   gradient: string;
@@ -186,7 +185,7 @@ export default function CommunityContent() {
       </section>
 
       {/* Features Grid */}
-      <section className="relative py-24 overflow-hidden hud-grid">
+      <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
         <div
           className="absolute inset-0 pointer-events-none opacity-30"
@@ -285,7 +284,7 @@ export default function CommunityContent() {
       </section>
 
       {/* Stats + Testimonials */}
-      <section className="relative py-24 overflow-hidden hud-grid">
+      <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
         <div
           className="absolute inset-0 pointer-events-none opacity-25"
           style={{
@@ -376,8 +375,6 @@ export default function CommunityContent() {
           </motion.div>
         </div>
       </section>
-
-      <FlowBridge variant="faq-community" ribbon />
 
       {/* Final CTA */}
       <section className="py-20">

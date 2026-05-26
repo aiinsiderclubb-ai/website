@@ -11,13 +11,31 @@ export default function CommunityCTA() {
   return (
     <section id="community" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 50% at 50% 30%, rgba(168,85,247,0.14) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 70%, rgba(249,115,22,0.10) 0%, transparent 55%)",
-        }}
-      />
+      <div className="absolute inset-0 hud-grid opacity-30 pointer-events-none" />
+      <svg className="absolute inset-x-0 top-0 h-full w-full pointer-events-none" viewBox="0 0 1200 520" preserveAspectRatio="none" fill="none" aria-hidden>
+        <path
+          d="M70 410C250 260 420 380 570 250C720 120 930 120 1120 40"
+          stroke="url(#community-flow)"
+          strokeWidth="44"
+          strokeLinecap="round"
+          opacity="0.16"
+        />
+        <path
+          d="M80 410C270 275 425 365 570 248C710 135 905 130 1110 48"
+          stroke="#f97316"
+          strokeWidth="4"
+          strokeLinecap="round"
+          opacity="0.48"
+        />
+        <defs>
+          <linearGradient id="community-flow" x1="70" y1="410" x2="1120" y2="40" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#a855f7" stopOpacity="0" />
+            <stop offset="0.45" stopColor="#ec4899" stopOpacity="0.75" />
+            <stop offset="0.78" stopColor="#f97316" stopOpacity="0.9" />
+            <stop offset="1" stopColor="#fb923c" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -25,7 +43,7 @@ export default function CommunityCTA() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center"
+          className="text-center hud-frame hud-scan hud-panel rounded-3xl px-6 py-10 sm:px-10"
         >
           <motion.span
             variants={fadeInUp}

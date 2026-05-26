@@ -249,7 +249,7 @@ export default function ReviewsContent() {
       </section>
 
       {/* Overall rating */}
-      <section className="py-20 hud-grid">
+      <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="hud-panel hud-frame hud-scan rounded-2xl p-8 sm:p-12"
