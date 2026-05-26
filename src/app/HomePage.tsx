@@ -17,17 +17,13 @@ export default function HomePage() {
       <Header />
       <main className="relative">
         <Hero />
-        <FlowBridge variant="hero-how" />
+        <FlowBridge variant="hero-how" ribbon />
         <HowItWorks />
-        <FlowBridge variant="how-courses" />
         <Courses />
-        <FlowBridge variant="courses-tech" />
         <TechStack />
-        <FlowBridge variant="tech-reviews" />
         <Testimonials />
-        <FlowBridge variant="reviews-faq" />
         <FAQ />
-        <FlowBridge variant="faq-community" />
+        <FlowBridge variant="faq-community" ribbon />
         <CommunityCTA />
       </main>
       <Footer />

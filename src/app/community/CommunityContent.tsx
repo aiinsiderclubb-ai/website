@@ -185,8 +185,6 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <FlowBridge variant="section-down" />
-
       {/* Features Grid */}
       <section className="relative py-24 overflow-hidden hud-grid">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
@@ -286,8 +284,6 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <FlowBridge variant="how-courses" />
-
       {/* Stats + Testimonials */}
       <section className="relative py-24 overflow-hidden hud-grid">
         <div
@@ -381,7 +377,7 @@ export default function CommunityContent() {
         </div>
       </section>
 
-      <FlowBridge variant="faq-community" />
+      <FlowBridge variant="faq-community" ribbon />
 
       {/* Final CTA */}
       <section className="py-20">

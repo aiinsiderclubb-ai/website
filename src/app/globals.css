@@ -470,25 +470,17 @@ body {
   animation-delay: 1.4s;
 }
 .flow-bridge-ribbon {
-  animation: flow-ribbon-drift 7s ease-in-out infinite;
+  animation: flow-ribbon-drift 8s ease-in-out infinite;
 }
-.flow-node {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #f97316;
-  box-shadow: 0 0 12px #f97316, 0 0 24px rgba(168, 85, 247, 0.5);
-  animation: flow-node-pulse 3s ease-in-out infinite;
+/* Removes solid black from ribbon PNGs on dark backgrounds */
+.flow-bridge-ribbon-blend {
+  mix-blend-mode: screen;
+  opacity: 0.82;
 }
-.flow-node-a { left: 18%; top: 42%; background: #a855f7; box-shadow: 0 0 12px #a855f7; }
-.flow-node-b { left: 52%; top: 28%; animation-delay: 0.8s; }
-.flow-node-c { right: 16%; top: 55%; background: #ec4899; box-shadow: 0 0 12px #ec4899; animation-delay: 1.6s; }
 
 @media (prefers-reduced-motion: reduce) {
   .flow-bridge-path,
-  .flow-bridge-ribbon,
-  .flow-node {
+  .flow-bridge-ribbon {
     animation: none;
   }
 }

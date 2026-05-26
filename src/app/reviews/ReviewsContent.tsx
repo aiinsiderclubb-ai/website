@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
-import FlowBridge from "@landing/components/FlowBridge";
 
 const allReviews = [
   {
@@ -172,8 +171,6 @@ export default function ReviewsContent() {
         </div>
       </section>
 
-      <FlowBridge variant="section-down" />
-
       {/* Filter buttons */}
       <section className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -250,8 +247,6 @@ export default function ReviewsContent() {
           </p>
         </div>
       </section>
-
-      <FlowBridge variant="faq-community" />
 
       {/* Overall rating */}
       <section className="py-20 hud-grid">

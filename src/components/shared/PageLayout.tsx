@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Header from "@landing/components/Header";
 import Footer from "@landing/components/Footer";
-import FlowBridge from "@landing/components/FlowBridge";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -58,7 +57,6 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
           </div>
         </section>
 
-        <FlowBridge variant="section-down" className="-mt-6" />
         {children}
       </main>
       <Footer />

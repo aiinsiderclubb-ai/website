@@ -222,7 +222,7 @@ export default function CoursesContent() {
         </div>
       </section>
 
-      <FlowBridge variant="how-courses" />
+      <FlowBridge variant="how-courses" ribbon />
 
       {/* Benefits */}
       <section className="relative py-24 overflow-hidden hud-grid">
@@ -299,8 +299,6 @@ export default function CoursesContent() {
           </motion.div>
         </div>
       </section>
-
-      <FlowBridge variant="faq-community" />
 
       {/* CTA */}
       <section className="py-20 hud-grid">
