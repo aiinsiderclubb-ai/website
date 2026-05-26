@@ -147,11 +147,6 @@ export default function ReviewsContent() {
       title="Real Stories from"
       titleHighlight="Real AI Professionals"
       subtitle="Don't just take our word for it. See how thousands of students and professionals transformed their careers with AI Insider training and community."
-      flowWaypoints={[
-        { y: 16, label: "Filters", color: "#c084fc" },
-        { y: 50, label: "Reviews", color: "#fb923c" },
-        { y: 84, label: "Score", color: "#fbbf24" },
-      ]}
     >
       {/* Stats bar */}
       <section className="py-10 hud-grid">

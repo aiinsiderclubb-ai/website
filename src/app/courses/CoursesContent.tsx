@@ -126,11 +126,6 @@ export default function CoursesContent() {
       badge="Courses Hub"
       title="AI Courses"
       subtitle="Choose your path — Chat-Bot or Voice Agent. See next start dates and details."
-      flowWaypoints={[
-        { y: 18, label: "Programs", color: "#c084fc" },
-        { y: 46, label: "What You Get", color: "#fb923c" },
-        { y: 78, label: "Enroll", color: "#fbbf24" },
-      ]}
     >
       {/* Courses Grid */}
       <section className="py-20 hud-grid">

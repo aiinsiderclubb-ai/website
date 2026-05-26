@@ -81,12 +81,6 @@ export default function B2BContent() {
       title="AI That Drives"
       titleHighlight="Revenue & Efficiency"
       subtitle="We design and ship business-ready AI: chatbots, voice agents, RAG assistants, lead qualification, CRM automations and integrations. Fast, secure and ROI-driven."
-      flowWaypoints={[
-        { y: 18, label: "Services", color: "#c084fc" },
-        { y: 40, label: "Roadmap", color: "#fb923c" },
-        { y: 62, label: "Security", color: "#67e8f9" },
-        { y: 84, label: "Talk to Us", color: "#fbbf24" },
-      ]}
     >
       {/* CTA buttons */}
       <div className="flex justify-center gap-4 pb-10 flex-wrap">

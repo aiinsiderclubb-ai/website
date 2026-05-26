@@ -9,32 +9,26 @@ import Testimonials from "@landing/components/Testimonials";
 import FAQ from "@landing/components/FAQ";
 import CommunityCTA from "@landing/components/CommunityCTA";
 import Footer from "@landing/components/Footer";
-import FlowThread from "@landing/components/FlowThread";
+import SectionFlowBridge from "@landing/components/SectionFlowBridge";
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="relative isolate">
-        <FlowThread
-          waypoints={[
-            { y: 14, label: "Pipeline", color: "#c084fc" },
-            { y: 32, label: "Programs", color: "#fb923c" },
-            { y: 52, label: "Stack", color: "#67e8f9" },
-            { y: 70, label: "Voices", color: "#f472b6" },
-            { y: 88, label: "Join", color: "#fbbf24" },
-          ]}
-        />
-
-        <div className="relative z-10">
-          <Hero />
-          <HowItWorks />
-          <Courses />
-          <TechStack />
-          <Testimonials />
-          <FAQ />
-          <CommunityCTA />
-        </div>
+      <main className="relative">
+        <Hero />
+        <SectionFlowBridge variant="arc" align="right" />
+        <HowItWorks />
+        <SectionFlowBridge variant="wave" align="left" flip />
+        <Courses />
+        <SectionFlowBridge variant="stream" align="center" />
+        <TechStack />
+        <SectionFlowBridge variant="knot" align="right" flip />
+        <Testimonials />
+        <SectionFlowBridge variant="wave" align="left" />
+        <FAQ />
+        <SectionFlowBridge variant="arc" align="center" flip overlap="top" />
+        <CommunityCTA />
       </main>
       <Footer />
     </>

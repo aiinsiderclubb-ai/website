@@ -142,9 +142,6 @@ body {
   33%      { transform: translate3d(40px, -30px, 0) scale(1.05); }
   66%      { transform: translate3d(-30px, 40px, 0) scale(0.95); }
 }
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
 @keyframes neon-pulse {
   0%, 100% { opacity: 0.4; filter: blur(80px); }
   50%      { opacity: 0.7; filter: blur(100px); }
@@ -450,19 +447,21 @@ body {
   box-shadow: 0 12px 34px rgba(6, 10, 24, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.18), 0 0 24px var(--card-glow, rgba(168, 85, 247, 0.25));
 }
 
-/* FlowThread traveling pulse — CSS only (cheaper than SMIL) */
-@keyframes flow-thread-pulse {
-  to { stroke-dashoffset: -640; }
+/* Flow bridges between homepage sections */
+@keyframes flow-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(8px, -6px, 0) scale(1.02); }
 }
-.flow-thread-pulse {
-  animation: flow-thread-pulse 14s linear infinite;
+.flow-bridge-img {
+  animation: flow-drift 14s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .flow-thread-pulse { animation: none; }
+  .flow-bridge-img { animation: none; }
 }
 
-/* Scroll performance: only long static sections (avoid blank cards while scrolling) */
-.section-padding {
+/* Scroll performance: skip off-screen layout work */
+.section-padding,
+main > section {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
 }

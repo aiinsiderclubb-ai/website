@@ -140,11 +140,6 @@ export default function CommunityContent() {
       title="Join 5,742+ AI Automation"
       titleHighlight="Experts on Telegram"
       subtitle="Connect with like-minded entrepreneurs, get instant help from experts, and access exclusive content that's only shared in our private community."
-      flowWaypoints={[
-        { y: 18, label: "Benefits", color: "#c084fc" },
-        { y: 50, label: "Live Pulse", color: "#67e8f9" },
-        { y: 84, label: "Join", color: "#fbbf24" },
-      ]}
     >
       {/* Top stats row */}
       <section className="py-10">
