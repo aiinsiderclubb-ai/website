@@ -6,6 +6,7 @@ import HowItWorks from "@landing/components/HowItWorks";
 import Courses from "@landing/components/Courses";
 import TechStack from "@landing/components/TechStack";
 import Testimonials from "@landing/components/Testimonials";
+import TelegramProof from "@landing/components/TelegramProof";
 import FAQ from "@landing/components/FAQ";
 import CommunityCTA from "@landing/components/CommunityCTA";
 import Footer from "@landing/components/Footer";
@@ -19,6 +20,7 @@ export default function HomePage() {
         <HowItWorks />
         <Courses />
         <TechStack />
+        <TelegramProof />
         <Testimonials />
         <FAQ />
         <CommunityCTA />

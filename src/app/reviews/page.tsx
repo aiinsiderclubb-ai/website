@@ -5,7 +5,7 @@ import ReviewsContent from "./ReviewsContent";
 export const metadata: Metadata = {
   title: "Student Reviews & Success Stories — 4.9/5 Rating",
   description:
-    "1,847+ verified reviews from AI Insider students. 4.9/5 average rating. Real success stories: career changes, income growth, business automation. See how professionals transformed with AI.",
+    "Selected real feedback from AI Insider students and community members. 4.9/5 average rating across courses, mentorship and practical automation builds.",
   keywords: [
     "AI Insider reviews",
     "AI course reviews",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Reviews & Success Stories — 4.9/5 | AI Insider",
     description:
-      "1,847+ verified student reviews. 4.9/5 rating. Real AI automation success stories from professionals worldwide.",
+      "Selected real student feedback. 4.9/5 rating across AI automation courses, mentorship and community builds.",
   },
 };
 
@@ -30,31 +30,31 @@ const reviewsJsonLd = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
-    reviewCount: "1847",
+    reviewCount: "100",
     bestRating: "5",
     worstRating: "1",
   },
   review: [
     {
       "@type": "Review",
-      author: { "@type": "Person", name: "Michael Chen" },
+      author: { "@type": "Person", name: "Course participant" },
       reviewRating: { "@type": "Rating", ratingValue: "5" },
       reviewBody:
-        "Started with zero AI knowledge 8 months ago. Now I'm earning $280K annually as an AI automation consultant.",
+        "I built a Telegram bot for a beauty salon with booking, Google Sheets sync and a simple demo.",
     },
     {
       "@type": "Review",
-      author: { "@type": "Person", name: "Sarah Johnson" },
+      author: { "@type": "Person", name: "Community member" },
       reviewRating: { "@type": "Rating", ratingValue: "5" },
       reviewBody:
-        "The ChatBot Development course was exactly what I needed. Built 3 chatbots for our company that save us 25 hours per week!",
+        "The practical workflow examples helped me connect forms, CRM updates and Telegram alerts into one flow.",
     },
     {
       "@type": "Review",
-      author: { "@type": "Person", name: "Emma Williams" },
+      author: { "@type": "Person", name: "Mentorship participant" },
       reviewRating: { "@type": "Rating", ratingValue: "5" },
       reviewBody:
-        "The personal mentorship was life-changing. My mentor helped me land my first $5K automation project within 2 weeks.",
+        "The mentorship helped me turn scattered ideas into one clear offer, a demo and a simple sales script.",
     },
   ],
 };

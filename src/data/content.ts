@@ -11,6 +11,15 @@ export const siteConfig = {
     "https://t.me/vladyslavarcher?text=Привет!%20Интересует%20Personal%20ChatBot%20Mentorship%20(€299)",
 };
 
+export const siteStats = {
+  communityMembers: 6000,
+  communityMembersLabel: "6,000+",
+  graduates: 100,
+  graduatesLabel: "100+",
+  averageRoi: "340%",
+  partners: "150+",
+};
+
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
@@ -21,9 +30,9 @@ export const navLinks = [
 ];
 
 export const heroMetrics = [
-  { value: "6,079+", labelKey: "specialists" as const },
-  { value: "340%", labelKey: "roi" as const },
-  { value: "150+", labelKey: "partners" as const },
+  { value: siteStats.graduatesLabel, labelKey: "specialists" as const },
+  { value: siteStats.averageRoi, labelKey: "roi" as const },
+  { value: siteStats.partners, labelKey: "partners" as const },
 ];
 
 export const rotatingWords: Record<Lang, string[]> = {
@@ -316,101 +325,83 @@ export const getTestimonials = (lang: Lang) => {
   const data = {
     en: [
       {
-        name: "Michael Chen",
-        role: "Senior AI Engineer, Google",
-        image:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-        metric: "+180%",
-        metricLabel: "Income Increase",
+        name: "Course participant",
+        role: "Built a client-booking bot",
+        metric: "1st client",
+        metricLabel: "after launch",
         quote:
-          "AI Insider's automation strategies helped me build systems that now generate passive income while I sleep. Pure game-changer.",
+          "I built a Telegram bot for beauty salons with booking, Google Sheets sync and a simple demo. The course helped me package it and start outreach.",
         featured: true,
       },
       {
-        name: "Alex Rodriguez",
-        role: "AI Startup Founder",
-        image:
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-        metric: "$50k+",
-        metricLabel: "Annual Revenue",
+        name: "Community member",
+        role: "n8n workflows & lead automation",
+        metric: "20h/week",
+        metricLabel: "saved manually",
         quote:
-          "Launched my first AI automation agency in 18 months using what I learned here. This community is incredibly valuable.",
+          "The practical workflow examples were the most useful part. I finally understood how to connect forms, CRM updates and Telegram alerts into one flow.",
       },
       {
-        name: "Emma Williams",
-        role: "Creative AI Director, Adobe",
-        image:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-        metric: "40k+",
-        metricLabel: "Users Impacted",
+        name: "AI Insider student",
+        role: "Voice agent prototype",
+        metric: "7 days",
+        metricLabel: "to working demo",
         quote:
-          "Leading Adobe's AI design revolution that powers creativity for millions worldwide.",
+          "Short lessons, direct support and real templates made it much easier to ship a voice-agent demo instead of just watching theory.",
       },
     ],
     ru: [
       {
-        name: "Michael Chen",
-        role: "Старший AI-инженер, Google",
-        image:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-        metric: "+180%",
-        metricLabel: "Рост дохода",
+        name: "Участник курса",
+        role: "Собрал бота для записи клиентов",
+        metric: "1-й клиент",
+        metricLabel: "после запуска",
         quote:
-          "Стратегии автоматизации AI Insider помогли мне выстроить системы, которые теперь генерируют пассивный доход пока я сплю. Настоящий прорыв.",
+          "Собрал Telegram-бота для салона красоты: запись, Google Sheets и демо для клиента. Курс помог упаковать решение и начать продажи.",
         featured: true,
       },
       {
-        name: "Alex Rodriguez",
-        role: "Основатель AI-стартапа",
-        image:
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-        metric: "$50k+",
-        metricLabel: "Годовой доход",
+        name: "Участник комьюнити",
+        role: "n8n-воркфлоу и лиды",
+        metric: "20ч/нед",
+        metricLabel: "экономии ручной работы",
         quote:
-          "Запустил первое AI-агентство за 18 месяцев, используя знания отсюда. Это сообщество невероятно ценно.",
+          "Больше всего помогли практические схемы. Наконец понял, как связать формы, CRM и Telegram-уведомления в один поток.",
       },
       {
-        name: "Emma Williams",
-        role: "Креативный AI-директор, Adobe",
-        image:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-        metric: "40k+",
-        metricLabel: "Пользователей охвачено",
+        name: "Студент AI Insider",
+        role: "Прототип voice agent",
+        metric: "7 дней",
+        metricLabel: "до рабочего демо",
         quote:
-          "Руковожу AI-революцией в дизайне Adobe, которая питает творчество миллионов людей по всему миру.",
+          "Короткие уроки, поддержка и готовые шаблоны помогли собрать демо voice agent, а не просто смотреть теорию.",
       },
     ],
     uk: [
       {
-        name: "Michael Chen",
-        role: "Старший AI-інженер, Google",
-        image:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-        metric: "+180%",
-        metricLabel: "Зростання доходу",
+        name: "Учасник курсу",
+        role: "Зібрав бота для запису клієнтів",
+        metric: "1-й клієнт",
+        metricLabel: "після запуску",
         quote:
-          "Стратегії автоматизації AI Insider допомогли мені побудувати системи, що тепер генерують пасивний дохід поки я сплю. Справжній прорив.",
+          "Зібрав Telegram-бота для салону краси: запис, Google Sheets і демо для клієнта. Курс допоміг упакувати рішення та почати продажі.",
         featured: true,
       },
       {
-        name: "Alex Rodriguez",
-        role: "Засновник AI-стартапу",
-        image:
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-        metric: "$50k+",
-        metricLabel: "Річний дохід",
+        name: "Учасник комʼюніті",
+        role: "n8n-воркфлоу та ліди",
+        metric: "20г/тиж",
+        metricLabel: "економії ручної роботи",
         quote:
-          "Запустив перше AI-агентство за 18 місяців, використовуючи знання звідси. Ця спільнота неймовірно цінна.",
+          "Найбільше допомогли практичні схеми. Нарешті зрозумів, як поєднати форми, CRM і Telegram-сповіщення в один потік.",
       },
       {
-        name: "Emma Williams",
-        role: "Креативний AI-директор, Adobe",
-        image:
-          "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-        metric: "40k+",
-        metricLabel: "Користувачів охоплено",
+        name: "Студент AI Insider",
+        role: "Прототип voice agent",
+        metric: "7 днів",
+        metricLabel: "до робочого демо",
         quote:
-          "Керую AI-революцією в дизайні Adobe, що надихає творчість мільйонів людей у всьому світі.",
+          "Короткі уроки, підтримка і готові шаблони допомогли зібрати демо voice agent, а не просто дивитися теорію.",
       },
     ],
   };
@@ -559,39 +550,7 @@ export const courses = [
   },
 ];
 
-export const testimonials = [
-  {
-    name: "Michael Chen",
-    role: "Senior AI Engineer, Google",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-    metric: "+180%",
-    metricLabel: "Income Increase",
-    quote:
-      "AI Insider's automation strategies helped me build systems that now generate passive income while I sleep. Pure game-changer.",
-    featured: true,
-  },
-  {
-    name: "Alex Rodriguez",
-    role: "AI Startup Founder",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-    metric: "$50k+",
-    metricLabel: "Annual Revenue",
-    quote:
-      "Launched my first AI automation agency in 18 months using what I learned here. This community is incredibly valuable.",
-  },
-  {
-    name: "Emma Williams",
-    role: "Creative AI Director, Adobe",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-    metric: "40k+",
-    metricLabel: "Users Impacted",
-    quote:
-      "Leading Adobe's AI design revolution that powers creativity for millions worldwide.",
-  },
-];
+export const testimonials = getTestimonials("en");
 
 export const faqItems = [
   {

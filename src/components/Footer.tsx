@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { siteConfig } from "@landing/data/content";
 import { useI18n } from "@landing/context/i18n-context";
+import { useTelegramStats } from "@landing/hooks/useTelegramStats";
 
 function TelegramIcon() {
   return (
@@ -31,6 +32,7 @@ const AVATAR_COLORS = [
 
 export default function Footer() {
   const { t } = useI18n();
+  const telegramStats = useTelegramStats();
 
   const footerLinks = {
     [t.footer.platform]: [
@@ -52,8 +54,8 @@ export default function Footer() {
     ],
   };
 
-  const stats = [
-    { value: "6,079+", label: t.metrics.specialists },
+  const footerStats = [
+    { value: telegramStats.graduatesFormatted, label: t.metrics.specialists },
     { value: "340%", label: t.metrics.roi },
     { value: "150+", label: t.metrics.partners },
   ];
@@ -111,7 +113,9 @@ export default function Footer() {
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#fb923c] animate-pulse" />
-            <span className="text-xs font-medium tracking-wider uppercase">{t.footer.ctaBadge}</span>
+            <span className="text-xs font-medium tracking-wider uppercase">
+              {t.footer.ctaBadge.replace("{members}", telegramStats.formatted)}
+            </span>
           </motion.div>
 
           {/* Headline */}
@@ -205,11 +209,11 @@ export default function Footer() {
             className="inline-flex flex-wrap justify-center items-stretch rounded-2xl overflow-hidden"
             style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)" }}
           >
-            {stats.map((s, i) => (
+            {footerStats.map((s, i) => (
               <div
                 key={s.label}
                 className="px-8 py-5 text-center"
-                style={{ borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none" }}
+                style={{ borderRight: i < footerStats.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none" }}
               >
                 <div className="text-2xl font-display font-bold gradient-text">{s.value}</div>
                 <div className="text-[11px] uppercase tracking-wider mt-1" style={{ color: "rgba(255,255,255,0.35)" }}>
@@ -264,7 +268,7 @@ export default function Footer() {
                 ))}
               </div>
               <div>
-                <div className="text-xs text-white font-medium">+12,000</div>
+                <div className="text-xs text-white font-medium">{telegramStats.formatted}</div>
                 <div className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{t.footer.activeMembers}</div>
               </div>
             </div>

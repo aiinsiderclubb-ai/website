@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import { useTelegramStats } from "@landing/hooks/useTelegramStats";
 
 type ColorScheme = {
   gradient: string;
@@ -95,8 +96,8 @@ const features = [
   },
 ];
 
-const stats = [
-  { number: "5,742", label: "Total Members", growth: "+247 this week", color: COLORS.violet },
+const communityStats = [
+  { number: "6,000+", label: "Total Members", growth: "+247 this week", color: COLORS.violet },
   { number: "356", label: "Messages Today", growth: "+23% vs yesterday", color: COLORS.orange },
   { number: "89%", label: "Active Weekly", growth: "Industry leading", color: COLORS.cyan },
   { number: "4.9/5", label: "Satisfaction", growth: "Based on 2,000+ reviews", color: COLORS.pink },
@@ -134,10 +135,15 @@ function initials(name: string) {
 }
 
 export default function CommunityContent() {
+  const telegramStats = useTelegramStats();
+  const stats = communityStats.map((item) =>
+    item.label === "Total Members" ? { ...item, number: telegramStats.formatted } : item
+  );
+
   return (
     <PageLayout
       badge="Community"
-      title="Join 5,742+ AI Automation"
+      title={`Join ${telegramStats.formatted} AI Automation`}
       titleHighlight="Experts on Telegram"
       subtitle="Connect with like-minded entrepreneurs, get instant help from experts, and access exclusive content that's only shared in our private community."
     >
@@ -151,7 +157,7 @@ export default function CommunityContent() {
             viewport={{ once: true }}
           >
             {[
-              { n: "5,742", l: "Active Members" },
+              { n: telegramStats.formatted, l: "Active Members" },
               { n: "350+", l: "Daily Messages" },
               { n: "24/7", l: "Support Available" },
             ].map((s) => (
@@ -205,7 +211,7 @@ export default function CommunityContent() {
               Benefits
             </motion.span>
             <motion.h2 variants={fadeInUp} className="hud-title text-3xl sm:text-4xl lg:text-5xl mb-4">
-              Why 5,742+ Professionals Choose{" "}
+              Why {telegramStats.formatted} Professionals Choose{" "}
               <span className="gradient-text">Our Community</span>
             </motion.h2>
             <motion.p variants={fadeInUp} className="hud-subtitle max-w-2xl mx-auto">
@@ -398,7 +404,7 @@ export default function CommunityContent() {
 
             <div className="relative">
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-[var(--color-text-primary)] mb-4">
-                Ready to Join 5,742+ <span className="gradient-text">AI Experts?</span>
+                Ready to Join {telegramStats.formatted} <span className="gradient-text">AI Experts?</span>
               </h2>
               <p className="text-[var(--color-text-secondary)] mb-6">
                 Get instant access to the most active AI automation community on Telegram. Free forever, no spam, real value.

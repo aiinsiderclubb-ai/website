@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { siteConfig } from "@landing/data/content";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import { useI18n } from "@landing/context/i18n-context";
+import { useTelegramStats } from "@landing/hooks/useTelegramStats";
 
 export default function CommunityCTA() {
   const { t } = useI18n();
+  const stats = useTelegramStats();
 
   return (
     <section id="community" className="section-padding relative overflow-hidden">
@@ -35,7 +37,7 @@ export default function CommunityCTA() {
             custom={1}
             className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[var(--color-text-primary)] mb-6"
           >
-            {t.communityCta.title}{" "}
+            {t.communityCta.title.replace("{members}", stats.formatted)}{" "}
             <span className="gradient-text">{t.communityCta.titleHighlight}</span>
           </motion.h2>
 
@@ -44,7 +46,7 @@ export default function CommunityCTA() {
             custom={2}
             className="text-[var(--color-text-secondary)] text-lg mb-10 max-w-xl mx-auto"
           >
-            {t.communityCta.subtitle}
+            {t.communityCta.subtitle.replace("{members}", stats.formatted)}
           </motion.p>
 
           <motion.div variants={fadeInUp} custom={3}>

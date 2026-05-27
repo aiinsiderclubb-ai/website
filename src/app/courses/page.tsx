@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Courses — ChatBot, Voice Agent & Mentorship | AI Insider",
     description:
-      "Hands-on AI automation courses. ChatBot (€59), Voice Agent (€39), VIP Mentorship (€299). API keys included. Join 6,079+ trained specialists.",
+      "Hands-on AI automation courses. ChatBot (€59), Voice Agent (€39), VIP Mentorship (€299). API keys included. Join 100+ course graduates.",
   },
 };
 

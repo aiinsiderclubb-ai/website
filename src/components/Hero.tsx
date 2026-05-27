@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { heroMetrics, rotatingWords, siteConfig } from "@landing/data/content";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import { useI18n } from "@landing/context/i18n-context";
+import { useTelegramStats } from "@landing/hooks/useTelegramStats";
 function RotatingText() {
   const { lang } = useI18n();
   const words = rotatingWords[lang];
@@ -67,6 +68,7 @@ function AnimatedCounter({ target }: { target: string }) {
 
 export default function Hero() {
   const { t } = useI18n();
+  const stats = useTelegramStats();
 
   const metricLabels: Record<string, string> = {
     specialists: t.metrics.specialists,
@@ -106,7 +108,7 @@ export default function Hero() {
             custom={2}
             className="text-lg sm:text-xl text-[var(--color-text-secondary)] font-light leading-relaxed mb-8 max-w-2xl"
           >
-            {t.hero.subtitle}
+            {t.hero.subtitle.replace("{members}", stats.formatted)}
           </motion.p>
 
           <motion.div
@@ -117,7 +119,7 @@ export default function Hero() {
             {heroMetrics.map((metric) => (
               <div key={metric.labelKey} className="text-center sm:text-left">
                 <div className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mb-1">
-                  <AnimatedCounter target={metric.value} />
+                  <AnimatedCounter target={metric.labelKey === "specialists" ? stats.graduatesFormatted : metric.value} />
                 </div>
                 <div className="text-[11px] sm:text-xs text-[var(--color-text-muted)] uppercase tracking-wider">
                   {metricLabels[metric.labelKey]}

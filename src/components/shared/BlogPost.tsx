@@ -121,7 +121,7 @@ export default function BlogPost({
                 Learn AI automation in practice
               </h2>
               <p className="text-[var(--color-text-secondary)] text-sm mb-6">
-                Join 5,742+ professionals in our Telegram community for daily tips and exclusive content.
+                Join 6,000+ professionals in our Telegram community for daily tips and exclusive content.
               </p>
               <div className="flex justify-center gap-3 flex-wrap">
                 <a href="https://t.me/+qjwWJz7aLR1hMDQ0" target="_blank" rel="noopener noreferrer"

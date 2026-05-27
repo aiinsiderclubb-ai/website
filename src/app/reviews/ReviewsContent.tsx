@@ -4,117 +4,68 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
+import { useTelegramStats } from "@landing/hooks/useTelegramStats";
 
 const allReviews = [
   {
-    initials: "MC",
-    name: "Michael Chen",
-    role: "AI Automation Engineer",
-    category: "success",
-    badge: "$280K Income",
-    badgeType: "success",
-    quote: "Started with zero AI knowledge 8 months ago. Now I'm earning $280K annually as an AI automation consultant. The community support was incredible — always someone ready to help 24/7. Best investment I've ever made!",
-    metrics: ["+280% income increase", "8 months transformation", "Now at Google"],
-  },
-  {
-    initials: "SJ",
-    name: "Sarah Johnson",
-    role: "Marketing Director",
+    initials: "CP",
+    name: "Course participant",
+    role: "Built a client-booking bot",
     category: "courses",
     badge: "ChatBot Course",
     badgeType: "course",
-    quote: "The ChatBot Development course was exactly what I needed. Clear explanations, practical projects, and real-world applications. Built 3 chatbots for our company that save us 25 hours per week!",
-    metrics: ["25 hours/week saved", "3 chatbots deployed", "40% efficiency boost"],
+    quote: "I built a Telegram bot for a beauty salon with booking, Google Sheets sync and a simple demo. The course helped me package it and start outreach.",
+    metrics: ["First demo shipped", "Google Sheets sync", "Client outreach started"],
   },
   {
-    initials: "AR",
-    name: "Alex Rodriguez",
-    role: "Startup Founder",
+    initials: "CM",
+    name: "Community member",
+    role: "n8n workflows & lead automation",
     category: "community",
     badge: "Telegram Member",
     badgeType: "community",
-    quote: "The Telegram community is pure gold. Got help implementing Zapier automations that boosted our lead conversion by 150%. The daily tips alone are worth joining for!",
-    metrics: ["150% conversion boost", "Daily valuable tips", "Amazing network"],
+    quote: "The practical workflow examples were the most useful part. I finally understood how to connect forms, CRM updates and Telegram alerts into one flow.",
+    metrics: ["20h/week saved", "CRM alerts", "Reusable workflow"],
   },
   {
-    initials: "EW",
-    name: "Emma Williams",
-    role: "Freelance AI Consultant",
-    category: "mentorship",
-    badge: "VIP Mentorship",
-    badgeType: "vip",
-    quote: "The personal mentorship was life-changing. My mentor helped me land my first $5K automation project within 2 weeks. Now I have a waiting list of clients!",
-    metrics: ["First $5K project in 2 weeks", "Client waiting list", "Personal guidance"],
-  },
-  {
-    initials: "DP",
-    name: "David Park",
-    role: "Software Developer",
+    initials: "AS",
+    name: "AI Insider student",
+    role: "Voice agent prototype",
     category: "courses",
     badge: "Voice Agent",
     badgeType: "course",
-    quote: "Voice Agent bootcamp blew my mind! Built my first voice assistant in just 7 days. The Vapi.ai integration was so smooth. Already using it for customer support.",
-    metrics: ["Voice agent in 7 days", "Vapi.ai mastery", "Customer support automation"],
+    quote: "Short lessons, direct support and real templates made it much easier to ship a voice-agent demo instead of just watching theory.",
+    metrics: ["7 days to demo", "Vapi.ai setup", "Support scripts ready"],
   },
   {
-    initials: "LZ",
-    name: "Lisa Zhang",
-    role: "AI Research Scientist",
-    category: "success",
-    badge: "$180K → $320K",
-    badgeType: "success",
-    quote: "Transitioned from traditional data science to AI automation. Salary jumped from $180K to $320K in 6 months. The advanced courses gave me the edge I needed.",
-    metrics: ["$140K salary increase", "Career transition", "6 months timeline"],
-  },
-  {
-    initials: "JW",
-    name: "James Wilson",
-    role: "Business Owner",
-    category: "community",
-    badge: "Active Member",
-    badgeType: "community",
-    quote: "The community helped me automate my entire e-commerce business. From inventory management to customer service — everything runs on autopilot now!",
-    metrics: ["Full business automation", "Inventory management", "Customer service automation"],
-  },
-  {
-    initials: "MG",
-    name: "Maria Garcia",
-    role: "Digital Marketing Consultant",
+    initials: "MP",
+    name: "Mentorship participant",
+    role: "First automation offer",
     category: "mentorship",
-    badge: "Elite Program",
+    badge: "VIP Mentorship",
     badgeType: "vip",
-    quote: "Elite mentorship was worth every penny. My mentor helped me build automation systems for 15+ clients. Now running a $500K/year automation agency!",
-    metrics: ["15+ clients automated", "$500K annual revenue", "Automation agency"],
+    quote: "The mentorship helped me turn scattered ideas into one clear offer. We focused on a narrow niche, a demo and a simple sales script.",
+    metrics: ["Clear offer", "Demo script", "Sales pipeline started"],
   },
   {
-    initials: "RK",
-    name: "Robert Kim",
-    role: "Operations Manager",
+    initials: "FO",
+    name: "Founder operator",
+    role: "Internal ops automation",
+    category: "success",
+    badge: "Operations",
+    badgeType: "success",
+    quote: "We used the templates to automate lead intake, qualification and Telegram notifications. It removed a lot of repetitive admin work.",
+    metrics: ["Lead intake automated", "Team alerts", "Less manual admin"],
+  },
+  {
+    initials: "DS",
+    name: "Digital specialist",
+    role: "Client reporting workflows",
     category: "courses",
     badge: "Automation Systems",
     badgeType: "course",
-    quote: "Enterprise Automation course was exactly what our company needed. Implemented workflows that save us $2M annually in operational costs!",
-    metrics: ["$2M annual savings", "Enterprise implementation", "Operational efficiency"],
-  },
-  {
-    initials: "JB",
-    name: "Jessica Brown",
-    role: "Former Teacher → AI Consultant",
-    category: "success",
-    badge: "Career Change",
-    badgeType: "success",
-    quote: "Complete career transformation! Went from teaching ($45K) to AI consulting ($120K) in 10 months. The step-by-step guidance made it possible!",
-    metrics: ["Teacher to AI Consultant", "$45K → $120K salary", "10 months transition"],
-  },
-  {
-    initials: "TA",
-    name: "Tom Anderson",
-    role: "Freelancer",
-    category: "community",
-    badge: "Daily User",
-    badgeType: "community",
-    quote: "The daily tool recommendations in Telegram are incredible. Discovered 20+ AI tools that increased my productivity by 300%. Always first to know about new releases!",
-    metrics: ["20+ tools discovered", "300% productivity boost", "Early access to tools"],
+    quote: "The value was in the details: retries, clean prompts, fallbacks and how to explain the workflow to a client without overcomplicating it.",
+    metrics: ["Retry logic", "Cleaner prompts", "Client-ready explanation"],
   },
 ];
 
@@ -138,6 +89,7 @@ const badgeColors: Record<string, string> = {
 
 export default function ReviewsContent() {
   const [activeFilter, setActiveFilter] = useState<Filter>("all");
+  const stats = useTelegramStats();
 
   const filtered = activeFilter === "all" ? allReviews : allReviews.filter((r) => r.category === activeFilter);
 
@@ -158,7 +110,7 @@ export default function ReviewsContent() {
             viewport={{ once: true }}
           >
             {[
-              { n: "1,847", l: "Happy Students" },
+              { n: stats.graduatesFormatted, l: "Course Graduates" },
               { n: "4.9/5", l: "Average Rating" },
               { n: "98%", l: "Would Recommend" },
             ].map((s) => (
@@ -243,7 +195,7 @@ export default function ReviewsContent() {
           </AnimatePresence>
 
           <p className="text-center text-[var(--color-text-muted)] text-sm mt-8">
-            Showing {filtered.length} of 1,847 reviews
+            Showing {filtered.length} selected reviews
           </p>
         </div>
       </section>
@@ -262,7 +214,7 @@ export default function ReviewsContent() {
                 <h2 className="text-2xl font-display font-bold text-white mb-4">Overall Rating</h2>
                 <div className="text-6xl font-display font-bold gradient-text">4.9</div>
                 <div className="text-2xl text-yellow-400 mt-1">★★★★★</div>
-                <p className="text-[var(--color-text-muted)] text-sm mt-1">Based on 1,847 reviews</p>
+                <p className="text-[var(--color-text-muted)] text-sm mt-1">Based on real student feedback and community notes</p>
               </div>
               <div className="space-y-3">
                 {ratingBars.map((rb) => (

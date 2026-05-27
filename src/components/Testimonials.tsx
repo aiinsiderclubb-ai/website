@@ -1,10 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { getTestimonials } from "@landing/data/content";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import { useI18n } from "@landing/context/i18n-context";
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
 
 export default function Testimonials() {
   const { t, lang } = useI18n();
@@ -64,14 +73,8 @@ export default function Testimonials() {
               }`}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[var(--color-glass-border)] shrink-0 relative">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    sizes="56px"
-                    className="object-cover"
-                  />
+                <div className="w-14 h-14 rounded-2xl border border-[var(--color-glass-border)] shrink-0 bg-gradient-to-br from-[#a855f7]/80 to-[#f97316]/80 flex items-center justify-center text-white text-sm font-bold">
+                  {initials(item.name)}
                 </div>
                 <div>
                   <h3 className="text-[var(--color-text-primary)] font-semibold text-sm">{item.name}</h3>

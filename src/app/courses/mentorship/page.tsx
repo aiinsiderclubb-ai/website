@@ -69,7 +69,7 @@ const mentorshipJsonLd = [
     review: [
       {
         "@type": "Review",
-        author: { "@type": "Person", name: "Emma Williams" },
+        author: { "@type": "Person", name: "Mentorship participant" },
         reviewRating: { "@type": "Rating", ratingValue: "5" },
         reviewBody:
           "The personal mentorship was exactly what I needed. My mentor helped me land my first automation project and now I have a growing client base.",

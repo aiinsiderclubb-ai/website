@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://insiderai.it.com"),
   title: "AI Insider — AI Automation Education Platform",
   description:
-    "Join 12,000+ entrepreneurs building the future with AI automation. Access tools, strategies, and community.",
+    "Join 6,000+ entrepreneurs building the future with AI automation. Access tools, strategies, and community.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

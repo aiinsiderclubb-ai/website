@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Chatbot Development Course — n8n & ChatGPT | AI Insider",
     description:
-      "Build production-ready AI chatbots in 3 weeks. 6 sessions, 12+ templates, sales playbook. Join 6,000+ trained specialists from €59.",
+      "Build production-ready AI chatbots in 3 weeks. 6 sessions, 12+ templates, sales playbook. Join 100+ course graduates from €59.",
     type: "website",
   },
   alternates: {

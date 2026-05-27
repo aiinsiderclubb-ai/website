@@ -6,9 +6,11 @@ import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import PageLayout from "@landing/components/shared/PageLayout";
 import { useI18n } from "@landing/context/i18n-context";
 import { siteConfig } from "@landing/data/content";
+import { useTelegramStats } from "@landing/hooks/useTelegramStats";
 
 export default function AboutContent() {
   const { t } = useI18n();
+  const telegramStats = useTelegramStats();
   const p = t.aboutPage;
   const m = t.aboutMilestones;
   const v = t.aboutValues;
@@ -23,13 +25,13 @@ export default function AboutContent() {
 
   const values = [
     { title: v.v1Title, desc: v.v1Desc },
-    { title: v.v2Title, desc: v.v2Desc },
+    { title: v.v2Title, desc: v.v2Desc.replace("{members}", telegramStats.formatted) },
     { title: v.v3Title, desc: v.v3Desc },
     { title: v.v4Title, desc: v.v4Desc },
   ];
 
   const stats = [
-    { value: "6,079+", label: p.professionalsTrained },
+    { value: telegramStats.graduatesFormatted, label: p.professionalsTrained },
     { value: "340%", label: p.avgClientRoi },
     { value: "150+", label: p.businessPartners },
     { value: "4.9/5", label: p.courseRating },

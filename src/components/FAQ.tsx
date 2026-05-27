@@ -52,7 +52,7 @@ function FAQItem({ item, isOpen, toggle }: {
 }
 
 export default function FAQ() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
   const { t, lang } = useI18n();
   const faqItems = getFaqItems(lang);
 

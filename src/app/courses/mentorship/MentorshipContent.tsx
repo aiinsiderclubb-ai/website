@@ -162,7 +162,7 @@ export default function MentorshipContent() {
               <blockquote className="text-lg text-[var(--color-text-primary)] italic mb-4">
                 &ldquo;The personal mentorship was life-changing. My mentor helped me land my first $5K automation project within 2 weeks. Now I have a waiting list of clients!&rdquo;
               </blockquote>
-              <p className="text-[var(--color-text-muted)] text-sm">Emma Williams — Freelance AI Consultant</p>
+              <p className="text-[var(--color-text-muted)] text-sm">Mentorship participant — Freelance AI Consultant</p>
             </motion.div>
           </div>
         </section>

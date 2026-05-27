@@ -261,7 +261,7 @@ export default function BlogContent() {
               Get New Posts in Telegram
             </h2>
             <p className="text-[var(--color-text-secondary)] mb-8">
-              Join 5,742+ AI professionals getting daily tips, guides and tool discoveries in our community channel.
+              Join 6,000+ AI professionals getting daily tips, guides and tool discoveries in our community channel.
             </p>
             <a
               href="https://t.me/+qjwWJz7aLR1hMDQ0"
