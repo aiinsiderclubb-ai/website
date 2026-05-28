@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { fadeInUp, staggerContainer } from "@landing/lib/motion";
 import { siteConfig } from "@landing/data/content";
 import { useTelegramStats } from "@landing/hooks/useTelegramStats";
@@ -10,6 +11,25 @@ const weeklyDrops = [
   { count: "2", label: "tool breakdowns", detail: "what to use, when, and why" },
   { count: "1", label: "mini lesson", detail: "short practical implementation guide" },
   { count: "1", label: "community case", detail: "real build notes from members" },
+];
+
+const telegramScreenshots = [
+  {
+    src: "/images/telegram-wall/Screenshot%202026-05-28%20at%2011.59.45.png",
+    alt: "AI Insider Telegram channel screenshot",
+  },
+  {
+    src: "/images/telegram-wall/Screenshot%202026-05-28%20at%2011.59.56.png",
+    alt: "Telegram proof screenshot from AI Insider community",
+  },
+  {
+    src: "/images/telegram-wall/Screenshot%202026-05-28%20at%2012.00.11.png",
+    alt: "AI Insider Telegram content screenshot",
+  },
+  {
+    src: "/images/telegram-wall/Screenshot%202026-05-28%20at%2012.00.48.png",
+    alt: "AI Insider Telegram activity screenshot",
+  },
 ];
 
 export default function TelegramProof() {
@@ -59,10 +79,35 @@ export default function TelegramProof() {
               ))}
             </div>
 
-            <div className="rounded-2xl border border-dashed border-[var(--color-accent-border)] bg-[var(--color-glass-bg)] p-4 text-center">
-              <p className="text-sm text-[var(--color-text-secondary)]">
-                Drop real Telegram screenshots into <code className="text-[var(--color-text-primary)]">public/images/telegram-wall/</code> and we can turn this into a proof carousel.
-              </p>
+            <div className="relative overflow-hidden rounded-2xl border border-[var(--color-glass-border)] bg-[var(--color-bg-card)]/60 p-4">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-text-muted)]">Telegram wall</p>
+                  <h3 className="text-base font-semibold text-[var(--color-text-primary)]">Real screenshots from the channel</h3>
+                </div>
+                <span className="rounded-full border border-[var(--color-accent-border)] px-3 py-1 text-xs text-[var(--color-text-muted)]">
+                  {telegramScreenshots.length} proofs
+                </span>
+              </div>
+
+              <div className="flex gap-4 overflow-x-auto pb-3 [scrollbar-width:thin]">
+                {telegramScreenshots.map((screenshot, index) => (
+                  <div
+                    key={screenshot.src}
+                    className="relative h-[340px] w-[220px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-black/20 shadow-[0_18px_45px_rgba(0,0,0,0.25)]"
+                    style={{ transform: `rotate(${index % 2 === 0 ? "-1.5deg" : "1.5deg"})` }}
+                  >
+                    <Image
+                      src={screenshot.src}
+                      alt={screenshot.alt}
+                      fill
+                      sizes="220px"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent" />
+                  </div>
+                ))}
+              </div>
             </div>
 
             <a
