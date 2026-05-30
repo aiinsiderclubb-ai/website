@@ -53,6 +53,14 @@ const stats = [
   { value: "GDPR", label: "Compliant by design" },
 ];
 
+const goalOptions = [
+  "Increase qualified leads",
+  "Reduce support workload",
+  "Automate booking and calls",
+  "Connect CRM and reporting",
+  "Build a custom AI assistant",
+];
+
 const industries = ["Fintech", "E-commerce", "Healthcare", "SaaS / Cloud", "EdTech", "Real Estate", "Gaming", "Media"];
 
 const roadmap = [
@@ -87,6 +95,7 @@ export default function B2BContent() {
     "Chatbots for Sales & Support",
     "Lead Qualification",
   ]);
+  const [goalOpen, setGoalOpen] = useState(false);
   const [auditGenerated, setAuditGenerated] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -99,6 +108,13 @@ export default function B2BContent() {
     audit.website.trim().replace(/^https?:\/\//, "").replace(/\/$/, "") || "your website";
   const selectedModules = services.filter((service) => selectedServices.includes(service.title));
   const reportModules = selectedModules.length > 0 ? selectedModules : services.slice(0, 3);
+  const quizProgress = Math.round(
+    ((audit.website.trim() ? 1 : 0) +
+      (audit.goal ? 1 : 0) +
+      (selectedServices.length ? 1 : 0) +
+      (audit.details.trim() ? 1 : 0)) *
+      25,
+  );
 
   const toggleService = (title: string) => {
     setSelectedServices((current) =>
@@ -193,9 +209,30 @@ export default function B2BContent() {
               />
 
               <div className="relative z-10 space-y-6">
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-[var(--color-text-primary)]">
-                    1. Your website
+                <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#c084fc]">
+                        Quiz progress
+                      </div>
+                      <div className="mt-1 text-sm text-[var(--color-text-secondary)]">
+                        Build your AI opportunity map
+                      </div>
+                    </div>
+                    <div className="gradient-text font-display text-2xl font-bold">{quizProgress}%</div>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-white/[0.06]">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-[#a855f7] to-[#f97316] transition-all duration-500"
+                      style={{ width: `${quizProgress}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                  <label className="mb-3 flex items-center gap-3 text-sm font-semibold text-[var(--color-text-primary)]">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#a855f7]/15 text-xs text-[#c084fc]">1</span>
+                    Your website
                   </label>
                   <input
                     value={audit.website}
@@ -208,26 +245,63 @@ export default function B2BContent() {
                   </p>
                 </div>
 
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-[var(--color-text-primary)]">
-                    2. Main business goal
+                <div className="relative rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                  <label className="mb-3 flex items-center gap-3 text-sm font-semibold text-[var(--color-text-primary)]">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#a855f7]/15 text-xs text-[#c084fc]">2</span>
+                    Main business goal
                   </label>
-                  <select
-                    value={audit.goal}
-                    onChange={(e) => setAudit({ ...audit, goal: e.target.value })}
-                    className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-text-primary)] focus:border-[#a855f7]/50 focus:outline-none"
+                  <button
+                    type="button"
+                    onClick={() => setGoalOpen((open) => !open)}
+                    className="flex w-full items-center justify-between rounded-xl border border-[#a855f7]/25 bg-[#a855f7]/10 px-4 py-3 text-left text-[var(--color-text-primary)] transition-all hover:border-[#a855f7]/50"
                   >
-                    <option>Increase qualified leads</option>
-                    <option>Reduce support workload</option>
-                    <option>Automate booking and calls</option>
-                    <option>Connect CRM and reporting</option>
-                    <option>Build a custom AI assistant</option>
-                  </select>
+                    <span>{audit.goal}</span>
+                    <span className={`text-[#c084fc] transition-transform ${goalOpen ? "rotate-180" : ""}`}>⌄</span>
+                  </button>
+
+                  <AnimatePresence>
+                    {goalOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                        transition={{ duration: 0.16 }}
+                        className="absolute left-4 right-4 top-[92px] z-30 overflow-hidden rounded-2xl border border-[#a855f7]/30 bg-[#141027]/95 p-2 shadow-[0_22px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+                      >
+                        {goalOptions.map((goal) => {
+                          const active = audit.goal === goal;
+                          return (
+                            <button
+                              key={goal}
+                              type="button"
+                              onClick={() => {
+                                setAudit({ ...audit, goal });
+                                setGoalOpen(false);
+                              }}
+                              className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm transition-all ${
+                                active
+                                  ? "bg-gradient-to-r from-[#a855f7]/35 to-[#f97316]/20 text-white"
+                                  : "text-[var(--color-text-secondary)] hover:bg-white/[0.06] hover:text-[var(--color-text-primary)]"
+                              }`}
+                            >
+                              <span className={`flex h-5 w-5 items-center justify-center rounded-full border text-[10px] ${
+                                active ? "border-[#f97316]/60 bg-[#f97316]/20 text-[#fb923c]" : "border-white/15"
+                              }`}>
+                                {active ? "✓" : ""}
+                              </span>
+                              {goal}
+                            </button>
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                <div>
-                  <label className="mb-3 block text-sm font-semibold text-[var(--color-text-primary)]">
-                    3. What should AI help with?
+                <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                  <label className="mb-3 flex items-center gap-3 text-sm font-semibold text-[var(--color-text-primary)]">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#a855f7]/15 text-xs text-[#c084fc]">3</span>
+                    What should AI help with?
                   </label>
                   <div className="grid gap-3 sm:grid-cols-2">
                     {services.map((service) => {
@@ -258,9 +332,10 @@ export default function B2BContent() {
                   </div>
                 </div>
 
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-[var(--color-text-primary)]">
-                    4. Anything beyond the website?
+                <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                  <label className="mb-3 flex items-center gap-3 text-sm font-semibold text-[var(--color-text-primary)]">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#a855f7]/15 text-xs text-[#c084fc]">4</span>
+                    Anything beyond the website?
                   </label>
                   <textarea
                     rows={4}
@@ -614,6 +689,132 @@ export default function B2BContent() {
         </div>
       </section>
 
+      {/* Contact Form */}
+      <section className="py-16" id="contact">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className={`relative overflow-hidden rounded-3xl ${CARD} p-6 sm:p-8 lg:p-10`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/images/flow/ribbon-wave.png"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover opacity-22 mix-blend-screen [mask-image:radial-gradient(ellipse_at_70%_35%,black,transparent_76%)]"
+            />
+            <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#f97316]/70 to-transparent" />
+
+            <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <span className="hud-badge mb-5">Proposal engine</span>
+                <h2 className="mb-4 font-display text-3xl font-bold leading-tight text-[var(--color-text-primary)] sm:text-5xl">
+                  Send your use-case.
+                  <br />
+                  <span className="gradient-text">Get a launch plan in 24h.</span>
+                </h2>
+                <p className="mb-7 max-w-xl text-[var(--color-text-secondary)]">
+                  Tell us what you want to automate and we&apos;ll return a scoped AI proposal:
+                  recommended stack, timeline, integrations, risks and quick-win automation.
+                </p>
+
+                <div className="grid gap-3 sm:grid-cols-3 lg:max-w-xl">
+                  {[
+                    ["01", "Audit", "Website + funnel"],
+                    ["02", "Scope", "AI modules + CRM"],
+                    ["03", "Launch", "MVP timeline"],
+                  ].map(([step, title, desc]) => (
+                    <div key={step} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="mb-3 gradient-text font-display text-2xl font-bold">{step}</div>
+                      <div className="text-sm font-semibold text-[var(--color-text-primary)]">{title}</div>
+                      <div className="mt-1 text-xs text-[var(--color-text-muted)]">{desc}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4 lg:max-w-xl">
+                  <div className="text-xs uppercase tracking-[0.18em] text-emerald-300">No generic pitch</div>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                    We answer with the specific automations we would build for your business, not a template deck.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 backdrop-blur-sm sm:p-6">
+                {submitted ? (
+                  <div className="py-12 text-center">
+                    <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/25 bg-emerald-400/10 text-4xl">✓</div>
+                    <h3 className="mb-2 font-display text-2xl font-bold text-[var(--color-text-primary)]">Request sent!</h3>
+                    <p className="mx-auto max-w-sm text-[var(--color-text-secondary)]">
+                      We&apos;ll send a proposal and timeline within 24 hours.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="mb-6 flex items-center justify-between gap-4">
+                      <div>
+                        <h3 className="font-display text-xl font-bold text-[var(--color-text-primary)]">
+                          B2B project brief
+                        </h3>
+                        <p className="text-sm text-[var(--color-text-muted)]">Fast enough to send, detailed enough to scope.</p>
+                      </div>
+                      <div className="rounded-2xl border border-[#f97316]/25 bg-[#f97316]/10 px-4 py-3 text-right">
+                        <div className="gradient-text font-display text-xl font-bold">24h</div>
+                        <div className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)]">reply</div>
+                      </div>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        {[
+                          { name: "company", placeholder: "Company", type: "text" },
+                          { name: "name", placeholder: "Contact name", type: "text" },
+                          { name: "email", placeholder: "Email", type: "email" },
+                          { name: "phone", placeholder: "Phone (optional)", type: "tel", required: false },
+                        ].map((f) => (
+                          <input
+                            key={f.name}
+                            type={f.type}
+                            placeholder={f.placeholder}
+                            required={f.required !== false}
+                            value={form[f.name as keyof typeof form]}
+                            onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
+                            className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:border-[#a855f7]/50 focus:outline-none"
+                          />
+                        ))}
+                      </div>
+                      <textarea
+                        rows={5}
+                        placeholder="Website, CRM, current bottleneck, what you want AI to automate..."
+                        required
+                        value={form.message}
+                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:border-[#a855f7]/50 focus:outline-none"
+                      />
+                      <div className="flex flex-wrap gap-4">
+                        <button type="submit" className="rounded-xl bg-gradient-to-r from-[#a855f7] to-[#f97316] px-8 py-3 font-semibold text-white transition-opacity hover:opacity-90">
+                          Generate proposal request
+                        </button>
+                        <a
+                          href="https://t.me/vladyslavarcher"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-xl border border-white/20 px-8 py-3 font-semibold text-[var(--color-text-primary)] transition-colors hover:border-white/40"
+                        >
+                          Message on Telegram
+                        </a>
+                      </div>
+                    </form>
+                  </>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-16">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -644,81 +845,6 @@ export default function B2BContent() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <section className="py-16" id="contact">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className={`relative overflow-hidden ${CARD} p-8 sm:p-12`}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Image
-              src="/images/flow/ribbon-arc.png"
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-cover opacity-20 mix-blend-screen [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]"
-            />
-            <div className="relative z-10">
-              {submitted ? (
-                <div className="py-8 text-center">
-                  <div className="mb-4 text-5xl">✅</div>
-                  <h3 className="mb-2 font-display text-2xl font-bold text-[var(--color-text-primary)]">Request sent!</h3>
-                  <p className="text-[var(--color-text-secondary)]">We&apos;ll send a proposal and timeline within 24 hours.</p>
-                </div>
-              ) : (
-                <>
-                  <h3 className="mb-2 text-center font-display text-2xl font-bold text-[var(--color-text-primary)]">Ready to discuss your B2B project?</h3>
-                  <p className="mb-8 text-center text-[var(--color-text-secondary)]">Tell us about your use-case — we&apos;ll send a proposal within 24 hours.</p>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      {[
-                        { name: "company", placeholder: "Company", type: "text" },
-                        { name: "name", placeholder: "Contact name", type: "text" },
-                        { name: "email", placeholder: "Email", type: "email" },
-                        { name: "phone", placeholder: "Phone (optional)", type: "tel", required: false },
-                      ].map((f) => (
-                        <input
-                          key={f.name}
-                          type={f.type}
-                          placeholder={f.placeholder}
-                          required={f.required !== false}
-                          value={form[f.name as keyof typeof form]}
-                          onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
-                          className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:border-[#a855f7]/50 focus:outline-none"
-                        />
-                      ))}
-                    </div>
-                    <textarea
-                      rows={4}
-                      placeholder="Briefly describe your use-case (bot, voice agent, integrations, timeline)"
-                      required
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:border-[#a855f7]/50 focus:outline-none"
-                    />
-                    <div className="flex flex-wrap gap-4">
-                      <button type="submit" className="rounded-xl bg-gradient-to-r from-[#a855f7] to-[#f97316] px-8 py-3 font-semibold text-white transition-opacity hover:opacity-90">
-                        Send request
-                      </button>
-                      <a
-                        href="https://t.me/vladyslavarcher"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="rounded-xl border border-white/20 px-8 py-3 font-semibold text-[var(--color-text-primary)] transition-colors hover:border-white/40"
-                      >
-                        Message on Telegram
-                      </a>
-                    </div>
-                  </form>
-                </>
-              )}
-            </div>
-          </motion.div>
         </div>
       </section>
     </PageLayout>
