@@ -6,10 +6,31 @@ export const siteConfig = {
   url: "https://insiderai.it.com",
   studioUrl: "https://www.aiinsider.it.com/uk",
   telegram: "https://t.me/+qjwWJz7aLR1hMDQ0",
+  telegramManager: "https://t.me/vladyslavarcher",
+  // Public contact email. TODO: confirm this mailbox is monitored on the live domain.
   email: "hello@aiinsider.com",
+  founder: "Vladyslav Archer",
+  foundingDate: "2023",
   mentorshipTelegram:
     "https://t.me/vladyslavarcher?text=Привет!%20Интересует%20Personal%20ChatBot%20Mentorship%20(€299)",
+  // Fill these to strengthen the entity graph (sameAs). Empty values are skipped.
+  social: {
+    linkedin: "",
+    x: "",
+    youtube: "",
+    instagram: "",
+  },
 };
+
+// Brand entity links for Organization "sameAs" — only non-empty URLs are emitted.
+export const sameAsLinks = [
+  siteConfig.telegram,
+  siteConfig.telegramManager,
+  siteConfig.social.linkedin,
+  siteConfig.social.x,
+  siteConfig.social.youtube,
+  siteConfig.social.instagram,
+].filter(Boolean);
 
 export const siteStats = {
   communityMembers: 6000,

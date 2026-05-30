@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@landing/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "YouTube → Shorts on Autopilot — Klap + n8n + Blotato | AI Insider",
+  description:
+    "Build an automated pipeline that clips long-form YouTube videos into Shorts and auto-publishes to TikTok, Reels and YT Shorts using n8n, Klap and Blotato.",
+  keywords: ["YouTube Shorts automation", "Klap", "n8n", "Blotato", "content repurposing"],
+  alternates: { canonical: "https://insiderai.it.com/blog/youtube-shorts-autopilot" },
+  openGraph: { title: "YouTube → Shorts on Autopilot | AI Insider", type: "article" },
+};
 
 export default function YoutubeShortsAutopilotPost() {
   return (
@@ -7,6 +17,7 @@ export default function YoutubeShortsAutopilotPost() {
       badge="Automation"
       badgeColor="bg-[#a855f7]/20 text-[#fb923c]"
       title="YouTube → Shorts on Autopilot"
+      slug="youtube-shorts-autopilot"
       subtitle="A practical pipeline for clipping long-form content and distributing it automatically across short-form channels."
       date="September 2024"
       readTime="6 min"

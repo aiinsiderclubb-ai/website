@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@landing/components/JsonLd";
+import { breadcrumbJsonLd, absoluteUrl } from "@landing/lib/seo";
 import ReviewsContent from "./ReviewsContent";
 
 export const metadata: Metadata = {
@@ -15,10 +16,12 @@ export const metadata: Metadata = {
     "AI training reviews",
     "AI mentorship reviews",
   ],
+  alternates: { canonical: absoluteUrl("/reviews") },
   openGraph: {
     title: "Reviews & Success Stories — 4.9/5 | AI Insider",
     description:
       "Selected real student feedback. 4.9/5 rating across AI automation courses, mentorship and community builds.",
+    url: absoluteUrl("/reviews"),
   },
 };
 
@@ -62,7 +65,7 @@ const reviewsJsonLd = {
 export default function ReviewsPage() {
   return (
     <>
-      <JsonLd data={reviewsJsonLd} />
+      <JsonLd data={[reviewsJsonLd, breadcrumbJsonLd([{ name: "Reviews", path: "/reviews" }])]} />
       <ReviewsContent />
     </>
   );

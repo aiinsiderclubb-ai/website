@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import Header from "@landing/components/Header";
 import Footer from "@landing/components/Footer";
 import Link from "next/link";
+import { JsonLd } from "@landing/components/JsonLd";
+import { siteConfig } from "@landing/data/content";
+import { SITE_URL } from "@landing/lib/seo";
 import { useI18n } from "@landing/context/i18n-context";
-
-interface Tag {
-  label: string;
-}
 
 interface BlogPostProps {
   emoji: string;
@@ -21,6 +20,27 @@ interface BlogPostProps {
   tags: string[];
   children: React.ReactNode;
   relatedPosts?: { title: string; href: string; sub: string }[];
+  /** Route slug, e.g. "n8n-workflows". Enables canonical url in schema + breadcrumb. */
+  slug?: string;
+  /** ISO date "2024-08-01". Falls back to parsing the visible `date` string. */
+  datePublished?: string;
+  /** ISO date for last edit. Defaults to datePublished. */
+  dateModified?: string;
+  /** Author name. Defaults to the site founder. */
+  author?: string;
+}
+
+const MONTHS: Record<string, string> = {
+  january: "01", february: "02", march: "03", april: "04",
+  may: "05", june: "06", july: "07", august: "08",
+  september: "09", october: "10", november: "11", december: "12",
+};
+
+/** Best-effort "August 2024" -> "2024-08-01". Returns undefined if unparseable. */
+function parseHumanDate(value: string): string | undefined {
+  const m = value.trim().toLowerCase().match(/([a-z]+)\s+(\d{4})/);
+  if (m && MONTHS[m[1]]) return `${m[2]}-${MONTHS[m[1]]}-01`;
+  return undefined;
 }
 
 export default function BlogPost({
@@ -34,11 +54,42 @@ export default function BlogPost({
   tags,
   children,
   relatedPosts = [],
+  slug,
+  datePublished,
+  dateModified,
+  author = siteConfig.founder,
 }: BlogPostProps) {
   const { t } = useI18n();
 
+  const published = datePublished ?? parseHumanDate(date);
+  const url = slug ? `${SITE_URL}/blog/${slug}` : undefined;
+
+  const blogPostingJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description: subtitle,
+    keywords: tags.join(", "),
+    author: { "@type": "Person", name: author },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en",
+    ...(published ? { datePublished: published, dateModified: dateModified ?? published } : {}),
+    ...(url ? { url, mainEntityOfPage: { "@type": "WebPage", "@id": url } } : {}),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      ...(url ? [{ "@type": "ListItem", position: 3, name: title, item: url }] : []),
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={[blogPostingJsonLd, breadcrumbJsonLd]} />
       <Header />
       <main>
         {/* Hero */}

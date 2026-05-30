@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@landing/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "Website in 5 Minutes with GPT-5 — Prompt-to-Site Workflow | AI Insider",
+  description:
+    "How prompt-driven website generation with GPT-5 speeds up launching landing pages, MVPs and offers — what it does well and where human taste still matters.",
+  keywords: ["GPT-5 website", "AI website builder", "prompt to site", "landing page AI", "no-code MVP"],
+  alternates: { canonical: "https://insiderai.it.com/blog/website-in-5-minutes-gpt5" },
+  openGraph: { title: "Website in 5 Minutes with GPT-5 | AI Insider", type: "article" },
+};
 
 export default function WebsiteIn5MinutesGpt5Post() {
   return (
@@ -7,6 +17,7 @@ export default function WebsiteIn5MinutesGpt5Post() {
       badge="Guide"
       badgeColor="bg-[#a855f7]/20 text-[#fb923c]"
       title="Website in 5 Minutes with GPT-5"
+      slug="website-in-5-minutes-gpt5"
       subtitle="How prompt-driven site generation changes the speed of launching small products, landing pages, and MVPs."
       date="September 2024"
       readTime="5 min"

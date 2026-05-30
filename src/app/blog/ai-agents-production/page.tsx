@@ -17,6 +17,7 @@ export default function AiAgentsProductionPost() {
       badge="Playbook"
       badgeColor="bg-emerald-500/20 text-emerald-400"
       title="Shipping AI Agents to Production"
+      slug="ai-agents-production"
       subtitle="Task decomposition, deterministic tools, guardrails and rollback plans — everything you need to go from prototype to production."
       date="September 2024"
       readTime="10 min"

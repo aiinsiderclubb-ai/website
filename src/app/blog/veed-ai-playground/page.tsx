@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@landing/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "VEED AI Playground — Text-to-Video, Subtitles & Voice Cloning | AI Insider",
+  description:
+    "VEED's browser-based AI video workflow: text-to-video, auto subtitles, noise removal and voice cloning for fast, high-frequency content production.",
+  keywords: ["VEED", "AI video", "text to video", "AI subtitles", "voice cloning"],
+  alternates: { canonical: "https://insiderai.it.com/blog/veed-ai-playground" },
+  openGraph: { title: "VEED AI Playground | AI Insider", type: "article" },
+};
 
 export default function VeedAiPlaygroundPost() {
   return (
@@ -7,6 +17,7 @@ export default function VeedAiPlaygroundPost() {
       badge="Guide"
       badgeColor="bg-[#7c3aed]/20 text-[#a78bfa]"
       title="VEED AI Playground"
+      slug="veed-ai-playground"
       subtitle="Text-to-video, subtitles, noise removal, voice cloning and fast content experiments directly in the browser."
       date="September 2024"
       readTime="5 min"

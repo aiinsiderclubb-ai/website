@@ -106,6 +106,45 @@ export default function B2BContent() {
         ))}
       </div>
 
+      {/* Definitions / direct answers (AEO) */}
+      <section className="py-16 border-t border-white/5">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)] mb-3">
+              What is AI automation for business?
+            </h2>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              AI automation for business is the use of AI models and workflow tools to handle repetitive,
+              language-heavy tasks — answering customers, qualifying leads, booking calls and syncing data
+              across your CRM. It runs 24/7, reduces manual workload and keeps a human in the loop for
+              high-risk decisions.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)] mb-3">
+              What is an AI voice agent?
+            </h2>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              An AI voice agent is a real-time conversational system that answers and makes phone calls,
+              understands speech, and takes safe actions such as booking appointments or updating a CRM.
+              It typically combines speech-to-text (e.g. Whisper), an LLM for reasoning, and a voice
+              platform like Vapi.ai.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)] mb-3">
+              How much does an AI chatbot or voice agent cost?
+            </h2>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              A production AI chatbot project usually starts in the low four figures, while voice agents
+              with CRM integration cost more due to telephony and real-time requirements. Most of the cost
+              is implementation; ongoing usage scales with call and message volume. We scope a fixed
+              proposal after a short discovery call.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Services */}
       <section className="py-20 border-t border-white/5 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

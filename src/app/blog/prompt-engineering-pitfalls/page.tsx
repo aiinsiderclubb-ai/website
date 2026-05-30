@@ -17,6 +17,7 @@ export default function PromptEngineeringPitfallsPost() {
       badge="Guide"
       badgeColor="bg-[#a855f7]/20 text-[#fb923c]"
       title="Prompt Engineering Pitfalls"
+      slug="prompt-engineering-pitfalls"
       subtitle="The hidden failure modes that make prompts brittle in production, and the patterns we use to keep them stable."
       date="August 2024"
       readTime="7 min"

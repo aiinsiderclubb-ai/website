@@ -17,6 +17,7 @@ export default function RagActuallyWorksPost() {
       badge="Playbook"
       badgeColor="bg-[#a855f7]/20 text-[#fb923c]"
       title="RAG that Actually Works"
+      slug="rag-that-actually-works"
       subtitle="The practical retrieval patterns that reduce hallucinations without destroying latency."
       date="September 2024"
       readTime="8 min"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@landing/components/JsonLd";
+import { breadcrumbJsonLd, absoluteUrl } from "@landing/lib/seo";
 import CoursesContent from "./CoursesContent";
 
 export const metadata: Metadata = {
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
     "AI automation training",
     "ChatGPT course",
   ],
+  alternates: { canonical: absoluteUrl("/courses") },
   openGraph: {
     title: "AI Courses — ChatBot, Voice Agent & Mentorship | AI Insider",
     description:
       "Hands-on AI automation courses. ChatBot (€59), Voice Agent (€39), VIP Mentorship (€299). API keys included. Join 100+ course graduates.",
+    url: absoluteUrl("/courses"),
   },
 };
 
@@ -46,6 +49,7 @@ const coursesJsonLd = [
       "@type": "CourseInstance",
       courseMode: "online",
       duration: "P3W",
+      instructor: { "@type": "Person", name: "Vladyslav Archer" },
     },
   },
   {
@@ -70,6 +74,7 @@ const coursesJsonLd = [
       "@type": "CourseInstance",
       courseMode: "online",
       duration: "P2W",
+      instructor: { "@type": "Person", name: "Vladyslav Archer" },
     },
   },
   {
@@ -93,14 +98,38 @@ const coursesJsonLd = [
       "@type": "CourseInstance",
       courseMode: "online",
       duration: "P2W",
+      instructor: { "@type": "Person", name: "Vladyslav Archer" },
     },
   },
 ];
 
+const instructorJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Vladyslav Archer",
+  jobTitle: "Founder & Lead Instructor",
+  worksFor: { "@id": "https://insiderai.it.com/#organization" },
+  knowsAbout: [
+    "AI automation",
+    "AI chatbots",
+    "AI voice agents",
+    "n8n workflows",
+    "Vapi.ai",
+    "ChatGPT",
+  ],
+  url: "https://insiderai.it.com/about",
+};
+
 export default function CoursesPage() {
   return (
     <>
-      <JsonLd data={coursesJsonLd as unknown as Record<string, unknown>[]} />
+      <JsonLd
+        data={[
+          ...(coursesJsonLd as unknown as Record<string, unknown>[]),
+          instructorJsonLd,
+          breadcrumbJsonLd([{ name: "Courses", path: "/courses" }]),
+        ]}
+      />
       <CoursesContent />
     </>
   );

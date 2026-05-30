@@ -127,6 +127,56 @@ export default function CoursesContent() {
       title="AI Courses"
       subtitle="Choose your path — Chat-Bot or Voice Agent. See next start dates and details."
     >
+      {/* Definitions / direct answers (AEO) */}
+      <section className="pt-10 pb-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)] mb-3">
+              What is an AI automation course?
+            </h2>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              An AI automation course teaches you to build working AI systems — chatbots, voice agents and
+              n8n workflows — instead of just theory. At AI Insider you practice on real tasks with
+              ready-made templates, API keys included, and ship a portfolio-ready project by the end.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)] mb-3">
+              Do I need to know how to code?
+            </h2>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              No. The Chat-Bot and Voice Agent tracks are built around no-code and low-code tools like n8n,
+              ChatGPT and Vapi.ai. Basic comfort with web apps is enough to start; you&apos;ll learn the
+              technical concepts step by step as you build.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Instructor */}
+      <section className="pb-10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="hud-frame hud-panel rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start gap-5">
+            <div className="w-16 h-16 rounded-2xl shrink-0 flex items-center justify-center text-2xl font-display font-bold text-white bg-gradient-to-br from-[#a855f7] to-[#f97316]">
+              VA
+            </div>
+            <div>
+              <h2 className="text-lg font-display font-bold text-[var(--color-text-primary)]">
+                Vladyslav Archer · Lead Instructor
+              </h2>
+              <p className="text-sm text-[var(--color-text-muted)] mb-2">
+                Founder, AI Insider · AI automation practitioner
+              </p>
+              <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                Vladyslav builds production AI chatbots, voice agents and n8n automations for businesses
+                and leads the 6,000+ member AI Insider community. Every lesson is based on real client
+                work — the same patterns, templates and tools used in shipped projects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Courses Grid */}
       <section className="py-20 hud-grid">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

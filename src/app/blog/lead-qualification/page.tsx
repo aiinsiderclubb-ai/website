@@ -17,6 +17,7 @@ export default function LeadQualificationPost() {
       badge="Case Study"
       badgeColor="bg-emerald-500/20 text-emerald-400"
       title="Lead Qualification with LLMs"
+      slug="lead-qualification"
       subtitle="How we cut response time by 73% and doubled demo conversions by routing, scoring, and syncing to HubSpot automatically."
       date="September 2024"
       readTime="8 min"

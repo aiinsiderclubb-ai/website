@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@landing/components/JsonLd";
+import { breadcrumbJsonLd } from "@landing/lib/seo";
 import AboutContent from "./AboutContent";
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ const aboutJsonLd = {
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={aboutJsonLd} />
+      <JsonLd data={[aboutJsonLd, breadcrumbJsonLd([{ name: "About", path: "/about" }])]} />
       <AboutContent />
     </>
   );

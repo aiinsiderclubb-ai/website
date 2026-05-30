@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@landing/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "Evaluating LLM Systems — Quality, Safety & Cost in Production | AI Insider",
+  description:
+    "How to evaluate LLM systems in production: task rubrics, diverse eval sets, automatic + human scoring, and tracking quality, latency and cost drift weekly.",
+  keywords: ["LLM evaluation", "eval set", "LLM quality", "prompt evaluation", "RAGAS", "PromptFoo"],
+  alternates: { canonical: "https://insiderai.it.com/blog/evaluating-llm" },
+  openGraph: { title: "Evaluating LLM Systems | AI Insider", type: "article" },
+};
 
 export default function EvaluatingLLMPost() {
   return (
@@ -7,6 +17,7 @@ export default function EvaluatingLLMPost() {
       badge="Playbook"
       badgeColor="bg-[#7c3aed]/20 text-[#a78bfa]"
       title="Evaluating LLM Systems"
+      slug="evaluating-llm"
       subtitle="From prompts to business metrics — how we run evaluations to ensure quality, safety and cost control in production."
       date="August 2024"
       readTime="8 min"

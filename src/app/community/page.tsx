@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@landing/components/JsonLd";
+import { breadcrumbJsonLd, absoluteUrl } from "@landing/lib/seo";
 import CommunityContent from "./CommunityContent";
 
 export const metadata: Metadata = {
@@ -15,10 +16,12 @@ export const metadata: Metadata = {
     "ChatGPT community",
     "n8n community",
   ],
+  alternates: { canonical: absoluteUrl("/community") },
   openGraph: {
     title: "AI Automation Community — 6,000+ Experts | AI Insider",
     description:
       "Join 6,000+ AI automation professionals on Telegram. Daily tips, expert support, job board and exclusive content. Free forever.",
+    url: absoluteUrl("/community"),
   },
 };
 
@@ -46,7 +49,9 @@ const communityJsonLd = {
 export default function CommunityPage() {
   return (
     <>
-      <JsonLd data={communityJsonLd} />
+      <JsonLd
+        data={[communityJsonLd, breadcrumbJsonLd([{ name: "Community", path: "/community" }])]}
+      />
       <CommunityContent />
     </>
   );

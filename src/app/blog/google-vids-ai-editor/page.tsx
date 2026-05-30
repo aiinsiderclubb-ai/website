@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@landing/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "Google Vids — Free AI Video Editor Powered by Gemini | AI Insider",
+  description:
+    "How Google Vids and Gemini turn business video into a repeatable workflow: AI scriptwriting, storyboards, music and editing for explainers, demos and training.",
+  keywords: ["Google Vids", "Gemini video", "AI video editor", "business video"],
+  alternates: { canonical: "https://insiderai.it.com/blog/google-vids-ai-editor" },
+  openGraph: { title: "Google Vids: AI Video Editor | AI Insider", type: "article" },
+};
 
 export default function GoogleVidsAiEditorPost() {
   return (
@@ -7,6 +17,7 @@ export default function GoogleVidsAiEditorPost() {
       badge="News"
       badgeColor="bg-[#7c3aed]/20 text-[#a78bfa]"
       title="Google Vids: AI Video Editor"
+      slug="google-vids-ai-editor"
       subtitle="How Gemini-assisted scriptwriting, storyboard generation and editing lower the barrier to business video production."
       date="September 2024"
       readTime="5 min"

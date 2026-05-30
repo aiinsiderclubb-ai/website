@@ -51,6 +51,8 @@ export default function Footer() {
     ],
     [t.footer.connect]: [
       { label: t.footer.telegramCommunity, href: siteConfig.telegram, external: true },
+      { label: "Contact", href: "/contact", external: false },
+      { label: siteConfig.email, href: `mailto:${siteConfig.email}`, external: true },
     ],
   };
 

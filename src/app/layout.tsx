@@ -23,7 +23,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://insiderai.it.com"),
   title: "AI Insider — AI Automation Education Platform",
   description:
-    "Join 6,000+ entrepreneurs building the future with AI automation. Access tools, strategies, and community.",
+    "Join 6,000+ entrepreneurs building the future with AI automation. Courses, community and B2B AI solutions — chatbots, voice agents and workflow automation.",
+  applicationName: "AI Insider",
+  openGraph: {
+    type: "website",
+    siteName: "AI Insider",
+    locale: "en_US",
+    url: "https://insiderai.it.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Insider — AI Automation Education Platform",
+    description:
+      "Courses, community and B2B AI solutions — chatbots, voice agents and workflow automation.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

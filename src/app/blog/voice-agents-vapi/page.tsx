@@ -17,6 +17,7 @@ export default function VoiceAgentsVapiPost() {
       badge="Guide"
       badgeColor="bg-[#7c3aed]/20 text-[#a78bfa]"
       title="Voice Agents with Vapi"
+      slug="voice-agents-vapi"
       subtitle="Latency, barge-in, grounding — design patterns for natural conversations and safe real-time actions."
       date="August 2024"
       readTime="7 min"

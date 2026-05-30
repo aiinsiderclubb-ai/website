@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@landing/components/JsonLd";
+import { breadcrumbJsonLd, absoluteUrl } from "@landing/lib/seo";
 import BlogContent from "./BlogContent";
 
 export const metadata: Metadata = {
@@ -18,10 +19,12 @@ export const metadata: Metadata = {
     "AI automation guide",
     "ChatGPT automation",
   ],
+  alternates: { canonical: absoluteUrl("/blog") },
   openGraph: {
     title: "AI Automation Blog — Guides & Playbooks | AI Insider",
     description:
       "Practical guides on n8n workflows, voice agents, RAG, prompt engineering. Real automation case studies and playbooks.",
+    url: absoluteUrl("/blog"),
   },
 };
 
@@ -71,7 +74,7 @@ const blogJsonLd = {
 export default function BlogPage() {
   return (
     <>
-      <JsonLd data={blogJsonLd} />
+      <JsonLd data={[blogJsonLd, breadcrumbJsonLd([{ name: "Blog", path: "/blog" }])]} />
       <BlogContent />
     </>
   );

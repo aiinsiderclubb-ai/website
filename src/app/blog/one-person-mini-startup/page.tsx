@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import BlogPost from "@landing/components/shared/BlogPost";
+
+export const metadata: Metadata = {
+  title: "One Person with AI = Mini-Startup — Solo Builder Stack | AI Insider",
+  description:
+    "How a solo founder uses AI for content, automation, support and research to operate like a small startup team — what to automate and what needs human judgment.",
+  keywords: ["solo founder AI", "one person startup", "AI automation", "indie hacker AI"],
+  alternates: { canonical: "https://insiderai.it.com/blog/one-person-mini-startup" },
+  openGraph: { title: "One Person with AI = Mini-Startup | AI Insider", type: "article" },
+};
 
 export default function OnePersonMiniStartupPost() {
   return (
@@ -7,6 +17,7 @@ export default function OnePersonMiniStartupPost() {
       badge="Mindset"
       badgeColor="bg-[#7c3aed]/20 text-[#a78bfa]"
       title="One Person with AI = Mini-Startup"
+      slug="one-person-mini-startup"
       subtitle="Why AI shifts solo builders from freelancer mode into product mode faster than ever before."
       date="September 2024"
       readTime="6 min"

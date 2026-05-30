@@ -17,6 +17,7 @@ export default function N8nWorkflowsPost() {
       badge="Guide"
       badgeColor="bg-[#a855f7]/20 text-[#fb923c]"
       title="Building Robust n8n Workflows"
+      slug="n8n-workflows"
       subtitle="Retries, queues and error handling patterns for reliable AI orchestrations under load."
       date="August 2024"
       readTime="6 min"

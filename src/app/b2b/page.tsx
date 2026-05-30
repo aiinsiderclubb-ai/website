@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@landing/components/JsonLd";
+import { breadcrumbJsonLd, absoluteUrl } from "@landing/lib/seo";
 import B2BContent from "./B2BContent";
 
 export const metadata: Metadata = {
@@ -17,10 +18,12 @@ export const metadata: Metadata = {
     "enterprise AI",
     "n8n automation B2B",
   ],
+  alternates: { canonical: absoluteUrl("/b2b") },
   openGraph: {
     title: "B2B AI Solutions — Chatbots, Voice Agents & RAG | AI Insider",
     description:
       "Custom AI for business: chatbots, voice agents, RAG, lead qualification. GDPR compliant. Fast delivery. Get your proposal in 24h.",
+    url: absoluteUrl("/b2b"),
   },
 };
 
@@ -89,6 +92,7 @@ export default function B2BPage() {
     <>
       <JsonLd data={b2bFaqJsonLd} />
       <JsonLd data={b2bServiceJsonLd} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "B2B", path: "/b2b" }])} />
       <B2BContent />
     </>
   );
