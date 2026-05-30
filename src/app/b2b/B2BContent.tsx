@@ -397,75 +397,219 @@ export default function B2BContent() {
 
       {/* Roadmap */}
       <section className="py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div className="mb-10 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="hud-badge mb-4">Roadmap</span>
-            <h2 className="mb-4 font-display text-3xl font-bold text-[var(--color-text-primary)] sm:text-4xl">From discovery to scale</h2>
-            <p className="text-[var(--color-text-secondary)]">A transparent delivery pipeline aligned to business outcomes.</p>
+            <h2 className="mb-4 font-display text-3xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
+              From discovery to scale
+            </h2>
+            <p className="mx-auto max-w-2xl text-[var(--color-text-secondary)]">
+              Not a vague process. A visible launch path with clear checkpoints, deliverables and go/no-go decisions.
+            </p>
           </motion.div>
 
-          <div className="mb-6 flex gap-2 overflow-x-auto pb-2">
-            {roadmap.map((r) => (
-              <button
-                key={r.step}
-                onClick={() => setActiveStep(r.step)}
-                className={`flex flex-shrink-0 items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-                  activeStep === r.step
-                    ? "bg-gradient-to-r from-[#a855f7] to-[#f97316] text-white"
-                    : `${CARD} text-[var(--color-text-secondary)] hover:border-[#a855f7]/40`
-                }`}
-              >
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-xs font-bold">{r.step}</span>
-                <span>{r.title.split(" ")[0]}</span>
-              </button>
-            ))}
+          <div className={`relative overflow-hidden rounded-3xl ${CARD} p-6 sm:p-8 lg:p-10`}>
+            <Image
+              src="/images/flow/ribbon-stream.png"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover opacity-18 mix-blend-screen [mask-image:radial-gradient(ellipse_at_center,black,transparent_74%)]"
+            />
+            <div className="pointer-events-none absolute inset-x-10 top-[118px] hidden h-px bg-gradient-to-r from-[#a855f7]/10 via-[#f97316]/70 to-cyan-300/20 lg:block" />
+            <div className="pointer-events-none absolute left-10 top-[118px] hidden h-px bg-gradient-to-r from-[#a855f7] to-[#f97316] lg:block" style={{ width: `${Math.max(10, activeStep * 18)}%` }} />
+
+            <div className="relative z-10 grid gap-5 lg:grid-cols-5">
+              {roadmap.map((r, i) => {
+                const active = activeStep === r.step;
+                const done = activeStep > r.step;
+                return (
+                  <button
+                    key={r.step}
+                    type="button"
+                    onClick={() => setActiveStep(r.step)}
+                    className={`group relative text-left transition-all duration-300 ${
+                      active ? "lg:-translate-y-2" : "hover:-translate-y-1"
+                    }`}
+                  >
+                    <div
+                      className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border font-display text-xl font-bold transition-all ${
+                        active
+                          ? "border-[#f97316]/60 bg-gradient-to-br from-[#a855f7] to-[#f97316] text-white shadow-[0_0_34px_rgba(249,115,22,0.35)]"
+                          : done
+                            ? "border-emerald-400/35 bg-emerald-400/10 text-emerald-300"
+                            : "border-white/10 bg-white/[0.06] text-[var(--color-text-muted)] group-hover:border-[#a855f7]/35 group-hover:text-[var(--color-text-primary)]"
+                      }`}
+                    >
+                      {done ? "✓" : `0${r.step}`}
+                    </div>
+
+                    <div
+                      className={`rounded-2xl border p-5 backdrop-blur-sm transition-all ${
+                        active
+                          ? "border-[#a855f7]/45 bg-[#a855f7]/15 shadow-[0_18px_50px_-16px_rgba(168,85,247,0.45)]"
+                          : "border-white/10 bg-white/[0.035] group-hover:border-white/20"
+                      }`}
+                    >
+                      <div className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#c084fc]">
+                        Phase {r.step}
+                      </div>
+                      <h3 className="mb-2 font-display text-base font-bold text-[var(--color-text-primary)]">
+                        {r.title}
+                      </h3>
+                      <p className="text-xs leading-relaxed text-[var(--color-text-secondary)]">
+                        {r.desc}
+                      </p>
+                    </div>
+
+                    {i < roadmap.length - 1 && (
+                      <div className="mt-5 flex items-center gap-2 lg:hidden">
+                        <div className="h-8 w-px bg-gradient-to-b from-[#a855f7]/60 to-[#f97316]/30" />
+                        <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
+                          next checkpoint
+                        </span>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <motion.div
+              key={activeStep}
+              className="relative z-10 mt-8 grid gap-4 rounded-2xl border border-white/10 bg-black/20 p-5 backdrop-blur-sm sm:grid-cols-[1fr_auto]"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              <div>
+                <div className="mb-2 text-xs uppercase tracking-[0.18em] text-[#fb923c]">
+                  Current checkpoint
+                </div>
+                <h3 className="mb-2 font-display text-xl font-bold text-[var(--color-text-primary)]">
+                  {roadmap[activeStep - 1].title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                  {roadmap[activeStep - 1].desc}
+                </p>
+              </div>
+              <div className="grid grid-cols-3 gap-3 sm:w-[280px]">
+                {[
+                  ["Input", "data"],
+                  ["Output", "plan"],
+                  ["Risk", "low"],
+                ].map(([label, value]) => (
+                  <div key={label} className="rounded-xl border border-white/10 bg-white/[0.04] p-3 text-center">
+                    <div className="text-[10px] uppercase tracking-[0.16em] text-[var(--color-text-muted)]">
+                      {label}
+                    </div>
+                    <div className="mt-1 text-sm font-semibold text-[var(--color-text-primary)]">
+                      {value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
-
-          <motion.div
-            key={activeStep}
-            className={`${CARD} p-8`}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <h3 className="mb-3 font-display text-xl font-bold text-[var(--color-text-primary)]">{roadmap[activeStep - 1].title}</h3>
-            <p className="text-[var(--color-text-secondary)]">{roadmap[activeStep - 1].desc}</p>
-          </motion.div>
         </div>
       </section>
 
       {/* Security */}
       <section className="py-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div className="mb-10 text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="hud-badge mb-4">Security</span>
-            <h2 className="mb-4 font-display text-3xl font-bold text-[var(--color-text-primary)]">Enterprise-grade security</h2>
-            <p className="text-[var(--color-text-secondary)]">Your data safety is our priority.</p>
+            <h2 className="mb-4 font-display text-3xl font-bold text-[var(--color-text-primary)] sm:text-5xl">
+              Security command center
+            </h2>
+            <p className="mx-auto max-w-2xl text-[var(--color-text-secondary)]">
+              Every automation ships with access control, logging, fallbacks and human approval for high-risk actions.
+            </p>
           </motion.div>
 
-          <div className={`${CARD} p-8`}>
-            <div className="mb-8 flex flex-wrap justify-center gap-4">
-              {[["🇪🇺", "GDPR Compliant"], ["🛡️", "SOC 2 Ready"], ["🔐", "ISO 27001"]].map(([icon, label]) => (
-                <div key={label} className="flex items-center gap-2 rounded-xl border border-[#a855f7]/25 bg-[#a855f7]/10 px-5 py-3">
-                  <span className="text-xl">{icon}</span>
-                  <span className="text-sm font-semibold text-[var(--color-text-primary)]">{label}</span>
+          <div className={`relative overflow-hidden rounded-3xl ${CARD} p-6 sm:p-8 lg:p-10`}>
+            <Image
+              src="/images/flow/ribbon-arc.png"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover opacity-18 mix-blend-screen [mask-image:radial-gradient(ellipse_at_25%_45%,black,transparent_72%)]"
+            />
+            <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div className="relative mx-auto flex aspect-square w-full max-w-[360px] items-center justify-center rounded-[2rem] border border-white/10 bg-black/20">
+                <div className="absolute inset-6 rounded-[1.5rem] border border-[#a855f7]/20" />
+                <div className="absolute inset-12 rounded-full border border-cyan-300/15" />
+                <div className="absolute h-[78%] w-px bg-gradient-to-b from-transparent via-cyan-300/45 to-transparent" />
+                <div className="absolute w-[78%] h-px bg-gradient-to-r from-transparent via-[#f97316]/45 to-transparent" />
+                <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.16),transparent_62%)]" />
+
+                <div className="relative flex h-40 w-40 items-center justify-center rounded-[2rem] border border-[#a855f7]/35 bg-[#a855f7]/10 shadow-[0_0_60px_rgba(168,85,247,0.25)]">
+                  <div className="absolute inset-4 rounded-3xl border border-white/10" />
+                  <div className="text-center">
+                    <div className="mb-2 text-5xl">🛡️</div>
+                    <div className="gradient-text font-display text-3xl font-bold">99.9%</div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+                      monitored
+                    </div>
+                  </div>
                 </div>
-              ))}
+
+                {[
+                  ["RBAC", "top-7 left-6"],
+                  ["Audit", "right-5 top-20"],
+                  ["GDPR", "bottom-8 left-10"],
+                  ["Fallback", "bottom-16 right-4"],
+                ].map(([label, pos]) => (
+                  <div
+                    key={label}
+                    className={`absolute ${pos} rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-secondary)]`}
+                  >
+                    {label}
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <div className="mb-6 grid gap-3 sm:grid-cols-3">
+                  {[["🇪🇺", "GDPR", "Data rules"], ["🛡️", "SOC 2", "Controls"], ["🔐", "ISO 27001", "Process"]].map(([icon, label, sub]) => (
+                    <div key={label} className="rounded-2xl border border-[#a855f7]/25 bg-[#a855f7]/10 p-4">
+                      <div className="mb-3 text-2xl">{icon}</div>
+                      <div className="font-display text-lg font-bold text-[var(--color-text-primary)]">{label}</div>
+                      <div className="text-xs text-[var(--color-text-muted)]">{sub}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    ["End-to-end encryption", "All sensitive data in transit and at rest."],
+                    ["Audit logs", "Every AI action is traceable by user, time and tool."],
+                    ["Role-based access", "Only approved people can trigger sensitive workflows."],
+                    ["Rollback plans", "Every launch includes fallbacks and incident response."],
+                    ["Human approval gates", "Critical actions can require manual confirmation."],
+                    ["Regular testing", "Security and reliability checks before production."],
+                  ].map(([title, desc]) => (
+                    <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                      <div className="mb-2 flex items-center gap-2">
+                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400/15 text-xs text-emerald-300">✓</span>
+                        <h3 className="text-sm font-semibold text-[var(--color-text-primary)]">{title}</h3>
+                      </div>
+                      <p className="text-xs leading-relaxed text-[var(--color-text-muted)]">{desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-5">
+                  <div className="mb-2 text-xs uppercase tracking-[0.18em] text-cyan-200">
+                    Production rule
+                  </div>
+                  <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                    AI can draft, route and recommend — but actions that change money, contracts,
+                    medical/legal status or customer records can stay behind approval gates.
+                  </p>
+                </div>
+              </div>
             </div>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {[
-                ["End-to-end encryption", "for all data transmission"],
-                ["Audit logs", "for every AI interaction"],
-                ["Role-based access", "control (RBAC)"],
-                ["Rollback plans", "and incident response"],
-                ["Regular penetration", "testing"],
-              ].map(([bold, rest]) => (
-                <li key={bold} className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
-                  <span className="text-emerald-400">✓</span>
-                  <strong className="text-[var(--color-text-primary)]">{bold}</strong> {rest}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
