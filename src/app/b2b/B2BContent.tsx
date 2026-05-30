@@ -688,37 +688,62 @@ export default function B2BContent() {
               className="object-cover opacity-18 mix-blend-screen [mask-image:radial-gradient(ellipse_at_25%_45%,black,transparent_72%)]"
             />
             <div className="relative z-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              <div className="relative mx-auto flex aspect-square w-full max-w-[360px] items-center justify-center rounded-[2rem] border border-white/10 bg-black/20">
-                <div className="absolute inset-6 rounded-[1.5rem] border border-[#a855f7]/20" />
-                <div className="absolute inset-12 rounded-full border border-cyan-300/15" />
-                <div className="absolute h-[78%] w-px bg-gradient-to-b from-transparent via-cyan-300/45 to-transparent" />
-                <div className="absolute w-[78%] h-px bg-gradient-to-r from-transparent via-[#f97316]/45 to-transparent" />
-                <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.16),transparent_62%)]" />
+              <div className="relative mx-auto aspect-square w-full max-w-[380px]">
+                {/* ambient core glow */}
+                <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.16),transparent_60%)]" />
 
-                <div className="relative flex h-40 w-40 items-center justify-center rounded-[2rem] border border-[#a855f7]/35 bg-[#a855f7]/10 shadow-[0_0_60px_rgba(168,85,247,0.25)]">
+                {/* rotating dashed outer ring */}
+                <div className="absolute inset-2 rounded-full border border-dashed border-[#a855f7]/25 [animation:spin_32s_linear_infinite]" />
+                {/* radar sweep */}
+                <div
+                  className="absolute inset-8 rounded-full [animation:spin_5s_linear_infinite]"
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, rgba(34,211,238,0) 0deg, rgba(34,211,238,0.22) 50deg, rgba(34,211,238,0) 90deg)",
+                  }}
+                />
+                {/* concentric rings + crosshair */}
+                <div className="absolute inset-8 rounded-full border border-cyan-300/15" />
+                <div className="absolute inset-20 rounded-full border border-[#a855f7]/20" />
+                <div className="absolute left-1/2 top-[10%] h-[80%] w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+                <div className="absolute top-1/2 left-[10%] h-px w-[80%] -translate-y-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+                {/* orbiting badge chips (wrapper spins, chips counter-spin to stay upright) */}
+                <div className="absolute inset-0 [animation:spin_26s_linear_infinite]">
+                  {["RBAC", "Audit", "GDPR", "Fallback"].map((label, i) => (
+                    <div
+                      key={label}
+                      className="absolute left-1/2 top-1/2 h-0 w-0"
+                      style={{ transform: `rotate(${i * 90}deg) translateY(-150px)` }}
+                    >
+                      <div
+                        className="absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-white/10 bg-[var(--color-bg-secondary)]/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-secondary)] shadow-[0_0_18px_rgba(168,85,247,0.18)] [animation:spin_26s_linear_infinite_reverse]"
+                        style={{ transform: `rotate(${-i * 90}deg)` }}
+                      >
+                        {label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* center shield */}
+                <div className="absolute left-1/2 top-1/2 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[2rem] border border-[#a855f7]/35 bg-[var(--color-bg-secondary)]/70 shadow-[0_0_60px_rgba(168,85,247,0.3)] backdrop-blur-sm">
+                  <span className="absolute inset-0 rounded-[2rem] border border-[#a855f7]/30 [animation:ping_3s_cubic-bezier(0,0,0.2,1)_infinite]" />
                   <div className="absolute inset-4 rounded-3xl border border-white/10" />
-                  <div className="text-center">
-                    <div className="mb-2 text-5xl">🛡️</div>
+                  <div className="relative text-center">
+                    <div className="mb-1 text-4xl">🛡️</div>
                     <div className="gradient-text font-display text-3xl font-bold">99.9%</div>
                     <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-                      monitored
+                      uptime
                     </div>
                   </div>
                 </div>
 
-                {[
-                  ["RBAC", "top-7 left-6"],
-                  ["Audit", "right-5 top-20"],
-                  ["GDPR", "bottom-8 left-10"],
-                  ["Fallback", "bottom-16 right-4"],
-                ].map(([label, pos]) => (
-                  <div
-                    key={label}
-                    className={`absolute ${pos} rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-secondary)]`}
-                  >
-                    {label}
-                  </div>
-                ))}
+                {/* live status pill */}
+                <div className="absolute bottom-1 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 [animation:pulse_1.6s_ease-in-out_infinite]" />
+                  Monitoring active
+                </div>
               </div>
 
               <div>
