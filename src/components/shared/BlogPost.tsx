@@ -94,8 +94,7 @@ export default function BlogPost({
       <main>
         {/* Hero */}
         <section className="relative pt-28 pb-12 sm:pt-36 overflow-hidden">
-          <div className="absolute inset-0" style={{ background: "var(--color-bg-primary)" }} />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.06)_0%,transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.08)_0%,transparent_70%)] pointer-events-none" />
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}

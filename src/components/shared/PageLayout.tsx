@@ -25,13 +25,10 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
     <>
       <Header />
       <main>
-        {/* Page Hero */}
+        {/* Page Hero — transparent base so the global SiteBackground shows through (consistent on every page) */}
         <section className="relative isolate overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
-          <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
-          <div className="absolute inset-0 opacity-35 hud-grid pointer-events-none" />
-          <div className="absolute -top-24 right-[-18vw] h-[520px] w-[720px] rotate-[-14deg] bg-[linear-gradient(120deg,transparent_15%,rgba(34,211,238,0.18)_36%,rgba(168,85,247,0.20)_55%,rgba(249,115,22,0.16)_72%,transparent_88%)] blur-2xl" />
-          <div className="absolute left-[-12vw] top-24 h-[360px] w-[520px] rounded-full bg-[#7c3aed]/15 blur-3xl" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#a855f7]/50 to-transparent" />
+          <div className="absolute -top-24 right-[-18vw] h-[520px] w-[720px] rotate-[-14deg] bg-[linear-gradient(120deg,transparent_15%,rgba(34,211,238,0.14)_36%,rgba(168,85,247,0.16)_55%,rgba(249,115,22,0.12)_72%,transparent_88%)] blur-2xl pointer-events-none" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#a855f7]/40 to-transparent" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div

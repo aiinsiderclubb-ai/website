@@ -128,7 +128,7 @@ export default function CaseStudiesContent() {
         </div>
       </section>
 
-      <section className="py-20 bg-[var(--color-bg-secondary)]">
+      <section className="py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <p className="text-sm text-[#c084fc] uppercase tracking-wider mb-3">{p.wantResults}</p>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-primary)] mb-4">

@@ -178,7 +178,7 @@ export default function CoursesContent() {
       </section>
 
       {/* Courses Grid */}
-      <section className="py-20 hud-grid">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
@@ -272,7 +272,7 @@ export default function CoursesContent() {
       </section>
 
       {/* Benefits */}
-      <section className="relative py-24 border-t border-white/5 overflow-hidden hud-grid">
+      <section className="relative py-24 border-t border-white/5 overflow-hidden">
         {/* Decorative gradient bar */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-72 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent" />
         <div className="absolute top-[18%] left-[8%] h-16 w-16 border border-[#a855f7]/25 rotate-45 hidden md:block" />
@@ -348,7 +348,7 @@ export default function CoursesContent() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 hud-grid">
+      <section className="py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div
             className="hud-panel hud-frame hud-scan rounded-2xl p-10"

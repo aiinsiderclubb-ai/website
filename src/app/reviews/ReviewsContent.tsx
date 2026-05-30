@@ -101,7 +101,7 @@ export default function ReviewsContent() {
       subtitle="Don't just take our word for it. See how thousands of students and professionals transformed their careers with AI Insider training and community."
     >
       {/* Stats bar */}
-      <section className="py-10 hud-grid">
+      <section className="py-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-3 gap-4 hud-panel hud-frame rounded-2xl p-6 sm:p-10"
@@ -145,7 +145,7 @@ export default function ReviewsContent() {
       </section>
 
       {/* Reviews Grid */}
-      <section className="py-10 pb-20 hud-grid">
+      <section className="py-10 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
             <motion.div
@@ -201,7 +201,7 @@ export default function ReviewsContent() {
       </section>
 
       {/* Overall rating */}
-      <section className="py-20 border-t border-white/5 hud-grid">
+      <section className="py-20 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="hud-panel hud-frame hud-scan rounded-2xl p-8 sm:p-12"

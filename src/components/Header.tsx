@@ -54,7 +54,6 @@ export default function Header() {
     { label: t.nav.reviews, href: localPath("/reviews"), basePath: "/reviews" },
     { label: t.nav.b2b, href: localPath("/b2b"), basePath: "/b2b" },
     { label: t.nav.blog, href: localPath("/blog"), basePath: "/blog" },
-    { label: "AI Studio", href: localPath("/ai-studio"), basePath: "/ai-studio" },
   ];
 
   useEffect(() => {

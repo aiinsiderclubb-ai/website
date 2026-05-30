@@ -87,7 +87,7 @@ export default function AboutContent() {
       </section>
 
       {/* Timeline */}
-      <section className="py-16 bg-[var(--color-bg-secondary)]">
+      <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {milestones.map((item, i) => (
             <motion.div
@@ -132,7 +132,7 @@ export default function AboutContent() {
       </section>
 
       {/* Stats + CTA */}
-      <section className="py-20 bg-[var(--color-bg-secondary)]">
+      <section className="py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
             {stats.map((s) => (

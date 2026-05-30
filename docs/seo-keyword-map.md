@@ -17,7 +17,6 @@ the pillar links **down** to supporting posts.
 | `/courses` | ai automation course | ai chatbot course, voice agent course, n8n course, learn ai automation | Course + Person schema live |
 | `/courses/chatbot` | ai chatbot development course | build ai chatbot, n8n chatbot, chatgpt chatbot course | Course + FAQ schema live |
 | `/courses/voice` | ai voice agent course | vapi.ai course, build voice agent | Course schema live |
-| `/ai-studio` | ai content studio | ai video production, virtual influencer, ugc ads ai | OfferCatalog + FAQPage schema live |
 | `/case-studies` | ai automation case studies | ai automation results, ai roi case study | Article schema per case live |
 
 ---
@@ -47,12 +46,11 @@ linking to the pillar with a descriptive anchor.
 - ✅ Lead Qualification with LLMs (`/blog/lead-qualification`)
 - ⬜ **What is RAG (retrieval-augmented generation)?** — definition
 
-### Cluster D — AI content / solo builders  → links to `/ai-studio`
+### Cluster D — AI content / solo builders  → links to `/courses`, `/b2b`
 - ✅ Website in 5 Minutes with GPT-5 (`/blog/website-in-5-minutes-gpt5`)
 - ✅ VEED AI Playground (`/blog/veed-ai-playground`)
 - ✅ Google Vids: AI Video Editor (`/blog/google-vids-ai-editor`)
 - ✅ One Person with AI = Mini-Startup (`/blog/one-person-mini-startup`)
-- ⬜ **How to create a virtual AI influencer** — links to `/ai-studio`
 
 ---
 
@@ -65,8 +63,6 @@ These map to direct-answer paragraphs and FAQ schema already added, plus future 
 - what is an ai voice agent              → `/b2b` (direct answer live)
 - what is an ai automation course        → `/courses` (direct answer live)
 - do i need to code for ai automation    → `/courses` (direct answer live)
-- what is an ai content studio           → `/ai-studio` (direct answer live)
-- how does ai content studio pricing work→ `/ai-studio` (direct answer live)
 - what is n8n used for                   → new post (Cluster A)
 - how to integrate chatgpt with hubspot  → new post (Cluster A)
 

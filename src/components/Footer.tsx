@@ -44,7 +44,6 @@ export default function Footer() {
     ],
     [t.footer.resources]: [
       { label: t.footer.about, href: "/about", external: false },
-      { label: t.footer.aiStudio, href: "/ai-studio", external: false },
       { label: t.footer.caseStudies, href: "/case-studies", external: false },
       { label: t.footer.aiInsiderStudio, href: siteConfig.studioUrl, external: true },
       { label: t.common.contactManager, href: "https://t.me/vladyslavarcher", external: true },
