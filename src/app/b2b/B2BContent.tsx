@@ -64,11 +64,51 @@ const goalOptions = [
 const industries = ["Fintech", "E-commerce", "Healthcare", "SaaS / Cloud", "EdTech", "Real Estate", "Gaming", "Media"];
 
 const roadmap = [
-  { step: 1, title: "Discovery (1–2 weeks)", desc: "Goals, KPIs, data sources, risks, constraints. Quick audit and value map." },
-  { step: 2, title: "Design (1–2 weeks)", desc: "Architecture, guardrails, integrations, rollout plan and success metrics." },
-  { step: 3, title: "Pilot (2–4 weeks)", desc: "Ship MVP to real users with telemetry and evaluations. Iterate fast." },
-  { step: 4, title: "Production (ongoing)", desc: "SLAs, monitoring, incident response, security reviews and compliance." },
-  { step: 5, title: "Scale (quarterly)", desc: "New use-cases, A/B tests, enablement, cost and quality optimization." },
+  {
+    step: 1,
+    title: "Discovery",
+    phase: "Discovery",
+    duration: "1–2 weeks",
+    desc: "Goals, KPIs, data sources, risks, constraints. Quick audit and value map.",
+    deliverables: ["Opportunity audit", "Value & ROI map", "Risk + data review"],
+    output: "Scope",
+  },
+  {
+    step: 2,
+    title: "Design",
+    phase: "Design",
+    duration: "1–2 weeks",
+    desc: "Architecture, guardrails, integrations, rollout plan and success metrics.",
+    deliverables: ["System architecture", "Guardrails & prompts", "Integration plan"],
+    output: "Blueprint",
+  },
+  {
+    step: 3,
+    title: "Pilot",
+    phase: "Pilot",
+    duration: "2–4 weeks",
+    desc: "Ship MVP to real users with telemetry and evaluations. Iterate fast.",
+    deliverables: ["Working MVP", "Telemetry + evals", "Fast iterations"],
+    output: "MVP",
+  },
+  {
+    step: 4,
+    title: "Production",
+    phase: "Production",
+    duration: "ongoing",
+    desc: "SLAs, monitoring, incident response, security reviews and compliance.",
+    deliverables: ["SLAs & monitoring", "Incident response", "Security reviews"],
+    output: "Live",
+  },
+  {
+    step: 5,
+    title: "Scale",
+    phase: "Scale",
+    duration: "quarterly",
+    desc: "New use-cases, A/B tests, enablement, cost and quality optimization.",
+    deliverables: ["New use-cases", "A/B tests", "Cost optimization"],
+    output: "Growth",
+  },
 ];
 
 const faqs = [
@@ -483,108 +523,145 @@ export default function B2BContent() {
             </p>
           </motion.div>
 
-          <div className={`relative overflow-hidden rounded-3xl ${CARD} p-6 sm:p-8 lg:p-10`}>
-            <Image
-              src="/images/flow/ribbon-stream.png"
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-cover opacity-18 mix-blend-screen [mask-image:radial-gradient(ellipse_at_center,black,transparent_74%)]"
+          <div className={`relative overflow-hidden rounded-[2rem] ${CARD} p-6 sm:p-8 lg:p-10`}>
+            {/* soft AI ambient glows (no image) */}
+            <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#7c3aed]/15 blur-3xl" />
+            <div className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-[#f97316]/12 blur-3xl" />
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.05]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(168,85,247,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.6) 1px, transparent 1px)",
+                backgroundSize: "40px 40px",
+                maskImage: "radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 80%)",
+              }}
             />
-            <div className="pointer-events-none absolute inset-x-10 top-[118px] hidden h-px bg-gradient-to-r from-[#a855f7]/10 via-[#f97316]/70 to-cyan-300/20 lg:block" />
-            <div className="pointer-events-none absolute left-10 top-[118px] hidden h-px bg-gradient-to-r from-[#a855f7] to-[#f97316] lg:block" style={{ width: `${Math.max(10, activeStep * 18)}%` }} />
 
-            <div className="relative z-10 grid gap-5 lg:grid-cols-5">
-              {roadmap.map((r, i) => {
-                const active = activeStep === r.step;
-                const done = activeStep > r.step;
-                return (
-                  <button
-                    key={r.step}
-                    type="button"
-                    onClick={() => setActiveStep(r.step)}
-                    className={`group relative text-left transition-all duration-300 ${
-                      active ? "lg:-translate-y-2" : "hover:-translate-y-1"
-                    }`}
-                  >
-                    <div
-                      className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border font-display text-xl font-bold transition-all ${
-                        active
-                          ? "border-[#f97316]/60 bg-gradient-to-br from-[#a855f7] to-[#f97316] text-white shadow-[0_0_34px_rgba(249,115,22,0.35)]"
-                          : done
-                            ? "border-emerald-400/35 bg-emerald-400/10 text-emerald-300"
-                            : "border-white/10 bg-white/[0.06] text-[var(--color-text-muted)] group-hover:border-[#a855f7]/35 group-hover:text-[var(--color-text-primary)]"
-                      }`}
-                    >
-                      {done ? "✓" : `0${r.step}`}
-                    </div>
+            {/* Pipeline rail */}
+            <div className="relative z-10">
+              <div className="relative">
+                <div className="pointer-events-none absolute left-0 right-0 top-7 hidden h-[2px] rounded-full bg-white/[0.08] lg:block" />
+                <div
+                  className="pointer-events-none absolute left-0 top-7 hidden h-[2px] rounded-full bg-gradient-to-r from-[#a855f7] via-[#c084fc] to-[#f97316] shadow-[0_0_18px_rgba(168,85,247,0.55)] transition-all duration-500 lg:block"
+                  style={{ width: `${((activeStep - 1) / (roadmap.length - 1)) * 100}%` }}
+                />
 
-                    <div
-                      className={`rounded-2xl border p-5 backdrop-blur-sm transition-all ${
-                        active
-                          ? "border-[#a855f7]/45 bg-[#a855f7]/15 shadow-[0_18px_50px_-16px_rgba(168,85,247,0.45)]"
-                          : "border-white/10 bg-white/[0.035] group-hover:border-white/20"
-                      }`}
-                    >
-                      <div className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#c084fc]">
-                        Phase {r.step}
-                      </div>
-                      <h3 className="mb-2 font-display text-base font-bold text-[var(--color-text-primary)]">
-                        {r.title}
-                      </h3>
-                      <p className="text-xs leading-relaxed text-[var(--color-text-secondary)]">
-                        {r.desc}
-                      </p>
-                    </div>
-
-                    {i < roadmap.length - 1 && (
-                      <div className="mt-5 flex items-center gap-2 lg:hidden">
-                        <div className="h-8 w-px bg-gradient-to-b from-[#a855f7]/60 to-[#f97316]/30" />
-                        <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
-                          next checkpoint
+                <div className="grid gap-6 lg:grid-cols-5">
+                  {roadmap.map((r) => {
+                    const active = activeStep === r.step;
+                    const done = activeStep > r.step;
+                    return (
+                      <button
+                        key={r.step}
+                        type="button"
+                        onClick={() => setActiveStep(r.step)}
+                        className="group relative flex flex-col items-center text-center"
+                      >
+                        {/* node */}
+                        <span
+                          className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-full border font-display text-sm font-bold transition-all duration-300 ${
+                            active
+                              ? "scale-110 border-transparent bg-gradient-to-br from-[#a855f7] to-[#f97316] text-white shadow-[0_0_30px_rgba(168,85,247,0.6)]"
+                              : done
+                                ? "border-emerald-400/40 bg-emerald-400/15 text-emerald-300"
+                                : "border-white/15 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] group-hover:border-[#a855f7]/45 group-hover:text-[var(--color-text-primary)]"
+                          }`}
+                        >
+                          {active && (
+                            <span className="absolute inset-0 animate-ping rounded-full border border-[#a855f7]/40" />
+                          )}
+                          {done ? "✓" : `0${r.step}`}
                         </span>
-                      </div>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
 
-            <motion.div
-              key={activeStep}
-              className="relative z-10 mt-8 grid gap-4 rounded-2xl border border-white/10 bg-black/20 p-5 backdrop-blur-sm sm:grid-cols-[1fr_auto]"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              <div>
-                <div className="mb-2 text-xs uppercase tracking-[0.18em] text-[#fb923c]">
-                  Current checkpoint
+                        <div
+                          className={`mt-5 w-full rounded-2xl border p-4 text-left transition-all duration-300 ${
+                            active
+                              ? "border-[#a855f7]/45 bg-[#a855f7]/12 shadow-[0_20px_50px_-20px_rgba(168,85,247,0.6)]"
+                              : "border-white/10 bg-white/[0.03] group-hover:-translate-y-1 group-hover:border-white/20"
+                          }`}
+                        >
+                          <div className="mb-1 flex items-center justify-between">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#c084fc]">
+                              {r.phase}
+                            </span>
+                            <span className="text-[10px] text-[var(--color-text-muted)]">{r.duration}</span>
+                          </div>
+                          <h3 className="font-display text-base font-bold text-[var(--color-text-primary)]">
+                            {r.title}
+                          </h3>
+                          <div className="mt-2 inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.05] px-2 py-0.5 text-[10px] text-[var(--color-text-secondary)]">
+                            → {r.output}
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
-                <h3 className="mb-2 font-display text-xl font-bold text-[var(--color-text-primary)]">
-                  {roadmap[activeStep - 1].title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                  {roadmap[activeStep - 1].desc}
-                </p>
               </div>
-              <div className="grid grid-cols-3 gap-3 sm:w-[280px]">
-                {[
-                  ["Input", "data"],
-                  ["Output", "plan"],
-                  ["Risk", "low"],
-                ].map(([label, value]) => (
-                  <div key={label} className="rounded-xl border border-white/10 bg-white/[0.04] p-3 text-center">
-                    <div className="text-[10px] uppercase tracking-[0.16em] text-[var(--color-text-muted)]">
-                      {label}
+
+              {/* Active checkpoint detail */}
+              <motion.div
+                key={activeStep}
+                className="mt-8 grid gap-6 rounded-2xl border border-white/10 bg-black/25 p-6 backdrop-blur-sm lg:grid-cols-[1fr_320px]"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                <div>
+                  <div className="mb-2 flex items-center gap-3">
+                    <span className="text-xs uppercase tracking-[0.18em] text-[#fb923c]">
+                      Phase {roadmap[activeStep - 1].step} · {roadmap[activeStep - 1].duration}
+                    </span>
+                  </div>
+                  <h3 className="mb-2 font-display text-2xl font-bold text-[var(--color-text-primary)]">
+                    {roadmap[activeStep - 1].title}
+                  </h3>
+                  <p className="max-w-lg text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                    {roadmap[activeStep - 1].desc}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {roadmap[activeStep - 1].deliverables.map((d) => (
+                      <span
+                        key={d}
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs text-[var(--color-text-secondary)]"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#a855f7] to-[#f97316]" />
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col justify-between gap-4 rounded-2xl border border-[#a855f7]/20 bg-[#a855f7]/[0.08] p-5">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-muted)]">
+                      Stage output
                     </div>
-                    <div className="mt-1 text-sm font-semibold text-[var(--color-text-primary)]">
-                      {value}
+                    <div className="gradient-text font-display text-3xl font-bold">
+                      {roadmap[activeStep - 1].output}
                     </div>
                   </div>
-                ))}
-              </div>
-            </motion.div>
+                  <div className="flex items-center gap-2">
+                    {roadmap.map((r) => (
+                      <span
+                        key={r.step}
+                        className={`h-1.5 flex-1 rounded-full transition-all ${
+                          r.step <= activeStep ? "bg-gradient-to-r from-[#a855f7] to-[#f97316]" : "bg-white/10"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep((s) => (s >= roadmap.length ? 1 : s + 1))}
+                    className="rounded-xl bg-gradient-to-r from-[#a855f7] to-[#f97316] px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  >
+                    {activeStep >= roadmap.length ? "Restart pipeline" : "Next phase →"}
+                  </button>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
