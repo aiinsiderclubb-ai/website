@@ -81,19 +81,19 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
               </div>
 
               <div className="relative hidden min-h-[430px] lg:block">
-                <div className="absolute -inset-y-16 -left-28 right-[-12vw]">
+                <div className="absolute -right-[13vw] -top-24 h-[360px] w-[620px] rotate-[-11deg] origin-top-right">
                   <Image
                     src="/images/internal-page-ribbon.png"
                     alt=""
                     fill
                     priority
                     sizes="(min-width: 1024px) 760px, 0px"
-                    className="object-cover object-center opacity-95 mix-blend-screen [mask-image:linear-gradient(90deg,transparent_0%,black_18%,black_86%,transparent_100%)]"
+                    className="object-cover object-center opacity-90 mix-blend-screen [mask-image:radial-gradient(ellipse_at_62%_42%,black_0%,black_48%,transparent_76%)]"
                   />
                 </div>
-                <div className="absolute -right-24 top-8 h-72 w-72 rounded-full bg-orange-500/20 blur-3xl" />
-                <div className="absolute left-8 top-16 h-48 w-48 rounded-full bg-violet-500/20 blur-3xl" />
-                <div className="absolute inset-x-8 bottom-4 h-px bg-gradient-to-r from-transparent via-orange-300/45 to-transparent" />
+                <div className="absolute -right-12 top-0 h-56 w-56 rounded-full bg-orange-500/18 blur-3xl" />
+                <div className="absolute right-24 top-20 h-44 w-44 rounded-full bg-violet-500/16 blur-3xl" />
+                <div className="absolute right-6 top-80 h-px w-72 rotate-[-11deg] bg-gradient-to-r from-transparent via-orange-300/35 to-transparent" />
               </div>
             </motion.div>
           </div>
