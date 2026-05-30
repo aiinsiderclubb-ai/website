@@ -101,17 +101,17 @@ export default function Header() {
           background: scrolled
             ? isHome
               ? "var(--header-bg)"
-              : "linear-gradient(180deg, rgba(7,10,24,0.92) 0%, rgba(10,12,30,0.78) 100%)"
+              : "linear-gradient(180deg, rgba(9,8,24,0.86) 0%, rgba(12,10,32,0.68) 100%)"
             : isHome
               ? "transparent"
-              : "rgba(8, 10, 24, 0.68)",
-          backdropFilter: scrolled || !isHome ? "blur(10px) saturate(130%)" : "none",
+              : "linear-gradient(180deg, rgba(8,7,20,0.72) 0%, rgba(8,7,20,0.42) 100%)",
+          backdropFilter: scrolled || !isHome ? "blur(16px) saturate(145%)" : "none",
           transition: "background 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease",
-          WebkitBackdropFilter: scrolled || !isHome ? "blur(10px) saturate(130%)" : "none",
+          WebkitBackdropFilter: scrolled || !isHome ? "blur(16px) saturate(145%)" : "none",
           borderBottom: scrolled || !isHome
             ? isHome
               ? "1px solid var(--header-border)"
-              : "1px solid rgba(56,189,248,0.22)"
+              : "1px solid rgba(168,85,247,0.20)"
             : "none",
         }}
       >
@@ -120,26 +120,26 @@ export default function Header() {
           className={`absolute top-0 left-0 right-0 h-[1px] ${
             isHome
               ? "bg-gradient-to-r from-transparent via-[#a855f7]/70 to-transparent opacity-70"
-              : "bg-gradient-to-r from-[#22d3ee]/0 via-[#22d3ee]/90 to-[#f97316]/0 opacity-90"
+              : "bg-gradient-to-r from-transparent via-[#a855f7]/80 via-50% to-transparent opacity-90"
           }`}
         />
         {!isHome && (
           <div
-            className="absolute inset-0 pointer-events-none opacity-30"
+            className="absolute inset-0 pointer-events-none opacity-15"
             style={{
               backgroundImage:
                 "linear-gradient(rgba(34,211,238,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.07) 1px, transparent 1px)",
-              backgroundSize: "36px 36px",
+              backgroundSize: "42px 42px",
             }}
           />
         )}
 
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`flex items-center justify-between h-16 ${isHome ? "lg:h-[68px]" : "lg:h-[74px]"}`}>
+          <div className={`flex items-center justify-between h-16 ${isHome ? "lg:h-[68px]" : "lg:h-[70px]"}`}>
 
             {/* ── Logo ── */}
             <Link href={localPath("/")} className="flex items-center gap-3 group shrink-0">
-              <div className={`relative w-9 h-9 rounded-xl overflow-hidden ${!isHome ? "ring-1 ring-[#22d3ee]/40" : ""}`}>
+              <div className={`relative w-9 h-9 rounded-xl overflow-hidden ${!isHome ? "ring-1 ring-[#a855f7]/40 shadow-[0_0_24px_rgba(168,85,247,0.22)]" : ""}`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#a855f7] via-[#c084fc] to-[#f97316] group-hover:scale-110 transition-transform duration-300" />
                 <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm tracking-tight">AI</div>
               </div>
@@ -148,7 +148,7 @@ export default function Header() {
                   {siteConfig.name}
                 </span>
                 <span className="text-[9px] text-[var(--color-text-muted)] uppercase tracking-[0.18em] hidden sm:block mt-0.5">
-                  {isHome ? siteConfig.tagline : `Navigator · ${currentPage}`}
+                  {isHome ? siteConfig.tagline : `AI Insider OS · ${currentPage}`}
                 </span>
               </div>
             </Link>
@@ -177,7 +177,7 @@ export default function Header() {
                         className={`absolute inset-0 rounded-lg ${
                           isHome
                             ? "bg-[var(--color-accent-glow)] border border-[var(--color-accent-border)]"
-                            : "bg-cyan-400/10 border border-cyan-300/35 shadow-[0_0_20px_rgba(34,211,238,0.15)]"
+                            : "bg-white/[0.06] border border-[#a855f7]/25 shadow-[0_0_24px_rgba(168,85,247,0.16)]"
                         }`}
                         transition={{ type: "spring", stiffness: 380, damping: 34 }}
                       />
@@ -191,8 +191,8 @@ export default function Header() {
             {/* ── Right Controls ── */}
             <div className="hidden lg:flex items-center gap-2">
               {!isHome && (
-                <span className="px-2.5 py-1 rounded-md text-[10px] uppercase tracking-[0.18em] font-semibold text-cyan-300 border border-cyan-400/25 bg-cyan-400/10">
-                  Internal Page
+                <span className="px-3 py-1.5 rounded-full text-[10px] uppercase tracking-[0.18em] font-semibold text-violet-100 border border-white/10 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                  Route · {currentPage}
                 </span>
               )}
               {/* Theme Toggle */}

@@ -74,7 +74,7 @@ const benefits = [
   },
   {
     title: "Community Support",
-    desc: "Join an exclusive Telegram with 5,700+ AI builders and instant expert help.",
+    desc: "Join an exclusive Telegram with 6,000+ AI builders and instant expert help.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
         <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" /><circle cx="10" cy="7" r="4" /><path d="M21 21v-2a4 4 0 0 0-3-3.87" /><path d="M17 3.13A4 4 0 0 1 17 11.87" />

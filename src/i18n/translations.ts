@@ -647,7 +647,7 @@ export const translations = {
       b2Title: "Lifetime Access",
       b2Desc: "Once enrolled, access course content forever including updates",
       b3Title: "Community Support",
-      b3Desc: "Join exclusive Telegram with 5,700+ AI enthusiasts and experts",
+      b3Desc: "Join exclusive Telegram with 6,000+ AI enthusiasts and experts",
       b4Title: "Certificates",
       b4Desc: "Industry-recognized certificates to boost your professional profile",
       b5Title: "Real Projects",
