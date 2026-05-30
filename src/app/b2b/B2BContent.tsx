@@ -125,7 +125,15 @@ const CARD = "rounded-2xl border border-[var(--color-glass-border)] bg-[var(--co
 export default function B2BContent() {
   const [activeStep, setActiveStep] = useState(1);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [form, setForm] = useState({ company: "", name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({
+    company: "",
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    focus: "",
+    budget: "",
+  });
   const [audit, setAudit] = useState({
     website: "",
     goal: "Increase qualified leads",
@@ -844,72 +852,162 @@ export default function B2BContent() {
                 </div>
               </div>
 
-              <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 backdrop-blur-sm sm:p-6">
+              <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/30 p-5 backdrop-blur-md shadow-[0_30px_80px_-30px_rgba(168,85,247,0.5)] sm:p-7">
+                {/* top accent line */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#a855f7]/70 to-transparent" />
+                {/* corner glow */}
+                <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[#f97316]/15 blur-3xl" />
+
                 {submitted ? (
                   <div className="py-12 text-center">
-                    <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-emerald-400/25 bg-emerald-400/10 text-4xl">✓</div>
-                    <h3 className="mb-2 font-display text-2xl font-bold text-[var(--color-text-primary)]">Request sent!</h3>
-                    <p className="mx-auto max-w-sm text-[var(--color-text-secondary)]">
-                      We&apos;ll send a proposal and timeline within 24 hours.
+                    <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-2xl border border-emerald-400/25 bg-emerald-400/10 text-5xl shadow-[0_0_50px_rgba(52,211,153,0.3)]">
+                      ✓
+                    </div>
+                    <h3 className="mb-2 font-display text-2xl font-bold text-[var(--color-text-primary)]">Request received</h3>
+                    <p className="mx-auto mb-6 max-w-sm text-[var(--color-text-secondary)]">
+                      Our team is scoping your proposal now. Expect a tailored AI plan within 24 hours.
                     </p>
+                    <div className="mx-auto flex max-w-sm items-center justify-center gap-2 text-xs text-[var(--color-text-muted)]">
+                      {["Brief logged", "Stack matched", "Proposal queued"].map((s, i) => (
+                        <span key={s} className="flex items-center gap-2">
+                          <span className="text-emerald-300">✓</span>
+                          {s}
+                          {i < 2 && <span className="text-white/15">→</span>}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ) : (
-                  <>
+                  <div className="relative">
                     <div className="mb-6 flex items-center justify-between gap-4">
                       <div>
+                        <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-300">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 [animation:pulse_1.6s_ease-in-out_infinite]" />
+                          Accepting briefs
+                        </div>
                         <h3 className="font-display text-xl font-bold text-[var(--color-text-primary)]">
-                          B2B project brief
+                          Project brief
                         </h3>
-                        <p className="text-sm text-[var(--color-text-muted)]">Fast enough to send, detailed enough to scope.</p>
+                        <p className="text-sm text-[var(--color-text-muted)]">Fast to send, detailed enough to scope.</p>
                       </div>
                       <div className="rounded-2xl border border-[#f97316]/25 bg-[#f97316]/10 px-4 py-3 text-right">
-                        <div className="gradient-text font-display text-xl font-bold">24h</div>
+                        <div className="gradient-text font-display text-2xl font-bold">24h</div>
                         <div className="text-[10px] uppercase tracking-wider text-[var(--color-text-muted)]">reply</div>
                       </div>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         {[
-                          { name: "company", placeholder: "Company", type: "text" },
-                          { name: "name", placeholder: "Contact name", type: "text" },
-                          { name: "email", placeholder: "Email", type: "email" },
-                          { name: "phone", placeholder: "Phone (optional)", type: "tel", required: false },
+                          { name: "company", placeholder: "Company", type: "text", icon: "🏢" },
+                          { name: "name", placeholder: "Contact name", type: "text", icon: "👤" },
+                          { name: "email", placeholder: "Work email", type: "email", icon: "✉️" },
+                          { name: "phone", placeholder: "Phone (optional)", type: "tel", required: false, icon: "📞" },
                         ].map((f) => (
-                          <input
-                            key={f.name}
-                            type={f.type}
-                            placeholder={f.placeholder}
-                            required={f.required !== false}
-                            value={form[f.name as keyof typeof form]}
-                            onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
-                            className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:border-[#a855f7]/50 focus:outline-none"
-                          />
+                          <div key={f.name} className="group relative">
+                            <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-sm opacity-60">
+                              {f.icon}
+                            </span>
+                            <input
+                              type={f.type}
+                              placeholder={f.placeholder}
+                              required={f.required !== false}
+                              value={form[f.name as keyof typeof form]}
+                              onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
+                              className="w-full rounded-xl border border-white/10 bg-white/[0.04] py-3 pl-10 pr-4 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] transition-all focus:border-[#a855f7]/60 focus:bg-white/[0.07] focus:shadow-[0_0_0_3px_rgba(168,85,247,0.15)] focus:outline-none"
+                            />
+                          </div>
                         ))}
                       </div>
+
+                      {/* quick-select: project focus */}
+                      <div>
+                        <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-muted)]">
+                          What do you need?
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {["AI chatbot", "Voice agent", "Lead qualification", "Integrations", "Custom build"].map((opt) => {
+                            const active = form.focus === opt;
+                            return (
+                              <button
+                                key={opt}
+                                type="button"
+                                onClick={() => setForm({ ...form, focus: active ? "" : opt })}
+                                className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-all ${
+                                  active
+                                    ? "border-[#a855f7]/60 bg-[#a855f7]/15 text-[var(--color-text-primary)] shadow-[0_0_18px_rgba(168,85,247,0.25)]"
+                                    : "border-white/10 bg-white/[0.04] text-[var(--color-text-secondary)] hover:border-white/25"
+                                }`}
+                              >
+                                {opt}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* quick-select: budget */}
+                      <div>
+                        <div className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-muted)]">
+                          Budget range
+                        </div>
+                        <div className="grid grid-cols-3 gap-2">
+                          {["< €2k", "€2k–€10k", "€10k+"].map((opt) => {
+                            const active = form.budget === opt;
+                            return (
+                              <button
+                                key={opt}
+                                type="button"
+                                onClick={() => setForm({ ...form, budget: active ? "" : opt })}
+                                className={`rounded-xl border px-2 py-2.5 text-xs font-semibold transition-all ${
+                                  active
+                                    ? "border-[#f97316]/60 bg-[#f97316]/15 text-[var(--color-text-primary)]"
+                                    : "border-white/10 bg-white/[0.04] text-[var(--color-text-secondary)] hover:border-white/25"
+                                }`}
+                              >
+                                {opt}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+
                       <textarea
-                        rows={5}
+                        rows={4}
                         placeholder="Website, CRM, current bottleneck, what you want AI to automate..."
                         required
                         value={form.message}
                         onChange={(e) => setForm({ ...form, message: e.target.value })}
-                        className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:border-[#a855f7]/50 focus:outline-none"
+                        className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] transition-all focus:border-[#a855f7]/60 focus:bg-white/[0.07] focus:shadow-[0_0_0_3px_rgba(168,85,247,0.15)] focus:outline-none"
                       />
-                      <div className="flex flex-wrap gap-4">
-                        <button type="submit" className="rounded-xl bg-gradient-to-r from-[#a855f7] to-[#f97316] px-8 py-3 font-semibold text-white transition-opacity hover:opacity-90">
+
+                      <button
+                        type="submit"
+                        className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-[#a855f7] to-[#f97316] px-8 py-3.5 font-semibold text-white shadow-[0_10px_40px_-10px_rgba(168,85,247,0.6)] transition-transform hover:scale-[1.01]"
+                      >
+                        <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                        <span className="relative flex items-center justify-center gap-2">
                           Generate proposal request
-                        </button>
+                          <span className="transition-transform group-hover:translate-x-1">→</span>
+                        </span>
+                      </button>
+
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <a
                           href="https://t.me/vladyslavarcher"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="rounded-xl border border-white/20 px-8 py-3 font-semibold text-[var(--color-text-primary)] transition-colors hover:border-white/40"
+                          className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-5 py-2.5 text-sm font-semibold text-[var(--color-text-primary)] transition-colors hover:border-white/40"
                         >
-                          Message on Telegram
+                          <span>✈️</span> Prefer Telegram?
                         </a>
+                        <div className="flex items-center gap-3 text-[11px] text-[var(--color-text-muted)]">
+                          <span className="flex items-center gap-1"><span className="text-emerald-300">🔒</span> NDA on request</span>
+                          <span className="flex items-center gap-1"><span className="text-emerald-300">✓</span> No spam</span>
+                        </div>
                       </div>
                     </form>
-                  </>
+                  </div>
                 )}
               </div>
             </div>

@@ -128,52 +128,131 @@ export default function CoursesContent() {
       subtitle="Choose your path — Chat-Bot or Voice Agent. See next start dates and details."
     >
       {/* Definitions / direct answers (AEO) */}
-      <section className="pt-10 pb-6">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)] mb-3">
-              What is an AI automation course?
+      <section className="pt-12 pb-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="hud-badge mb-4">Direct answers</span>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)]">
+              Before you enroll
             </h2>
-            <p className="text-[var(--color-text-secondary)] leading-relaxed">
-              An AI automation course teaches you to build working AI systems — chatbots, voice agents and
-              n8n workflows — instead of just theory. At AI Insider you practice on real tasks with
-              ready-made templates, API keys included, and ship a portfolio-ready project by the end.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-xl sm:text-2xl font-display font-bold text-[var(--color-text-primary)] mb-3">
-              Do I need to know how to code?
-            </h2>
-            <p className="text-[var(--color-text-secondary)] leading-relaxed">
-              No. The Chat-Bot and Voice Agent tracks are built around no-code and low-code tools like n8n,
-              ChatGPT and Vapi.ai. Basic comfort with web apps is enough to start; you&apos;ll learn the
-              technical concepts step by step as you build.
-            </p>
-          </div>
+          </motion.div>
+
+          <motion.div
+            className="grid gap-5 md:grid-cols-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                q: "What is an AI automation course?",
+                a: "An AI automation course teaches you to build working AI systems — chatbots, voice agents and n8n workflows — instead of just theory. At AI Insider you practice on real tasks with ready-made templates, API keys included, and ship a portfolio-ready project by the end.",
+                tag: "Outcome",
+              },
+              {
+                q: "Do I need to know how to code?",
+                a: "No. The Chat-Bot and Voice Agent tracks are built around no-code and low-code tools like n8n, ChatGPT and Vapi.ai. Basic comfort with web apps is enough to start; you'll learn the technical concepts step by step as you build.",
+                tag: "No-code friendly",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.q}
+                variants={fadeInUp}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] p-6 sm:p-7 backdrop-blur-sm transition-all hover:border-[#a855f7]/40 hover:bg-white/[0.06]"
+              >
+                <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[#a855f7]/10 blur-2xl transition-opacity group-hover:opacity-100 opacity-0" />
+                <div className="relative">
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#a855f7] to-[#f97316] font-display text-sm font-bold text-white">
+                      Q
+                    </span>
+                    <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-muted)]">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <h3 className="mb-3 font-display text-lg sm:text-xl font-bold text-[var(--color-text-primary)]">
+                    {item.q}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">{item.a}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Instructor */}
-      <section className="pb-10">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="hud-frame hud-panel rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start gap-5">
-            <div className="w-16 h-16 rounded-2xl shrink-0 flex items-center justify-center text-2xl font-display font-bold text-white bg-gradient-to-br from-[#a855f7] to-[#f97316]">
-              VA
+      <section className="pb-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035] p-6 sm:p-9 backdrop-blur-sm shadow-[0_30px_80px_-40px_rgba(168,85,247,0.5)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-[#a855f7]/60 to-transparent" />
+            <div className="pointer-events-none absolute -left-16 -top-16 h-44 w-44 rounded-full bg-[#a855f7]/15 blur-3xl" />
+            <div className="pointer-events-none absolute -right-16 bottom-0 h-44 w-44 rounded-full bg-[#f97316]/12 blur-3xl" />
+
+            <div className="relative grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center">
+              <div className="flex flex-col items-center text-center">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#a855f7] to-[#f97316] blur-md opacity-50" />
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-br from-[#a855f7] to-[#f97316] font-display text-3xl font-bold text-white">
+                    VA
+                  </div>
+                </div>
+                <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-300">
+                  <span>✓</span> Verified practitioner
+                </div>
+              </div>
+
+              <div>
+                <span className="hud-badge mb-3">Lead instructor</span>
+                <h2 className="font-display text-2xl font-bold text-[var(--color-text-primary)]">
+                  Vladyslav Archer
+                </h2>
+                <p className="mb-4 text-sm text-[var(--color-text-muted)]">
+                  Founder, AI Insider · AI automation practitioner
+                </p>
+                <p className="mb-6 text-[var(--color-text-secondary)] leading-relaxed">
+                  Vladyslav builds production AI chatbots, voice agents and n8n automations for businesses
+                  and leads the 6,000+ member AI Insider community. Every lesson is based on real client
+                  work — the same patterns, templates and tools used in shipped projects.
+                </p>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    ["6,000+", "Community members"],
+                    ["Real client", "Work-based lessons"],
+                    ["Production", "Chatbots & voice agents"],
+                  ].map(([stat, label]) => (
+                    <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="gradient-text font-display text-xl font-bold">{stat}</div>
+                      <div className="mt-1 text-xs text-[var(--color-text-muted)]">{label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {["n8n", "ChatGPT", "Vapi.ai", "Make", "HubSpot"].map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs text-[var(--color-text-secondary)]"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div>
-              <h2 className="text-lg font-display font-bold text-[var(--color-text-primary)]">
-                Vladyslav Archer · Lead Instructor
-              </h2>
-              <p className="text-sm text-[var(--color-text-muted)] mb-2">
-                Founder, AI Insider · AI automation practitioner
-              </p>
-              <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
-                Vladyslav builds production AI chatbots, voice agents and n8n automations for businesses
-                and leads the 6,000+ member AI Insider community. Every lesson is based on real client
-                work — the same patterns, templates and tools used in shipped projects.
-              </p>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
