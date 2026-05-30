@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Header from "@landing/components/Header";
 import Footer from "@landing/components/Footer";
 
@@ -79,50 +80,20 @@ export default function PageLayout({ children, badge, title, titleHighlight, sub
                 </div>
               </div>
 
-              <div className="relative hidden lg:block">
-                <div className="absolute -inset-8 rounded-[2rem] bg-gradient-to-br from-cyan-400/10 via-violet-500/10 to-orange-500/10 blur-2xl" />
-                <div className="relative hud-panel hud-frame rounded-[2rem] p-5 overflow-hidden">
-                  <div className="absolute inset-0 hud-scan opacity-60" />
-                  <div className="relative rounded-3xl border border-[var(--color-glass-border)] bg-[var(--color-bg-card)]/70 p-5">
-                    <div className="mb-8 flex items-center justify-between">
-                      <div>
-                        <div className="text-[10px] uppercase tracking-[0.24em] text-[var(--color-text-muted)]">Route module</div>
-                        <div className="mt-1 text-lg font-semibold text-[var(--color-text-primary)]">{badge}</div>
-                      </div>
-                      <div className="flex gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-cyan-300" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-violet-400" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-orange-400" />
-                      </div>
-                    </div>
-
-                    <div className="relative mx-auto h-56 w-56">
-                      <div className="absolute inset-0 rounded-full border border-cyan-300/25" />
-                      <div className="absolute inset-6 rounded-full border border-dashed border-violet-300/25" />
-                      <div className="absolute inset-12 rounded-full bg-gradient-to-br from-cyan-300/20 via-violet-500/20 to-orange-400/20 shadow-[0_0_60px_rgba(168,85,247,0.25)]" />
-                      <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-cyan-300/45 to-transparent" />
-                      <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-gradient-to-r from-transparent via-orange-300/45 to-transparent" />
-                      <div className="absolute inset-0 rotate-45 rounded-full border border-orange-300/20" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="rounded-2xl border border-[var(--color-accent-border)] bg-[var(--color-bg-primary)]/80 px-5 py-4 text-center shadow-[0_0_35px_rgba(168,85,247,0.22)]">
-                          <div className="text-[10px] uppercase tracking-[0.24em] text-[var(--color-text-muted)]">Page system</div>
-                          <div className="mt-1 text-2xl font-display font-bold gradient-text">Online</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-8 grid grid-cols-2 gap-3">
-                      <div className="rounded-2xl border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] p-3">
-                        <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">Clarity</div>
-                        <div className="mt-1 text-sm font-semibold text-[var(--color-text-primary)]">Structured</div>
-                      </div>
-                      <div className="rounded-2xl border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] p-3">
-                        <div className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">Flow</div>
-                        <div className="mt-1 text-sm font-semibold text-[var(--color-text-primary)]">Guided</div>
-                      </div>
-                    </div>
-                  </div>
+              <div className="relative hidden min-h-[430px] lg:block">
+                <div className="absolute -inset-y-16 -left-28 right-[-12vw]">
+                  <Image
+                    src="/images/internal-page-ribbon.png"
+                    alt=""
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 760px, 0px"
+                    className="object-cover object-center opacity-95 mix-blend-screen [mask-image:linear-gradient(90deg,transparent_0%,black_18%,black_86%,transparent_100%)]"
+                  />
                 </div>
+                <div className="absolute -right-24 top-8 h-72 w-72 rounded-full bg-orange-500/20 blur-3xl" />
+                <div className="absolute left-8 top-16 h-48 w-48 rounded-full bg-violet-500/20 blur-3xl" />
+                <div className="absolute inset-x-8 bottom-4 h-px bg-gradient-to-r from-transparent via-orange-300/45 to-transparent" />
               </div>
             </motion.div>
           </div>
